@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -24,12 +24,12 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. String:      The current stance of the unit:
-                - "UP" (default)
-                - "MIDDLE"
-                - "DOWN"
+	- "UP" (default)
+	- "MIDDLE"
+	- "DOWN"
 2. Bool:        Switch behavior to combat mode?
-                - true (default)
-                - false
+	- true (default)
+	- false
 
 EXAMPLES USAGE IN SCRIPT:
 [_myUnit, "veteran"] call ADF_fnc_takeCover;
@@ -66,7 +66,7 @@ _unit removeAllEventHandlers "FiredNear";
 if (_stance == "DOWN") exitWith {if ADF_debug then {[format ["ADF_fnc_takeCover - unit '%1' is already in a 'DOWN' stance. Exiting", _unit]] call ADF_fnc_log}; false};
 
 // Check the cover position stance
-if (_stance == "MIDDLE") then {_coverStance = "DOWN"}; 
+if (_stance == "MIDDLE") then {_coverStance = "DOWN"};
 
 if ADF_debug then {[format ["ADF_fnc_takeCover - unit: %1, org stance: %2, new stance: %3", _unit, _stance, _coverStance]] call ADF_fnc_log};
 
@@ -77,14 +77,14 @@ if _combatMode then {_unit setBehaviour "COMBAT"; };
 	params ["_unit", "_stance", "_coverStance"];
 	sleep (random 1.5);
 	_unit setUnitPos _coverStance;
-	
+
 	// Debug reporting
 	if (ADF_debug && {alive _unit}) then {[format ["ADF_fnc_takeCover - Stance changed to '%1' for unit: %2", _coverStance, _unit]] call ADF_fnc_log};
-	
+
 	sleep (2 + random 3 + random 2);
 	if (!alive _unit) exitWith {};
 	_unit setUnitPos _stance;
-	
+
 	_unit addEventHandler ["FiredNear", {[_this # 0, _stance, _coverStance] call ADF_fnc_takeCover}];
 };
 

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -41,7 +41,7 @@ ADF_mod_CBA = isClass (configFile >> "CfgPatches" >> "cba_main"); // CBA_A3
 ADF_mod_ACRE = isClass (configFile >> "CfgPatches" >> "acre_main"); // ACRE2
 ADF_mod_TFAR = isClass (configFile >> "CfgPatches" >> "task_force_radio"); // TFAR
 ADF_mod_CTAB = isClass (configFile >> "CfgPatches" >> "cTab"); // cTAB
-ADF_mod_ACE3 = isClass (configFile >> "CfgPatches" >> "ace_common"); // ACE3 
+ADF_mod_ACE3 = isClass (configFile >> "CfgPatches" >> "ace_common"); // ACE3
 
 // Terrain Core
 ADF_mod_AIA = isClass (configFile >> "CfgPatches" >> "AiA_Core"); // All in Arma (Terrain Pack)
@@ -85,7 +85,7 @@ ADF_init_AO	= false;
 ADF_debug_IED = false;
 ADF_debug_bPos = false;
 ADF_vStrip = true;
-ADF_microDAGR_all = 0; 
+ADF_microDAGR_all = 0;
 ADF_TFAR_LR_freq = 0;
 ADF_TFAR_SW_freq = 0;
 ADF_set_callSigns = false;
@@ -109,14 +109,14 @@ ADF_preInit = true;
 if hasInterface then {player setVariable ["BIS_noCoreConversations", true]};
 if isMultiplayer then {{[[_x, "NoVoice"]] remoteExec ["setSpeaker", -2, true]} forEach allPlayers;} else {enableSentences false};
 
-if (ADF_mod_VCOMAI || {ADF_mod_ASRAI || {ADF_mod_BCOMBAT || {ADF_mod_BAI}}}) then {	
+if (ADF_mod_VCOMAI || {ADF_mod_ASRAI || {ADF_mod_BCOMBAT || {ADF_mod_BAI}}}) then {
 	[] spawn {
 		waitUntil {time > 0};
 		private _mod = call {
 			if ADF_mod_VCOMAI exitWith {"'Vcom AI'"};
 			if ADF_mod_ASRAI exitWith {"'ASR AI'"};
 			if ADF_mod_BCOMBAT exitWith {"BCombat"};
-			if ADF_mod_BAI exitWith {"'Charlie Foxtrot Better AI'"};			
+			if ADF_mod_BAI exitWith {"'Charlie Foxtrot Better AI'"};
 		};
 		private _message = format [localize "STR_ADF_pre_AImods", _mod];
 		if hasInterface then {systemChat _message;};

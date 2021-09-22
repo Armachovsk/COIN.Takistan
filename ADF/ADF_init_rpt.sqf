@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -61,7 +61,7 @@ if ADF_debug then {
 	_msg = format ["Init - Number of players connected: %1", count allPlayers];
 	[_msg, false] call ADF_fnc_log;
 	_msg = format ["Init - Number of HC's connected: %1", _hc];
-	[_msg, false] call ADF_fnc_log;	
+	[_msg, false] call ADF_fnc_log;
 	_msg = format ["Init - Number of AI's active: %1", _ai];
 	[_msg, false] call ADF_fnc_log;
 	diag_log "______________________________________________________________________________________";

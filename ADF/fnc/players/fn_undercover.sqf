@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,22 +21,22 @@ dressed as a civilian. You are undercover when:
 3. You are not wearing a combatant vest
 4. You are not wearing combatant headgear.
 
-Once you comply with above 4 conditions you will automatically be undercover. 
+Once you comply with above 4 conditions you will automatically be undercover.
 Opfor will no longer see you as a threat nor engage you as an enemy. In scripting
 terms you are captive.
 
 INSTRUCTIONS:
 Configure the function in 'ADF_mission_settings.sqf'.
-For manual execution. Spawn the script for each player that requires to be 
+For manual execution. Spawn the script for each player that requires to be
 undercover.
 If enabled in 'ADF_mission_settings.sqf' then the script also (re)fires on respawn.
 
 REQUIRED PARAMETERS:
-Object:        Player 
-				
+Object:        Player
+
 OPTIONAL PARAMETERS:
 n/a
-				
+
 EXAMPLE (MANUAL EXECUTION SINGLE PLAYER - PLAYER INIT FIELD)
 [this] spawn ADF_fnc_undercover;
 
@@ -68,16 +68,16 @@ private _civilianUniforms = [
 	"U_C_Mechanic_01_F",
 	"U_C_Paramedic_01_F",
 	"U_Competitor",
-	"U_C_WorkerCoveralls",	
+	"U_C_WorkerCoveralls",
 	"U_C_Journalist",
 	"U_C_Scientist",
 	"U_Marshal",
-	"U_Rangemaster"		
+	"U_Rangemaster"
 ];
 private _civilianHeadgear = [
 	"H_Hat_tan", "H_StrawHat_dark", "H_Hat_grey", "H_Hat_checker", "H_Hat_brown",
 	"H_Cap_tan", "H_Cap_red", "H_Cap_grn", "H_Cap_blu", "H_Cap_blk"
-];	
+];
 _civilianUniforms append ADF_civilian_uniforms;
 _civilianHeadgear append ADF_civilian_headgear;
 _adf_script_debug = false;
@@ -90,34 +90,34 @@ while {alive player} do {
 			(vest _player isEqualTo "" || vest _player in ADF_civilian_jackets) && {
 			uniform player in _civilianUniforms && {
 			(headgear _player isEqualTo "" || headgear _player in _civilianHeadgear)
-		}}}			
+		}}}
 	) then {
 		// Set player as undercover
 		_player setCaptive true;
 		if (_adf_script_debug || ADF_debug) then {hint "ADF_fnc_undercover: UNDERCOVER"};
-		
+
 		// Monitor change in appearance
 		waitUntil { // diag: 0.0068
 			sleep 10;
 			!(currentWeapon _player isEqualTo "") || !(vest _player isEqualTo "" && vest _player in ADF_civilian_jackets) || !(uniform player in _civilianUniforms) || !(headgear _player isEqualTo "" && headgear _player in _civilianHeadgear)
 		};
-		
+
 		// Player is no longer undercover, switch to combatabt
 		_player setCaptive false;
-		{_x reveal [_player, 3.5]} forEach (_player nearEntities 50);	
-		if (_adf_script_debug || ADF_debug) then {hint "ADF_fnc_undercover: COMBATANT"};		
+		{_x reveal [_player, 3.5]} forEach (_player nearEntities 50);
+		if (_adf_script_debug || ADF_debug) then {hint "ADF_fnc_undercover: COMBATANT"};
 
 	} else {
 		// Set player as combatant
 		_player setCaptive false;
-		if (_adf_script_debug || ADF_debug) then {hint "ADF_fnc_undercover: COMBATANT"};	
-		
+		if (_adf_script_debug || ADF_debug) then {hint "ADF_fnc_undercover: COMBATANT"};
+
 		// Monitor chnage in appearance
 		waitUntil { // diag: 0.0079
 			sleep 10;
 			!(currentWeapon _player isEqualTo "") || !(vest _player isEqualTo "" && vest _player in ADF_civilian_jackets) || !(uniform player in _civilianUniforms) || !(headgear _player isEqualTo "" && headgear _player in _civilianHeadgear)
 		};
-		
+
 		// Player switched to undercover mode. No longer seen as combatant
 		_player setCaptive true;
 		if (_adf_script_debug || ADF_debug) then {hint "ADF_fnc_undercover: UNDERCOVER"};

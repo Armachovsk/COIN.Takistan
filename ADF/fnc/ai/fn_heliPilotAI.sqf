@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -33,7 +33,7 @@ EXAMPLES USAGE IN EDEN:
 [driver this] call ADF_fnc_heliPilotAI;
 
 DEFAULT/MINIMUM OPTIONS
-[driver _veh] call ADF_fnc_heliPilotAI; 
+[driver _veh] call ADF_fnc_heliPilotAI;
 
 RETURNS:
 Bool (success flag)
@@ -49,7 +49,7 @@ params [
 private _group = group _unit;
 
 // Check vars
-if !(_unit isKindOf "CAManBase") exitWith {[format ["ADF_fnc_heliPilotAI - Incorrect unit passed. Must pass a vehicle crew member: '%1'. Exiting", _unit], true] call ADF_fnc_log; false}; 
+if !(_unit isKindOf "CAManBase") exitWith {[format ["ADF_fnc_heliPilotAI - Incorrect unit passed. Must pass a vehicle crew member: '%1'. Exiting", _unit], true] call ADF_fnc_log; false};
 
 // Disable targetting modes, combat modes for pilots
 _unit setBehaviour "SAFE";
@@ -60,8 +60,8 @@ if ADF_mod_VCOMAI then {
 	_group setVariable ["VCM_NOFLANK", true];
 	_group setVariable ["VCM_NORESCUE", true];
 	_group setVariable ["VCM_TOUGHSQUAD", true];
-	_group setVariable ["Vcm_Disable", true]; 
-	_group setVariable ["VCM_DisableForm", true]; 
+	_group setVariable ["Vcm_Disable", true];
+	_group setVariable ["VCM_DisableForm", true];
 	_group setVariable ["VCM_Skilldisable", true];
 };
 if ADF_mod_BCOMBAT then {_unit setVariable ["bcombat_fnc_is_active", false]};
@@ -69,7 +69,7 @@ if ADF_mod_BCOMBAT then {_unit setVariable ["bcombat_fnc_is_active", false]};
 _group setVariable ["lambs_danger_disableGroupAI", true]; // LAMBS Improved Danger.fsm
 
 // BIS AI settings
-_unit disableAI "SUPPRESSION"; 
+_unit disableAI "SUPPRESSION";
 _unit disableAI "CHECKVISIBLE";
 _unit disableAI "TARGET";
 _unit disableAI "AUTOTARGET";

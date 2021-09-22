@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -13,10 +13,10 @@ Script version: 1.00
 File: fn_roadSidePos.sqf
 **********************************************************************************
 ABOUT
-Returns a random parking positing next to a road within a given radius. 
+Returns a random parking positing next to a road within a given radius.
 
 INSTRUCTIONS:
-Call from script on the server. 
+Call from script on the server.
 
 REQUIRED PARAMETERS:
 0. Position:    Array position [X, Y, Z]. Initial search center position
@@ -24,16 +24,16 @@ REQUIRED PARAMETERS:
 OPTIONAL PARAMETERS:
 1. Number:        Search radius in meters around the position. Default: 250
 2. Number:        Road search radius in meters within the search radius results (1)
-                  Default: 25 (meters)
+	Default: 25 (meters)
 3. Bool:          Clear the area (houses, fences, roacks, tree's etc)
-                  - true (Default)
-				  - false
+	- true (Default)
+				- false
 4. Number/String: Radius to whichto clear the area
-                  - 10 (meters, default)
-				  - "AUTO" (needs a vehicle object or classname in 5.)
+	- 10 (meters, default)
+				- "AUTO" (needs a vehicle object or classname in 5.)
 5. Object/String: The vehicle or object that will occupy the roadside position
-                  - Object (default)
-				  - "Classname" (vehicle classname)
+	- Object (default)
+				- "Classname" (vehicle classname)
 
 EXAMPLES USAGE IN SCRIPT:
 _parkingPos = [[2000,2000,0], 500, 100] call ADF_fnc_roadSidePos;
@@ -55,8 +55,8 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 
 // Init
 params [
-	["_position", [0,0,0], [[]], [3]], 
-	["_radius", 250, [0]], 
+	["_position", [0,0,0], [[]], [3]],
+	["_radius", 250, [0]],
 	["_roadRadius", 25, [0]],
 	["_clearArea", true, [false]],
 	["_clearAreaRadius", 10, [0, ""]],
@@ -72,7 +72,7 @@ for "_i" from 0 to 300 do {
 	private _allRoads = _searchPos nearRoads _roadRadius;
 	if (count _allRoads > 0) exitWith {
 		private _road = selectRandom _allRoads;
-		_roadPosition	= getPos _road;		
+		_roadPosition	= getPos _road;
 		_connectedRoads	= roadsConnectedTo _road;
 		if (count _connectedRoads > 0) then {
 			_connectedRoad	= _connectedRoads # 0;
@@ -99,7 +99,7 @@ if _clearArea then {
 		} else {
 			_clearAreaRadius = ((0 boundingBox _clearAreaObject) # 2) + 2;
 		};
-		
+
 		if (_clearAreaRadius isEqualTo 0) then {_clearAreaRadius = 10};
 	};
 	{_x hideObjectGlobal true;} forEach nearestTerrainObjects [_roadSidePos, ["HOUSE", "CHURCH", "BUNKER", "RUIN", "FENCE", "WALL", "TREE", "SMALL TREE", "BUSH", "ROCK", "ROCKS", "FOREST BORDER", "FOREST TRIANGLE", "FOREST SQUARE", "POWER LINES"], _clearAreaRadius, false];

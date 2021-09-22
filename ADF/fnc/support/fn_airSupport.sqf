@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -25,9 +25,9 @@ REQUIRED PARAMETERS:
 OPTIONAL PARAMETERS:
 2. Number       Approach vector in degrees. Default: -1 (direction of the marker)
 3. Number       CAS weapons type:
-                0 - Machine gun (Blufor/west only)
-                1 - Missiles (default)
-                2 - Machine gun and missiles 
+	0 - Machine gun (Blufor/west only)
+	1 - Missiles (default)
+	2 - Machine gun and missiles
 
 EXAMPLES USAGE IN SCRIPT:
 [west, "support", -1, 0] call ADF_fnc_airSupport;
@@ -44,7 +44,7 @@ Bool (success flag)
 
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_airSupport"};
-	
+
 // init
 private _diag_time = diag_tickTime;
 params [
@@ -81,16 +81,16 @@ _position = [_position] call ADF_fnc_checkPosition;
 switch _side do {
 	case west 		: {_aircraftClass = "B_Plane_CAS_01_F"};
 	case east 		: {_aircraftClass = "O_Plane_CAS_02_F"; _weapons = 1};
-	case independent	: {_aircraftClass = "I_Plane_Fighter_03_CAS_F";  _weapons = 1};	
+	case independent	: {_aircraftClass = "I_Plane_Fighter_03_CAS_F";  _weapons = 1};
 };
 
 // Create simulation object for CAS target purpose
 private _target = "Land_PenBlack_F" createVehicle [0,0,0];
 _target setPos _position;
-if (_attach) then {_target attachTo [_dummy]} else {_target enableSimulationGlobal false};	
+if (_attach) then {_target attachTo [_dummy]} else {_target enableSimulationGlobal false};
 _target hideObjectGlobal true;
 _target setVariable ["type", _weapons];
-_target setVariable ["vehicle", _aircraftClass];	
+_target setVariable ["vehicle", _aircraftClass];
 _target setDir _vector;
 // Delete the simulation object after 30 seconds
 [_target] spawn {params ["_target"]; sleep 30; deleteVehicle _target};
@@ -105,4 +105,4 @@ if ADF_debug then {
 };
 
 // return bool
-true	
+true

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -35,15 +35,15 @@ diag_log "ADF rpt: Init - executing: ADF_mod_createIED.sqf";
 			1.  Create a single IED at a marker position (icon marker, no radius)
 			2.  Create multiple IED's from an array with markers. E.g.:
 				["IED_1", "IED_2", "IED_3", "IED_4", "IED_5", "IED_6", "IED_7"]
-			3.  Create multiple IED's in a rectangular or eclipse sized maker.   
+			3.  Create multiple IED's in a rectangular or eclipse sized maker.
 	Step 3.	Fill out below parameters
     Note: Don't worry about the many comments as the ARMA engine ignores comments.
 */
 
 "IEDposition",  // The position(s) where the IED('s) will be created. Depending on marker/array input. E.g.:
-                //  * Marker icon (string) for direct placed. The IED is created within the given radius position
-                //  * Array of markers. E.g. ["IED_1", "IED_2", "IED_3", "IED_4", "IED_5", "IED_6", "IED_7"]
-                //  * Marker name (string) of a eclipse/rectangle marker. The IED's will be created in the marker area randomly.
+	//  * Marker icon (string) for direct placed. The IED is created within the given radius position
+	//  * Array of markers. E.g. ["IED_1", "IED_2", "IED_3", "IED_4", "IED_5", "IED_6", "IED_7"]
+	//  * Marker name (string) of a eclipse/rectangle marker. The IED's will be created in the marker area randomly.
 
 west,           // Side that activates the IED trigger. Usually the player side. Can be west, east or independent. Default: west
 

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -32,7 +32,7 @@ if hasInterface then {
 			"_egress",
 			"_targetDesc"
 		];
-		private _altitude = ATLToASL _position;		
+		private _altitude = ATLToASL _position;
 		sleep 6;
 		["BCO", "VIPER", localize "STR_ADF_supp_stanbyForMsg"] call ADF_fnc_MessageParser;
 		sleep 8;
@@ -48,7 +48,7 @@ if hasInterface then {
 		["VIPER", "BCO", format [localize "STR_ADF_supp_eta", round (_eta / 60)]] call ADF_fnc_MessageParser;
 		if ADF_MissionTest then {sleep 10} else {sleep (_eta - 15);};
 		COIN_viperActive = true;
-		publicVariableServer "COIN_viperActive";		
+		publicVariableServer "COIN_viperActive";
 		["VIPER", "BCO", localize "STR_ADF_supp_viper2"] call ADF_fnc_MessageParser;
 		sleep 30;
 		private _service = selectRandom [localize "STR_ADF_supp_viper3", localize "STR_ADF_supp_viper4", localize "STR_ADF_supp_viper5", localize "STR_ADF_supp_viper6", localize "STR_ADF_supp_viper7"];
@@ -61,20 +61,20 @@ if hasInterface then {
 		if !ADF_missionTest then {
 			private _timer = time + ((15 *60) + (random (15 * 60)));
 			waitUntil {sleep 1; time > _timer || !alive COIN_leadership};
-		}; 
-		call COIN_fnc_assignViper;				
+		};
+		call COIN_fnc_assignViper;
 	};
-	
+
 	COIN_fnc_airSupportRequest = {
 		// Init
 		params ["_unit", "_index"];
-		
+
 		if COIN_supportActive exitWith {systemChat localize "STR_ADF_supp_supportActive"};
 		COIN_supportActive = true;
 
 		// Map click process.
 		openMap true;
-		hint parseText format [localize "STR_ADF_supp_viper8", name _unit];		
+		hint parseText format [localize "STR_ADF_supp_viper8", name _unit];
 		[_unit, _index] onMapSingleClick {
 			params [
 				"_unit",
@@ -82,12 +82,12 @@ if hasInterface then {
 			];
 			private _direction = (getDirVisual _unit) + (selectRandom [90, 270]);
 			[_unit, _pos, _direction] remoteExec ["COIN_fnc_spawnAirSupport", 2];
-			_unit removeAction _index;			
+			_unit removeAction _index;
 			onMapSingleClick ""; true;
 			openMap false; hintSilent "";
-		};	
+		};
 	};
-	
+
 	///// ASSIGN VIPER TO THE LEADERSHIP PLAYER
 
 	COIN_fnc_assignViper = {
@@ -111,7 +111,7 @@ if isServer then {
 			["_closestTarget", objNull, [objNull]],
 			["_closestTargetDist", 50, [0, []]],
 			["_targetDesc", "", [""]]
-		];		
+		];
 		private _airframeClass = if ADF_mod_RHS then {"RHS_A10"} else {"CUP_B_A10_DYN_USA"};
 		private _airframeCfg = configfile >> "cfgvehicles" >> _airframeClass;
 		private _weaponTypes = ["machinegun", "missilelauncher"];
@@ -122,19 +122,19 @@ if isServer then {
 		private _pitch = atan (_altitude / _distance);
 		private _speed = 400 / 3.6;
 		private _duration = ([0, 0] distance [_distance, _altitude]) / _speed;
-		
+
 		// HARD TARGET OR LOCATION POSITION
-		
-		// See if there's any enemy hard targets at the position and if the found targets are enemy combat vehicles. 
+
+		// See if there's any enemy hard targets at the position and if the found targets are enemy combat vehicles.
 		private _targetObjects = _position nearEntities [["CAR", "APC", "TANK"], 50];
-		
+
 		{
 			if ((side _x isEqualTo east) && {canFire _x && {canMove _x}}) then {_allTargets pushBack _x};
 		} forEach _targetObjects;
-		
+
 		if !(_allTargets isEqualTo []) then {
 			_hardTarget = true;
-			
+
 			// Just 1 target?
 			if (count _allTargets isEqualTo 1) then {
 				_closestTarget = _allTargets # 0;
@@ -146,15 +146,15 @@ if isServer then {
 					if (_targetDistance < _closestTargetDist) then {
 						_closestTargetDist = _targetDistance;
 						_closestTarget = _x;
-					}			
-				} forEach _allTargets;			
+					}
+				} forEach _allTargets;
 			};
 
 			_targetDesc = getText(configFile >> "CfgVehicles" >> (typeOf _closestTarget) >> "displayName");
 		} else {
 			_targetDesc = "foot mobiles";
 		};
-		
+
 		private _eta = round (60 * (1 + (random 2)));
 		private _nato = ["ALFA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL", "INDIA", "JULIETT", "KILO", "LIMA", "MIKE", "NOVEMBER", "OSCAR", "PAPA", "QUEBEC", "ROMEO", "SIERRA", "TANGO", "UNIFORM", "VICTOR", "WHISKEY", "X-RAY", "YANKEE", "ZULU"];
 		private _bp = format ["%1-%2", selectRandom ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"], selectRandom _nato];
@@ -169,7 +169,7 @@ if isServer then {
 			_target setPosATL _position;
 			_target setDir _vector;
 			_target enableSimulationGlobal false;
-		};				
+		};
 		_target hideObjectGlobal true;
 
 		// Wait untill 9-liners are finished
@@ -177,7 +177,7 @@ if isServer then {
 
 		// Delete the simulation object after 60 seconds
 		[_target, _hardTarget] spawn {
-			params ["_target", "_hardTarget"];			
+			params ["_target", "_hardTarget"];
 			sleep 60;
 			if _hardTarget then {detach _target};
 			[_target] call ADF_fnc_delete;
@@ -185,16 +185,16 @@ if isServer then {
 			COIN_supportActive = false;
 			COIN_leadershipID publicVariableClient "COIN_supportActive";
 		};
-		
+
 		// Create VIPER (adapted from BIS_module_CAS)
 		private _positionATL = getPosATL _target;
 		private _position = +_positionATL;
 		private _direction = direction _target;
 		private _airframePosition = [_position, _distance, _direction + 180] call BIS_fnc_relPos;
-		
+
 		_position set [2, (_position # 2) + getTerrainHeightASL _position];
 		_airframePosition set [2, (_position # 2) + _altitude];
-		
+
 		{
 			if (tolower ((_x call BIS_fnc_itemType) # 1) in _weaponTypes) then {
 				_modes = getarray (configfile >> "cfgweapons" >> _x >> "modes");
@@ -214,14 +214,14 @@ if isServer then {
 		private _pilot = driver _airframe;
 		_airframe setPosASL _airframePosition;
 		_airframe move ([_position, _distance, _direction] call BIS_fnc_relPos);
-		_pilot call ADF_fnc_heliPilotAI;  
+		_pilot call ADF_fnc_heliPilotAI;
 
 		private _vectorDir = [_airframePosition, _position] call BIS_fnc_vectorFromXToY;
 		private _velocity = [_vectorDir, _speed] call BIS_fnc_vectorMultiply;
 		_airframe setVectorDir _vectorDir;
 		[_airframe, -90 + atan (_distance / _altitude), 0] call BIS_fnc_setPitchBank;
 		private _vectorUp = vectorUp _airframe;
-		
+
 		[_airframe] spawn {
 			params ["_airframe"];
 			private _mViper = createMarker ["_mViperCAS", getPosWorld _airframe];
@@ -230,18 +230,18 @@ if isServer then {
 			_mViper setMarkerSize [1 ,1];
 			_mViper setMarkerColor "ColorWEST";
 			_mViper setMarkerDir 0;
-			
+
 			waitUntil {
 				sleep 0.1;
 				_mViper setMarkerPos (getPosWorld _airframe);
 				if ADF_MissionTest then {systemChat format ["VIPER -- speed: %1 -- alt: %2", round (speed _airframe), round ((getPosATL _airframe) # 2)];};
-				!alive _airframe 
+				!alive _airframe
 			};
-			[_mViper] call ADF_fnc_delete;			
+			[_mViper] call ADF_fnc_delete;
 		};
 
 		////// ARSENAL
-		
+
 		private _currentWeapons = weapons _airframe;
 		{
 			if !(tolower ((_x call BIS_fnc_itemType) # 1) in (_weaponTypes + ["countermeasureslauncher"])) then {
@@ -249,13 +249,13 @@ if isServer then {
 			};
 		} foreach _currentWeapons;
 
-		///// FLIGHT 
-		
+		///// FLIGHT
+
 		private _fire = [] spawn {waituntil {false}};
 		private _fireNull = true;
 		private _time = time;
 		private _offset = if ({_x == "missilelauncher"} count _weaponTypes > 0) then {20} else {0};
-		
+
 		waitUntil {
 			// Update flight path if target is on the move
 			if (getPosATL _target distance _positionATL > 0 || direction _target != _direction) then {
@@ -275,10 +275,10 @@ if isServer then {
 
 			// Approach vector
 			_airframe setVelocityTransformation [
-				_airframePosition,  [_position # 0, _position # 1, (_position # 2) + _offset + 12], 
-				_velocity,  _velocity, 
-				_vectorDir, _vectorDir, 
-				_vectorUp,  _vectorUp, 
+				_airframePosition,  [_position # 0, _position # 1, (_position # 2) + _offset + 12],
+				_velocity,  _velocity,
+				_vectorDir, _vectorDir,
+				_vectorUp,  _vectorUp,
 				(time - _time) / _duration
 			];
 			_airframe setVelocity velocity _airframe;
@@ -290,12 +290,12 @@ if isServer then {
 				_airframe doTarget laserTarget _target;
 				_fireNull = false;
 				terminate _fire;
-				
+
 				_fire = [_airframe, _airframeArsenal, _target, _pilot] spawn {
 					params ["_airframe", "_airframeArsenal", "_target", "_pilot"];
 					private _duration = 3;
 					private _time = time + _duration;
-					
+
 					waitUntil {
 						{_pilot fireAtTarget [_target, (_x # 0)];} forEach _airframeArsenal;
 						sleep 0.1;
@@ -317,19 +317,19 @@ if isServer then {
 				_time = time + 1.1;
 				waitUntil {time > _time || isNull _target || isNull _airframe};
 			};
-		};		
-		
+		};
+
 		// RTB
 		_airframe allowDamage false;
 		_airframe flyInHeight 800;
-		_airframe setSpeedMode "FULL";		
+		_airframe setSpeedMode "FULL";
 		private _timeOut = time + 120;
 		_exitPosition set [2, 800];
 		_airframe move _exitPosition;
 		waitUntil {sleep 0.5; (_airframe distance2D _exitPosition) < 300 || !alive _airframe || time > _timeOut};
 
 		// Delete plane
-		if (alive _airframe) then {[_airframe] call ADF_fnc_delete};		
+		if (alive _airframe) then {[_airframe] call ADF_fnc_delete};
 
 	};
 };

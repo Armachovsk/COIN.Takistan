@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the crate:
 null = [this] execVM "mission\loadout\crates\ADF_cCargo_B_IFT.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 if !isServer exitWith {};
@@ -39,14 +39,14 @@ private _mis = 5;		// Missiles/Rockets
 private _itm = 1;		// Items
 private _uni = 4;		// Uniform/Vest/Backpack/etc
 
-// Settings 
+// Settings
 _crate call ADF_fnc_stripVehicle;
 
 // Primary weapon
 _crate addWeaponCargoGlobal ["arifle_MX_F", _wpn];
 _crate addWeaponCargoGlobal ["arifle_MX_GL_F", _wpn]; // GL
 _crate addWeaponCargoGlobal ["arifle_MX_SW_F", _wpn]; // LMG
-		
+
 // Secondary weapon
 _crate addWeaponCargoGlobal ["hgun_P07_F", _wpn];
 
@@ -59,7 +59,7 @@ if ADF_mod_ACE3 then {
 	_crate addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", _mag];
 	_crate addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag_Tracer", _mag];
 	_crate addMagazineCargoGlobal ["100Rnd_65x39_caseless_mag_tracer", _mag]; // LMG
-	_crate addMagazineCargoGlobal ["100Rnd_65x39_caseless_mag", _mag]; // LMG	
+	_crate addMagazineCargoGlobal ["100Rnd_65x39_caseless_mag", _mag]; // LMG
 };
 
 // Magazines secondary weapon
@@ -82,12 +82,12 @@ if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_Clacker", _itm];
 	_crate addItemCargoGlobal ["ACE_DefusalKit", _itm];
 	_crate addItemCargoGlobal ["ACE_wirecutter", _itm];
-};		
+};
 
 // Weapon mountings
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["acc_pointer_IR", _itm];
-	_crate addItemCargoGlobal ["acc_flashlight", _itm];	
+	_crate addItemCargoGlobal ["acc_flashlight", _itm];
 	_crate addItemCargoGlobal ["ACE_optic_Hamr_2D", _itm];
 	_crate addItemCargoGlobal ["ACE_optic_Hamr_PIP", _itm];
 	_crate addItemCargoGlobal ["ACE_optic_Arco_2D", _itm];
@@ -122,14 +122,14 @@ if ADF_mod_ACE3 then {
 };
 
 // Grenades/Chemlights
-_crate addMagazineCargoGlobal ["HandGrenade", 15]; 	 
-_crate addMagazineCargoGlobal ["SmokeShell", 15]; 	 
-_crate addMagazineCargoGlobal ["SmokeShellGreen", 3]; 	 
-_crate addMagazineCargoGlobal ["SmokeShellRed", 3]; 
-_crate addMagazineCargoGlobal ["SmokeShellPurple", _itm]; 
-_crate addMagazineCargoGlobal ["Chemlight_green", _mag]; 
-_crate addMagazineCargoGlobal ["Chemlight_red", _mag]; 
-_crate addMagazineCargoGlobal ["B_IR_Grenade", 5]; 
+_crate addMagazineCargoGlobal ["HandGrenade", 15];
+_crate addMagazineCargoGlobal ["SmokeShell", 15];
+_crate addMagazineCargoGlobal ["SmokeShellGreen", 3];
+_crate addMagazineCargoGlobal ["SmokeShellRed", 3];
+_crate addMagazineCargoGlobal ["SmokeShellPurple", _itm];
+_crate addMagazineCargoGlobal ["Chemlight_green", _mag];
+_crate addMagazineCargoGlobal ["Chemlight_red", _mag];
+_crate addMagazineCargoGlobal ["B_IR_Grenade", 5];
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_HandFlare_White", 10];
 	_crate addItemCargoGlobal ["ACE_HandFlare_Red", 3];
@@ -150,9 +150,9 @@ if ADF_mod_ACE3 then {
 
 // Optical/Bino's/Goggles
 if ADF_mod_ACE3 then {
-	_crate addItemCargoGlobal ["ACE_Vector", _itm];		
-	_crate addItemCargoGlobal ["ACE_Kestrel4500", _itm];		
-} else {		
+	_crate addItemCargoGlobal ["ACE_Vector", _itm];
+	_crate addItemCargoGlobal ["ACE_Kestrel4500", _itm];
+} else {
 	_crate addWeaponCargoGlobal ["Binocular", _itm];
 };
 _crate addItemCargoGlobal ["G_Tatical_Clear", 5];
@@ -183,7 +183,7 @@ _crate addBackpackCargoGlobal ["B_Kitbag_mcamo", _itm];
 // Misc items
 _crate addItemCargoGlobal ["ItemMap", _itm];
 _crate addItemCargoGlobal ["ItemWatch", _itm];
-_crate addItemCargoGlobal ["ItemCompass", _itm];	
+_crate addItemCargoGlobal ["ItemCompass", _itm];
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_UAVBattery", 1];
 	_crate addItemCargoGlobal ["ACE_EarPlugs", 5];

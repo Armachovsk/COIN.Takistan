@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -16,7 +16,7 @@ Diag: 0.263366 ms
 ABOUT
 Creates (runway) lights around a helipad. Works for both square and circular heli
 pads (auto detect). Medivac helipads get red lights and the letter 'H' will be lit
-up. 
+up.
 
 INSTRUCTIONS:
 Place a helipad on the map. in the init put:
@@ -27,11 +27,11 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. String:      Helipad light color options:
-                - "blue"
-                - "red"
-                - "yellow"
-                - "white"
-                - "green" (default)
+	- "blue"
+	- "red"
+	- "yellow"
+	- "white"
+	- "green" (default)
 
 EXAMPLES USAGE IN SCRIPT:
 [_hPad, "white"] call ADF_fnc_heliPadLights;
@@ -53,8 +53,8 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 
 // init
 params [
-	["_helipad", objNull, [objNull]], 
-	["_colour", "green", [""]], 
+	["_helipad", objNull, [objNull]],
+	["_colour", "green", [""]],
 	["_lightClass", "", [""]]
 ];
 private _position = getPosATL _helipad;
@@ -74,71 +74,71 @@ switch _colour do {
 };
 
 // Square helipad
-if (_helipadClass in ["Land_HelipadRescue_F", "Land_HelipadSquare_F", "HeliHRescue", "Heli_H_Rescue"]) then {	
+if (_helipadClass in ["Land_HelipadRescue_F", "Land_HelipadSquare_F", "HeliHRescue", "Heli_H_Rescue"]) then {
 	private _lightDistance = 5.6;
 	private _direction = getDir _helipad;
 	if !(_helipadClass == "Land_HelipadSquare_F") then {
 		_lightDistance = 5.5;
 		_lightClass = "Land_Flush_Light_red_F";
 	};
-	
+
 	private _createLight = {
 		// In case the azimuth is larger than 0, ajust the helipadlights according to the helipad anchor position.
 		// Inspriration taken from Shuko's moveObjects script
 		params ["_position", "_lightPos", "_direction", "_lightClass"];
-		
+
 		if !(_direction == 0) then {
 			private _distance = _position distance2D _lightPos;
 			private _lightDir = ((_lightPos select 0) - (_position select 0)) atan2 ((_lightPos select 1) - (_position select 1));
 			_lightDir = _lightDir + _direction;
 			_lightPos = [(_position select 0) + (_distance * sin _lightDir), (_position select 1) + (_distance * cos _lightDir), 0];
 		};
-		
+
 		private _light = createVehicle [_lightClass, [0, 0, 0], [], 0, "CAN_COLLIDE"];
 		_light setPosATL _lightPos;
-		_light modelToWorld _lightPos;	
+		_light modelToWorld _lightPos;
 		_light setVectorUp surfaceNormal position _light;
 	};
-	
+
 	for "_i" from 0 to (_lightDistance * 2) step _lightDistance do {
-		
+
 		private _lightPos = [(((_position # 0) - _lightDistance) + _i), ((_position # 1) + _lightDistance), _position # 2];
 		[_position, _lightPos, _direction, _lightClass] call _createLight;
-		
+
 		private _lightPos = [(((_position # 0) - _lightDistance) + _i), ((_position # 1) - _lightDistance), _position # 2];
 		[_position, _lightPos, _direction, _lightClass] call _createLight;
-		
+
 		private _lightPos = [((_position # 0) - _lightDistance), (((_position # 1) - _lightDistance) + _i), _position # 2];
 		[_position, _lightPos, _direction, _lightClass] call _createLight;
-		
+
 		private _lightPos = [((_position # 0) + _lightDistance), (((_position # 1) - _lightDistance) + _i), _position # 2];
 		[_position, _lightPos, _direction, _lightClass] call _createLight;
 	};
-	
-	if !(_helipadClass == "Land_HelipadSquare_F") then {	
-		
+
+	if !(_helipadClass == "Land_HelipadSquare_F") then {
+
 		// MediVac helipad, Create lights for letter 'H'
 		private _lightDistance = 0.7;
-		
+
 		for "_i" from 0 to (_lightDistance * 2) step (_lightDistance / 2) do {
 			private _lightPos = [(_position # 0) + _lightDistance, ((_position # 1) - (_lightDistance * 1.5)) + (_i * 1.5), _position # 2];
 			[_position, _lightPos, _direction, _lightClass] call _createLight;
-			
+
 			private _lightPos = [(_position # 0) - _lightDistance, ((_position # 1) - (_lightDistance * 1.5)) + (_i * 1.5), _position # 2];
 			[_position, _lightPos, _direction, _lightClass] call _createLight;
 		};
-		
+
 		private _lightPos = [(_position # 0) - (_lightDistance / 3), (_position # 1), _position # 2];
 		[_position, _lightPos, _direction, _lightClass] call _createLight;
-		
+
 		private _lightPos = [(_position # 0) + (_lightDistance / 3), (_position # 1), _position # 2];
 		[_position, _lightPos, _direction, _lightClass] call _createLight;
 	};
-	
+
 // Circular heli pad
-} else {	
+} else {
 	private _lightDistance = 5.5;
-	if (_helipadClass in ["Land_HelipadCircle_F", "HeliH"]) then {_lightDistance = 5.75;}; 
+	if (_helipadClass in ["Land_HelipadCircle_F", "HeliH"]) then {_lightDistance = 5.75;};
 	for "_i" from 1 to 360 step 45 do {
 		private _lightPos = [(_position # 0) + (sin (_i) * _lightDistance), (_position # 1) + (cos (_i) * _lightDistance), _position # 2];
 		private _light = createVehicle [_lightClass, [0, 0, 0], [], 0, "CAN_COLLIDE"];

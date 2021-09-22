@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -25,7 +25,7 @@ OPTIONAL PARAMETERS:
 None
 
 EXAMPLE
-[_group] call ADF_fnc_delWaypoint; 
+[_group] call ADF_fnc_delWaypoint;
 
 RETURNS:
 Bool (success flag)
@@ -34,7 +34,7 @@ Bool (success flag)
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_delWaypoint"};
 
-// init	
+// init
 params [
 	["_group", grpNull, [grpNull]]
 ];

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -27,10 +27,10 @@ if hasInterface then {
 		if !ADF_missionTest then {
 			private _timer = time + ((random (5 *60)) + (random (15 * 60)));
 			waitUntil {sleep 1; time > _timer};
-		}; 
-		call COIN_fnc_assignTomcat;				
+		};
+		call COIN_fnc_assignTomcat;
 	};
-	
+
 	COIN_fnc_msg_tomcat = {
 		params [
 			["_position", [], [[]]],
@@ -41,7 +41,7 @@ if hasInterface then {
 			"_nato4"
 		];
 		private _altitude = ATLToASL _position;
-		
+
 		if !COIN_TomcatKIA then {
 			sleep 6;
 			["BCO", "CMD", format [localize "STR_ADF_supp_tomcat1", _nato1, _nato2, mapGridPosition _position]] call ADF_fnc_MessageParser;
@@ -49,7 +49,7 @@ if hasInterface then {
 			["CMD", "BCO", localize "STR_ADF_supp_tomcat2"] call ADF_fnc_MessageParser;
 			sleep 8;
 			["AIR", "BCO", localize "STR_ADF_supp_tomcat3"] call ADF_fnc_MessageParser;
-			sleep 12;		
+			sleep 12;
 			private _brief = format [localize "STR_ADF_supp_tomcat4", _nato1, _nato2, mapGridPosition _position, round (_altitude # 2)];
 			["BCO", "AIR", format [localize "STR_ADF_supp_howCopy", _brief]] call ADF_fnc_MessageParser;
 			sleep 11;
@@ -73,7 +73,7 @@ if hasInterface then {
 		["AIR", "CMD", localize "STR_ADF_supp_dustingOff"] call ADF_fnc_MessageParser;
 		waitUntil {sleep 1; COIN_tomcatTouchdownFOB || !alive COIN_tomcat};
 		if (!alive COIN_tomcat || {!canMove COIN_tomcat}) exitWith {player spawn COIN_fnc_reassignTomcat};
-		["AIR", "BCO", localize "STR_ADF_supp_tomcat7"] call ADF_fnc_MessageParser;		
+		["AIR", "BCO", localize "STR_ADF_supp_tomcat7"] call ADF_fnc_MessageParser;
 		waitUntil {sleep 1; COIN_tomcatDustoffFOB || !alive COIN_tomcat};
 		if (!alive COIN_tomcat || {!canMove COIN_tomcat}) exitWith {player spawn COIN_fnc_reassignTomcat};
 		["AIR", "CMD", localize "STR_ADF_supp_dustingOff"] call ADF_fnc_MessageParser;
@@ -82,34 +82,34 @@ if hasInterface then {
 		COIN_TomcatKIA = false;
 		player spawn COIN_fnc_reassignTomcat;
 	};
-	
+
 	COIN_fnc_msg_tomcatDestroyed = {
 		["CMD", "BCO", localize "STR_ADF_supp_tomcat9"] call ADF_fnc_MessageParser;
 		COIN_TomcatKIA = true;
-	};	
-	
+	};
+
 	COIN_fnc_airLiftRequest = {
 		// Init
 		params ["_unit", "_index"];
-		
+
 		if COIN_supportActive exitWith {systemChat localize "STR_ADF_supp_supportActive"};
 		COIN_supportActive = true;
 
 		// Map click process.
 		openMap true;
-		hint parseText format [localize "STR_ADF_supp_tomcat8", name _unit];		
+		hint parseText format [localize "STR_ADF_supp_tomcat8", name _unit];
 		[_unit, _index] onMapSingleClick {
 			params [
 				"_unit",
 				"_index"
 			];
 			[_unit, _pos] remoteExec ["COIN_fnc_spawnAirlift", 2];
-			_unit removeAction _index;			
+			_unit removeAction _index;
 			onMapSingleClick ""; true;
 			openMap false; hintSilent "";
-		};	
+		};
 	};
-	
+
 	///// ASSIGN TOMCAT TO THE LEADERSHIP PLAYER
 
 	COIN_fnc_assignTomcat = {
@@ -118,7 +118,7 @@ if hasInterface then {
 				[_this # 1, _this # 2] call COIN_fnc_airLiftRequest
 			}, [], -95, false, true, "", ""
 		];
-	};	
+	};
 };
 
 if isServer then {
@@ -138,75 +138,75 @@ if isServer then {
 		];
 		private _unitPosition = getPosATL _unit;
 		private _nato = ["ALFA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL", "INDIA", "JULIETT", "KILO", "LIMA", "MIKE", "NOVEMBER", "OSCAR", "PAPA", "QUEBEC", "ROMEO", "SIERRA", "TANGO", "UNIFORM", "VICTOR", "WHISKEY", "X-RAY", "YANKEE", "ZULU"];
-	
-		
+
+
 		// DETERMINE SPAWN POSITION
-		
-		if (_spawnPosition isEqualType "") then {			
-			{		
+
+		if (_spawnPosition isEqualType "") then {
+			{
 				private _distance = (markerPos _x distance _position);
 				if (_distance < _closest) then {
 					_closest = _distance;
 					_spawnPosition = _x;
-				};	
+				};
 			} forEach COIN_ambientAirSpawn;
 			_spawnDirection = markerDir _spawnPosition;
-			_spawnPosition = getMarkerPos _spawnPosition;				
+			_spawnPosition = getMarkerPos _spawnPosition;
 		} else {
 			_spawnDirection = random 360;
 		};
-		
-		
+
+
 		// FIND A SAFE LANDING POSITION
-	
+
 		// Find a suitable landing position for the airlift and Create the LZ for airlift pick-up
 		if !(_position isFlatEmpty [-1, -1] isEqualTo []) then {
 			_airLiftPosition = _position;
 		} else {
-			private _airLiftPosition = [_position, 0, 150, 15, 0, 0, 0, [], [getPosWorld _unit, getPosWorld _unit]] call BIS_fnc_findSafePos;	
-			_airLiftPosition set [2, 0];		
-		};	
+			private _airLiftPosition = [_position, 0, 150, 15, 0, 0, 0, [], [getPosWorld _unit, getPosWorld _unit]] call BIS_fnc_findSafePos;
+			_airLiftPosition set [2, 0];
+		};
 
 		private _airLiftPad = createVehicle ["Land_HelipadEmpty_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 		_airLiftPad setPosATL _airLiftPosition;
 		[_airLiftPad] call ADF_fnc_addToCurator;
 		{_x hideObjectGlobal true;} forEach nearestTerrainObjects [_airLiftPosition, ["TREE", "SMALL TREE", "BUSH", "ROCK", "ROCKS", "FOREST BORDER", "FOREST TRIANGLE", "FOREST SQUARE", "POWER LINES"], 20];
-		
-		// if a FOB LZ position exists on the map then use that position (was already set in init_server.sqf), else create a position once for all airlifts. 		
+
+		// if a FOB LZ position exists on the map then use that position (was already set in init_server.sqf), else create a position once for all airlifts.
 		if (isNil "fob_lz") then {
 			// Create the LZ for FOB drop-off and find a suitable landing position at/close to the FOB site
 			private _fobLzPosition = [markerPos "respawn_west", 25, 250, 10, 0, 0, 0, [], [getPosWorld oRRR_rotor_FOB, getPosWorld oRRR_rotor_FOB]] call BIS_fnc_findSafePos;
-			_fobLzPosition set [2, 0];			
+			_fobLzPosition set [2, 0];
 			fob_lz = createVehicle ["Land_HelipadEmpty_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 			fob_lz setPosATL _fobLzPosition;
 			{_x hideObjectGlobal true;} forEach nearestTerrainObjects [_fobLzPosition, ["TREE", "SMALL TREE", "BUSH", "ROCK", "ROCKS", "FOREST BORDER", "FOREST TRIANGLE", "FOREST SQUARE", "CROSS", "FORTRESS", "FOUNTAIN", "VIEW-TOWER", "LIGHTHOUSE", "QUAY", "HIDE", "BUSSTOP", "ROAD", "FOREST", "TRANSMITTER", "STACK", "TOURISM", "WATERTOWER", "TRACK", "MAIN ROAD", "POWER LINES", "RAILWAY", "POWERSOLAR", "POWERWAVE", "POWERWIND", "SHIPWRECK", "TRAIL"], 20];
 			[fob_lz] call ADF_fnc_addToCurator;
-		};		
-		
+		};
+
 		private _travelTime = [_spawnPosition, _airLiftPosition, 280] call ADF_fnc_calcTravelTime;
-		
+
 		// Start COIN_fnc_msg_tomcat
 		[_position, _travelTime, selectRandom _nato, selectRandom _nato, selectRandom _nato, selectRandom _nato] remoteExec ["COIN_fnc_msg_tomcat", 0];
 		waitUntil {sleep 1; COIN_tomcatGo};
-		
 
-		// CREATE AND CONFIGURE TOMCAT		
-		
+
+		// CREATE AND CONFIGURE TOMCAT
+
 		private _group = createGroup west;
 		private _airframeClass = if ADF_mod_RHS then {"rhsusf_CH53E_USMC_D"} else {"CFP_B_USMC_CH_53E_Super_Stallion_DES_01"};
 		_group deleteGroupWhenEmpty true;
-		_group setGroupIdGlobal ["TOMCAT", "%GroupColors", "GroupColor6"];	
-		_spawnPosition set [2, 250];		
+		_group setGroupIdGlobal ["TOMCAT", "%GroupColors", "GroupColor6"];
+		_spawnPosition set [2, 250];
 		private _heli = [_spawnPosition, _spawnDirection, _airframeClass, _group] call ADF_fnc_createCrewedVehicle;
 		COIN_tomcat = _heli # 0;
 		private _crew = _heli # 1;
 		publicVariable "COIN_tomcat";
-		
+
 		{[_x] call ADF_fnc_heliPilotAI;} forEach _crew;
 		COIN_tomcat lockTurret [[0], true];
 		COIN_tomcat lockDriver true;
 		(driver COIN_tomcat) disableAI "LIGHTS";
-		COIN_tomcat setPilotLight false;					
+		COIN_tomcat setPilotLight false;
 		COIN_tomcat setCollisionLight false;
 		COIN_tomcat enableDynamicSimulation false;
 
@@ -223,7 +223,7 @@ if isServer then {
 					};
 				};
 			};
-			_airframe flyInHeight 70;	
+			_airframe flyInHeight 70;
 			waitUntil {sleep 1; (_airframe distance2D _lz) < 6000 || !(alive _airframe)};
 			private _time = [getPosWorld _airframe, getPosWorld _lz, speed _airframe] call ADF_fnc_calcTravelTime;
 			private _seconds = ((_time # 0) *3600) + ((_time # 1) * 60) + (_time # 2);
@@ -239,13 +239,13 @@ if isServer then {
 					publicVariable "COIN_tomcatApproach";
 					sleep 2;
 					"smokeShellPurple" createVehicle getPos _lz;
-				};				
-				sleep 1;			
+				};
+				sleep 1;
 				(speed _airframe) < 110 || ((getPosATL _airframe) # 2) < 30
 			};
 			_airframe flyInHeight 25;
 		};
-		
+
 		// Hacky function in case the airframe gets stuck on spawn / landing / takeoff
 		private _emergency = {
 			params [
@@ -253,7 +253,7 @@ if isServer then {
 				["_location", "lz" ,[""]],
 				["_pax", false, [true]]
 			];
-			
+
 			// Make up an excuse for ARMA being ARMA.
 				_bullshitExcuse = selectRandom [
 					"We seems to have an engine malfunction. We're going down.",
@@ -261,7 +261,7 @@ if isServer then {
 					format ["Mayday, Mayday, this is Tomcat. We're going down. Grid %1.", mapGridPosition _airframe],
 					"Lieutenant, we have engine failure. We need to land."
 				];
-			
+
 			// Airframe is loaded with players? Select unload message
 			if (count (assignedCargo COIN_tomcat) > 0) then {_pax = true};
 			if (_pax) then {
@@ -279,45 +279,45 @@ if isServer then {
 			// Force land the airframe.
 			_airframe setDamage 0.8;
 			_airFrame setFuel 0.1;
-			waitUntil {				
+			waitUntil {
 				_airframe land "land";
 				_airframe flyInHeight 0;
 				sleep 0.5;
 				isTouchingGround _airframe || _location == "spawn" || _location == "terminate"
 			};
-			
+
 			// Stuck at spawn?
 			if (_location == "spawn" || {_location == "terminate"}) exitWith {
 				hint parseText format ["<img size= '5' shadow='false' image='mission\images\logo_hma361.paa'/><br/><br/><t color='#6C7169' size='1.1' align='left'>Mayday, Mayday, we have been hit. We're going down. Grid %1.</t><br/><br/>", mapGridPosition _airframe];
 				_airframe setDamage 1;
 			};
-			
+
 			// Create smoke and fire to simulate engine failure situation
 			private _smoke = createVehicle ["test_EmptyObjectForSmoke", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 			private _fire = createVehicle ["test_EmptyObjectForSmoke", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 			{_x setPosATL (getPosWorld _airframe)} forEach [_smoke, _fire];
-			_airframe engineOn false;	
-			
+			_airframe engineOn false;
+
 			//Get pax out if any in cargo.
-			if _pax then {{moveOut _x} forEach  assignedCargo _airframe;};				
-					
+			if _pax then {{moveOut _x} forEach  assignedCargo _airframe;};
+
 			private _timeOut = time + 15;
 			waitUntil {sleep 0.5; (count (assignedCargo _airframe) isEqualTo 0) || time > _timeOut};
 			_airframe setDamage 1;
 			sleep 90 + (random 90);
 			[_fire] call ADF_fnc_delete;
 			sleep 10 + (random 30);
-			[_smoke] call ADF_fnc_delete;			
+			[_smoke] call ADF_fnc_delete;
 		};
-		
+
 		// Create pick-up zone marker.
 		_mPickUp = createMarker ["mPickupLoc", _airLiftPosition];
 		_mPickUp setMarkerShape "ICON";
 		_mPickUp setMarkerType "hd_pickup";
 		_mPickUp setMarkerSize [1 ,1];
 		_mPickUp setMarkerColor "ColorWEST";
-		_mPickUp setMarkerDir 0;	
-		
+		_mPickUp setMarkerDir 0;
+
 		// Create map marker for TOMCAT.
 		[_mPickUp, _airLiftPad] spawn {
 			params ["_mPickUp", "_airLiftPad"];
@@ -327,21 +327,21 @@ if isServer then {
 			_mTomcat setMarkerSize [1 ,1];
 			_mTomcat setMarkerColor "ColorWEST";
 			_mTomcat setMarkerDir 0;
-			
+
 			waitUntil {
 				sleep 0.1;
 				_mTomcat setMarkerPos (getPosWorld COIN_tomcat);
-				!alive COIN_tomcat 
+				!alive COIN_tomcat
 			};
-			[_mTomcat] call ADF_fnc_delete;				
+			[_mTomcat] call ADF_fnc_delete;
 			[_mPickUp] call ADF_fnc_delete;
 			[_airLiftPad] call ADF_fnc_delete;
 		};
-		
-		
-		// ORDER TOMCAT TO MOVE TO THE AIRLIFT LZ		
-		
-		private _timeOut = time + 30;		
+
+
+		// ORDER TOMCAT TO MOVE TO THE AIRLIFT LZ
+
+		private _timeOut = time + 30;
 		waitUntil {
 			diag_log format ["?? C O I N ??   Airlift - Tomcat OM to PLZ. Time: %1", time];
 			COIN_tomcat move (getPosWorld _airLiftPad);
@@ -350,84 +350,19 @@ if isServer then {
 		};
 		if (time > _timeOut) exitWith {[COIN_tomcat, "spawn"] spawn _emergency;};
 		[COIN_tomcat, _airLiftPad] spawn _smoothSailing;
-		
+
 		waitUntil {sleep 0.15; (COIN_tomcat distance2D _airLiftPad) < 500 || !alive COIN_tomcat};
 		if !(alive COIN_tomcat) exitWith {remoteExec ["COIN_fnc_msg_tomcatDestroyed", -2];};
-		
+
 		waitUntil {
 			COIN_tomcat land "land";
 			COIN_tomcat flyInHeight 0;
 			sleep 1;
 			isTouchingGround COIN_tomcat
 		};
-		{COIN_tomcat animate [_x, 1];} forEach ["ramp_bottom","ramp_top"];	
+		{COIN_tomcat animate [_x, 1];} forEach ["ramp_bottom","ramp_top"];
 		COIN_tomcat flyInHeight 0;
-		
-		[COIN_tomcat] spawn {
-			params ["_tomcat"]; 
-			waitUntil {
-				_tomcat engineOn true;
-				sleep 0.5;
-				!isTouchingGround _tomcat || !alive _tomcat
-			};
-		};
-		if (!alive COIN_tomcat || {!canMove COIN_tomcat}) exitWith {remoteExec ["COIN_fnc_msg_tomcatDestroyed", -2];};
-		
-		// Announce dust-off time
-		COIN_tomcatTouchdownLZ = true;
-		publicVariable "COIN_tomcatTouchdownLZ";		
 
-		// How many players in the AO (500 m from the airlift position)?
-		private _pax = allPlayers select {alive _x && ((getPosATL _x) # 2) < 15 && (_x distance _airLiftPad) < 500};
-		private _paxCount = count _pax;
-		diag_log format ["?? C O I N ??   Airlift: pax count: %1", _paxCount];
-		
-		// Set timeout (3 mins) and start loading up
-		private _timeOut = time + (3.1 * 60);
-		private _allAboard = false;
-		waitUntil {
-			if (count (assignedCargo COIN_tomcat) >= _paxCount) then {_allAboard = true;};
-			sleep 1;
-			time > _timeOut || _allAboard
-		};
-		
-		// Announce dust-off
-		COIN_tomcatDustoffLZ = true;
-		COIN_airliftActive = true;
-		publicVariable "COIN_tomcatDustoffLZ";
-		{COIN_tomcat animate [_x, 0];} forEach ["ramp_bottom","ramp_top"];
-		COIN_tomcat flyInHeight 100;
-		COIN_tomcat limitSpeed 300;
-		
-
-		// ORDER TOMCAT TO MOVE TO THE FOB LZ. IF TOMCAT GETS STUCK THEN LAND, UNLOAD AND ABORT
-		
-		private _timeOut = time + 30;		
-		waitUntil {
-			COIN_tomcat move (getPosATL fob_lz);
-			sleep 1;
-			(COIN_tomcat distance2D _airLiftPad) > 200 || !alive COIN_tomcat || time > _timeOut;
-		};
-		
-		// In case TOMCAT gets stuck we make it force land and unload all pax after which we'll delete the vehicle
-		if (time > _timeOut) exitWith {
-			[COIN_tomcat, "plz"] spawn _emergency;
-			["COIN_fnc_spawnAirlift - Tomcat was stuck at pick-up lz position. Move order 'FOB' not carried out. Terminating!", true] call ADF_fnc_log;
-		};		
-		
-		[COIN_tomcat, fob_lz] spawn _smoothSailing;
-		waitUntil {sleep 0.5; (COIN_tomcat distance2D fob_lz) < 300 || !alive COIN_tomcat};
-		if !(alive COIN_tomcat) exitWith {};
-		
-		waitUntil {
-			COIN_tomcat land "land";
-			COIN_tomcat flyInHeight 0;
-			sleep 0.5;
-			isTouchingGround COIN_tomcat
-		};
-		{COIN_tomcat animate [_x, 1];} forEach ["ramp_bottom","ramp_top"];	
-		COIN_tomcat flyInHeight 0;
-		
 		[COIN_tomcat] spawn {
 			params ["_tomcat"];
 			waitUntil {
@@ -436,13 +371,78 @@ if isServer then {
 				!isTouchingGround _tomcat || !alive _tomcat
 			};
 		};
-		
+		if (!alive COIN_tomcat || {!canMove COIN_tomcat}) exitWith {remoteExec ["COIN_fnc_msg_tomcatDestroyed", -2];};
+
+		// Announce dust-off time
+		COIN_tomcatTouchdownLZ = true;
+		publicVariable "COIN_tomcatTouchdownLZ";
+
+		// How many players in the AO (500 m from the airlift position)?
+		private _pax = allPlayers select {alive _x && ((getPosATL _x) # 2) < 15 && (_x distance _airLiftPad) < 500};
+		private _paxCount = count _pax;
+		diag_log format ["?? C O I N ??   Airlift: pax count: %1", _paxCount];
+
+		// Set timeout (3 mins) and start loading up
+		private _timeOut = time + (3.1 * 60);
+		private _allAboard = false;
+		waitUntil {
+			if (count (assignedCargo COIN_tomcat) >= _paxCount) then {_allAboard = true;};
+			sleep 1;
+			time > _timeOut || _allAboard
+		};
+
+		// Announce dust-off
+		COIN_tomcatDustoffLZ = true;
+		COIN_airliftActive = true;
+		publicVariable "COIN_tomcatDustoffLZ";
+		{COIN_tomcat animate [_x, 0];} forEach ["ramp_bottom","ramp_top"];
+		COIN_tomcat flyInHeight 100;
+		COIN_tomcat limitSpeed 300;
+
+
+		// ORDER TOMCAT TO MOVE TO THE FOB LZ. IF TOMCAT GETS STUCK THEN LAND, UNLOAD AND ABORT
+
+		private _timeOut = time + 30;
+		waitUntil {
+			COIN_tomcat move (getPosATL fob_lz);
+			sleep 1;
+			(COIN_tomcat distance2D _airLiftPad) > 200 || !alive COIN_tomcat || time > _timeOut;
+		};
+
+		// In case TOMCAT gets stuck we make it force land and unload all pax after which we'll delete the vehicle
+		if (time > _timeOut) exitWith {
+			[COIN_tomcat, "plz"] spawn _emergency;
+			["COIN_fnc_spawnAirlift - Tomcat was stuck at pick-up lz position. Move order 'FOB' not carried out. Terminating!", true] call ADF_fnc_log;
+		};
+
+		[COIN_tomcat, fob_lz] spawn _smoothSailing;
+		waitUntil {sleep 0.5; (COIN_tomcat distance2D fob_lz) < 300 || !alive COIN_tomcat};
+		if !(alive COIN_tomcat) exitWith {};
+
+		waitUntil {
+			COIN_tomcat land "land";
+			COIN_tomcat flyInHeight 0;
+			sleep 0.5;
+			isTouchingGround COIN_tomcat
+		};
+		{COIN_tomcat animate [_x, 1];} forEach ["ramp_bottom","ramp_top"];
+		COIN_tomcat flyInHeight 0;
+
+		[COIN_tomcat] spawn {
+			params ["_tomcat"];
+			waitUntil {
+				_tomcat engineOn true;
+				sleep 0.5;
+				!isTouchingGround _tomcat || !alive _tomcat
+			};
+		};
+
 		if (!alive COIN_tomcat || {!canMove COIN_tomcat}) exitWith {};
-		
+
 		// Announce dust-off time
 		COIN_tomcatTouchdownFOB = true;
-		publicVariable "COIN_tomcatTouchdownFOB";		
-		
+		publicVariable "COIN_tomcatTouchdownFOB";
+
 		// Set timeout (30 secs) and offload
 		private _timeOut = time + 33;
 		waitUntil {
@@ -452,7 +452,7 @@ if isServer then {
 			time > _timeOut || !alive COIN_tomcat
 		};
 		if (!alive COIN_tomcat || {!canMove COIN_tomcat}) exitWith {};
-		
+
 		// Announce dust-off 2
 		COIN_tomcatDustoffFOB = true;
 		COIN_airliftActive = false;
@@ -461,13 +461,13 @@ if isServer then {
 		COIN_leadershipID publicVariableClient "COIN_supportActive";
 		{COIN_tomcat animate [_x, 0];} forEach ["ramp_bottom","ramp_top"];
 		COIN_tomcat flyInHeight 50;
-		COIN_tomcat limitSpeed 300;			
+		COIN_tomcat limitSpeed 300;
 		COIN_tomcat allowDamage false;
-		
 
-		// ORDER TOMCAT TO RTB. IF TOMCAT GETS STUCK THEN LAND AND DELETE	
-		
-		private _timeOut = time + 35;		
+
+		// ORDER TOMCAT TO RTB. IF TOMCAT GETS STUCK THEN LAND AND DELETE
+
+		private _timeOut = time + 35;
 		waitUntil {
 			diag_log format ["?? C O I N ??   Airlift - Tomcat RTB. Time: %1", time];
 			COIN_tomcat move _spawnPosition;
@@ -478,8 +478,8 @@ if isServer then {
 			[COIN_tomcat, "fob"] spawn _emergency;
 			["COIN_fnc_spawnAirlift - Tomcat was stuck at FOB lz position. Move order 'RTB' not carried out. Terminating!", true] call ADF_fnc_log;
 		};
-		
-		private _timeOut = time + (5 * 60);		
+
+		private _timeOut = time + (5 * 60);
 		waitUntil {
 			sleep 1;
 			(COIN_tomcat distance2D _spawnPosition) < 300 || !alive COIN_tomcat || time > _timeOut
@@ -488,6 +488,6 @@ if isServer then {
 			[COIN_tomcat, "terminate"] spawn _emergency;
 			["COIN_fnc_spawnAirlift - Tomcat was stuck at terminate position. Will not pass final move position. Terminating!", true] call ADF_fnc_log;
 		};
-		if (alive COIN_tomcat) then {[COIN_tomcat] call ADF_fnc_delete;};		
+		if (alive COIN_tomcat) then {[COIN_tomcat] call ADF_fnc_delete;};
 	};
 };

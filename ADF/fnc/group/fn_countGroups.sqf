@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -45,7 +45,7 @@ params [
 	["_side", east, [west]]
 ];
 
-// Check if the ADF_groupsXXX array exist 
+// Check if the ADF_groupsXXX array exist
 if (isNil "ADF_groupsInit") exitWith {
 	if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_countGroups - ERROR, array does not exist. Execute ADF_fnc_logGroup first. Exiting."], true] call ADF_fnc_log};
 	0

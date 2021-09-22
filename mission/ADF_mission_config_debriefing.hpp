@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -20,7 +20,7 @@ and https://community.bistudio.com/wiki/Debriefing
 *********************************************************************************/
 
 class CfgDebriefing
-{  
+{
 	class End1
 	{
 		title = $STR_ADF_debriefing_end1Title;
@@ -30,7 +30,7 @@ class CfgDebriefing
 		picture = "mission\images\logo_1recon.paa"; // Marker icon
 		pictureColor[] = {0.0,0.3,0.6,1}; // Overlay color
 	};
-	
+
 	class End2
 	{
 		title = $STR_ADF_debriefing_end2Title;
@@ -40,7 +40,7 @@ class CfgDebriefing
 		picture = "mission\images\logo_1recon.paa"; // Marker icon
 		pictureColor[] = {0.0,0.3,0.6,1}; // Overlay color
 	};
-	
+
 	class Killed
 	{
 		title = $STR_ADF_debriefing_end3Title;
@@ -51,4 +51,3 @@ class CfgDebriefing
 		pictureColor[] = {0.0,0.3,0.6,1}; // Overlay color
 	};
 };
-

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -17,7 +17,7 @@ ABOUT
 Detonates a car bomb. Can be used manually or via the createCarBomb module.
 
 INSTRUCTIONS (MANUAL USAGE):
-Place a fuel truck (or other vehicle) on the map. Create a trigger around  the 
+Place a fuel truck (or other vehicle) on the map. Create a trigger around  the
 fuel truck and call the function on trigger activation.
 Or call from script on the server.
 

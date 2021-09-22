@@ -5,7 +5,7 @@ zbe_cache = {
 	{
 		if (!(isPlayer _x) && {!("driver" in assignedVehicleRole _x)}) then {
 			_x enableSimulationGlobal false;
-			_x hideObjectGlobal true;			
+			_x hideObjectGlobal true;
 			_x disableAI "FSM"; // ADF 1.42
 		};
 	} forEach _toCache;
@@ -15,7 +15,7 @@ zbe_unCache = {
 	{
 		if (!(isPlayer _x) && {!("driver" in assignedVehicleRole _x)}) then {
 			_x enableSimulationGlobal true;
-			_x hideObjectGlobal false;			
+			_x hideObjectGlobal false;
 			_x enableAI "FSM";  // ADF 1.42
 		};
 	} forEach _toCache;

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -24,7 +24,7 @@ Call the function after each created group. This function does not track civilia
 groups
 
 REQUIRED PARAMETERS:
-0. Group:       name or variable of the group       
+0. Group:       name or variable of the group
 1. String:      Name of the array. E.g. "myOpforGroupsList"
 
 OPTIONAL PARAMETERS:
@@ -73,31 +73,31 @@ _allGroups = missionNamespace getVariable [_groupArray,[]];
 if ADF_debug then {[format ["ADF_fnc_logGroupCustom - Custom Array: %1 - Stored: %2",_groupArray, _allGroups]] call ADF_fnc_log};
 
 // First run initialization
-if (_firstRun) exitWith {		
-	
+if (_firstRun) exitWith {
+
 	if (ADF_debug || ADF_extRpt) then {["ADF_fnc_logGroupCustom - First run."] call ADF_fnc_log};
 	// Loop through all groups every 5 seconds to check for empty groups
 	[_allGroups, _group, _groupArray] spawn {
 		params ["_allGroups","_group","_groupArray"];
-		
+
 		_allGroups pushBackUnique _group;
 		missionNamespace setVariable [_groupArray, _allGroups];
-				
+
 		waitUntil {
-		
+
 			{
 				if (_x in _allGroups) then {
 					if (count (units _x) == 0 || _x == grpNull) then {_allGroups = _allGroups - [_x]};
 				};
 			} forEach allGroups;
-			
+
 			missionNamespace setVariable [_groupArray, _allGroups];
 			sleep 5;
-			
+
 			false
 		};
 	};
-	
+
 	true
 };
 

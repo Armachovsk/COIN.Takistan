@@ -56,24 +56,24 @@ call {
 	if (ADF_worldName isEqualTo "CLAFGHAN") exitWith {
 		_fobNumber = switch _ao_number do {
 			case 0: {selectRandom [0, 1, 27, 28]};
-			case 1: {selectRandom [2, 4, 5, 6, 7, 8, 9, 10, 30]};	
-			case 2: {selectRandom [2, 3, 4, 7, 8, 9, 10]};	
-			case 3: {selectRandom [6, 11, 12, 30]};	
-			case 4: {selectRandom [11, 12, 13]};	
-			case 5: {selectRandom [13, 14, 15, 16]};	
-			case 6: {selectRandom [15, 16, 22]};	
-			case 7: {selectRandom [15, 17, 19]};	
-			case 8: {selectRandom [18, 19]};	
-			case 9: {selectRandom [17, 19, 20, 25]};	
-			case 10: {selectRandom [20, 21, 24]};	
-			case 11: {selectRandom [23, 26, 29, 42]};	
-			case 12: {selectRandom [22, 26, 29]};	
-			case 13: {selectRandom [32, 43]};	
-			case 14: {selectRandom [31, 32, 33]};	
-			case 15: {selectRandom [34, 36]};	
-			case 16: {selectRandom [35, 36, 41]};	
-			case 17: {selectRandom [37, 38]};	
-			case 18: {selectRandom [38, 39]};	
+			case 1: {selectRandom [2, 4, 5, 6, 7, 8, 9, 10, 30]};
+			case 2: {selectRandom [2, 3, 4, 7, 8, 9, 10]};
+			case 3: {selectRandom [6, 11, 12, 30]};
+			case 4: {selectRandom [11, 12, 13]};
+			case 5: {selectRandom [13, 14, 15, 16]};
+			case 6: {selectRandom [15, 16, 22]};
+			case 7: {selectRandom [15, 17, 19]};
+			case 8: {selectRandom [18, 19]};
+			case 9: {selectRandom [17, 19, 20, 25]};
+			case 10: {selectRandom [20, 21, 24]};
+			case 11: {selectRandom [23, 26, 29, 42]};
+			case 12: {selectRandom [22, 26, 29]};
+			case 13: {selectRandom [32, 43]};
+			case 14: {selectRandom [31, 32, 33]};
+			case 15: {selectRandom [34, 36]};
+			case 16: {selectRandom [35, 36, 41]};
+			case 17: {selectRandom [37, 38]};
+			case 18: {selectRandom [38, 39]};
 			case 19: {selectRandom [40, 41]};
 			default {0};
 		};
@@ -83,7 +83,7 @@ call {
 			case 0: {selectRandom [0, 1, 2, 3, 4, 23]};
 			case 1: {selectRandom [1, 7, 8, 9]};
 			case 2: {selectRandom [3, 10, 23]};
-			case 3: {selectRandom [10, 11, 12, 23]};			
+			case 3: {selectRandom [10, 11, 12, 23]};
 			case 4: {selectRandom [14, 15, 16, 18]};
 			case 5: {selectRandom [2, 4, 5, 18]};
 			case 6: {selectRandom [2, 4, 15, 16, 23]};
@@ -188,7 +188,7 @@ call {
 			default {0};
 		};
 	};
-	if (ADF_WorldName isEqualTo "PJA307") exitWith { 
+	if (ADF_WorldName isEqualTo "PJA307") exitWith {
 		_fobNumber = switch _ao_number do {
 			case 0: {selectRandom [0, 1, 2, 3, 4, 5]};
 			case 1: {selectRandom [1, 6, 7, 8, 9]};
@@ -279,7 +279,7 @@ call {
 	};
 	if (ADF_WorldName isEqualTo "PJA310") exitWith {
 		_fobNumber = switch _ao_number do {
-			case 0: {selectRandom [0, 1, 2, 3, 4]};			
+			case 0: {selectRandom [0, 1, 2, 3, 4]};
 			case 1: {selectRandom [5, 6, 7, 8, 9, 84]};
 			case 2: {selectRandom [21, 22, 23, 24, 25]};
 			case 3: {selectRandom [10, 11, 12, 13, 14, 15]};

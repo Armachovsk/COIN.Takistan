@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,14 +23,14 @@ Execute from the server.
 
 REQUIRED PARAMETERS:
 0. Position:    Marker or Trigger name (eclipse/rectangle marker). The vehicle
-                will be placed in the marker/trigger area on /next to a random
-                road. If the marker is an icon (size 1 x 1  or smaller) then then
-                vehicle will be created on that exact position.
-                You may also pass a position array [X, Y, Z] for precise spawning.
+	will be placed in the marker/trigger area on /next to a random
+	road. If the marker is an icon (size 1 x 1  or smaller) then then
+	vehicle will be created on that exact position.
+	You may also pass a position array [X, Y, Z] for precise spawning.
 
 OPTIONAL PARAMETERS:
 1. Side:        Side that activates the trigger: west, east or independent
-                Default: west
+	Default: west
 2. Integer:     Trigger area (radius) in meters. Default: 50
 3. String:      Vehicle class. Default: "C_Van_01_fuel_F"
 
@@ -52,9 +52,9 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 
 // Init
 params [
-	["_position", "", ["", [], objNull, grpNull]], 
-	["_side", west, [east]], 
-	["_radius", 50, [0]], 
+	["_position", "", ["", [], objNull, grpNull]],
+	["_side", west, [east]],
+	["_radius", 50, [0]],
 	["_vehicleClass", "C_Van_01_fuel_F", [""]],
 	["_direction", 0, [0]]
 ];
@@ -62,15 +62,15 @@ params [
 if (_position isEqualType "") then {
 	if ((getMarkerSize _position # 0) > 1) then {
 		private _searchRadius = (((getMarkerSize _position) # 0) + ((getMarkerSize _position) # 1)) / 2;
-		
+
 		// select a random position within the marker area
 		_position = [getMarkerPos _position, _searchRadius, random 360] call ADF_fnc_randomPos;
-		
+
 		// Find a road position within the search results
 		private _searchPosition = [_position, 100, 150] call ADF_fnc_randomPos_IED;
 		_position = _searchPosition # 0;
 		_direction = _searchPosition # 1;
-		
+
 		// create offset position
 		private _position_X_offset = (_position # 0) + (4.5 * sin (_direction + 90));
 		private _position_Y_offset = (_position # 1) + (4.5 * cos (_direction + 90));
@@ -78,10 +78,10 @@ if (_position isEqualType "") then {
 	} else {
 		_direction	= markerDir _position;
 		_position = [_position] call ADF_fnc_checkPosition;
-	};		
+	};
 } else {
 	if (_position isEqualType objNull) then {
-		_direction = getDir _position;			
+		_direction = getDir _position;
 	} else {
 		_direction = random 360
 	};
@@ -99,8 +99,8 @@ _trigger setTriggerActivation [str _side, "PRESENT", false];
 _trigger setTriggerArea [_radius, _radius, 0, false];
 _trigger setTriggerTimeout [0, 0, 0, false];
 _trigger setTriggerStatements [
-	"{vehicle _x in thisList && isPlayer _x && ((getPosATL _x) select 2) < 5} count allUnits > 0;", 
-	"[thisTrigger] call ADF_fnc_carBombDetonate; [thisTrigger] call ADF_fnc_delete;", 
+	"{vehicle _x in thisList && isPlayer _x && ((getPosATL _x) select 2) < 5} count allUnits > 0;",
+	"[thisTrigger] call ADF_fnc_carBombDetonate; [thisTrigger] call ADF_fnc_delete;",
 	""
 ];
 

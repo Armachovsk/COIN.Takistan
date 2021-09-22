@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_vCargo_B_CUP_TruckAmmo.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Primary weapon
@@ -63,9 +63,9 @@ _v addMagazineCargoGlobal ["APERSBoundingMine_Range_Mag", 15];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_Clacker", 10];
 	_v addItemCargoGlobal ["ACE_DefusalKit", 5];
-	_v addItemCargoGlobal ["ACE_M26_Clacker", 5]; 
+	_v addItemCargoGlobal ["ACE_M26_Clacker", 5];
 	_v addItemCargoGlobal ["ACE_wirecutter", 3];
-};	
+};
 
 // GL Ammo
 _v addMagazineCargoGlobal ["CUP_1Rnd_HEDP_M203", 55];
@@ -77,8 +77,8 @@ if ADF_mod_ACE3 then {
 };
 
 // Grenades
-_v addMagazineCargoGlobal ["CUP_HandGrenade_M67", 50]; 	 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 50]; 	 
+_v addMagazineCargoGlobal ["CUP_HandGrenade_M67", 50];
+_v addMagazineCargoGlobal ["SmokeShellGreen", 50];
 _v addMagazineCargoGlobal ["SmokeShellRed", 25];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 25];
@@ -86,7 +86,7 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_Green", 15];
 	_v addItemCargoGlobal ["ACE_HandFlare_Yellow", 15];
 	_v addItemCargoGlobal ["ACE_M84", 15];
-}; 
+};
 
 // ACRE / TFAR and cTAB
 if ADF_mod_ACRE then {
@@ -105,7 +105,7 @@ if ADF_mod_CTAB then {
 	_v addItemCargoGlobal ["ItemcTabHCam", 25];
 };
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", 50];
 	_v addItemCargoGlobal ["ace_mapTools", 10];
@@ -133,7 +133,7 @@ _v addItemCargoGlobal ["G_Tatical_Clear", 5];
 _v addItemCargoGlobal ["G_Shades_Black" , 5];
 _v addItemCargoGlobal ["CFP_ANPVS15_Camo_V2", 10];
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Vector", 5];		
+	_v addItemCargoGlobal ["ACE_Vector", 5];
 };
 
 // Gear kit (not working from crates/veh)

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -24,20 +24,20 @@ Execute (call) from the server
 REQUIRED PARAMETERS:
 0: Array:       Array to check against. E.g. allPlayers
 1: Position:    Marker, object, trigger or position array [x,y,z] to check distance
-                to the units/vehicles provided in the 0: Array.
-            
+	to the units/vehicles provided in the 0: Array.
+
 OPTIONAL PARAMETERS:
 2. Number:      Sensor radius in meters. Default: 500
 3. Number:      Check interval in seconds. Default: 2
 4. Bool:        Persistent:
-                - true: is persistent (Default)
-                - false: not persistent (run once)
+	- true: is persistent (Default)
+	- false: not persistent (run once)
 5. String:      Code to execute (spawn) when the conditions are met (true).
-                E.g. "hint 'The sensor is active';"
-                Default = "". 
+	E.g. "hint 'The sensor is active';"
+	Default = "".
 6. String:      Code to execute (spawn) when the conditions are not met (false).
-                E.g. "hint 'The sensor is deactivated';"
-                Default = "". 
+	E.g. "hint 'The sensor is deactivated';"
+	Default = "".
 
 EXAMPLES USAGE IN SCRIPT:
 [{alive _x} count AllUnits, myObject, 500, 5] call ADF_fnc_sensor;
@@ -71,10 +71,10 @@ params [
 // Check distance loop
 waitUntil {
 	private _distance = [_array, _position, _radius] call ADF_fnc_checkClosest;
-	private _exit = false;	
-	
-	if (_distance < _radius) then {		
-		if (_code_activation != "") then {[] spawn (call compile format ["%1", _code_activation])};			
+	private _exit = false;
+
+	if (_distance < _radius) then {
+		if (_code_activation != "") then {[] spawn (call compile format ["%1", _code_activation])};
 		if !(_persistent) then {
 			_exit = true;
 			_pause = 0;
@@ -85,9 +85,9 @@ waitUntil {
 				_distance > _radius
 			};
 			if (_code_deactivation != "") then {[] spawn (call compile format ["%1", _code_deactivation])};
-		};			
-	};		
-	
+		};
+	};
+
 	sleep (_pause + random 1);
 	_exit
 };

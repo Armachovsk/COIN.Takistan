@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -20,7 +20,7 @@ Disables/enables AI units/objects. Besides simulation it enables/disables:
 - Fire suppression
 - Spotting and targeting
 - Target orders
-- Movement 
+- Movement
 
 You can switch it off and on by script.
 
@@ -30,8 +30,8 @@ Execute (call) from the server or HC
 REQUIRED PARAMETERS:
 0. Object:      AI Unit, vehicle, object.
 1. Bool:        Switch objectSSimulation on or off?
-                - false - switch off (default)
-                - true - switch on
+	- false - switch off (default)
+	- true - switch on
 
 OPTIONAL PARAMETERS:
 N/A
@@ -60,27 +60,27 @@ params [
 
 // Switch off simulation
 if !_simulation then {
-	_object enableSimulation false; 
-	
+	_object enableSimulation false;
+
 	_object disableAI "FSM";
-	_object disableAI "SUPPRESSION"; 
+	_object disableAI "SUPPRESSION";
 	_object disableAI "TARGET";
 	_object disableAI "AUTOTARGET";
-	_object disableAI "MOVE"; 
+	_object disableAI "MOVE";
 
 	// Debug reporting
 	if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_objectSimulation - Simulation aspects disabled for: %1", _object]] call ADF_fnc_log};
 
-// Switch on simulation	
+// Switch on simulation
 } else {
 	_object enableAI "FSM";
-	_object enableAI "SUPPRESSION"; 
+	_object enableAI "SUPPRESSION";
 	_object enableAI "TARGET";
 	_object enableAI "AUTOTARGET";
-	_object enableAI "MOVE"; 
-	
+	_object enableAI "MOVE";
+
 	_object enableSimulation true;
-	
+
 	// Debug reporting
 	if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_objectSimulation - Simulation aspects enabled for: %1", _object]] call ADF_fnc_log};
 };

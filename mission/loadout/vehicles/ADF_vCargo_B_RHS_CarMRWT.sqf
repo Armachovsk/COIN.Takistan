@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_CarMRWT.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 private _default = 6;
@@ -65,7 +65,7 @@ if ADF_mod_ACE3 then {
 	//_v addItemCargoGlobal ["ACE_M26_Clacker", 1];
 	//_v addItemCargoGlobal ["ACE_DefusalKit", 1];
 	//_v addItemCargoGlobal ["ACE_wirecutter", 1];
-};	
+};
 
 // GL Ammo
 _v addMagazineCargoGlobal ["rhs_mag_M441_HE", 5];
@@ -77,8 +77,8 @@ if ADF_mod_ACE3 then {
 
 // Grenades
 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 2]; 	 
-_v addMagazineCargoGlobal ["SmokeShellRed", 1]; 
+_v addMagazineCargoGlobal ["SmokeShellGreen", 2];
+_v addMagazineCargoGlobal ["SmokeShellRed", 1];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 3];
 	_v addItemCargoGlobal ["ACE_HandFlare_Red", 1];
@@ -86,9 +86,9 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_Yellow", 1];
 	_v addItemCargoGlobal ["ACE_M84", 3];
 } else {
-	_v addMagazineCargoGlobal ["rhs_mag_mk84", 3]; 	 
-	_v addMagazineCargoGlobal ["Chemlight_green", _default]; 	 
-	_v addMagazineCargoGlobal ["Chemlight_red", _default]; 	 
+	_v addMagazineCargoGlobal ["rhs_mag_mk84", 3];
+	_v addMagazineCargoGlobal ["Chemlight_green", _default];
+	_v addMagazineCargoGlobal ["Chemlight_red", _default];
 };
 
 // ACRE / TFAR and cTAB
@@ -104,7 +104,7 @@ if ADF_mod_TFAR then {
 };
 if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_v addItemCargoGlobal ["ItemRadio", _default]};
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", _default];
 	_v addItemCargoGlobal ["ace_mapTools", 2];
@@ -129,8 +129,8 @@ if ADF_mod_ACE3 then {
 _v addWeaponCargoGlobal ["lerca_1200_black", 1];
 _v addItemCargoGlobal ["rhsusf_ANPVS_14", 2];
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Vector", 1];		
-};	
+	_v addItemCargoGlobal ["ACE_Vector", 1];
+};
 
 // Misc items
 _v addItemCargoGlobal ["ToolKit", 1];

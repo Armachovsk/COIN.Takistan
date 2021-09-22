@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -40,28 +40,28 @@ Execute (spawn) from the server or HC. THIS FUNCTION MUST BE SPAWNED!!
 
 REQUIRED PARAMETERS:
 0. Position:    The center of the position where ACM is active. Marker, object,
-                trigger or position array [x,y,z]
+	trigger or position array [x,y,z]
 
 OPTIONAL PARAMETERS:
 1. Number:      Radius in meters around the position. Size of the AO.
-                Default: 750        
+	Default: 750
 2. Number:      Time in MINUTES that ACM will be active on the position. You can
-                have multiple ACM's with different positions / times        
+	have multiple ACM's with different positions / times
 3. Bool:        Ambient artillery/40 mike
-                - true - enable ambient artillery (default)
-                - false - disable ambient artillery
+	- true - enable ambient artillery (default)
+	- false - disable ambient artillery
 4. Bool:        Random vehicle explosions
-                - true - enable random vehicle explosions (default)
-                - false - disable random vehicle explosions     
+	- true - enable random vehicle explosions (default)
+	- false - disable random vehicle explosions
 5. Bool:        Small arms fire
-                - true - enable Small arms fire (default)
-                - false - disable Small arms fire
+	- true - enable Small arms fire (default)
+	- false - disable Small arms fire
 6. Side:        east, west, independent. Default: east
 7. Number:      Intensity. Default: 2
-                - 10 - Maximum intensity setting
-                - 1 - minimum intensity setting
+	- 10 - Maximum intensity setting
+	- 1 - minimum intensity setting
 8. Number:      Distance from players for ambient combat activity to spawn
-                Default: 150
+	Default: 150
 
 EXAMPLES USAGE IN SCRIPT:
 // Example with a marker and 500 meter radius, 15 minutes:
@@ -81,13 +81,13 @@ Bool (success flag)
 // Reporting
 if (time < 180 || {ADF_extRpt || {ADF_debug}}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_ambientCombatManager"};
 
-// Local function: create random explosion 
+// Local function: create random explosion
 private _ACM_explosion = {
 	params [["_position", [0, 0, 0], [[]], [3]]];
-	
+
 	private _bombClass = selectRandom ["Bo_GBU12_LGB", "M_Mo_82mm_AT_LG", "R_80mm_HE", "G_40mm_HE", "HelicopterExploBig"];
 	private _explosion = createVehicle [_bombClass, [_position # 0, _position # 1, (_position # 2) + 3], [], 0, "CAN_COLLIDE"];
-	
+
 	if ADF_debug then {
 		private _markerarker = createMarker [ format["p_%1%2", round (random 500), round (_position # 1)], _position];
 		_markerarker setMarkerSize [.7, .7];
@@ -96,7 +96,7 @@ private _ACM_explosion = {
 		_markerarker setMarkerColor "ColorYellow";
 		[format ["_ACM_explosion - explosion created at position: %1", _position]] call ADF_fnc_log;
 	};
-	
+
 	true
 };
 
@@ -108,7 +108,7 @@ private _ACM_createAgent = {
 		["_ammo", "", [""]],
 		["_unitClass", "", [""]]
 	];
-	
+
 		// Check side
 	switch _side do {
 		case east: {_ammo = "200Rnd_65x39_belt_Tracer_Green"; _unitClass = "o_soldier_f"};
@@ -116,12 +116,12 @@ private _ACM_createAgent = {
 		case independent: {_ammo = "200Rnd_65x39_belt_Tracer_Yellow"; _unitClass = "i_soldier_f"};
 		default {_ammo = "200Rnd_65x39_belt_Tracer_Green"; _unitClass = "o_soldier_f"};
 	};
-	
+
 	// Create the agent
-	private _unit = createAgent [_unitClass, [0, 0, 0], [], 0, "CAN_COLLIDE"];	
+	private _unit = createAgent [_unitClass, [0, 0, 0], [], 0, "CAN_COLLIDE"];
 	_unit allowDamage false;
 	_unit setCaptive true;
-	_unit hideObject true;	
+	_unit hideObject true;
 
 	// FSM aspects
 	_unit disableAI "anim";
@@ -130,7 +130,7 @@ private _ACM_createAgent = {
 	_unit disableAI "autotarget";
 	_unit setBehaviour "careless";
 	_unit setCombatMode "blue";
-	
+
 	// Disarm and arm the agent
 	removeAllWeapons _unit;
 	private _weapon = "FakeWeapon_moduleTracers_F";
@@ -138,7 +138,7 @@ private _ACM_createAgent = {
 	_unit addWeapon _weapon;
 	_unit selectWeapon _weapon;
 	_unit switchMove "amovpercmstpsraswrfldnon";
-	
+
 	_unit
 };
 
@@ -152,7 +152,7 @@ private _ACM_smallArms = {
 	];
 
 	_unit setPosATL _position;
-	
+
 	if ADF_debug then {
 		private _marker = createMarker [format ["p_%1%2", round (random 500), round (_position # 1)], _position];
 		_marker setMarkerSize [.7, .7];
@@ -160,33 +160,33 @@ private _ACM_smallArms = {
 		_marker setMarkerType "hd_dot";
 		_marker setMarkerColor "ColorWhite";
 		[format ["_ACM_smallArms - small arms agent at position: %1", _position]] call ADF_fnc_log;
-	};		
-	
+	};
+
 	_unit setVehicleAmmo 1;
-	
+
 	// Smoke effects
 	if ((random 100) > 80) then {
-		private _effect = (selectRandom ["SmokeShell", "SmokeShellRed", "SmokeShellGreen"]) createVehicle _position;		
+		private _effect = (selectRandom ["SmokeShell", "SmokeShellRed", "SmokeShellGreen"]) createVehicle _position;
 	};
-	
+
 	// flares
 	if (((date # 3) > 18 || (date # 3) < 4.5) && {(random 100) > 95}) then {
 		private _flareRadius = selectRandom [50, 500, 175, 700, 250];
 		private _flareCount = selectRandom [1, 2, 3, 2, 1];
-		[_position, _flareRadius, "white", _flareCount] spawn ADF_fnc_ambientFlare;		
-	};	
-	
+		[_position, _flareRadius, "white", _flareCount] spawn ADF_fnc_ambientFlare;
+	};
+
 	private _pause = 0.05 + random 0.1;
 	private _dirAdjust = -5 + random 10;
 	private _axis = 30 + random 60;
-	
-	_unit setDir (random 360);		
+
+	_unit setDir (random 360);
 	[_unit, _axis, 0] call BIS_fnc_setPitchBank;
-	
+
 	sleep 0.1;
-	
+
 	_time = time + 0.1 + random 0.9;
-	
+
 	while {time < _time} do {
 		_unit forceWeaponFire [primaryWeapon _unit, "MANUAL"];
 		sleep _pause;
@@ -194,24 +194,24 @@ private _ACM_smallArms = {
 		[_unit, _axis, 0] call BIS_fnc_setPitchBank;
 		if (random 1 > 0.95) then {sleep (2 * _pause)};
 	};
-	
+
 	true
 };
 
 
-// local function - vehicle explosion simulation	
+// local function - vehicle explosion simulation
 private _ACM_vehicle = {
 	params [
 		["_position", [0, 0, 0], [[]], [3]],
 		["_radius", 750, [0]]
 	];
-	
+
 	_position = [_position, _radius] call ADF_fnc_roadPos;
-	
+
 	private _vehicleClass = selectRandom ["O_mRAP_02_F", "O_Truck_02_covered_F", "O_mBT_02_arty_F", "O_APC_Tracked_02_cannon_F"];
 	private _vehicle = createVehicle [_vehicleClass, _position, [], 0, "CAN_COLLIDE"];
 	_vehicle setDamage 1;
-	
+
 	if ADF_debug then {
 		private _marker = createMarker [format ["p_%1%2", round (random 500), round (_position # 1)], _position];
 		_marker setMarkerSize [.7, .7];
@@ -220,16 +220,16 @@ private _ACM_vehicle = {
 		_marker setMarkerColor "ColorRed";
 		[format ["_ACM_vehicle - vehicle created at position: %1", _position]] call ADF_fnc_log;
 	};
-	
+
 	sleep 60;
 	[_vehicle] call ADF_fnc_delete;
-	
+
 	true
-};	
-	
+};
+
 // init
 params [
-	["_position", [0, 0, 0], ["", [], objNull, grpNull]], 
+	["_position", [0, 0, 0], ["", [], objNull, grpNull]],
 	["_radius", 750, [0]],
 	["_minutes", 20, [0]],
 	["_artillery", true, [true]],
@@ -251,15 +251,15 @@ private _seconds = _minutes * 60;
 
 // Cycle time
 if (_seconds < 120) then {
-	_pause = (_intensity / 10) * 2;		
+	_pause = (_intensity / 10) * 2;
 } else {
 	_pause = (_intensity / 10) + 2;
-};	
+};
 
-// Intensity	
+// Intensity
 _intensity = 1 - (_intensity / 10);
 if (_intensity < 0.1) then {_intensity = 0.1};
-if (_intensity > 0.8) then {_intensity = 0.8};	
+if (_intensity > 0.8) then {_intensity = 0.8};
 
 // Create agent for small arms function
 if (_smallArmsEffect) then {_unit = [_effectSide] call _ACM_createAgent};
@@ -270,7 +270,7 @@ if ADF_debug then {
 	_marker setMarkerShape "ELLIPSE";
 	_marker setMarkerBrush "Solid";
 	_marker setMarkerColor "ColorGreen";
-};	
+};
 
 for "_i" from _seconds to 0 step -1 do {
 	private _diagTime = diag_tickTime;
@@ -279,10 +279,10 @@ for "_i" from _seconds to 0 step -1 do {
 
 	// Select a random position within the pre-defined radius
 	private _randomPos = [_position, _radius, random 360] call ADF_fnc_randomPos;
-	
+
 	// Check FPS in multiplayer
 	if isMultiplayer then {_fps = diag_fps} else {_fps = 25};
-	
+
 	// No effects when FPS drops below 20
 	if (_fps > 20) then {
 		// Check if no players are near
@@ -295,20 +295,20 @@ for "_i" from _seconds to 0 step -1 do {
 	} else {
 		_pause = 5; // FPS below 20. Sleep 5 seconds.
 	};
-	
+
 	// Reporting
 	if ADF_debug then {
 		hintSilent format ["ACM Timer: %1 left (FPS: %2)", [((_i) / 60) + .01, "HH:MM"] call BIS_fnc_timeToString, _fps];
-		[format ["ADF_fnc_ambientCombatManager - Cycle diag: %1", diag_tickTime]] call ADF_fnc_log;			
-	};	
+		[format ["ADF_fnc_ambientCombatManager - Cycle diag: %1", diag_tickTime]] call ADF_fnc_log;
+	};
 	if ADF_extRpt then {
 		diag_log format ["ADF rpt: ACM Timer - %1 left (FPS: %2)", [((_i) / 60) + .01, "HH:MM"] call BIS_fnc_timeToString, _fps];
 	};
 	if ADF_debug then {[format ["ADF_fnc_ambientCombatManager - Diag time to execute function: %1", diag_tickTime - _diagTime]] call ADF_fnc_log};
-	
+
 	// Cancel function for scripts. To cancel ACM: ADF_cancel_ACM = true; // (server)
 	if (ADF_cancel_ACM) exitWith {if (ADF_debug || ADF_extRpt) then {[format ["ADF Debug: ADF_fnc_ACM - ACM cancelled at cycle %1", _i]] call ADF_fnc_log}};
-	
+
 	sleep _pause;
 };
 

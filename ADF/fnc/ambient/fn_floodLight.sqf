@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -22,8 +22,8 @@ Templates:
 [Tower, 0.2, 4.8, 0, 0] call ADF_fnc_floodLight; // cargo Tower Second floor
 [Tower, 0.2, 7.4, 0, 0] call ADF_fnc_floodLight; // cargo Tower Third floor
 
-[hq, 0.2, -1, 0, 1] call ADF_fnc_floodLight; // cargo HQ 
-[hq, 0.2, -1, 3, -3] call ADF_fnc_floodLight; // cargo HQ  
+[hq, 0.2, -1, 0, 1] call ADF_fnc_floodLight; // cargo HQ
+[hq, 0.2, -1, 3, -3] call ADF_fnc_floodLight; // cargo HQ
 
 INSTRUCTIONS:
 Place an object or game logic on the map and put the following in the init:
@@ -35,14 +35,14 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Number:      Light brightness. 0.2 for dim light and 1.0 for very bright
-				light. Default: 0.3 
+				light. Default: 0.3
 2. Number:      Altitude light position offset from the object. In meters.
 				Default: 1
 3. Number:      X-axe offset (meters) from the center position of the object
 				Default: 0
 4. Number:      Y-axe offset (meters) from the center position of the object
 				Default: 0
-				
+
 EXAMPLES USAGE IN SCRIPT:
 [this, 0.1, 2.2, -1, 1.5] call ADF_fnc_floodLight; // CargoHouse
 
@@ -88,7 +88,7 @@ if ADF_debug then {
 	_marker setMarkerType "hd_dot";
 	_marker setMarkerColor "ColorWhite";
 	_marker setMarkerText "L";
-};	
+};
 
 // Create the simulated light source
 private _light = "#lightpoint" createVehicleLocal [0,0,0];

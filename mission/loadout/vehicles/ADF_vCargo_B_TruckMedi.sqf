@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_TruckMedi.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Magazines primary weapon
@@ -39,7 +39,7 @@ if ADF_mod_ACE3 then {
 };
 
 // Grenades
-_v addMagazineCargoGlobal ["SmokeShell", 25]; 	 
+_v addMagazineCargoGlobal ["SmokeShell", 25];
 _v addMagazineCargoGlobal ["SmokeShellGreen", 50];
 _v addMagazineCargoGlobal ["SmokeShellYellow", 10];
 _v addMagazineCargoGlobal ["SmokeShellPurple", 10];
@@ -52,7 +52,7 @@ _v addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 1];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_Clacker", 1];
 	_v addItemCargoGlobal ["ACE_wirecutter", 1];
-};	
+};
 
 // ACRE / TFAR and cTAB
 if ADF_mod_ACRE then {
@@ -70,7 +70,7 @@ if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_v addItemCargoGlobal ["ItemRadio", 6]
 	_v addItemCargoGlobal ["ItemcTabHCam", 2];
 };*/
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {_v addItemCargoGlobal ["ACE_EarPlugs", 5]};
 if ADF_mod_ACE3 then {_v addItemCargoGlobal ["ace_mapTools", 2]};
 if ADF_mod_ACE3 then {_v addItemCargoGlobal ["ACE_CableTie", 5]}; // ACE3 094
@@ -95,8 +95,8 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_plasmaIV_250", 50];
 	_v addItemCargoGlobal ["ACE_salineIV", 25];
 	_v addItemCargoGlobal ["ACE_salineIV_500", 35];
-	_v addItemCargoGlobal ["ACE_salineIV_250", 50];	
-	_v addItemCargoGlobal ["ACE_bodyBag", 50];	
+	_v addItemCargoGlobal ["ACE_salineIV_250", 50];
+	_v addItemCargoGlobal ["ACE_bodyBag", 50];
 } else {
 	_v addItemCargoGlobal ["FirstAidKit", 150];
 	_v addItemCargoGlobal ["Medikit", 5];
@@ -106,10 +106,10 @@ if ADF_mod_ACE3 then {
 _v addWeaponCargoGlobal ["Rangefinder", 1];
 _v addItemCargoGlobal ["NVGoggles", 3];
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Vector", 1];		
-};	
+	_v addItemCargoGlobal ["ACE_Vector", 1];
+};
 
-// Gear kit 
+// Gear kit
 _v addBackpackCargoGlobal ["B_AssaultPack_rgr_Medic", 3];
 
 // Misc items

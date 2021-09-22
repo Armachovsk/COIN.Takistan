@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,41 +23,41 @@ map you need to define at least the name, position, shape and type.
 REQUIRED PARAMETERS:
 0. string:    marker name
 1. position:  String / Array [x, y, z] / object or vehicle / group / location,
-              representing the position where the marker will be created.
+	representing the position where the marker will be created.
 
 OPTIONAL PARAMETERS:
 2. string:    Shape: determines shape (actual type) of the marker:
-              - "ICON"
-              - "RECTANGLE"
-              - "ELLIPSE"
-              - "POLYLINE"
-			  - "" (default)
+	- "ICON"
+	- "RECTANGLE"
+	- "ELLIPSE"
+	- "POLYLINE"
+			- "" (default)
 3. string:    Type: Marker type, a class name in CfgMarkers:
-              https://community.bistudio.com/wiki/cfgMarkers
-			  Default: ""
+	https://community.bistudio.com/wiki/cfgMarkers
+			Default: ""
 4. integer:   Width of the marker (default: 1)
 5. integer:   Height of the marker (default: 1)
 6. integer:   Direction of the marker 0-360 degrees (default: 0)
 7. string:    Colour: Marker colour, according to CfgMarkColors:
-              https://community.bistudio.com/wiki/Arma_3_CfgMarkerColors
-			  Default: "ColorEAST"
+	https://community.bistudio.com/wiki/Arma_3_CfgMarkerColors
+			Default: "ColorEAST"
 8. string:    Text: text to be displayed on the map. Free format.
 9. string:   Brush: fill texture for the marker ("RECTANGLE" or "ELLIPSE"):
-			  "Solid"
-			  "SolidFull"
-			  "Horizontal"
-			  "Vertical"
-			  "Grid"
-			  "FDiagonal"
-			  "BDiagonal"
-			  "DiagGrid"
-			  "Cross"
-			  "Border"
-			  "SolidBorder"
-			  "" (default)
+			"Solid"
+			"SolidFull"
+			"Horizontal"
+			"Vertical"
+			"Grid"
+			"FDiagonal"
+			"BDiagonal"
+			"DiagGrid"
+			"Cross"
+			"Border"
+			"SolidBorder"
+			"" (default)
 10. integer:  Alpha: Sets the marker alpha channel (0 - 1):
-              0 invisible
-              1 fully visible (default)
+	0 invisible
+	1 fully visible (default)
 
 EXAMPLES USAGE IN SCRIPT:
 ["myMarker", [4000,4000,0], "ICON", "b_hq", 1, 1, 0, "colorBLUFOR", "FOB", "", 0.7] call ADF_fnc_createMarker;
@@ -108,7 +108,7 @@ if !(_shape isEqualTo "SYSTEM") then {
 	if !(_brush == "") then {_marker setMarkerBrush _brush};
 	_marker setMarkerColor _color;
 	_marker setMarkerSize [_sizeX, _sizeY];
-	_marker setMarkerDir _direction;	
+	_marker setMarkerDir _direction;
 	_marker setMarkerAlpha _alpha;
 };
 

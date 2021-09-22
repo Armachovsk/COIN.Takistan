@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -35,7 +35,7 @@ diag_log "ADF rpt: fnc - executing: ADF_fnc_CAS";
 if (isNil "ADF_CAS_requester") exitWith {["ADF_fnc_CAS - CAS support was activated but the CAS_requester was not defined by the mission maker! Exciting.", true] call ADF_fnc_log; false};
 
 // Init
-ADF_CAS_pos = []; 
+ADF_CAS_pos = [];
 ADF_CAS_active = false;
 ADF_CAS_marker = false;
 ADF_CAS_bingoFuel 	= false;
@@ -47,7 +47,7 @@ ADF_CAS_destroyVars = {
 	ADF_CAS_pos = nil;
 	ADF_CAS_active = nil;
 	ADF_CAS_marker = nil;
-	ADF_CAS_bingoFuel 	= nil; 
+	ADF_CAS_bingoFuel 	= nil;
 	ADF_CAS_spawn = nil;
 	ADF_CAS_vector = nil;
 	ADF_CAS_delay = nil;
@@ -89,7 +89,7 @@ ADF_CAS_server = {
 		case west		: {_markerClass = "ColorWEST"; _vehicleClass = "B_Heli_Attack_01_F"};
 		case east		: {_markerClass = "ColorEAST"; _vehicleClass = "O_Heli_Attack_02_black_F"};
 		case independent	: {_markerClass = "ColorGUER"; _vehicleClass = "I_Heli_light_03_F"};
-	};	
+	};
 
 	private _marker = createMarker ["mCAS_SAD", ADF_CAS_pos];
 	_marker setMarkerSize [500, 500];
@@ -104,7 +104,7 @@ ADF_CAS_server = {
 	tCAS setTriggerArea [ADF_CAS_aoTriggerRad, ADF_CAS_aoTriggerRad, 0, false];
 	tCAS setTriggerStatements ["(vehicle ADF_vCAS in thisList && ((getPosATL ADF_vCAS) # 2) > 25)", "", ""];
 
-	waitUntil {sleep 1; ADF_CAS_active}; // wait till the 9-liners are finished and CAS-delay timer is 0. 
+	waitUntil {sleep 1; ADF_CAS_active}; // wait till the 9-liners are finished and CAS-delay timer is 0.
 
 	// Create CAS aircraft
 	private _crew = createGroup ADF_CAS_side;
@@ -118,7 +118,7 @@ ADF_CAS_server = {
 	ADF_vCAS addEventHandler ["killed", "ADF_CAS_bingoFuel = true; publicVariable 'ADF_CAS_bingoFuel';ADF_CAS_kia = true;"];
 
 	// Attach marker to CAS aircraft
-	[ADF_vCAS] spawn {	
+	[ADF_vCAS] spawn {
 		private _marker = createMarker ["mCasIcon", getPosASL ADF_vCAS];
 		_marker setMarkerSize [.8, .8];
 		_marker setMarkerShape "ICON";
@@ -154,9 +154,9 @@ ADF_CAS_server = {
 	// RTB Bingo Fuel
 	deleteMarker "mCAS_SAD";
 	{[_x] call ADF_fnc_heliPilotAI} forEach units _crew;
-	[_crew] call ADF_fnc_delWaypoint; 
+	[_crew] call ADF_fnc_delWaypoint;
 	ADF_CAS_bingoFuel = true; publicVariable "ADF_CAS_bingoFuel";
-	ADF_vCAS setFuel 0.3;	
+	ADF_vCAS setFuel 0.3;
 
 	private _waypoint = _crew addWaypoint [ADF_CAS_vector, 0];
 	_waypoint setWaypointType "MOVE";
@@ -193,7 +193,7 @@ ADF_CAS_activated = {
 	private _msg_msl	= round (_dummyPosition # 2);
 	[_dummy] call ADF_fnc_delete;
 
-	private _eta	= [ADF_CAS_spawn, ADF_CAS_pos, 275] call ADF_fnc_calcTravelTime; 
+	private _eta	= [ADF_CAS_spawn, ADF_CAS_pos, 275] call ADF_fnc_calcTravelTime;
 	private _eta_mins	= str (floor ((ADF_CAS_delay / 60) + (_eta # 1)));
 
 	// NLT
@@ -201,7 +201,7 @@ ADF_CAS_activated = {
 	private _minutes	= date # 4;
 	if ((_minutes + 10) >= 60) then {
 		_hour	= _hour + 1;
-		_minutes	= (_minutes + 10) - 60; 
+		_minutes	= (_minutes + 10) - 60;
 	} else {_minutes = _minutes + 10};
 
 	private _msg_nlt = format ["%1:%2", _hour, _minutes];
@@ -266,13 +266,13 @@ ADF_CAS_activated = {
 
 	// Time from map entrance it will take CAS to reach the AO
 	if ADF_debug then {diag_log format ["ADF rpt: ADF_fnc_CAS_Activated - CAS delay sleep: %1",ADF_CAS_delay]};
-	sleep ADF_CAS_delay; 
+	sleep ADF_CAS_delay;
 
 	// Inform the server to create the CAS vehicle
-	ADF_CAS_active = true; publicVariableServer "ADF_CAS_active"; 
+	ADF_CAS_active = true; publicVariableServer "ADF_CAS_active";
 
 	// Wait till the CAS ao timer runs out
-	waitUntil {sleep 3; ADF_CAS_bingoFuel}; 
+	waitUntil {sleep 3; ADF_CAS_bingoFuel};
 
 	if (!alive ADF_vCAS) exitWith { // CAS is kia!
 		hintSilent parseText format ["<img size= '5' shadow='false' image='" +ADF_clanLogo+ "'/><br/><br/><t color='#6C7169' size='1.1' font='EtelkaNarrowMediumPro' align='left'>%1 this is %3. %2 is down. How copy?</t><br/><br/>", ADF_HQ_callSign, ADF_CAS_callSign, ADF_CAS_groupName];
@@ -281,11 +281,11 @@ ADF_CAS_activated = {
 		if (ADF_CAS_log) then {
 			private _logTime = [dayTime] call BIS_fnc_timeToString; private _logTimeText = "Log: " + _logTime;
 			player createDiaryRecord [ADF_CAS_logName, [_logTimeText,"<br/><br/><font color='#9da698' size='14'>From: " +ADF_HQ_callSign+ "</font><br/><font color='#9da698' size='14'>Time: " + _logTime + "</font><br/><br/><font color='#6c7169'>------------------------------------------------------------------------------------------</font><br/><br/><font color='#6C7169'>" +ADF_CAS_groupName+ " this is " +ADF_HQ_callSign+ ". Solid copy. We'll inform AOC. Stay on mission. Out.</font><br/><br/>"]];
-		};		
+		};
 		sleep 12;
 		hintSilent parseText format ["<img size= '5' shadow='false' image='" +ADF_clanLogo+ "'/><br/><br/><t color='#6C7169' size='1.1' font='EtelkaNarrowMediumPro' align='left'>%1 this is %3. Roger. Out.</t><br/><br/>", ADF_HQ_callSign, ADF_CAS_callSign, ADF_CAS_groupName];
 		call ADF_CAS_destroyVars;
-	};	
+	};
 
 	hintSilent parseText format ["<img size= '5' shadow='false' image='" +ADF_CAS_image+ "'/><br/><br/><t color='#6C7169' size='1.1' font='EtelkaNarrowMediumPro' align='left'>%2: %3 this is %1 with bingo fuel. We are RTB. Over.</t><br/><br/>", ADF_CAS_callSign, ADF_CAS_pilotName, ADF_CAS_groupName];
 	if (ADF_CAS_log) then {
@@ -337,7 +337,7 @@ if hasInterface then {
 	if (ADF_CAS_log) then {
 		private _logTime = [dayTime] call BIS_fnc_timeToString;
 		private _logTimeText = "Log: " + _logTime;
-		player createDiaryRecord [_n, [_logTimeText,"<br/><br/><font color='#9da698' size='14'>From: "+ ADF_CAS_callSign +"</font><br/><font color='#9da698' size='14'>Time: " + _logTime + "</font><br/><br/><font color='#6c7169'>------------------------------------------------------------------------------------------</font><br/><br/><font color='#6C7169'>" +ADF_CAS_pilotName+ ": " +ADF_CAS_groupName+ " this is " +ADF_CAS_callSign+ ". Standing by with " +ADF_CAS_station+ ". Out.</font><br/><br/>"]];	
+		player createDiaryRecord [_n, [_logTimeText,"<br/><br/><font color='#9da698' size='14'>From: "+ ADF_CAS_callSign +"</font><br/><font color='#9da698' size='14'>Time: " + _logTime + "</font><br/><br/><font color='#6c7169'>------------------------------------------------------------------------------------------</font><br/><br/><font color='#6C7169'>" +ADF_CAS_pilotName+ ": " +ADF_CAS_groupName+ " this is " +ADF_CAS_callSign+ ". Standing by with " +ADF_CAS_station+ ". Out.</font><br/><br/>"]];
 	};
 };
 

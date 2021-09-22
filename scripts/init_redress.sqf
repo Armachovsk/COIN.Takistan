@@ -18,7 +18,7 @@ ADF_fnc_redressInsurgents = {
 
 	// Strip the unit
 	[_unit, true] call ADF_fnc_stripUnit;
-	
+
 	// Define containers
 	private _AKM = [];
 	private _AKMGP = [];
@@ -48,18 +48,18 @@ ADF_fnc_redressInsurgents = {
 			//_backpackLight append [];
 			if (ADF_mod_3CB_FACT && ADF_mod_PROPFOR) exitWith {
 				_allUniforms append [
-					"UK3CB_TKM_O_U_01", "UK3CB_TKM_O_U_03", "UK3CB_TKM_O_U_04", "UK3CB_TKM_O_U_05", "UK3CB_TKM_O_U_06", 
-					"UK3CB_TKM_B_U_01", "UK3CB_TKM_B_U_03", "UK3CB_TKM_B_U_04", "UK3CB_TKM_B_U_05", "UK3CB_TKM_B_U_06", 
-					"UK3CB_TKM_I_U_01", "UK3CB_TKM_I_U_03", "UK3CB_TKM_I_U_04", "UK3CB_TKM_I_U_05", "UK3CB_TKM_I_U_06", 			
-					"LOP_U_AM_Fatigue_04", "LOP_U_AM_Fatigue_04_2", "LOP_U_AM_Fatigue_04_3", "LOP_U_AM_Fatigue_04_4", "LOP_U_AM_Fatigue_04_5", "LOP_U_AM_Fatigue_04_6", 
-					"LOP_U_AM_Fatigue_03", "LOP_U_AM_Fatigue_03_2", "LOP_U_AM_Fatigue_03_3", "LOP_U_AM_Fatigue_03_4", "LOP_U_AM_Fatigue_03_5", "LOP_U_AM_Fatigue_03_6", 
-					"LOP_U_AM_Fatigue_02", "LOP_U_AM_Fatigue_02_2", "LOP_U_AM_Fatigue_02_3", "LOP_U_AM_Fatigue_02_4", "LOP_U_AM_Fatigue_02_5", "LOP_U_AM_Fatigue_02_6", 
-					"LOP_U_AM_Fatigue_01", "LOP_U_AM_Fatigue_01_2", "LOP_U_AM_Fatigue_01_3", "LOP_U_AM_Fatigue_01_4", "LOP_U_AM_Fatigue_01_5", "LOP_U_AM_Fatigue_01_6"		
+					"UK3CB_TKM_O_U_01", "UK3CB_TKM_O_U_03", "UK3CB_TKM_O_U_04", "UK3CB_TKM_O_U_05", "UK3CB_TKM_O_U_06",
+					"UK3CB_TKM_B_U_01", "UK3CB_TKM_B_U_03", "UK3CB_TKM_B_U_04", "UK3CB_TKM_B_U_05", "UK3CB_TKM_B_U_06",
+					"UK3CB_TKM_I_U_01", "UK3CB_TKM_I_U_03", "UK3CB_TKM_I_U_04", "UK3CB_TKM_I_U_05", "UK3CB_TKM_I_U_06",
+					"LOP_U_AM_Fatigue_04", "LOP_U_AM_Fatigue_04_2", "LOP_U_AM_Fatigue_04_3", "LOP_U_AM_Fatigue_04_4", "LOP_U_AM_Fatigue_04_5", "LOP_U_AM_Fatigue_04_6",
+					"LOP_U_AM_Fatigue_03", "LOP_U_AM_Fatigue_03_2", "LOP_U_AM_Fatigue_03_3", "LOP_U_AM_Fatigue_03_4", "LOP_U_AM_Fatigue_03_5", "LOP_U_AM_Fatigue_03_6",
+					"LOP_U_AM_Fatigue_02", "LOP_U_AM_Fatigue_02_2", "LOP_U_AM_Fatigue_02_3", "LOP_U_AM_Fatigue_02_4", "LOP_U_AM_Fatigue_02_5", "LOP_U_AM_Fatigue_02_6",
+					"LOP_U_AM_Fatigue_01", "LOP_U_AM_Fatigue_01_2", "LOP_U_AM_Fatigue_01_3", "LOP_U_AM_Fatigue_01_4", "LOP_U_AM_Fatigue_01_5", "LOP_U_AM_Fatigue_01_6"
 				];
 				_allHeadGear append [
-					"UK3CB_TKC_H_Turban_01_1", "UK3CB_TKC_H_Turban_02_1", "UK3CB_TKC_H_Turban_03_1", "UK3CB_TKC_H_Turban_05_1", 
-					"UK3CB_TKM_O_H_Turban_01_1", "UK3CB_TKM_O_H_Turban_02_1", "UK3CB_TKM_O_H_Turban_03_1", "UK3CB_TKM_O_H_Turban_04_1", "UK3CB_TKM_O_H_Turban_05_1", 
-					"UK3CB_TKM_I_H_Turban_01_1", "UK3CB_TKM_I_H_Turban_02_1", 
+					"UK3CB_TKC_H_Turban_01_1", "UK3CB_TKC_H_Turban_02_1", "UK3CB_TKC_H_Turban_03_1", "UK3CB_TKC_H_Turban_05_1",
+					"UK3CB_TKM_O_H_Turban_01_1", "UK3CB_TKM_O_H_Turban_02_1", "UK3CB_TKM_O_H_Turban_03_1", "UK3CB_TKM_O_H_Turban_04_1", "UK3CB_TKM_O_H_Turban_05_1",
+					"UK3CB_TKM_I_H_Turban_01_1", "UK3CB_TKM_I_H_Turban_02_1",
 					"LOP_H_Pakol", "LOP_H_Shemag_BLK", "LOP_H_Shemag_BLU", "LOP_H_Shemag_OLV", "LOP_H_Shemag_TAN", "LOP_H_Turban_mask"
 				];
 				_allVests = [
@@ -67,29 +67,29 @@ ADF_fnc_redressInsurgents = {
 				];
 				_LeeEnfield = selectRandom [["LOP_Weap_LeeEnfield", "LOP_10rnd_77mm_mag"], ["UK3CB_Enfield_Rail", "UK3CB_Enfield_Mag"]];
 				_FNFal = selectRandom [["UK3CB_FNFAL_FULL", "UK3CB_FNFAL_762_20Rnd"], ["UK3CB_FNFAL_PARA", "UK3CB_FNFAL_762_20Rnd"], ["rhs_weap_svds_npz", "rhs_10Rnd_762x54mmR_7N1"], ["rhs_weap_svds", "rhs_10Rnd_762x54mmR_7N1"]];
-				
+
 			};
 			if ADF_mod_3CB_FACT exitWith {
 				_allUniforms append [
-					"UK3CB_TKM_O_U_01", "UK3CB_TKM_O_U_03", "UK3CB_TKM_O_U_04", "UK3CB_TKM_O_U_05", "UK3CB_TKM_O_U_06", 
-					"UK3CB_TKM_B_U_01", "UK3CB_TKM_B_U_03", "UK3CB_TKM_B_U_04", "UK3CB_TKM_B_U_05", "UK3CB_TKM_B_U_06", 
+					"UK3CB_TKM_O_U_01", "UK3CB_TKM_O_U_03", "UK3CB_TKM_O_U_04", "UK3CB_TKM_O_U_05", "UK3CB_TKM_O_U_06",
+					"UK3CB_TKM_B_U_01", "UK3CB_TKM_B_U_03", "UK3CB_TKM_B_U_04", "UK3CB_TKM_B_U_05", "UK3CB_TKM_B_U_06",
 					"UK3CB_TKM_I_U_01", "UK3CB_TKM_I_U_03", "UK3CB_TKM_I_U_04", "UK3CB_TKM_I_U_05", "UK3CB_TKM_I_U_06"
 				];
 				_allVests append [
 					"UK3CB_V_Pouch"
 				];
 				_allHeadGear append [
-					"UK3CB_TKC_H_Turban_01_1", "UK3CB_TKC_H_Turban_02_1", "UK3CB_TKC_H_Turban_03_1", "UK3CB_TKC_H_Turban_05_1", 
+					"UK3CB_TKC_H_Turban_01_1", "UK3CB_TKC_H_Turban_02_1", "UK3CB_TKC_H_Turban_03_1", "UK3CB_TKC_H_Turban_05_1",
 					"UK3CB_TKM_O_H_Turban_01_1", "UK3CB_TKM_O_H_Turban_02_1", "UK3CB_TKM_O_H_Turban_03_1", "UK3CB_TKM_O_H_Turban_04_1", "UK3CB_TKM_O_H_Turban_05_1"
 				];
 				_LeeEnfield = ["UK3CB_Enfield_Rail", "UK3CB_Enfield_Mag"];
 				_FNFal = selectRandom [["UK3CB_FNFAL_FULL", "UK3CB_FNFAL_762_20Rnd"], ["UK3CB_FNFAL_PARA", "UK3CB_FNFAL_762_20Rnd"], ["rhs_weap_svds", "rhs_10Rnd_762x54mmR_7N1"]];
-			};			
+			};
 			if ADF_mod_PROPFOR exitWith {
 				_allUniforms append [
-					"LOP_U_AM_Fatigue_04", "LOP_U_AM_Fatigue_04_2", "LOP_U_AM_Fatigue_04_3", "LOP_U_AM_Fatigue_04_4", "LOP_U_AM_Fatigue_04_5", "LOP_U_AM_Fatigue_04_6", 
-					"LOP_U_AM_Fatigue_03", "LOP_U_AM_Fatigue_03_2", "LOP_U_AM_Fatigue_03_3", "LOP_U_AM_Fatigue_03_4", "LOP_U_AM_Fatigue_03_5", "LOP_U_AM_Fatigue_03_6", 
-					"LOP_U_AM_Fatigue_02", "LOP_U_AM_Fatigue_02_2", "LOP_U_AM_Fatigue_02_3", "LOP_U_AM_Fatigue_02_4", "LOP_U_AM_Fatigue_02_5", "LOP_U_AM_Fatigue_02_6", 
+					"LOP_U_AM_Fatigue_04", "LOP_U_AM_Fatigue_04_2", "LOP_U_AM_Fatigue_04_3", "LOP_U_AM_Fatigue_04_4", "LOP_U_AM_Fatigue_04_5", "LOP_U_AM_Fatigue_04_6",
+					"LOP_U_AM_Fatigue_03", "LOP_U_AM_Fatigue_03_2", "LOP_U_AM_Fatigue_03_3", "LOP_U_AM_Fatigue_03_4", "LOP_U_AM_Fatigue_03_5", "LOP_U_AM_Fatigue_03_6",
+					"LOP_U_AM_Fatigue_02", "LOP_U_AM_Fatigue_02_2", "LOP_U_AM_Fatigue_02_3", "LOP_U_AM_Fatigue_02_4", "LOP_U_AM_Fatigue_02_5", "LOP_U_AM_Fatigue_02_6",
 					"LOP_U_AM_Fatigue_01", "LOP_U_AM_Fatigue_01_2", "LOP_U_AM_Fatigue_01_3", "LOP_U_AM_Fatigue_01_4", "LOP_U_AM_Fatigue_01_5", "LOP_U_AM_Fatigue_01_6"
 				];
 				_allHeadGear append [
@@ -110,15 +110,15 @@ ADF_fnc_redressInsurgents = {
 			_SVD = ["CUP_srifle_SVD", "CUP_10Rnd_762x54_SVD_M"];
 			_FNFal = ["CUP_arifle_FNFAL5061_wooden", "CUP_20Rnd_762x51_FNFAL_M"];
 			_LeeEnfield = ["CUP_srifle_Mosin_Nagant", "CUP_5Rnd_762x54_Mosin_M"];
-			
+
 			_allUniforms append [
-				"CFP_U_KhetPartug_Long_Purple", "CFP_U_KhetPartug_Long_olive", "CFP_U_KhetPartug_Long_light_olive", "CFP_U_KhetPartug_Long_Grey", "CUP_O_TKI_Khet_Partug_01", "CFP_U_KhetPartug_Long_Creme", "CFP_U_KhetPartug_Long_Brown", "CUP_O_TKI_Khet_Partug_02", "CFP_U_KhetPartug_Long_BlueGrey", "CFP_U_KhetPartug_Long_Blue", "CFP_U_KhetPartug_Long_Black", "CUP_O_TKI_Khet_Partug_04", 
-				"CFP_U_KhetPartug_Short_White", "CFP_U_KhetPartug_Short_Tan", "CFP_U_KhetPartug_Short_light_olive", "CUP_O_TKI_Khet_Partug_06", "CFP_U_KhetPartug_Short_Creme", "CUP_O_TKI_Khet_Partug_05", "CUP_O_TKI_Khet_Partug_08", "CFP_U_KhetPartug_Short_BlueGrey", "CUP_O_TKI_Khet_Partug_07", "CFP_U_KhetPartug_Short_Blue", "CFP_U_KhetPartug_Short_Black", 
+				"CFP_U_KhetPartug_Long_Purple", "CFP_U_KhetPartug_Long_olive", "CFP_U_KhetPartug_Long_light_olive", "CFP_U_KhetPartug_Long_Grey", "CUP_O_TKI_Khet_Partug_01", "CFP_U_KhetPartug_Long_Creme", "CFP_U_KhetPartug_Long_Brown", "CUP_O_TKI_Khet_Partug_02", "CFP_U_KhetPartug_Long_BlueGrey", "CFP_U_KhetPartug_Long_Blue", "CFP_U_KhetPartug_Long_Black", "CUP_O_TKI_Khet_Partug_04",
+				"CFP_U_KhetPartug_Short_White", "CFP_U_KhetPartug_Short_Tan", "CFP_U_KhetPartug_Short_light_olive", "CUP_O_TKI_Khet_Partug_06", "CFP_U_KhetPartug_Short_Creme", "CUP_O_TKI_Khet_Partug_05", "CUP_O_TKI_Khet_Partug_08", "CFP_U_KhetPartug_Short_BlueGrey", "CUP_O_TKI_Khet_Partug_07", "CFP_U_KhetPartug_Short_Blue", "CFP_U_KhetPartug_Short_Black",
 				"CUP_U_C_Profiteer_02", "CUP_U_C_Profiteer_04", "CUP_U_C_Profiteer_03"
 			];
 			_allVests append [
 				"CFP_AK_VEST_EDRL", "CFP_AK_VEST_EMR", "CFP_AK_VEST_LOlive", "CFP_AK_VEST_Tan", "CFP_AK_VEST_Olive",
-				"CFP_HouthisJacket", 
+				"CFP_HouthisJacket",
 				"CFP_TakJacket_AfricanWoodland", "CFP_TakJacket_ChocChip", "CFP_TakJacket_DDPM", "CFP_TakJacket_EDRL", "CFP_TakJacket_M81", "CFP_TakJacket_Marpat", "CFP_TakJacket_OD", "CFP_TakJacket_PolygonDesert", "CFP_TakJacket_PolygonWoodland", "CFP_TakJacket_SudanWoodland", "CFP_TakJacket_Woodland",
 				"CFP_UtilityJacket_ChocChip", "CFP_UtilityJacket_EDRL", "CFP_UtilityJacket_M81", "CFP_UtilityJacket_PolygonDesert", "CFP_UtilityJacket_PolygonWoodland", "CFP_UtilityJacket_Woodland",
 				"CUP_V_O_Ins_Carrier_Rig_Light", "CUP_V_O_Ins_Carrier_Rig_MG", "CUP_V_O_Ins_Carrier_Rig",
@@ -138,7 +138,7 @@ ADF_fnc_redressInsurgents = {
 				"CFP_Shemagh_Full_Red", "CFP_Shemagh_Full_Tan", "CFP_Shemagh_Full_White", "CFP_Shemagh_Full_Green", "CFP_Shemagh_Full_Creme",
 				"SP_Shemagh_Tan", "SP_Shemagh_Grey", "SP_Shemagh_Green", "SP_Shemagh_CheckWhite", "SP_Shemagh_CheckTan", "SP_Shemagh_CheckRed", "SP_Shemagh_CheckGreen", "SP_Shemagh_CheckBlue", "SP_Shemagh_CheckBlack", "SP_Shemagh_Black",
 				"CUP_H_TKI_Pakol_1_01", "CUP_H_TKI_Pakol_1_02", "CUP_H_TKI_Pakol_1_03", "CUP_H_TKI_Pakol_1_04", "CUP_H_TKI_Pakol_1_05", "CUP_H_TKI_Pakol_1_06",
-				"CUP_H_TKI_Pakol_2_01", "CUP_H_TKI_Pakol_2_02", "CUP_H_TKI_Pakol_2_03", "CUP_H_TKI_Pakol_2_04", "CUP_H_TKI_Pakol_2_05", "CUP_H_TKI_Pakol_2_06", 
+				"CUP_H_TKI_Pakol_2_01", "CUP_H_TKI_Pakol_2_02", "CUP_H_TKI_Pakol_2_03", "CUP_H_TKI_Pakol_2_04", "CUP_H_TKI_Pakol_2_05", "CUP_H_TKI_Pakol_2_06",
 				"CUP_H_TKI_SkullCap_01", "CUP_H_TKI_SkullCap_02", "CUP_H_TKI_SkullCap_03", "CUP_H_TKI_SkullCap_04", "CUP_H_TKI_SkullCap_05", "CUP_H_TKI_SkullCap_06"
 			];
 			_backpackHeavy append ["CUP_B_AlicePack_Khaki", "CFP_Kitbag_Drab"];
@@ -151,23 +151,23 @@ ADF_fnc_redressInsurgents = {
 
 	// Add vest
 	if (_addVest) then {_unit addVest (selectRandom _allVests);};
-	
+
 	// Add head gear
 	if ((random 100) < 65) then {
 		_unit addHeadgear (selectRandom _allHeadGear);
-	};	
-	
+	};
+
 	// Facegear
 	if ((random 100) < 75) then {
 		_unit addGoggles (selectRandom ADF_civilian_facewear);
-	};		
-	
+	};
+
 	// Pri weapon
 	private _allWeapons = selectRandom [
-		[_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], 
+		[_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1],
 		[_FNFal # 0, _FNFal # 1], [_FNFal # 0, _FNFal # 1],
-		[_AKMGP # 0, _AKMGP # 1], [_AKMGP # 0, _AKMGP # 1], 
-		[_AKS74U # 0, _AKS74U # 1], [_AKS74U # 0, _AKS74U # 1], 
+		[_AKMGP # 0, _AKMGP # 1], [_AKMGP # 0, _AKMGP # 1],
+		[_AKS74U # 0, _AKS74U # 1], [_AKS74U # 0, _AKS74U # 1],
 		[_LeeEnfield # 0, _LeeEnfield # 1],
 		[_LeeEnfield # 0, _LeeEnfield # 1],
 		[_ASVAL # 0 , _ASVAL # 1], [_ASVAL # 0 , _ASVAL # 1],
@@ -175,9 +175,9 @@ ADF_fnc_redressInsurgents = {
 		[_PKP # 0, _PKP # 1],
 		[_SVD # 0, _SVD # 1]
 	];
-	private _priWeapon = _allWeapons # 0;	
+	private _priWeapon = _allWeapons # 0;
 	private _priWeaponMag = _allWeapons # 1;
-	
+
 	if (_role == "O_medic_F" || _role == "O_recon_medic_F") then {
 		if ADF_mod_RHS then {_unit addBackpack "rhs_medic_bag"} else {_unit addBackpack "CUP_B_SLA_Medicbag"};
 		for "_i" from 1 to 5 do {
@@ -188,14 +188,14 @@ ADF_fnc_redressInsurgents = {
 		_unit addMagazine (_AKS74U # 1);
 		_unit addWeapon (_AKS74U # 0);
 	} else {
-		_unit addMagazine _priWeaponMag;	
+		_unit addMagazine _priWeaponMag;
 		_unit addWeapon _priWeapon;
 		if (random 100 > 75) then {_unit addBackpack (selectRandom _backpackLight)};
 	};
-		
+
 	switch _priWeapon do {
-		case (_PKP # 0);		
-		case (_PKM # 0): {		
+		case (_PKP # 0);
+		case (_PKM # 0): {
 			_unit addBackpack (selectRandom _backpackHeavy);
 			_unit addMagazines [_priWeaponMag, 2];
 		};
@@ -218,7 +218,7 @@ ADF_fnc_redressInsurgents = {
 			if ADF_mod_RHS then {
 				_unit addBackpack "rhs_rpg_empty";
 				if ((random 1) > 0.20) then {
-					// AT					
+					// AT
 					[_unit, "rhs_weap_rpg7", 1, "rhs_rpg7_PG7VL_mag"] call BIS_fnc_addWeapon;
 					_unit addSecondaryWeaponItem "rhs_acc_pgo7v3";
 					_unit addItemToBackpack "rhs_rpg7_PG7VL_mag";
@@ -230,7 +230,7 @@ ADF_fnc_redressInsurgents = {
 			} else {
 				_unit addBackpack (selectRandom ["CFP_RPGPack_Grey", "CFP_RPGPack_Khaki", "CFP_RPGPack_Black"]);
 				if ((random 1) > 0.20) then {
-					// AT					
+					// AT
 					[_unit, "CUP_launch_RPG7V", 1, "CUP_PG7V_M"] call BIS_fnc_addWeapon;
 					_unit addSecondaryWeaponItem "CUP_optic_PGO7V";
 					_unit addItemToBackpack "CUP_PG7V_M";
@@ -248,18 +248,18 @@ ADF_fnc_redressInsurgents = {
 				_unit addMagazine "SmokeShell";
 				_unit addMagazine "SmokeShell";
 			};
-		};	
-	};	
+		};
+	};
 
 	_unit addItem "FirstAidKit";
 	_unit addMagazine "SmokeShell";
-	
+
 	// Weapon light
 	if (((date select 3) < 5) && ((date select 3) > 19) && (random 1 < 0.33)) then {_unit enableGunLights "forceOn"};
-	
+
 	// Add intel
 	[_unit, [], true, 10, "", "COIN_fnc_intelFound"] call ADF_fnc_searchIntel;
-	
+
 	// Misc
 	_unit allowDamage true; // hack ADF 2.22
 
@@ -273,7 +273,7 @@ ADF_fnc_redressArmy_inf = {
 
 	// Strip the unit
 	[_unit, true] call ADF_fnc_stripUnit;
-	
+
 	// Add containers
 	private _backpack = [];
 	private _faceWear = ["G_Aviator", "G_Lowprofile", "G_Sport_Blackred", "G_Sport_Greenblack", "G_Spectacles_Tinted"];
@@ -288,14 +288,14 @@ ADF_fnc_redressArmy_inf = {
 			if ADF_mod_3CB_FACT exitWith {
 				_unit forceAddUniform "UK3CB_TKA_I_U_CombatUniform_01_OLI";
 				_unit addHeadgear "UK3CB_TKA_I_H_SSh68_Khk";
-			};			
+			};
 			if ADF_mod_PROPFOR exitWith {
 				_unit forceAddUniform "LOP_U_TKA_Fatigue_01";
 				_unit addHeadgear "LOP_H_SSh68Helmet_TAN";
 			};
-		};		
+		};
 		_unit forceAddUniform "CUP_U_O_TK_Green";
-		_unit addHeadgear selectRandom ["CUP_H_SLA_Helmet_DES", "CUP_H_SLA_Helmet_DES_worn"];		
+		_unit addHeadgear selectRandom ["CUP_H_SLA_Helmet_DES", "CUP_H_SLA_Helmet_DES_worn"];
 		_backpack append ["B_FieldPack_cbr", "B_Kitbag_cbr", "CUP_B_USPack_Coyote"];
 		_faceWear = [
 			"CFP_Beard", "CFP_Beard_Grey", "CFP_Beard_red",
@@ -308,43 +308,43 @@ ADF_fnc_redressArmy_inf = {
 			"CUP_G_Oakleys_Embr",
 			"CUP_G_Grn_Scarf_Shades", "CUP_G_Tan_Scarf_Shades", "CUP_FR_NeckScarf5"
 		];
-	};	
-	
+	};
+
 	// Primary weapon
 	private _akm = [];
 	private _akm_gp25 = [];
 	private _aks74u = [];
 	private _pkm = [];
 	private _pkp = [];
-	private _svd = [];	
+	private _svd = [];
 	if ADF_mod_RHS then {
 		_akm = ["rhs_weap_akm", "rhs_30Rnd_762x39mm"];
 		_akm_gp25 = ["rhs_weap_akm_gp25", "rhs_30Rnd_762x39mm"];
 		_aks74u = ["rhs_weap_aks74u", "rhs_30Rnd_545x39_AK"];
 		_pkm = ["rhs_weap_pkm", "rhs_100Rnd_762x54mmR"];
 		_pkp = ["rhs_weap_pkp", "rhs_100Rnd_762x54mmR"];
-		_svd = ["rhs_weap_svdp_wd", "rhs_10Rnd_762x54mmR_7N1"];		
+		_svd = ["rhs_weap_svdp_wd", "rhs_10Rnd_762x54mmR_7N1"];
 	} else {
 		_akm = ["CUP_arifle_AKM", "CUP_30Rnd_762x39_AK47_bakelite_M"];
 		_akm_gp25 = ["CUP_arifle_AKM_GL", "CUP_30Rnd_762x39_AK47_bakelite_M"];
 		_aks74u = ["CUP_arifle_AKS74U", "CUP_30Rnd_545x39_AK74_plum_M"];
 		_pkm = ["CUP_lmg_PKMN", "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M"];
 		_pkp = ["CUP_lmg_Pecheneg_desert", "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M"];
-		_svd = ["CUP_srifle_SVD_wdl_top_rail", "CUP_10Rnd_762x54_SVD_M"];	
+		_svd = ["CUP_srifle_SVD_wdl_top_rail", "CUP_10Rnd_762x54_SVD_M"];
 	};
-	
+
 	private _allWeapons = selectRandom [
-		[_akm_gp25 # 0, _akm # 1], [_akm_gp25 # 0, _akm # 1], 
-		[_pkm # 0, _pkp # 1], [_pkp # 0, _pkp # 1], 		
-		[_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], 
-		[_akm_gp25 # 0, _akm # 1], 		
-		[_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], 
-		[_svd # 0, _svd # 1], 		
-		[_pkm # 0, _pkp # 1]		
+		[_akm_gp25 # 0, _akm # 1], [_akm_gp25 # 0, _akm # 1],
+		[_pkm # 0, _pkp # 1], [_pkp # 0, _pkp # 1],
+		[_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1],
+		[_akm_gp25 # 0, _akm # 1],
+		[_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1], [_akm # 0, _akm # 1],
+		[_svd # 0, _svd # 1],
+		[_pkm # 0, _pkp # 1]
 	];
-	private _priWeapon = _allWeapons # 0;	
+	private _priWeapon = _allWeapons # 0;
 	private _priWeaponMag = _allWeapons # 1;
-	
+
 	if (_role == "O_medic_F" || _role == "O_recon_medic_F") then {
 		if ADF_mod_RHS then {_unit addVest "rhs_6b5_medic_khaki"} else {_unit addVest "SP_OpforRig1_Tan"};
 		for "_i" from 1 to 5 do {
@@ -360,21 +360,21 @@ ADF_fnc_redressArmy_inf = {
 		} else {
 			if ADF_mod_RHS then {_unit addVest "rhs_6b5_rifleman_khaki"} else {_unit addVest "CUP_V_O_TK_Vest_2"};
 		};
-		_unit addMagazine _priWeaponMag;	
+		_unit addMagazine _priWeaponMag;
 		_unit addWeapon _priWeapon;
 	};
-		
+
 	switch _priWeapon do {
-		case (_pkp # 0);	
-		case (_pkm # 0): {		
+		case (_pkp # 0);
+		case (_pkm # 0): {
 			_unit addBackpack (selectRandom _backpack);
 			_unit addMagazines [_priWeaponMag, 2];
-			_unit addGoggles "G_Combat";		
+			_unit addGoggles "G_Combat";
 		};
 		case (_svd # 0): {
 			_unit addMagazines [_priWeaponMag, 4];
-			if ADF_mod_RHS then {_unit addPrimaryWeaponItem "rhs_acc_pso1m21"} else {_unit addPrimaryWeaponItem "CUP_optic_PSO_1_1_open"};	
-			_unit addGoggles (selectRandom _faceWear);				
+			if ADF_mod_RHS then {_unit addPrimaryWeaponItem "rhs_acc_pso1m21"} else {_unit addPrimaryWeaponItem "CUP_optic_PSO_1_1_open"};
+			_unit addGoggles (selectRandom _faceWear);
 		};
 		default {
 			_unit addMagazines [_priWeaponMag, 6];
@@ -384,10 +384,10 @@ ADF_fnc_redressArmy_inf = {
 				private _he = ["CUP_1Rnd_HE_GP25_M", "rhs_VOG25"] select ADF_mod_RHS;
 				for "_i" from 1 to 5 do {_unit addItem _he;};
 			};
-			
+
 			// Add Launcher?
-			if ((random 100) > 35) then {				
-				if ((random 100) > 35 && {_priWeapon == _akm # 0}) then { // AT					
+			if ((random 100) > 35) then {
+				if ((random 100) > 35 && {_priWeapon == _akm # 0}) then { // AT
 					_unit addBackpack (selectRandom _backpack);
 					if ((random 100) > 25) then {
 						private _at = [["CUP_launch_RPG7V", "CUP_PG7V_M", "CUP_optic_PGO7V"], ["rhs_weap_rpg7", "rhs_rpg7_PG7VL_mag", "rhs_acc_pgo7v3"]] select ADF_mod_RHS;
@@ -408,30 +408,30 @@ ADF_fnc_redressArmy_inf = {
 					[_unit, _aa, 2] call BIS_fnc_addWeapon;
 				};
 			};
-			
+
 			if ((backpack _unit) == "") then {if ((random 100) > 75) then {
 				_unit addBackpack (selectRandom _backpack);
-				for "_i" from 1 to 2 do {					
+				for "_i" from 1 to 2 do {
 					_unit addMagazine "HandGrenade";
-					_unit addMagazine "SmokeShell";		
+					_unit addMagazine "SmokeShell";
 				};
 			}};
-			
+
 			// Facegear
-			if ((random 1) > 0.4) then {_unit addGoggles (selectRandom _faceWear)};	
-		};	
+			if ((random 1) > 0.4) then {_unit addGoggles (selectRandom _faceWear)};
+		};
 	};
 
 	// Default items
 	_unit linkItem "ItemMap";
 	_unit linkItem "ItemCompass";
-	
+
 	for "_i" from 1 to 2 do {
 		_unit addItem "FirstAidKit";
 		_unit addMagazine "HandGrenade";
-		_unit addMagazine "SmokeShell";		
+		_unit addMagazine "SmokeShell";
 	};
-	
+
 	// Give leaders NVG & leader kit
 	if (rank _unit != "PRIVATE") then {
 		_unit linkItem "Binocular";
@@ -440,16 +440,16 @@ ADF_fnc_redressArmy_inf = {
 		_unit linkItem "ItemWatch";
 		_unit linkItem "ItemGPS";
 	};
-	
+
 	// Weapon light
 	if (((date select 3) < 5) && ((date select 3) > 19) && (random 1 < 0.33)) then {_unit enableGunLights "forceOn"};
-	
+
 	// Add intel
 	[_unit, [], true, 10, "", "COIN_fnc_intelFound"] call ADF_fnc_searchIntel;
-	
+
 	// Misc
 	_unit allowDamage true; // hack ADF 2.22
-	
+
 	[_unit, ""] call BIS_fnc_setUnitInsignia;
 	[_unit, "TKA1"] call BIS_fnc_setUnitInsignia;
 	true
@@ -461,21 +461,21 @@ ADF_fnc_redressArmy_crew = {
 
 	// Strip the unit
 	[_unit, true] call ADF_fnc_stripUnit;
-	
+
 	// Add Uniform container
 	if ADF_mod_RHS then {
-		_unit forceAddUniform "rhs_uniform_gorka_r_y";	
-		_unit addVest "rhsgref_otv_khaki";	
-		_unit addHeadgear "rhs_tsh4_ess";	
+		_unit forceAddUniform "rhs_uniform_gorka_r_y";
+		_unit addVest "rhsgref_otv_khaki";
+		_unit addHeadgear "rhs_tsh4_ess";
 
 		_unit addMagazine ["rhs_30Rnd_545x39_AK", 30];
 		_unit addWeapon "rhs_weap_aks74u";
 		_unit addMagazines ["rhs_30Rnd_545x39_AK", 2];
 		_unit addPrimaryWeaponItem "rhs_acc_dtk1983";
 	} else {
-		_unit forceAddUniform "CFP_BDU_OD_Sudan3";	
-		_unit addVest "CUP_V_O_TK_CrewBelt";	
-		_unit addHeadgear "CUP_H_TK_TankerHelmet";	
+		_unit forceAddUniform "CFP_BDU_OD_Sudan3";
+		_unit addVest "CUP_V_O_TK_CrewBelt";
+		_unit addHeadgear "CUP_H_TK_TankerHelmet";
 
 		_unit addMagazine ["CUP_30Rnd_545x39_AK_M", 30];
 		_unit addWeapon "CUP_arifle_AKS74U";
@@ -491,24 +491,24 @@ ADF_fnc_redressArmy_crew = {
 	for "_i" from 1 to 2 do {
 		_unit addItem "FirstAidKit";
 		_unit addMagazine "HandGrenade";
-		_unit addMagazine "SmokeShell";		
+		_unit addMagazine "SmokeShell";
 	};
-	
+
 	// NVG & leader kit
-	_unit addWeapon "Rangefinder";		
+	_unit addWeapon "Rangefinder";
 	_unit linkItem "ItemWatch";
-	
+
 	// Weapon light
 	if (((date select 3) < 5) && ((date select 3) > 19) && (random 1 < 0.33)) then {_unit enableGunLights "forceOn"};
-	
+
 	// Add intel
 	[_unit, [], true, 10, "", "COIN_fnc_intelFound"] call ADF_fnc_searchIntel;
-		
+
 	// Misc
-	_unit allowDamage true; // hack ADF 2.22	
+	_unit allowDamage true; // hack ADF 2.22
 	[_unit, ""] call BIS_fnc_setUnitInsignia;
 	[_unit, "TKA1"] call BIS_fnc_setUnitInsignia;
-	
+
 	true
 };
 
@@ -518,23 +518,23 @@ ADF_fnc_redressArmy_pilot = {
 
 	// Strip the unit
 	[_unit, true] call ADF_fnc_stripUnit;
-	
+
 	// Add Uniform container
-	_unit forceAddUniform "U_I_pilotCoveralls";	
-	_unit addVest "V_Rangemaster_belt";	
-	
+	_unit forceAddUniform "U_I_pilotCoveralls";
+	_unit addVest "V_Rangemaster_belt";
+
 	if ADF_mod_RHS then {
-		_unit addHeadgear "rhs_zsh7a_mike_green";	
-		
+		_unit addHeadgear "rhs_zsh7a_mike_green";
+
 		_unit addMagazine ["rhs_mag_9x18_8_57N181S", 16];
 		_unit addWeapon "rhs_weap_makarov_pm";
-		_unit addMagazines ["rhs_30Rnd_545x39_AK", 2];	
+		_unit addMagazines ["rhs_30Rnd_545x39_AK", 2];
 	} else {
-		_unit addHeadgear "CUP_H_TK_PilotHelmet";	
-		
+		_unit addHeadgear "CUP_H_TK_PilotHelmet";
+
 		_unit addMagazine ["CUP_8Rnd_9x18_Makarov_M", 16];
 		_unit addWeapon "CUP_hgun_Makarov";
-		_unit addMagazines ["CUP_8Rnd_9x18_Makarov_M", 2];		
+		_unit addMagazines ["CUP_8Rnd_9x18_Makarov_M", 2];
 	};
 
 	// Crew kit default items
@@ -543,18 +543,18 @@ ADF_fnc_redressArmy_pilot = {
 	_unit linkItem "NVGoggles_OPFOR";
 	_unit linkItem "ItemGPS";
 	_unit linkItem "ItemRadio";
-	_unit linkItem "ItemWatch";	
+	_unit linkItem "ItemWatch";
 	for "_i" from 1 to 2 do {
 		_unit addItem "FirstAidKit";
-		_unit addMagazine "SmokeShell";		
+		_unit addMagazine "SmokeShell";
 	};
-	
+
 	// Add intel
 	[_unit, [], true, 10, "", "COIN_fnc_intelFound"] call ADF_fnc_searchIntel;
-			
+
 	// Misc
-	_unit allowDamage true; // hack ADF 2.22	
-	
+	_unit allowDamage true; // hack ADF 2.22
+
 	[_unit, ""] call BIS_fnc_setUnitInsignia;
 	[_unit, "TKA1"] call BIS_fnc_setUnitInsignia;
 	true

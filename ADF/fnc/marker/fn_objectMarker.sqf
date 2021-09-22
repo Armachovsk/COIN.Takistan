@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -51,14 +51,14 @@ private _diag_time = diag_tickTime;
 params [
 	["_object", objNull, [objNull]],
 	["_simpleObject", false, [true]]
-];	
+];
 
 // Check valid vars
 if (_object isKindOf "CAManBase") exitWith {[format ["ADF_fnc_objectMarker - '%1' seems to be a player or AI (%2). Exiting", _object, typeOf _object], true] call ADF_fnc_log; false};
 
 // Get the object position and box model size
 private _position = getPosATL _object;
-private _box = (0 boundingBoxReal _object) # 1; 
+private _box = (0 boundingBoxReal _object) # 1;
 _box resize 2;
 
 // Create the marker

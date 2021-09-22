@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -20,7 +20,7 @@ inside their vehicle and continue fighting. The crew abandons he vehicle once th
 vehicle damage has gone critical (> 0.75). This only applies to vehicles with
 combat facilities.
 
-ADF_fnc_vehicleCrewAI is automatically applied from within the 
+ADF_fnc_vehicleCrewAI is automatically applied from within the
 ADF_fnc_createCrewedVehicle function.
 
 INSTRUCTIONS
@@ -30,15 +30,15 @@ REQUIRED PARAMETERS:
 0. Object:      The vehicle that occupies a vehicle crew.
 
 OPTIONAL PARAMETERS:
-1. String:      Skill set of the vehicle crew. Default: "novice"   
-                "untrained" - unskilled, slow to react 
-                "recruit"   - semi skilled
-                "novice"    - Skilled, trained. Vanilla+ setting
-                "veteran"   - Very skilled, Well trained
-                "expert"    - Special forces quality
+1. String:      Skill set of the vehicle crew. Default: "novice"
+	"untrained" - unskilled, slow to react
+	"recruit"   - semi skilled
+	"novice"    - Skilled, trained. Vanilla+ setting
+	"veteran"   - Very skilled, Well trained
+	"expert"    - Special forces quality
 2. Bool         Set Skill?
-                true (default)
-                false
+	true (default)
+	false
 
 EXAMPLES USAGE IN SCRIPT:
 [_veh, "veteran"] call ADF_fnc_vehicleCrewAI;
@@ -80,11 +80,11 @@ if (canFire _vehicle && (count (crew _vehicle) > 0)) then {
 			{_x action ["EJECT", _vehicle]} forEach crew _vehicle;
 			_vehicle removeEventHandler ["HIT", 0];
 		};
-	}];	
+	}];
 
-	// Alter the AGM cook off settings randomly. 
+	// Alter the AGM cook off settings randomly.
 	if (ADF_mod_ACE3 && {(random 1 > 0.75)}) then {_vehicle setVariable ["ace_cookoff_enable", false]};
-	
+
 	true
 } else {
 	false

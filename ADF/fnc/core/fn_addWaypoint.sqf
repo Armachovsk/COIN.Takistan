@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -25,28 +25,28 @@ REQUIRED PARAMETERS:
 1. Array:       Position [X,Y,Z]
 
 OPTIONAL PARAMETERS:
-2. Integer:     Waypoint radius in meters. Default: 500 
+2. Integer:     Waypoint radius in meters. Default: 500
 3. String:      Waypoint type. Default: "MOVE"
-                Info: https:community.bistudio.com/wiki/Waypoint_types
+	Info: https:community.bistudio.com/wiki/Waypoint_types
 4. String:      Waypoint behaviour. Default: "SAFE"
-                Info: https:community.bistudio.com/wiki/setWaypointBehaviour                
+	Info: https:community.bistudio.com/wiki/setWaypointBehaviour
 5. String:      Waypoint combat mode. Default: "WHITE"
-                Info: https:community.bistudio.com/wiki/setWaypointCombatMode
+	Info: https:community.bistudio.com/wiki/setWaypointCombatMode
 6. String:      Waypoint speed. Default: "LIMITED"
-                Info: https:community.bistudio.com/wiki/waypointSpeed
+	Info: https:community.bistudio.com/wiki/waypointSpeed
 7. String:      Waypoint formation. Default: "FILE"
-                Info: https:community.bistudio.com/wiki/waypointFormation
+	Info: https:community.bistudio.com/wiki/waypointFormation
 8. Integer:     Waypoint completion radius in meters. Default: 5
-                Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
+	Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
 9. String:      The type of group/vehicle to create the waypoint(s) for:
-                - "foot" (default)
-                - "road"
-                - "air"
-                - "sea"
-10. Bool        Search buildings: 
-                - true: Search buildings within a 50 meter radius upon waypoint
-                  completion.
-                - false: Do not search buildings (default)
+	- "foot" (default)
+	- "road"
+	- "air"
+	- "sea"
+10. Bool        Search buildings:
+	- true: Search buildings within a 50 meter radius upon waypoint
+	completion.
+	- false: Do not search buildings (default)
 
 EXAMPLES USAGE IN SCRIPT:
 [_aiGroup, _pos, 500, "MOVE", "COMBAT", "WHITE", "LIMITED", "COLUMN", 15, "foot", false] call ADF_fnc_addWaypoint;
@@ -64,7 +64,7 @@ Array (Waypoint format)
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_addWaypoint"};
 
-// init	
+// init
 params [
 	["_group", grpNull, [grpNull]],
 	["_position", [0,0,0], [[]], [3]],
@@ -74,7 +74,7 @@ params [
 	["_wp_combatMode", "WHITE", [""]],
 	["_wp_speed", "LIMITED", [""]],
 	["_wp_formation", "NO CHANGE", [""]],
-	["_wp_complRadius", 5, [0]], 
+	["_wp_complRadius", 5, [0]],
 	["_mode", "foot", [""]],
 	["_searchBuildings", false, [true]],
 	["_wp_timeOut", [0,0,0], [[]], [3]],
@@ -108,7 +108,7 @@ switch _mode do {
 		private "_i";
 		for "_i" from 1 to 3 do {
 			private _find = selectRandom [ADF_fnc_randomPosMax, ADF_fnc_randomPos];
-			private _result = [_position, _radius, _direction] call _find;				
+			private _result = [_position, _radius, _direction] call _find;
 			if !(surfaceIsWater _result) exitWith {_position = _result};
 			_radius = _radius + 25;
 		};
@@ -123,7 +123,7 @@ switch _mode do {
 		for "_i" from 1 to 4 do {
 			private _find = selectRandom [ADF_fnc_randomPosMax, ADF_fnc_randomPos];
 			private _result = [_position, _radius, random 360] call _find;
-			_road = [_result, _radius] call ADF_fnc_roadPos;		
+			_road = [_result, _radius] call ADF_fnc_roadPos;
 			if (isOnRoad _road) exitWith {_position = _road};
 			_radius = _radius + 150;
 			if (_i == 4) then {_position = [_position, _radius, (random 180) + (random 180)] call ADF_fnc_randomPosMax;};
@@ -136,18 +136,18 @@ switch _mode do {
 		if ADF_debug then {[_position, true, _group, "air", _index] call ADF_fnc_positionDebug};
 	};
 	case "sea"	: {
-		// Find a location with a depth of at least 10 meters		
+		// Find a location with a depth of at least 10 meters
 		private _dummy = "Sign_Sphere10cm_F" createVehicle [0,0,0];
-		
+
 		for "_i" from 1 to 25 do {
 			private _find = selectRandom [ADF_fnc_randomPosMax, ADF_fnc_randomPos];
 			private _result = [_position, _radius, random 360] call _find;
 			_dummy setPosASL _result;
-			private _d = abs (getTerrainHeightASL (getPos _dummy));				
+			private _d = abs (getTerrainHeightASL (getPos _dummy));
 			if ((surfaceIsWater _result) && {(_d > 10)}) exitWith {_position = _result};
 			_radius = _radius + 50;
 		};
-		
+
 		deleteVehicle _dummy;
 		if ADF_debug then {[_position, true, _group, "sea", _index] call ADF_fnc_positionDebug};
 	};

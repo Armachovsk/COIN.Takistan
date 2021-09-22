@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -48,25 +48,25 @@ params [
 ];
 
 // Check valid vars
-if (_group == grpNull) exitWith {[format ["ADF_fnc_weaponFlashlight - Empty group passed: %1. Exiting", _group], true] call ADF_fnc_log; false};	
+if (_group == grpNull) exitWith {[format ["ADF_fnc_weaponFlashlight - Empty group passed: %1. Exiting", _group], true] call ADF_fnc_log; false};
 
 // Lite them up
 {
 	// Check if the unit already has a weapon flashlight
-    if ("acc_flashlight" in primaryWeaponItems _x) then {
-        // Check if the have NV assigned
-		if !(hmd _x == "") then {_x unlinkItem (hmd _x)}; 
-    } else {
-        // No flashlight. Remove laser and NV
-        if ("acc_pointer_IR" in primaryWeaponItems _x) then {_x removePrimaryWeaponItem "acc_pointer_IR"};
-		if !(hmd _x == "") then {_x unlinkItem (hmd _x)}; 
+	if ("acc_flashlight" in primaryWeaponItems _x) then {
+		// Check if the have NV assigned
+		if !(hmd _x == "") then {_x unlinkItem (hmd _x)};
+	} else {
+		// No flashlight. Remove laser and NV
+		if ("acc_pointer_IR" in primaryWeaponItems _x) then {_x removePrimaryWeaponItem "acc_pointer_IR"};
+		if !(hmd _x == "") then {_x unlinkItem (hmd _x)};
 
-        // Add weapon flashlight
-        _x addPrimaryWeaponItem "acc_flashlight";    	
+		// Add weapon flashlight
+		_x addPrimaryWeaponItem "acc_flashlight";
 	};
 
-    _x enableGunLights "forceOn";
-    _x enableIRLasers true;
+	_x enableGunLights "forceOn";
+	_x enableIRLasers true;
 
 } count units _group;
 

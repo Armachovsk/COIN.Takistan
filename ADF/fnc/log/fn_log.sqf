@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -27,8 +27,8 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Bool:        Is this an error message?
-                - true - for error message
-                - false - for debug message (default)
+	- true - for error message
+	- false - for debug message (default)
 
 EXAMPLES USAGE IN SCRIPT:
 if ADF_debug then {["YourErrorMessageHere", true] call ADF_fnc_log}; // Only in debug mode
@@ -45,7 +45,7 @@ Nothing
 
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_log"};
-	
+
 // init
 params [
 	["_message", "", [""]],
@@ -53,16 +53,16 @@ params [
 ];
 
 // Error message?
-if (_error) then { 
+if (_error) then {
 	private _header = "ADF Error: ";
 	private _compiledText = format ["%1%2", _header, _message];
 	[_compiledText] call BIS_fnc_error;
 	diag_log _compiledText;
-	
-// Debug log message?	
-} else { 
+
+// Debug log message?
+} else {
 	private _header = "ADF Debug: ";
 	private _compiledText = format ["%1%2", _header, _message];
 	if ADF_debug then {_compiledText remoteExec ["systemChat", -2, false]};
-	diag_log _compiledText;		
-};	
+	diag_log _compiledText;
+};

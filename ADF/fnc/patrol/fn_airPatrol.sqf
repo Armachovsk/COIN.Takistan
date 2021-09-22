@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,7 +14,7 @@ File: ADF_fnc_airPatrol.sqf
 Diag: 0.976563 ms
 **********************************************************************************
 ABOUT
-This is an patrol function for pre-spawned, crewed aircraft. 
+This is an patrol function for pre-spawned, crewed aircraft.
 
 INSTRUCTIONS:
 Execute from the server
@@ -22,27 +22,27 @@ Execute from the server
 REQUIRED PARAMETERS:
 0. Group:       Group (aircraft crew)
 1. position:    Center patrol start position. Marker, object, trigger or position
-                array [x,y,z]
+	array [x,y,z]
 
 OPTIONAL PARAMETERS:
-2. Number:      Waypoint radius in meters. Default: 2500 
+2. Number:      Waypoint radius in meters. Default: 2500
 3. Number:      Aircraft altitude (above ground level in meters). Default: 100
 4. Number:      Number of total waypoints to patrol. Default: 4
 5. String:      Waypoint type. Default: "MOVE"
-                Info: https:community.bistudio.com/wiki/Waypoint_types
+	Info: https:community.bistudio.com/wiki/Waypoint_types
 6. String:      Waypoint behaviour. Default: "SAFE"
-                Info: https:community.bistudio.com/wiki/setWaypointBehaviour                
+	Info: https:community.bistudio.com/wiki/setWaypointBehaviour
 7. String:      Waypoint combat mode. Default: "WHITE"
-                Info: https:community.bistudio.com/wiki/setWaypointCombatMode
+	Info: https:community.bistudio.com/wiki/setWaypointCombatMode
 8. String:      Waypoint speed. Default: "LIMITED"
-                Info: https:community.bistudio.com/wiki/waypointSpeed
+	Info: https:community.bistudio.com/wiki/waypointSpeed
 9. String:      Waypoint formation. Default: "FILE"
-                Info: https:community.bistudio.com/wiki/waypointFormation
+	Info: https:community.bistudio.com/wiki/waypointFormation
 10. Number:     Waypoint completion radius in meters. Default: 5
-                Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
-11. Bool        Pilot Behavior: 
-                - true: Pilots do not ignore combat situations. 
-                - false: Pilots ignore combat situations. (Default)  
+	Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
+11. Bool        Pilot Behavior:
+	- true: Pilots do not ignore combat situations.
+	- false: Pilots ignore combat situations. (Default)
 
 EXAMPLES USAGE IN SCRIPT:
 [_grp, _Position, 1000, 100, 5, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 250, false] call ADF_fnc_airPatrol;

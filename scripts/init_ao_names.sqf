@@ -27,7 +27,7 @@ call {
 			case 22: {_ao_name = "bushra"};
 			case 23: {_ao_name = "Farhannah"};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "TAKISTAN") exitWith {
 		switch _ao_number do {
@@ -51,7 +51,7 @@ call {
 			case 17: {_ao_name = "Shukurkalay District"};
 			case 18: {_ao_name = "Mulladost"};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "CLAFGHAN") exitWith {
 		switch _ao_number do {
@@ -76,7 +76,7 @@ call {
 			case 18: {_ao_name = "Spetzyahir"; _ao_base = true;};
 			case 19: {_ao_name = "Machifazar"; _ao_base = true;};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "FATA") exitWith {
 		switch _ao_number do {
@@ -91,7 +91,7 @@ call {
 			case 8: {_ao_name = "Al Bahad District";};
 			case 9: {_ao_name = "Mariyah Base"; _ao_base = true;};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "TORABORA") exitWith {
 		switch _ao_number do {
@@ -104,7 +104,7 @@ call {
 			case 6: {_ao_name = "Jalgharbar";};
 			case 7: {_ao_name = "Yak Ghar";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "TEM_ANIZAY") exitWith {
 		switch _ao_number do {
@@ -126,7 +126,7 @@ call {
 			case 15: {_ao_name = "Musakhan";};
 			case 16: {_ao_name = "Makan Aljamal";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "DYA") exitWith {
 		switch _ao_number do {
@@ -139,7 +139,7 @@ call {
 			case 6: {_ao_name = "Al Baiueia District"; _ao_base = true;};
 			case 7: {_ao_name = "Zawiyah District";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_worldName isEqualTo "MCN_ALIABAD") exitWith {
 		switch _ao_number do {
@@ -150,7 +150,7 @@ call {
 			case 4: {_ao_name = "Hadiz";};
 			case 5: {_ao_name = "Katal";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "TEM_KUJARI") exitWith {
 		switch _ao_number do {
@@ -185,9 +185,9 @@ call {
 			case 29: {_ao_name = "Madairi";};
 			case 30: {_ao_name = "Kawiya Boukar Souri District";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
-	if (ADF_WorldName isEqualTo "PJA307") exitWith { 
+	if (ADF_WorldName isEqualTo "PJA307") exitWith {
 		switch _ao_number do {
 			case 0: {_ao_name = "Al Minsah";};
 			case 1: {_ao_name = "Jiblah";};
@@ -214,14 +214,14 @@ call {
 			case 22: {_ao_name = "Tlidjen";};
 			case 23: {_ao_name = "Diminli"; _ao_base = true;};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "SWU_PUBLIC_SALMAN_MAP") exitWith {
 		switch _ao_number do {
 			case 0: {_ao_name = "Al Salman"; _ao_base = true};
 			case 1: {_ao_name = "Al Salman Airbase"; _ao_base = true};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "ZARGABAD") exitWith {
 		switch _ao_number do {
@@ -230,7 +230,7 @@ call {
 			case 2: {_ao_name = "Nango District"; _ao_base = true;};
 			case 3: {_ao_name = "Shahbaz District"; _ao_base = true;};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "SARALITE") exitWith {
 		switch _ao_number do {
@@ -246,7 +246,7 @@ call {
 			case 9: {_ao_name = "Somato District";};
 			case 10: {_ao_name = "Chantico District";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "LYTHIUM") exitWith {
 		switch _ao_number do {
@@ -274,7 +274,7 @@ call {
 			case 21: {_ao_name = "Limari District";};
 			case 22: {_ao_name = "Orcarif District";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "PJA310") exitWith {
 		switch _ao_number do {
@@ -322,7 +322,7 @@ call {
 			case 41: {_ao_name = "Al Dana";};
 			case 42: {_ao_name = "Armanaz District";};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "FARKHAR") exitWith {
 		switch _ao_number do {
@@ -343,7 +343,7 @@ call {
 			case 14: {_ao_name = "Observation Point"; _ao_base = true;};
 			case 15: {_ao_name = "Kala Yusufi"; _ao_base = true;};
 			default {_ao_name = "Unknown Opfor Occupied Area"};
-		};	
+		};
 	};
 	if (ADF_WorldName isEqualTo "DINGOR") exitWith {
 		switch _ao_number do {

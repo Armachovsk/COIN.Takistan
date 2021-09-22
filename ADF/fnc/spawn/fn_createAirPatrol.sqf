@@ -29,15 +29,15 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Position:    Patrol position. Marker, Object or Trigger.
-                Default: "" (Spawn position will be used)
+	Default: "" (Spawn position will be used)
 2: Side:        west, east or independent. Default: east
 3: Int/Str:     Type of aircraft:
-                - 1 - Unarmed transport helicopter (default)
-                - 2 - Armed transport helicopter
-                - 3 - Attack helicopter
-                - 4 - Fighter jet
-                - 5 - UAV
-                "class" - class name of the aircraft (string)
+	- 1 - Unarmed transport helicopter (default)
+	- 2 - Armed transport helicopter
+	- 3 - Attack helicopter
+	- 4 - Fighter jet
+	- 5 - UAV
+	"class" - class name of the aircraft (string)
 				Array of classes. Random class will be picked.
 4. Integer:     Patrol radius in meters from the patrol position. Default: 2500
 5. Integer:     Altitude. The aircraft patrol altitude in meters. Default: 75
@@ -49,9 +49,9 @@ OPTIONAL PARAMETERS:
 11. String:     Waypoint formation. Info: https://community.bistudio.com/wiki/waypointFormation (default = "COLUMN")
 12. Integer:    Completion radius. Info: https://community.bistudio.com/wiki/setWaypointCompletionRadius (default = 250)
 13. String:     Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed (_this select 0) to the code/fnc.
 14. String:     Code to execute on the crew aa a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. The group is passed (_this select 0) to the code/fnc.
 
 EXAMPLES USAGE IN SCRIPT:
 [_spawnPos, _patrolPos, west, 1, 2500, 100, 5, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 250, "ADF_fnc_heliPilotAI", ""] call ADF_fnc_createAirPatrol;
@@ -64,8 +64,8 @@ DEFAULT/MINIMUM OPTIONS
 
 RETURNS:
 Array:   0. new vehicle (Object).
-         1. all crew (Array of Objects).
-         2. vehicle's group (Group).
+	1. all crew (Array of Objects).
+	2. vehicle's group (Group).
 *********************************************************************************/
 
 // Reporting
@@ -79,7 +79,7 @@ params [
 	["_side", east, [west]],
 	["_aircraftType", 1, [0, "", []]],
 	["_radius", 2500, [0]],
-	["_altitude", 75, [0]],		
+	["_altitude", 75, [0]],
 	["_waypoints", 4, [0]],
 	["_wp_type", "MOVE", [""]],
 	["_wp_behaviour", "SAFE", [""]],
@@ -126,17 +126,17 @@ if !_custom then {
 		};
 		case east;
 		default {
-			switch (_aircraftType) do {		
+			switch (_aircraftType) do {
 				case 1: {_vehicleClass = selectRandom ["O_Heli_Light_02_unarmed_F", "O_Heli_Transport_04_F", "O_Heli_Transport_04_ammo_F", "O_Heli_Transport_04_bench_F", "O_Heli_Transport_04_box_F", "O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_fuel_F", "O_Heli_Transport_04_medevac_F", "O_Heli_Transport_04_repair_F", "O_Heli_Transport_04_black_F"]};
 				case 2: {_vehicleClass = selectRandom ["O_Heli_Light_02_F", "O_Heli_Light_02_v2_F"]};
 				case 3: {_vehicleClass = selectRandom ["O_Heli_Attack_02_F", "O_Heli_Attack_02_black_F"]};
 				case 4: {_vehicleClass = "O_Plane_CAS_02_F"};
 				case 5: {_vehicleClass = "O_UAV_02_CAS_F"};
 			};
-		};		
+		};
 	};
 } else {
-	if (_aircraftType isEqualType []) then {_vehicleClass = selectRandom _aircraftType;} else {_vehicleClass = _aircraftType;};	
+	if (_aircraftType isEqualType []) then {_vehicleClass = selectRandom _aircraftType;} else {_vehicleClass = _aircraftType;};
 };
 
 // Create the vehicle and vehicle crew
@@ -157,7 +157,7 @@ if (_code_2 != "") then {
 	// Crew group
 	[_group] call (call compile format ["%1", _code_2]);
 	// Debug reporting
-	if ADF_debug then {[format ["ADF_fnc_createAirPatrol - call %1 for crew (group): %2",_code_2,_group]] call ADF_fnc_log};	
+	if ADF_debug then {[format ["ADF_fnc_createAirPatrol - call %1 for crew (group): %2",_code_2,_group]] call ADF_fnc_log};
 };
 
 // Execute the air patrol function

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -15,11 +15,11 @@ File: fn_waypointCombat.sqf
 ABOUT:
 This function makes groups in vehicles switch to combat mode when attacked or when
 they spot an enemy. The function is triggered when the groups combat mode changes
-from safe/aware to combat. The group pauses their 'normal' patrol and enter a 
+from safe/aware to combat. The group pauses their 'normal' patrol and enter a
 'search and destroy' mode for at least 3 minutes. After the SAD period the group
 continues with their original patrol.
 
-Note that this function is automatically spawned with the 
+Note that this function is automatically spawned with the
 ADF_fnc_createVehiclePatrol function for any vehicle that has a turret.
 
 INSTRUCTIONS
@@ -57,7 +57,7 @@ private _vehicle = vehicle _leader;
 private _behaviour = behaviour _leader;
 
 // Check valid vars & valid application
-if (_group == grpNull) exitWith {[format ["ADF_fnc_waypointCombat - Empty group passed: %1. Exiting", _group], true] call ADF_fnc_log; false};	
+if (_group == grpNull) exitWith {[format ["ADF_fnc_waypointCombat - Empty group passed: %1. Exiting", _group], true] call ADF_fnc_log; false};
 if (_behaviour == "COMBAT") exitWith {if ADF_debug then {[format ["ADF_fnc_waypointCombat - group (%1) behavior is set at %2. Exiting.", _group, behaviour _leader]] call ADF_fnc_log}; false};
 if (isNull objectParent _leader) exitWith {if ADF_debug then {[format ["ADF_fnc_waypointCombat - group (%1) leader is not in a vehicle. Exiting.", _group]] call ADF_fnc_log}; false};
 if !(canFire _vehicle || {canMove _vehicle}) exitWith {if ADF_debug then {[format ["ADF_fnc_waypointCombat - The groups (%1) vehicle (%2) cannot move or fire. Exiting.", _group, _vehicle]] call ADF_fnc_log}; false};
@@ -69,7 +69,7 @@ waitUntil {
 	sleep 3;
 	((behaviour (leader _group)) == "COMBAT" || !alive (leader _group))
 };
-if (!alive (leader _group)) exitWith {if ADF_debug then {[format ["ADF_fnc_waypointCombat - Group (%1) seems no longer to be alive. Exiting", _group], true] call ADF_fnc_log;}; false};	
+if (!alive (leader _group)) exitWith {if ADF_debug then {[format ["ADF_fnc_waypointCombat - Group (%1) seems no longer to be alive. Exiting", _group], true] call ADF_fnc_log;}; false};
 
 // Debug reporting
 if ADF_debug then {[format ["ADF_fnc_waypointCombat - group (%1) combat behavior changed to: %1", _behaviour]] call ADF_fnc_log};
@@ -109,7 +109,7 @@ if (!alive (leader _group)) exitWith {
 	if ADF_debug then {[format ["ADF_fnc_waypointCombat - Group (%1) seems no longer to be alive. Exiting", _group], true] call ADF_fnc_log;};
 	[_dummy] call ADF_fnc_delete;
 	false
-};	
+};
 
 // Debug reporting
 if ADF_debug then {systemChat format ["ADF_fnc_waypointCombat - group (%1) combat behavior changed to: %1. Continue original patrol", _behaviour];};
@@ -127,4 +127,4 @@ if (alive (leader _group)) then {
 } else {
 	if ADF_debug then {[format ["ADF_fnc_waypointCombat - Group (%1) seems no longer to be alive. Exiting", _group], true] call ADF_fnc_log;};
 	false
-};	
+};

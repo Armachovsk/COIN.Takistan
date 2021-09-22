@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -37,15 +37,15 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Position:    Patrol position.Marker, object, trigger or position array [x,y,z]
-                Default: "" (Spawn position ill be used)
+	Default: "" (Spawn position ill be used)
 2: Side:        west, east or independent. Default: east
 3: Int/Str:     Type of vehicle:
-                - 1 - Random Transport truck (default)
-                - 2 - Random Unarmed MRAP/Car
-                - 3 - Random Armed MRAP/Car
-                - 4 - Random APC
-                - 5 - Random Armored
-			   In case of a string then the vehicle class will be used.
+	- 1 - Random Transport truck (default)
+	- 2 - Random Unarmed MRAP/Car
+	- 3 - Random Armed MRAP/Car
+	- 4 - Random APC
+	- 5 - Random Armored
+			In case of a string then the vehicle class will be used.
 4: Integer:     Patrol radius in meters from the spawn position.  (default = 750)
 5: Integer:     Number of patrol waypoints (default = 4)
 6. String:      Waypoint type. Info: https://community.bistudio.com/wiki/Waypoint_types (default = "MOVE")
@@ -54,13 +54,13 @@ OPTIONAL PARAMETERS:
 9. String:      Waypoint speed. Info: https://community.bistudio.com/wiki/waypointSpeed (default = "LIMITED")
 10. Integer:    Completion radius. Info: https://community.bistudio.com/wiki/setWaypointCompletionRadius (default = 25)
 11. String:     Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 12. String:     Code to execute on the crew as a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. The group is passed
+	(_this select 0) to the code/fnc.
 13. Array:      Waypoint time out. Default: "[0,0,0]"
-                Info: https://community.bistudio.com/wiki/setWaypointTimeout
+	Info: https://community.bistudio.com/wiki/setWaypointTimeout
 
 EXAMPLES USAGE IN SCRIPT:
 ["SpawnMarker", "PatrolMarker", east, 4, 800, 5, "MOVE", "SAFE", "RED", "LIMITED", 25, "myFunction", "anotherFunction"] call ADF_fnc_createVehiclePatrol;
@@ -74,8 +74,8 @@ DEFAULT/MINIMUM OPTIONS
 
 RETURNS:
 Array:          0. new vehicle (Object).
-                1. all crew (Array of Objects).
-                2. vehicle's group (Group).
+	1. all crew (Array of Objects).
+	2. vehicle's group (Group).
 *********************************************************************************/
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_createVehiclePatrol"};
@@ -119,7 +119,7 @@ if (_vehicleType isEqualType 0) then {
 		}
 	};
 	if (_side == east) then {
-		switch (_vehicleType) do {		
+		switch (_vehicleType) do {
 			case 1: {_vehicleClass = selectRandom ["O_Truck_02_covered_F", "O_Truck_02_transport_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F", "O_Truck_03_repair_F", "O_Truck_03_ammo_F", "O_Truck_03_fuel_F", "O_Truck_03_medical_F", "O_Truck_03_device_F", "O_Truck_02_box_F", "O_Truck_02_Ammo_F", "O_Truck_02_fuel_F", "O_Truck_02_covered_F"]};
 			case 2: {_vehicleClass = selectRandom ["O_MRAP_02_F", "O_Quadbike_01_F"]};
 			case 3: {_vehicleClass = selectRandom ["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"]};
@@ -173,7 +173,7 @@ if (_code_2 != "") then {
 	// Crew
 	[_group] call (call compile format ["%1", _code_2]);
 	// Debug reporting
-	if ADF_debug then {[format ["ADF_fnc_createVehiclePatrol - call %1 for group: %2",_code_2,_group]] call ADF_fnc_log};	
+	if ADF_debug then {[format ["ADF_fnc_createVehiclePatrol - call %1 for group: %2",_code_2,_group]] call ADF_fnc_log};
 };
 
 // Create the vehicle patrol

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -34,5 +34,3 @@ if ADF_mod_ACRE then {[true] call acre_api_fnc_setSpectator};
 
 // Init the BIS spectator
 ["Initialize", [player, [], true]] call BIS_fnc_EGSpectator;
-
-

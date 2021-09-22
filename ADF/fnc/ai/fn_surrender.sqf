@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,7 +14,7 @@ File: fn_surrender.sqf
 **********************************************************************************
 ABOUT
 Forces unit(s) (side, group, array) to surrender. If in a vehicle surrendered units
-will disembark their vehicle. Surrendered units will drop their weapon and mags 
+will disembark their vehicle. Surrendered units will drop their weapon and mags
 and raise their arms as in a surrender position/animation.
 
 INSTRUCTIONS:
@@ -25,8 +25,8 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Bool:       Switch surrendered unit to civilian side?
-               - true (default)
-               - false
+	- true (default)
+	- false
 
 EXAMPLES USAGE IN SCRIPT:
 [myGroup] call ADF_fnc_surrender;
@@ -58,20 +58,20 @@ if ((count units _group) isEqualTo 0) exitWith {false};
 private _units = units _group;
 private _leader = leader _group;
 
-[_group] call ADF_fnc_delWaypoint; 
+[_group] call ADF_fnc_delWaypoint;
 _group setBehaviour "CARELESS";
 _group setCombatMode "BLUE";
 _group allowFleeing 0;
 
 // Check if in a vehicle
 if !(isNull objectParent _leader) then {
-	
+
 	private _vehicle = objectParent _leader;
-	private _vehiclePosition = getPosATL _vehicle;		
-	
+	private _vehiclePosition = getPosATL _vehicle;
+
 	// Check if airborne
 	if ((_vehiclePosition select 3) > 5) exitWith {};
-	
+
 	// Check if in a boat
 	if (surfaceIsWater _vehiclePosition) then {
 		private _newPosition = [];
@@ -96,7 +96,7 @@ if !(isNull objectParent _leader) then {
 			unitReady driver _vehicle
 		};
 	};
-	
+
 	{
 		moveOut _x;
 		unassignVehicle _x;
@@ -112,14 +112,14 @@ doStop _units;
 	private _unit = _x;
 	private _mags = magazinesAmmoFull _unit;
 	private _weapons = weapons _unit;
-	
+
 	private _temp = createVehicle ["GroundWeaponHolder", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 	_temp setPos [((getPosATL _unit) # 0) + (.3 + random 1), ((getPosATL _unit) # 1) + (.3 + random 1), (getPosATL _unit) # 2];
-	
+
 	removeAllWeapons _unit;
-	{_unit removeMagazine _x} count _mags;	
-	{_temp addWeaponCargo [_x, 1]} count _weapons; 
-	{_temp addMagazineCargo [_x # 0, 1]} count _mags; 
+	{_unit removeMagazine _x} count _mags;
+	{_temp addWeaponCargo [_x, 1]} count _weapons;
+	{_temp addMagazineCargo [_x # 0, 1]} count _mags;
 
 	// Surrender animation
 	_x setUnitPos "UP";

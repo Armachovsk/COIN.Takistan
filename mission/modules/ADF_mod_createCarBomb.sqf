@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,7 +14,7 @@ File: ADF_mod_createCarBomb.sqf
 **********************************************************************************
 This module creates a vehicle (default is a Fuel Track) in a predefined radius or
 at a marker/trigger. The vehicle acts as a car bomb. The module aligns the vehicle
-with the road and creates a trigger that will set off the bomb. 
+with the road and creates a trigger that will set off the bomb.
 
 INSTRUCTIONS:
 Execute the module on the SERVER or HC only!
@@ -34,11 +34,11 @@ diag_log "ADF rpt: Init - executing: ADF_mod_createCarBomb.sqf";
 */
 
 "carBombMarker",    //  The (approx) position where thecarBomb vehicle should be created. This can be:
-                    //  * Marker name (string) of a eclipse/rectangle marker. The vehicle will be placed in the marker area randomly.
-                    //  * Marker icon for direct placed. The vehicle spawns at the marker and the direction of the vehicle will be the marker azimuth.
-                    //  * Object. The vehicle spawns at or next to an existing object.
-                    //  * Array. Position array [X,Y,Z]
-                    
+	//  * Marker name (string) of a eclipse/rectangle marker. The vehicle will be placed in the marker area randomly.
+	//  * Marker icon for direct placed. The vehicle spawns at the marker and the direction of the vehicle will be the marker azimuth.
+	//  * Object. The vehicle spawns at or next to an existing object.
+	//  * Array. Position array [X,Y,Z]
+
 west,               //  Side that triggers the carBomb explosion. Usually the player side. Can be west, east, independent. Default: west
 
 10,                 //  The carBomb trigger area. This is the radius in meters around the vehicle that activates the car bomb. Default: 10

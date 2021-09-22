@@ -1,7 +1,7 @@
 #include "defines.h"
 /*
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Called via addAction and opens the TAW View Distance Menu
 */
@@ -21,10 +21,10 @@ disableSerialization;
 	} else {
 		slidersetRange [_x select 0, 100, _x select 2];
 	};
-	
+
 	((findDisplay MENU_IDD) displayCtrl (_x select 0)) sliderSetSpeed [100, 100, 100];
 	sliderSetPosition [_x select 0, _x select 1];
-	
+
 } foreach [
 	[INFANTRY_SLIDER, tawvd_foot, ADF_VD_foot],
 	[GROUND_SLIDER, tawvd_car, ADF_VD_vehicle],

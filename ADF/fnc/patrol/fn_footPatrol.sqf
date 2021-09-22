@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,29 +23,29 @@ Execute (call) fro the server or HC
 REQUIRED PARAMETERS:
 0. Group:       Group (aircraft crew)
 1. position:    Center patrol start position. Marker, object, trigger or position
-                array [x,y,z]
+	array [x,y,z]
 
 OPTIONAL PARAMETERS:
 2. Number:      Waypoint radius in meters. Default: 500. Maximum: 5000
 3. Number:      Number of total waypoints to patrol. Default: 4. Maximum: 10
 4. String:      Waypoint type. Default: "MOVE"
-                Info: https:community.bistudio.com/wiki/Waypoint_types
+	Info: https:community.bistudio.com/wiki/Waypoint_types
 5. String:      Waypoint behaviour. Default: "SAFE"
-                Info: https:community.bistudio.com/wiki/setWaypointBehaviour                
+	Info: https:community.bistudio.com/wiki/setWaypointBehaviour
 6. String:      Waypoint combat mode. Default: "WHITE"
-                Info: https:community.bistudio.com/wiki/setWaypointCombatMode
+	Info: https:community.bistudio.com/wiki/setWaypointCombatMode
 7. String:      Waypoint speed. Default: "LIMITED"
-                Info: https:community.bistudio.com/wiki/waypointSpeed
+	Info: https:community.bistudio.com/wiki/waypointSpeed
 8. String:      Waypoint formation. Default: "FILE"
-                Info: https:community.bistudio.com/wiki/waypointFormation
+	Info: https:community.bistudio.com/wiki/waypointFormation
 9. Number:      Waypoint completion radius. Default: 5
-                Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
-10. Bool:       Search buildings: 
-                - true: Search buildings within a 50 meter radius upon waypoint
-                  completion.
-                - false: Do not search buildings (default)
+	Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
+10. Bool:       Search buildings:
+	- true: Search buildings within a 50 meter radius upon waypoint
+	completion.
+	- false: Do not search buildings (default)
 11. Array:      Waypoint time out. Default: "[0,0,0]"
-                Info: https://community.bistudio.com/wiki/setWaypointTimeout
+	Info: https://community.bistudio.com/wiki/setWaypointTimeout
 
 EXAMPLES USAGE IN SCRIPT:
 [_grp, _pos, 300, 3, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 5, true, [5,10,15]] call ADF_fnc_footPatrol;
@@ -77,7 +77,7 @@ params [
 	["_wp_formation", "FILE", [""]],
 	["_wp_complRadius", 5, [0]],
 	["_searchBuildings", false, [true]],
-	["_wp_timeOut", [0,0,0], [[]], [3]],	
+	["_wp_timeOut", [0,0,0], [[]], [3]],
 	["_index", -1, [0]]
 ];
 // Check valid vars

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -25,7 +25,7 @@ if hasInterface then {
 			"_nato3",
 			"_nato4"
 		];
-		private _altitude = ATLToASL _position;		
+		private _altitude = ATLToASL _position;
 
 		sleep 6;
 		["BCO", "CMD", format [localize "STR_ADF_supp_clipper1", _nato1, _nato2, mapGridPosition _position]] call ADF_fnc_MessageParser;
@@ -33,7 +33,7 @@ if hasInterface then {
 		["CMD", "BCO", localize "STR_ADF_supp_clipper2"] call ADF_fnc_MessageParser;
 		sleep 8;
 		["AAD", "BCO", localize "STR_ADF_supp_clipper3"] call ADF_fnc_MessageParser;
-		sleep 12;		
+		sleep 12;
 		private _brief = format [localize "STR_ADF_supp_clipper4", _nato1, _nato2, mapGridPosition _position, round (_altitude # 2)];
 		["BCO", "AAD", format [localize "STR_ADF_supp_howCopy", _brief]] call ADF_fnc_MessageParser;
 		sleep 11;
@@ -47,43 +47,43 @@ if hasInterface then {
 
 		waitUntil {sleep 1; COIN_clipperDropping};
 		["AAD", "CMD", localize "STR_ADF_supp_clipper5"] call ADF_fnc_MessageParser;
-		
+
 		waitUntil {sleep 1; COIN_clipperDropped};
 		["AAD", "CMD", localize "STR_ADF_supp_clipper6"] call ADF_fnc_MessageParser;
 		sleep 8;
 		["BCO", "AAD", localize "STR_ADF_supp_thanks"] call ADF_fnc_MessageParser;
-		
+
 		if !(player isEqualTo COIN_leadership) exitWith {};
 		// wait for 50 minutes and then re-add the menu options to the leadership player
 		if !ADF_missionTest then {
 			private _timer = time + (60*50);
 			waitUntil {sleep 1; time > _timer};
-		}; 
-		call COIN_fnc_assignClipper;		
+		};
+		call COIN_fnc_assignClipper;
 	};
-	
+
 	COIN_fnc_clipperSupportRequest = {
 		// Init
 		params ["_unit", "_index"];
-		
+
 		if COIN_supportActive exitWith {systemChat localize "STR_ADF_supp_supportActive"};
 		COIN_supportActive = true;
 
 		// Map click process.
 		openMap true;
-		hint parseText format [localize "STR_ADF_supp_clipperSuppReq", name _unit];	
+		hint parseText format [localize "STR_ADF_supp_clipperSuppReq", name _unit];
 		[_unit, _index] onMapSingleClick {
 			params [
 				"_unit",
 				"_index"
 			];
 			[_pos] remoteExec ["COIN_fnc_spawnDrop", 2];
-			_unit removeAction _index;			
+			_unit removeAction _index;
 			onMapSingleClick ""; true;
 			openMap false; hintSilent "";
-		};	
+		};
 	};
-	
+
 	///// ASSIGN KNIGHT TO THE LEADERSHIP PLAYER
 
 	COIN_fnc_assignClipper = {
@@ -96,7 +96,7 @@ if hasInterface then {
 };
 
 
-if isServer then {	
+if isServer then {
 	COIN_fnc_spawnDrop = {
 		// Init
 		params [
@@ -107,29 +107,29 @@ if isServer then {
 			["_closest", 99999, [0]]
 		];
 		private _nato = ["ALFA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL", "INDIA", "JULIETT", "KILO", "LIMA", "MIKE", "NOVEMBER", "OSCAR", "PAPA", "QUEBEC", "ROMEO", "SIERRA", "TANGO", "UNIFORM", "VICTOR", "WHISKEY", "X-RAY", "YANKEE", "ZULU"];
-	
+
 		// DETERMINE SPAWN & DROP POSITION
-		
-		if (_spawnPosition isEqualType "") then {			
-			{		
+
+		if (_spawnPosition isEqualType "") then {
+			{
 				private _distance = (markerPos _x distance _position);
 				if (_distance < _closest) then {
 					_closest = _distance;
 					_spawnPosition = _x;
-				};	
+				};
 			} forEach COIN_ambientAirSpawn;
 			_spawnDirection = markerDir _spawnPosition;
-			_spawnPosition = getMarkerPos _spawnPosition;				
+			_spawnPosition = getMarkerPos _spawnPosition;
 		} else {
 			_spawnDirection = random 360;
-		};	
-		
+		};
+
 		private _termPosition = selectRandom COIN_ambientAirSpawn;
 		private _dropPosition = [_position, 125] call ADF_fnc_randomPos;
 		private _travelTime = [_spawnPosition, _dropPosition, 550] call ADF_fnc_calcTravelTime;
-		
+
 		// CREATE AND FILL SUPPLIES CRATE
-		
+
 		private _crate = createVehicle ["B_CargoNet_01_ammo_F", [0,0,0], [], 0, "CAN_COLLIDE"];
 		_crate allowDamage false;
 		_crate enableDynamicSimulation false;
@@ -172,7 +172,7 @@ if isServer then {
 			_crate addItemCargoGlobal ["ACE_M26_Clacker", 2];
 			_crate addItemCargoGlobal ["ACE_DefusalKit", 1];
 			_crate addItemCargoGlobal ["ACE_HuntIR_M203", 10];
-			_crate addItemCargoGlobal ["ACE_HuntIR_monitor", 1];		
+			_crate addItemCargoGlobal ["ACE_HuntIR_monitor", 1];
 		} else {
 			_crate addItemCargoGlobal ["FirstAidKit", 50];
 			_crate addItemCargoGlobal ["Medikit", 2];
@@ -188,30 +188,30 @@ if isServer then {
 			_crate addBackpackCargoGlobal ["tf_rt1523g", 1];
 		};
 		[_crate] call ADF_fnc_addToCurator;
-		
+
 		 //Start COIN_fnc_msg_clipper
 		[_position, _travelTime, selectRandom _nato, selectRandom _nato, selectRandom _nato, selectRandom _nato] remoteExec ["COIN_fnc_msg_clipper", 0];
 		waitUntil {sleep 1; COIN_clipperGo};
 		if !ADF_MissionTest then {sleep (5 * 60);};
 
-		// CREATE AND CONFIGURE CLIPPER		
-		
+		// CREATE AND CONFIGURE CLIPPER
+
 		private _group = createGroup west;
 		private _class = if ADF_mod_RHS then {"RHS_C130J"} else {"CFP_B_USMC_C130J_VIV_DES_01"};
 		_group deleteGroupWhenEmpty true;
-		_group setGroupIdGlobal ["CLIPPER", "%GroupColors", "GroupColor6"];	
-		_spawnPosition set [2, 300];		
+		_group setGroupIdGlobal ["CLIPPER", "%GroupColors", "GroupColor6"];
+		_spawnPosition set [2, 300];
 		private _airFrame = [_spawnPosition, _spawnDirection, _class, _group] call ADF_fnc_createCrewedVehicle;
 		_clipper = _airFrame # 0;
 		_clipper allowDamage false;
 		private _crew = _airFrame # 1;
-		
+
 		{[_x] call ADF_fnc_heliPilotAI;} forEach _crew;
 		(driver _clipper) disableAI "LIGHTS";
-		_clipper setPilotLight false;					
+		_clipper setPilotLight false;
 		_clipper setCollisionLight false;
 		_clipper enableDynamicSimulation false;
-		
+
 		// Create map marker for CLIPPER.
 		[_clipper] spawn {
 			params ["_clipper"];
@@ -221,28 +221,28 @@ if isServer then {
 			_mClipper setMarkerSize [1 ,1];
 			_mClipper setMarkerColor "ColorWEST";
 			_mClipper setMarkerDir 0;
-			
+
 			waitUntil {
 				sleep 0.1;
 				_mClipper setMarkerPos (getPosWorld _clipper);
 				!alive _clipper
 			};
-			[_mClipper] call ADF_fnc_delete;				
+			[_mClipper] call ADF_fnc_delete;
 		};
 
-		// CLIPPER FLIGHT PATH		
-		[_dropPosition, _clipper] spawn {			
+		// CLIPPER FLIGHT PATH
+		[_dropPosition, _clipper] spawn {
 			params ["_dropPosition", "_clipper"];
 			waitUntil {
 				sleep 0.5; ((getPosWorld _clipper) distance2D _dropPosition) < 750 || !alive _clipper
 			};
 			if (!alive _clipper) exitWith {};
 			COIN_clipperDropping = true;
-			publicVariable "COIN_clipperDropping";			
-			_clipper animateSource ["ramp", 1];	
-		};		
-		
-		private _timeOut = time + 60;		
+			publicVariable "COIN_clipperDropping";
+			_clipper animateSource ["ramp", 1];
+		};
+
+		private _timeOut = time + 60;
 		waitUntil {
 			_clipper move _dropPosition;
 			sleep 5;
@@ -253,11 +253,11 @@ if isServer then {
 			COIN_clipperDropping = false;
 			["COIN_fnc_spawnDrop - Clipper was stuck at spawn position. Terminating!", true] call ADF_fnc_log;
 		};
-		_clipper flyInHeight 300;		
+		_clipper flyInHeight 300;
 		waitUntil {sleep 0.15; (_clipper distance2D _dropPosition) < 50};
 
 		// CREATE DROP
-		
+
 		[_crate, _clipper] spawn {
 			params ["_crate", "_clipper"];
 
@@ -269,30 +269,30 @@ if isServer then {
 			waitUntil {((getPosATL _crate) # 2) < 125};
 			private _chute = createVehicle ["B_Parachute_02_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 			_chute setPos (getPosATL _crate);
-			_crate attachTo [_chute, [0, 0, 0.5]];	
+			_crate attachTo [_chute, [0, 0, 0.5]];
 			private _smoke	= createVehicle ["SmokeShellOrange", [0, 0, 0], [], 0, "FLY"];
 			_smoke setPos (getPosATL _crate);
 			_smoke attachTo [_crate, [0, 0, 0.5]];
-			if ADF_MissionTest then {diag_log format ["« C O I N »   COIN_fnc_spawnDrop - crate chute deployed: %1", _chute];};			
-			
+			if ADF_MissionTest then {diag_log format ["« C O I N »   COIN_fnc_spawnDrop - crate chute deployed: %1", _chute];};
+
 			waitUntil {((getPosATL _crate) # 2) < 2};
 			_velocity = velocity _crate;
 			detach _crate;
 			_crate setVelocity _velocity;
 			detach _chute;
 			_chute disableCollisionWith _crate;
-			
+
 			waitUntil {isTouchingGround _crate};
 			_crate setVectorUp surfaceNormal getPos _crate;
-			_crate setPosATL [getPosATL _crate # 0, getPosATL _crate # 1, 0];	
-			if ADF_MissionTest then {diag_log format ["« C O I N »   COIN_fnc_spawnDrop - crate landed: %1", getPosATL _crate];};	
-			
+			_crate setPosATL [getPosATL _crate # 0, getPosATL _crate # 1, 0];
+			if ADF_MissionTest then {diag_log format ["« C O I N »   COIN_fnc_spawnDrop - crate landed: %1", getPosATL _crate];};
+
 			[_chute, _smoke] call ADF_fnc_delete;
 			private _smokePosition = [getPosATL _crate, 5] call ADF_fnc_randomPosMax;
 			private _smoke	= createVehicle ["SmokeShellOrange", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 			_smoke setPosATL _smokePosition;
 			_crate allowDamage true;
-			
+
 			_clipper animateSource ["ramp", 0];
 			sleep 10;
 			COIN_clipperDropped = true;
@@ -301,14 +301,14 @@ if isServer then {
 			COIN_supportActive = false;
 			COIN_leadershipID publicVariableClient "COIN_supportActive";
 		};
-		
+
 		// RTB
-		private _timeOut = time + (3 * 60);		
+		private _timeOut = time + (3 * 60);
 		_clipper move (getMarkerPos _termPosition);
 
 		waitUntil {
 			sleep 1;
-			(_clipper distance2D (getMarkerPos _termPosition)) < 300 || time > _timeOut};		
+			(_clipper distance2D (getMarkerPos _termPosition)) < 300 || time > _timeOut};
 		[_clipper] call ADF_fnc_delete;
 	};
 };

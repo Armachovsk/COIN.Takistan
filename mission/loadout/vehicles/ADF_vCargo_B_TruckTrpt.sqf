@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_vCargo_B_TruckTrpt.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Primary weapon
@@ -47,8 +47,8 @@ _v addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 5];
 _v addMagazineCargoGlobal ["3Rnd_HE_Grenade_shell", 5];
 
 // Grenades
-_v addMagazineCargoGlobal ["HandGrenade", 5]; 	 
-_v addMagazineCargoGlobal ["SmokeShell", 5]; 	 
+_v addMagazineCargoGlobal ["HandGrenade", 5];
+_v addMagazineCargoGlobal ["SmokeShell", 5];
 
 // Medical Items
 _v addItemCargoGlobal ["FirstAidKit", 5];

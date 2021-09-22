@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -24,10 +24,10 @@ _ADF_mission_init_time = 70; // Mission Init time counter. Min 30 secs. Add 1 se
 ADF_playerSide = west; // Which side are playable units on [west / east / GUER / CIV]
 ADF_clanName = "BCO"; // What is the name of your community/clan. Used in Hints, intro's etc.
 ADF_clanTAG = "1ST RECON BN BCO"; // What is the tag of your community/clan. Used in Hints, intro's etc.
-ADF_clanLogo = "mission\images\intro_coin.paa"; // Full path to the clan logo. 
+ADF_clanLogo = "mission\images\intro_coin.paa"; // Full path to the clan logo.
 ADF_clanFlag = ""; // Full path to the clan flag (dimensions 512 x 256, pref PAA format).
-_ADF_MissionIntroImage = "mission\images\intro_coin.paa"; // Full path to the mission intro image (dimensions: 2038 x 1024, PAA format only). 
-ADF_uniformInsignia = true; // Apply custom clan insignia on uniform. Define in the description.ext [true/false]. 
+_ADF_MissionIntroImage = "mission\images\intro_coin.paa"; // Full path to the mission intro image (dimensions: 2038 x 1024, PAA format only).
+ADF_uniformInsignia = true; // Apply custom clan insignia on uniform. Define in the description.ext [true/false].
 _ADF_preset = "1STRECON"; // pre-defined call sign/radio freq presets. [DEFAULT / SHAPE / NOPRYL / CUSTOM]. Configure the presets in 'ADF\modules\ADF_fnc_presets.sqf'
 _ADF_briefingName = "ADF_briefing.sqf"; // Name of the briefing file (in '\mission\')
 ADF_undercoverPlayers = false; // Enable or diable undercover ability. Can be manually started for selected players through scripting

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -20,7 +20,7 @@ than lock the turret in the editor/script (lock, NOT lock player).
 
 Units will look for buildings that have pre-defined (ARMA 3 engine) garrison
 positions. There is a 60% chance they will populate the highest (incl roof)
-positions first. 
+positions first.
 Once all the garrison positions have been populated, the units that could not
 get a garrison position will patrol the area (same radius). You can order the
 patrol units to search nearby houses (default is false).
@@ -40,19 +40,19 @@ OPTIONAL PARAMETERS:
 3. Bool:        true for weapons squad, false for rifle squad. Default: false
 4. Integer:     Radius in meters from the spawn position.  . Default: 50)
 5. Bool:        Search buildings (patrol units)
-                - true
-                - false (default)
+	- true
+	- false (default)
 6. String:      Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 7. String:      Code to execute on the crew aa a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. The group is passed
+	(_this select 0) to the code/fnc.
 8. Integer:     Maximum number of positions to be occuppied in each building.
-                Default: -1 (uncapped)
+	Default: -1 (uncapped)
 9. Bool:        Roof top and top floor positions get prioritized for garrison?
-                - true (default)
-                - false
+	- true (default)
+	- false
 
 EXAMPLES USAGE IN SCRIPT:
 [_spawnPos, west, 4, false, 100, false, "my_fnc_changeUniform"] call ADF_fnc_createGarrison;
@@ -73,15 +73,15 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 // Init
 private _diag_time = diag_tickTime;
 params [
-	["_position", "", ["", [], objNull, grpNull]], 
-	["_side", east, [west]], 
-	["_size", 4, [0]], 
-	["_weaponsSquad", false, [true]], 
-	["_radius", 50], 
-	["_searchBuildings", false, [true]], 
-	["_code_1", "", [""]], 
-	["_code_2", "", [""]], 
-	["_maxBuildingPositions", -1, [0]], 
+	["_position", "", ["", [], objNull, grpNull]],
+	["_side", east, [west]],
+	["_size", 4, [0]],
+	["_weaponsSquad", false, [true]],
+	["_radius", 50],
+	["_searchBuildings", false, [true]],
+	["_code_1", "", [""]],
+	["_code_2", "", [""]],
+	["_maxBuildingPositions", -1, [0]],
 	["_roofTopPositions", true, [false]],
 	["_groupType", "", [""]],
 	["_groupSide", "", [""]],
@@ -107,7 +107,7 @@ private _groupTeam = switch (_size) do {
 	case 5: {"InfTeam"};
 	case 6;
 	case 7;
-	case 8: {if (_weaponsSquad) then {"InfSquad_Weapons"} else {"InfSquad"}};		
+	case 8: {if (_weaponsSquad) then {"InfSquad_Weapons"} else {"InfSquad"}};
 	default {"InfTeam"};
 };
 
@@ -135,7 +135,7 @@ if (_code_2 != "") then {
 	// Group
 	[_group] call (call compile format ["%1", _code_2]);
 	// Debug reporting
-	if ADF_debug then {[format ["ADF_mod_createGarrison - call %1 for group: %2", _code_2, _group]] call ADF_fnc_log};		
+	if ADF_debug then {[format ["ADF_mod_createGarrison - call %1 for group: %2", _code_2, _group]] call ADF_fnc_log};
 };
 
 // Garrison function

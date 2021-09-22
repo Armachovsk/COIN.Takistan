@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -13,7 +13,7 @@ Script version: 1.02
 File: fn_countGroupsCustom.sqf
 **********************************************************************************
 ABOUT
-Counts groups per side as stored in a previously defined array of your choice. 
+Counts groups per side as stored in a previously defined array of your choice.
 
 INSTRUCTIONS:
 Call from script on the server. The function does not count civilian groups

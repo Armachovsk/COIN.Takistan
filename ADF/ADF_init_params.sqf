@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -42,9 +42,9 @@ ADF_AmbientEnv = if (("ADF_AmbientEnv_enable" call BIS_fnc_getParamValue) == 1) 
 
 // Environment (Sound)
  ADF_AmbientSnd = if (("ADF_AmbientSnd_enable" call BIS_fnc_getParamValue) == 1) then {true} else {false};
- 
+
  ////////////////// EQUIPMENT
- 
+
  // Thermal Imaging in vehicles
 if ((("ADF_tie_disable" call BIS_fnc_getParamValue) == 0) && isServer) then {{_x disableTIEquipment true} forEach vehicles};
 

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the crate:
 null = [this] execVM "mission\loadout\crates\ADF_cCargoGlobal_B_Cav.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 if !isServer exitWith {};
@@ -44,7 +44,7 @@ _crate call ADF_fnc_stripVehicle;
 
 // Primary weapon
 _crate addWeaponCargoGlobal ["arifle_MXC_F", _wpn]; // Carbine
-		
+
 // Secondary weapon
 _crate addWeaponCargoGlobal ["hgun_P07_F", _wpn];
 
@@ -67,7 +67,7 @@ _crate addItemCargoGlobal ["MineDetector", _itm];
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_Clacker", _dem];
 	_crate addItemCargoGlobal ["ACE_DefusalKit", _dem];
-};	
+};
 
 // Weapon mountings
 _crate addItemCargoGlobal ["acc_pointer_IR", _itm];
@@ -77,15 +77,15 @@ _crate addItemCargoGlobal ["optic_Holosight", _itm];
 _crate addItemCargoGlobal ["acc_flashlight", _itm];
 
 // GL Ammo
- 
+
 // Grenades/Chemlights
-_crate addMagazineCargoGlobal ["MiniGrenade", _mag]; 	 
-_crate addMagazineCargoGlobal ["SmokeShell", _mag]; 	 
-_crate addMagazineCargoGlobal ["SmokeShellGreen", _mag]; 	 
-_crate addMagazineCargoGlobal ["SmokeShellRed", _mag]; 
-_crate addMagazineCargoGlobal ["Chemlight_green", _mag]; 
-_crate addMagazineCargoGlobal ["Chemlight_red", _mag]; 
-_crate addMagazineCargoGlobal ["B_IR_Grenade", _mag]; 
+_crate addMagazineCargoGlobal ["MiniGrenade", _mag];
+_crate addMagazineCargoGlobal ["SmokeShell", _mag];
+_crate addMagazineCargoGlobal ["SmokeShellGreen", _mag];
+_crate addMagazineCargoGlobal ["SmokeShellRed", _mag];
+_crate addMagazineCargoGlobal ["Chemlight_green", _mag];
+_crate addMagazineCargoGlobal ["Chemlight_red", _mag];
+_crate addMagazineCargoGlobal ["B_IR_Grenade", _mag];
 
 // Medical Items
 if ADF_mod_ACE3 then {
@@ -114,7 +114,7 @@ if ADF_mod_TFAR then {
 if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_crate addItemCargoGlobal ["ItemRadio", _itm]};
 if ADF_mod_CTAB then {
 	_crate addItemCargoGlobal ["ItemAndroid", 1];
-	_crate addItemCargoGlobal ["ItemcTabHCam", _itm];		
+	_crate addItemCargoGlobal ["ItemcTabHCam", _itm];
 };
 
 // Misc items
@@ -127,6 +127,4 @@ if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_EarPlugs", _itm];
 	_crate addItemCargoGlobal ["ace_mapTools", _itm];
 	_crate addItemCargoGlobal ["ACE_CableTie", _itm];
-};	
-
-
+};

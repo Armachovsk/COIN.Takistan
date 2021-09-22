@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -28,10 +28,10 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 2. Number:      Radius in meters to scan for objects to mark. Default: 100
-                Maximum is 1500.
+	Maximum is 1500.
 3. Bool:        Does the object need to be converted to a 'simple object':
-                - true - the object needs to be converted to a simple object.
-                - false - No need for simple object conversion. (Default).
+	- true - the object needs to be converted to a simple object.
+	- false - No need for simple object conversion. (Default).
 
 EXAMPLES USAGE IN SCRIPT:
 _array = ["ClassName", "ClassName", "ClassName"]; // Array of classnames of objects to mark on the map

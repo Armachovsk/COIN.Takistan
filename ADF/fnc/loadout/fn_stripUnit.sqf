@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,7 +14,7 @@ File: fn_stripUnit.sqf
 Diag: 0.0865 ms
 **********************************************************************************
 ABOUT
-Removes all items, all weapons, vest, backpack, headgear. There is an option to 
+Removes all items, all weapons, vest, backpack, headgear. There is an option to
 keep the uniform.
 
 INSTRUCTIONS:
@@ -25,9 +25,9 @@ REQUIRED PARAMETERS:
 0. Object:      AI unit, player
 
 OPTIONAL PARAMETERS:
-1. Bool:        Remove the uniform:        
-                - true - remove the uniform  (default)      
-                - false - do not remove the uniform        
+1. Bool:        Remove the uniform:
+	- true - remove the uniform  (default)
+	- false - do not remove the uniform
 
 EXAMPLES USAGE IN SCRIPT:
 [player, false] call ADF_fnc_stripUnit;

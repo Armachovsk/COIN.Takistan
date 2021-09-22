@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -26,7 +26,7 @@ OPTIONAL PARAMETERS:
 0. Bool:		Enable/disable the debug markers
 			- true: enable the tracker.
 			- false: Disable the tracker (Default).
-1. Side:	west, east, independent, civilian (default: east) 
+1. Side:	west, east, independent, civilian (default: east)
 
 EXAMPLES USAGE IN SCRIPT:
 [true, west] call ADF_fnc_debugMarkers;
@@ -60,22 +60,22 @@ ADF_debug_cancel_markers = false;
 
 // Populate side units array
 if (_side countSide allUnits == 0) exitWith {[format ["ADF_fnc_debugMarkers - units side %1: 0. Terminating tracker!", _side]] call ADF_fnc_log};
-{if (alive _x && side _x == _side) then {_allUnits pushBackUnique _x}} forEach allUnits;	
-[format ["ADF_fnc_debugMarkers - Tracker activiated for side %1: (%2 units)", _side, count _allUnits]] call ADF_fnc_log;	
+{if (alive _x && side _x == _side) then {_allUnits pushBackUnique _x}} forEach allUnits;
+[format ["ADF_fnc_debugMarkers - Tracker activiated for side %1: (%2 units)", _side, count _allUnits]] call ADF_fnc_log;
 
 // Set the marker color
 switch _side do {
-	case west: {_color = "colorBLUFOR";};		
+	case west: {_color = "colorBLUFOR";};
 	case independent: {_color = "colorIndependent";};
 	case civilian: {_color = "colorCivilian";};
 	case east;
-	default {_color = "colorOPFOR";};	
+	default {_color = "colorOPFOR";};
 };
 
 // spawn a thread for each unit tracking it movement
 {
 	[_x, _color] spawn {
-		
+
 		// Init
 		params ["_unit", "_color"];
 		private _size = .5;
@@ -84,13 +84,13 @@ switch _side do {
 
 		// Check if the unit is in a vehhicle. Larger marker for drivers to represent vehicle
 		if !(isNull objectParent _unit) then {
-			
+
 			// if the unit is the driver the set the marker
 			if (_unit == driver (vehicle _unit)) then {
 				if ((vehicle _unit) isKindOf "Helicopter") then {
-					_size = 1;	
+					_size = 1;
 				} else {
-					_type = "mil_arrow2_noShadow";	
+					_type = "mil_arrow2_noShadow";
 				};
 
 			// If the unit is a gunner or is in cargo the make the marker transparent
@@ -98,7 +98,7 @@ switch _side do {
 				_alpha = 0;
 			};
 		};
-		
+
 		// Create the initial marker
 		private _m = createMarker [format ["m_%1", _unit], getPos _unit];
 		_m setMarkerShape "ICON";
@@ -107,7 +107,7 @@ switch _side do {
 		_m setMarkerDir (getDir _unit);
 		_m setMarkerColor _color;
 		_m setMarkerAlpha _alpha;
-		
+
 		// Start marker update loop per unit
 		waitUntil {
 			_m setMarkerPos [getPos _unit select 0, getPos _unit select 1];
@@ -115,7 +115,7 @@ switch _side do {
 			sleep .5;
 			(ADF_debug_cancel_markers || !alive _unit)
 		};
-		
+
 		// Unit is no longer alive. Change the marker color to black
 		_m setMarkerColor "ColorBlack";
 		_m setMarkerType "mil_destroy";

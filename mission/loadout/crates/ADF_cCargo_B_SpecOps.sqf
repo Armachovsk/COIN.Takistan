@@ -1,12 +1,12 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
-Script: Crate Cargo Script (BLUEFOR) - SpecOps items/weapons 
+Script: Crate Cargo Script (BLUEFOR) - SpecOps items/weapons
 Author: Whiztler
 Script version: 2.2
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the crate:
 null = [this] execVM "mission\loadout\crates\ADF_cCargo_B_SpecOps.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 if !isServer exitWith {};
@@ -40,7 +40,7 @@ private _mis = 2;		// Missiles/Rockets
 private _itm = 3;		// Items
 private _uni = 5;		// Uniform/Vest/Backpack/etc
 
-// Settings 
+// Settings
 _crate call ADF_fnc_stripVehicle;
 
 // Primary weapon
@@ -51,7 +51,7 @@ _crate addWeaponCargoGlobal ["arifle_MXM_Black_F", _spw]; // Marksman
 _crate addWeaponCargoGlobal ["srifle_EBR_SOS_F", _spw]; // Marksman
 _crate addWeaponCargoGlobal ["srifle_DMR_02_F", _spw]; // Marksman
 _crate addWeaponCargoGlobal ["arifle_SDAR_F", _wpn]; // Divers
-		
+
 // Secondary weapon
 _crate addWeaponCargoGlobal ["hgun_Pistol_heavy_01_snds_F", _wpn];
 
@@ -60,7 +60,7 @@ if ADF_mod_ACE3 then {
 	_crate addMagazineCargoGlobal ["ACE_30Rnd_65x39_caseless_mag_Tracer_Dim", _mag];
 	_crate addMagazineCargoGlobal ["ACE_30Rnd_65x47_Scenar_mag", 10]; //MXM
 	_crate addMagazineCargoGlobal ["ACE_30Rnd_65_Creedmor_mag", 10]; //MXM
-	
+
 	_crate addMagazineCargoGlobal ["ACE_10Rnd_338_API526_Mag", _mag];
 	_crate addMagazineCargoGlobal ["ACE_10Rnd_338_300gr_HPBT_Mag", _mag];
 	_crate addMagazineCargoGlobal ["ACE_20Rnd_762x51_Mag_Tracer", _mag];
@@ -95,12 +95,12 @@ if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_Cellphone", 1];
 	_crate addItemCargoGlobal ["ACE_DefusalKit", _itm];
 	_crate addItemCargoGlobal ["ACE_wirecutter", _itm];
-};	
+};
 
 // Weapon mountings
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["acc_pointer_IR", _itm];
-	_crate addItemCargoGlobal ["acc_flashlight", _itm];	
+	_crate addItemCargoGlobal ["acc_flashlight", _itm];
 	_crate addItemCargoGlobal ["ACE_optic_Hamr_2D", _itm];
 	_crate addItemCargoGlobal ["ACE_optic_Hamr_PIP", _itm];
 	_crate addItemCargoGlobal ["ACE_optic_Arco_2D", _itm];
@@ -110,18 +110,18 @@ if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["muzzle_snds_H", _itm];
 	_crate addItemCargoGlobal ["muzzle_snds_H_MG", _itm];
 	_crate addItemCargoGlobal ["muzzle_snds_B", _itm];
-	_crate addItemCargoGlobal ["muzzle_snds_L", _itm];	
+	_crate addItemCargoGlobal ["muzzle_snds_L", _itm];
 	// Sniper/Marksman
 	_crate addItemCargoGlobal ["ACE_optic_SOS_2D", 1];
 	_crate addItemCargoGlobal ["ACE_optic_SOS_PIP", 1];
-	_crate addItemCargoGlobal ["ACE_optic_LRPS_2D", 1];	
+	_crate addItemCargoGlobal ["ACE_optic_LRPS_2D", 1];
 	_crate addItemCargoGlobal ["ACE_optic_LRPS_PIP", 1];
 
-	_crate addItemCargoGlobal ["ACE_muzzle_mzls_H", 5];  
-	_crate addItemCargoGlobal ["ACE_muzzle_mzls_B", 5];  	
-	_crate addItemCargoGlobal ["ACE_muzzle_mzls_L", 5];	 
-	_crate addItemCargoGlobal ["ACE_muzzle_mzls_smg_01", 5];  
-	_crate addItemCargoGlobal ["ACE_muzzle_mzls_smg_02", 5];	 	
+	_crate addItemCargoGlobal ["ACE_muzzle_mzls_H", 5];
+	_crate addItemCargoGlobal ["ACE_muzzle_mzls_B", 5];
+	_crate addItemCargoGlobal ["ACE_muzzle_mzls_L", 5];
+	_crate addItemCargoGlobal ["ACE_muzzle_mzls_smg_01", 5];
+	_crate addItemCargoGlobal ["ACE_muzzle_mzls_smg_02", 5];
 } else {
 	_crate addItemCargoGlobal ["acc_pointer_IR", _itm];
 	_crate addItemCargoGlobal ["optic_ACO", _itm];
@@ -156,27 +156,27 @@ if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_HuntIR_M203", 2];
 	_crate addItemCargoGlobal ["ACE_HuntIR_monitor", 1];
 };
- 
+
 // Grenades/Chemlights
-_crate addMagazineCargoGlobal ["MiniGrenade", _gre]; 	 
-_crate addMagazineCargoGlobal ["SmokeShell", _mag]; 	 
-_crate addMagazineCargoGlobal ["SmokeShellGreen", _gre]; 	 
-_crate addMagazineCargoGlobal ["SmokeShellRed", _gre]; 
-_crate addMagazineCargoGlobal ["SmokeShellYellow", _gre]; 
-_crate addMagazineCargoGlobal ["SmokeShellPurple", _gre]; 
-_crate addMagazineCargoGlobal ["SmokeShellBlue", _gre]; 
-_crate addMagazineCargoGlobal ["SmokeShellOrange", _gre]; 
-_crate addMagazineCargoGlobal ["Chemlight_green", _mag]; 
-_crate addMagazineCargoGlobal ["Chemlight_red", _mag]; 
-_crate addMagazineCargoGlobal ["Chemlight_yellow", _mag]; 
-_crate addMagazineCargoGlobal ["Chemlight_blue", _mag]; 
-_crate addMagazineCargoGlobal ["B_IR_Grenade", _gre]; 
+_crate addMagazineCargoGlobal ["MiniGrenade", _gre];
+_crate addMagazineCargoGlobal ["SmokeShell", _mag];
+_crate addMagazineCargoGlobal ["SmokeShellGreen", _gre];
+_crate addMagazineCargoGlobal ["SmokeShellRed", _gre];
+_crate addMagazineCargoGlobal ["SmokeShellYellow", _gre];
+_crate addMagazineCargoGlobal ["SmokeShellPurple", _gre];
+_crate addMagazineCargoGlobal ["SmokeShellBlue", _gre];
+_crate addMagazineCargoGlobal ["SmokeShellOrange", _gre];
+_crate addMagazineCargoGlobal ["Chemlight_green", _mag];
+_crate addMagazineCargoGlobal ["Chemlight_red", _mag];
+_crate addMagazineCargoGlobal ["Chemlight_yellow", _mag];
+_crate addMagazineCargoGlobal ["Chemlight_blue", _mag];
+_crate addMagazineCargoGlobal ["B_IR_Grenade", _gre];
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_HandFlare_White", _mag];
 	_crate addItemCargoGlobal ["ACE_HandFlare_Red", _mag];
 	_crate addItemCargoGlobal ["ACE_HandFlare_Green", _mag];
 	_crate addItemCargoGlobal ["ACE_HandFlare_Yellow", _mag];
-};	
+};
 
 // Medical Items
 if ADF_mod_ACE3 then {
@@ -198,8 +198,8 @@ if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_plasmaIV_250", 10];
 	_crate addItemCargoGlobal ["ACE_salineIV", 5];
 	_crate addItemCargoGlobal ["ACE_salineIV_500", 10];
-	_crate addItemCargoGlobal ["ACE_salineIV_250", 10];	
-	_crate addItemCargoGlobal ["ACE_bodyBag", 5];	
+	_crate addItemCargoGlobal ["ACE_salineIV_250", 10];
+	_crate addItemCargoGlobal ["ACE_bodyBag", 5];
 } else {
 	_crate addItemCargoGlobal ["FirstAidKit", _mag];
 	_crate addItemCargoGlobal ["Medikit", 1];
@@ -209,12 +209,12 @@ if ADF_mod_ACE3 then {
 if ADF_mod_ACE3 then {
 	_crate addItemCargoGlobal ["ACE_Vector", _itm];
 	_crate addItemCargoGlobal ["ACE_Kestrel4500", _itm];
-	_crate addItemCargoGlobal ["ACE_RangeCard", _itm];		
-	_crate addItemCargoGlobal ["ACE_ATragMX", _itm];		
-	_crate addItemCargoGlobal ["ace_spottingscope", 2];		
-	_crate addItemCargoGlobal ["ace_mx2a", 1];		
-	_crate addItemCargoGlobal ["ace_yardage450", 1];		
-	_crate addItemCargoGlobal ["ace_dagr", _itm];			
+	_crate addItemCargoGlobal ["ACE_RangeCard", _itm];
+	_crate addItemCargoGlobal ["ACE_ATragMX", _itm];
+	_crate addItemCargoGlobal ["ace_spottingscope", 2];
+	_crate addItemCargoGlobal ["ace_mx2a", 1];
+	_crate addItemCargoGlobal ["ace_yardage450", 1];
+	_crate addItemCargoGlobal ["ace_dagr", _itm];
 } else {
 	_crate addWeaponCargoGlobal ["RangeFinder", _itm];
 	_crate addWeaponCargoGlobal ["Binocular", _itm];

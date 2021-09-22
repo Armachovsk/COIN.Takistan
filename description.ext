@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,6 +21,3 @@ the  '\mission\'  folder.
 #include "mission\ADF_mission_config_debriefing.hpp"
 #include "mission\ADF_mission_config_insignia.hpp"
 #include "mission\ADF_mission_information.hpp"
-
-
-

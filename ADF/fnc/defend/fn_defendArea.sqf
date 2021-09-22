@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -28,16 +28,16 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 2. Number:      Radius in meters to search for buildings/turrets to populate
-                with units (default is 50 meters).
+	with units (default is 50 meters).
 3. Number:      Max number of positions within a building to be occupied.
-                Default: -1 (all positions, no maximum)
+	Default: -1 (all positions, no maximum)
 4. Bool:        Ungarrisoned units will go on patrol. Do they need to search
-                buildings?
-                - true: search buildings
-                - false: do not search buildings (default)
+	buildings?
+	- true: search buildings
+	- false: do not search buildings (default)
 5. Bool:        Roof top and top floor positions get prioritized for garrison?
-                - true (default)
-                - false
+	- true (default)
+	- false
 
 EXAMPLES USAGE IN SCRIPT:
 [_grp, "GarrisonMarker", 500, 5, true] call ADF_fnc_defendArea;
@@ -58,15 +58,15 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 // init
 private _diag_time = diag_tickTime;
 params [
-	["_group", grpNull, [grpNull]], 
-	["_position", "", ["", [], objNull, grpNull]], 
-	["_radius", 50, [0]], 
-	["_maxOccupyPositions", -1, [0]], 
-	["_searchBuildings", false, [true]], 
+	["_group", grpNull, [grpNull]],
+	["_position", "", ["", [], objNull, grpNull]],
+	["_radius", 50, [0]],
+	["_maxOccupyPositions", -1, [0]],
+	["_searchBuildings", false, [true]],
 	["_rooftopPositions", true, [false]],
 	["_garrisonArray", [], [[]]],
 	["_index", 0, [0]],
-	["_cycleCount", 0, [0]]	
+	["_cycleCount", 0, [0]]
 ];
 private _units = units _group;
 private _unitsCount = count _units;
@@ -94,16 +94,16 @@ if ADF_debug then {
 
 _group enableAttack false;
 
-// Modified CBA_fnc_taskDefend by Rommel et all	
-{		
-	// INIT	
+// Modified CBA_fnc_taskDefend by Rommel et all
+{
+	// INIT
 	// Turret count - deduct 1 on each cycle
 	private _turretCount = if (_allTurrents isEqualTo []) then {-1} else {(count _allTurrents) - 1};
 	// Cycle counter
 	_cycleCount = _cycleCount + 1;
 	// Set the garrison var to FALSE
 	_x setVariable ["ADF_garrSet", false];
-	
+
 	// Populate static weapons and vehicles with turrets first
 	if (_turretCount > -1)  then {
 		// Movve unit into the turret and remove the turret from the array
@@ -111,33 +111,33 @@ _group enableAttack false;
 		_x moveInGunner (_allTurrents # _turretCount);
 		[_x] call ADF_fnc_setTurretGunner;
 		_allTurrents resize _turretCount;
-		
+
 		// Set the the garrison var to TRUE
 		_x setVariable ["ADF_garrSet", true];
 		// Increase the success counter
 		_index = _index + 1;
-		
+
 	// All turrets populated, populate building positions
 	} else {
 		if (count _allBuildings > 0) then {
 			// Init building position array
 			private _buildingPosition = [];
-			
+
 			// Select a random building from the building array
 			private _building = selectRandom _allBuildings;
 			private _garrisonPosition = _building getVariable ["ADF_garrPos", []];
-			
+
 			// Create a spread when the nr of buildings > number of units
 			if ((count _allBuildings) >= _unitsCount) then {_allBuildings = _allBuildings - [_building]};
-			
+
 			if ((count _garrisonPosition) > 0) then {
-			
+
 				// In case there are multiple building positions within the building, check for high altitude positions for rooftop placement
 				if ((count _garrisonPosition) > 1) then {
 					// 60 percent chance for rooftops / toop floor else select a random free position
 					if (_rooftopPositions && {(random 1) > 0.4}) then {
 						private _ap = [_garrisonPosition, ADF_fnc_altitudeDescending] call ADF_fnc_positionArraySort;
-						_buildingPosition	= _ap # 0;							
+						_buildingPosition	= _ap # 0;
 					} else {
 						_buildingPosition = selectRandom _garrisonPosition;
 					};
@@ -146,8 +146,8 @@ _group enableAttack false;
 				};
 
 				// Remove the populated position from the array
-				_garrisonPosition	= _garrisonPosition - [_buildingPosition];				
-				
+				_garrisonPosition	= _garrisonPosition - [_buildingPosition];
+
 				// Check if there are positions left within the building else remove the building from the buildings array. Set the building varaibles accordingly.
 				if (_garrisonPosition isEqualTo []) then {
 					_allBuildings = _allBuildings - [_building];
@@ -156,10 +156,10 @@ _group enableAttack false;
 				} else {
 					_building setVariable ["ADF_garrPos", _garrisonPosition];
 				};
-				
+
 				// Unit now has a random position within a random building. Pass it the the setGarrison function so thsat the unit will move into the selected position.
 				[_x, _buildingPosition, _building] spawn ADF_fnc_setGarrison;
-				
+
 				// Set the ADF_garrSet for the unit and add his position to an array that is used for headless client management.
 				_x setVariable ["ADF_garrSet", true];
 				_garrisonArray append [[_x, _buildingPosition]];
@@ -167,10 +167,10 @@ _group enableAttack false;
 				if ADF_debug then {[format ["ADF_fnc_defendArea - Unit garrisson array: %1", _garrisonArray]] call ADF_fnc_log};
 				// Increase the success counter
 				_index = _index + 1;
-			
+
 			} else {if ADF_debug then {[format ["ADF_fnc_defendArea - No positions found for unit %1 (nr. %2)", _x, _cycleCount]] call ADF_fnc_log}};
-			
-			
+
+
 		};
 	};
 	_x allowDamage true; // hack - ADF 2.22
@@ -193,7 +193,7 @@ if (ADF_HC_connected) then {
 	if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_defendArea - ADF_hc_garrisonArr set for group: %1 -- array: %2", _group, _garrisonArray]] call ADF_fnc_log};
 };
 
-// Non garrisoned units patrol the area	
+// Non garrisoned units patrol the area
 waitUntil {_unitsCount == _cycleCount};
 if (_index < _unitsCount) then {[_index, _group, _position, _radius, _searchBuildings] spawn ADF_fnc_defendAreaPatrol};
 

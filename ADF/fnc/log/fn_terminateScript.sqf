@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -30,7 +30,7 @@ REQUIRED PARAMETERS:
 1. String:      the error message
 
 OPTIONAL PARAMETERS:
-N/A     
+N/A
 
 EXAMPLES USAGE IN SCRIPT:
 ["ADF_fnc_ambientAirTraffic",_msg] call ADF_fnc_terminateScript;
@@ -47,7 +47,7 @@ Nothing
 
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_terminateScript"};
-	
+
 params [
 	["_function", "Unnamed ADF Function", [""]],
 	["_errorMessage", "No error message provided", [""]]

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -31,7 +31,7 @@ if isDedicated then {
 };
 
 // Execute mission settings
-private _handle = execVM "ADF\ADF_init_hc.sqf"; waitUntil {scriptDone _handle}; 
+private _handle = execVM "ADF\ADF_init_hc.sqf"; waitUntil {scriptDone _handle};
 if ADF_Tickets then {[west, _ADF_wTixNr] call BIS_fnc_respawnTickets; [east, _ADF_eTixNr] call BIS_fnc_respawnTickets};
 if _ADF_CleanUp then {[_ADF_CleanUp_viewDist, _ADF_CleanUp_manTimer, _ADF_CleanUp_vehTimer, _ADF_CleanUp_abaTimer] execVM "ADF\ext\repCleanup\repCleanup.sqf"};
 if (_ADF_Caching && {!ADF_HC_connected}) then {[_ADF_Caching_UnitDistance, -1, ADF_debug, _ADF_Caching_vehicleDistance_land, _ADF_Caching_vehicleDistance_air, _ADF_Caching_vehicleDistance_sea, _ADF_Caching_debugInfo] execVM "ADF\ext\zbe_cache\main.sqf"};

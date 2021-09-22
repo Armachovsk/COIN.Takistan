@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -34,22 +34,22 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 4. Group:       Group. if no group exists one will be created based on the side of
-                the vehicle.
+	the vehicle.
 5. String:      Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 6. String:      Code to execute on the crew aa a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed
-                (_this select 0) to the code/fnc.  
+	Default = "". Code is CALLED. The group is passed
+	(_this select 0) to the code/fnc.
 7. Bool:        Force precise position:
-                - true (default)
-                - false
+	- true (default)
+	- false
 8. Bool:        Apply vehicle crew aggressiveness setting (false for convoys and such):
-                - true (default)
-                - false
+	- true (default)
+	- false
 9. Bool:        Set skill of crew
-                - true (default)
-                - false			
+	- true (default)
+	- false
 
 EXAMPLES USAGE IN SCRIPT:
 [_markerName, 90, "O_MBT_02_cannon_F", _grp, "", "", true, true] call ADF_fnc_createCrewedVehicle;
@@ -62,8 +62,8 @@ DEFAULT/MINIMUM OPTIONS
 
 RETURNS:
 Array:          0. new vehicle (Object).
-                1. all crew (Array of Objects).
-                2. vehicle's group (Group).
+	1. all crew (Array of Objects).
+	2. vehicle's group (Group).
 *********************************************************************************/
 
 // Reporting
@@ -71,13 +71,13 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 
 // Init
 params [
-	["_position", "", ["", [], objNull, grpNull]], 
-	["_direction", 0, [0]], 
-	["_vehicleClass", "", [""]], 
-	["_group", grpNull, [grpNull]], 
-	["_code_1", "", [""]], 
-	["_code_2", "", [""]], 			
-	["_spotPos", true, [false]], 
+	["_position", "", ["", [], objNull, grpNull]],
+	["_direction", 0, [0]],
+	["_vehicleClass", "", [""]],
+	["_group", grpNull, [grpNull]],
+	["_code_1", "", [""]],
+	["_code_2", "", [""]],
+	["_spotPos", true, [false]],
 	["_crewBehavior", true, [false]],
 	["_setSkill", true, [false]],
 	["_vehicle", objNull, [objNull]]
@@ -91,13 +91,13 @@ if (_code_2 != "") then {if (isNil _code_2) then {if ADF_debug then {[format ["A
 _position = [_position] call ADF_fnc_checkPosition;
 
 // Check if a valid group was passed. If not, create a group based on the side of the vehicle
-if (_group isEqualTo grpNull) then {	
+if (_group isEqualTo grpNull) then {
 	switch (getNumber(configFile >> "CfgVehicles" >> _vehicleClass >> "side")) do {
 		case 0 : {_group = createGroup east};
 		case 1 : {_group = createGroup west};
 		case 2 : {_group = createGroup independent};
 		case 3 : {_group = createGroup civilian};
-	};	
+	};
 };
 
 // Determine vehicle
@@ -142,7 +142,7 @@ if (_code_2 != "") then {
 	// Crew
 	[_group] call (call compile format ["%1", _code_2]);
 	// Debug reporting
-	if ADF_debug then {[format ["ADF_fnc_createCrewedVehicle - call %1 for the vessel crew: %2", _code_2, _group]] call ADF_fnc_log};	
+	if ADF_debug then {[format ["ADF_fnc_createCrewedVehicle - call %1 for the vessel crew: %2", _code_2, _group]] call ADF_fnc_log};
 };
 
 // Add the vehicle + crew to Zeus
@@ -150,6 +150,6 @@ if isServer then {
 	[_vehicle] call ADF_fnc_addToCurator;
 } else {
 	[_vehicle] remoteExecCall ["ADF_fnc_addToCurator", 2];
-};	
+};
 
 [_vehicle, _crew, _group]

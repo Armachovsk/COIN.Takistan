@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -36,12 +36,12 @@ if (time > 300) exitWith {ADF_missionInit = true};
 if ADF_debug exitWith {ADF_missionInit = true; publicVariable "ADF_missionInit"; diag_log "ADF rpt: INIT - debug mode detected, skipping mission init timer"};
 if isMultiplayer then {player enableSimulation false; showMap false;};
 
-// Init client display		
+// Init client display
 while {(_count != 100)} do {
-	_count = _count + 1;	
+	_count = _count + 1;
 	private _hintText = format [localize "STR_ADF_post_initHint1", _count, _init_time * 100, ADF_tpl_version, ADF_mission_version];
 	sleep _init_time;
-	hintSilent parseText _hintText; 
+	hintSilent parseText _hintText;
 };
 
 if isMultiplayer then {player enableSimulation true; showMap true;};
@@ -51,7 +51,7 @@ hintSilent parseText _hintText;
 finishMissionInit;
 sleep 3;
 hintSilent "";
-ADF_missionInit = true; 
+ADF_missionInit = true;
 
 // Debug reporting
 if ADF_debug then {diag_log "ADF Debug: INIT - ADF_missionInit = true"};

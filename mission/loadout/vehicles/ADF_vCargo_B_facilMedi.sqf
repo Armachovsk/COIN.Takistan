@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_vCargo_B_facilMedi.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,11 +28,11 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Grenades
-_v addMagazineCargoGlobal ["SmokeShell", 25]; 	 
+_v addMagazineCargoGlobal ["SmokeShell", 25];
 _v addMagazineCargoGlobal ["SmokeShellGreen", 50];
 _v addMagazineCargoGlobal ["SmokeShellYellow", 10];
 _v addMagazineCargoGlobal ["SmokeShellPurple", 10];
@@ -60,13 +60,13 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_plasmaIV_250", 50];
 	_v addItemCargoGlobal ["ACE_salineIV", 25];
 	_v addItemCargoGlobal ["ACE_salineIV_500", 35];
-	_v addItemCargoGlobal ["ACE_salineIV_250", 50];	
-	_v addItemCargoGlobal ["ACE_bodyBag", 50];	
+	_v addItemCargoGlobal ["ACE_salineIV_250", 50];
+	_v addItemCargoGlobal ["ACE_bodyBag", 50];
 	_v setVariable ["ace_medical_isMedicalFacility", true];
 } else {
 	_v addItemCargoGlobal ["FirstAidKit", 150];
 	_v addItemCargoGlobal ["Medikit", 5];
 };
 
-// Gear kit 
+// Gear kit
 _v addBackpackCargoGlobal ["B_AssaultPack_rgr_Medic", 3];

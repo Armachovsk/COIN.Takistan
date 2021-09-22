@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -27,10 +27,10 @@ diag_log "ADF rpt: Init - executing: ADF_mod_cas.sqf";
 /*
 	Step 1:	Copy from (COPY FROM HERE) into your script.
 	Step 2:	you'll need to place two markers:
-			1. marker where the aircraft will spawn. 
-			2. marker for the approach vector (North, east, South or west) of the AO.	
+			1. marker where the aircraft will spawn.
+			2. marker for the approach vector (North, east, South or west) of the AO.
 	Step 3.	Fill out below parameters
-    Note: Don't worry about the many comments as the ARMA engine ignores comments.
+	Note: Don't worry about the many comments as the ARMA engine ignores comments.
 */
 
 // the name of the unit that can request the CAS. Use a commander or JTAC.
@@ -40,25 +40,25 @@ ADF_CAS_requester = "INF_XO";
 ADF_CAS_groupName = "ALPHA 1-1";
 
 // This is where the CAS aircraft will spawn. Place a marker on the edge of map far from the AO. Name the marker: "mAirSupport"
-ADF_CAS_spawn = getMarkerPos "mAirSupport"; 
+ADF_CAS_spawn = getMarkerPos "mAirSupport";
 
  // Approach vector marker. The CAS aircraft will first fly to an approach vector before he flies to the CAS AO. Name the marker: "mAirSupportVector"
 ADF_CAS_vector = getMarkerPos "mAirSupportVector";
 
 // Delay (in seconds) for the CAS to be created. This is simulate that the CAS aircraft needs to depart from a distant airbase + time to go through emergency start-up procedures.
-ADF_CAS_delay = round (180 + (random 60)); 
+ADF_CAS_delay = round (180 + (random 60));
 
  // Time spend in the CAS area. After which the CAS aircraft returns to the spawn location and is deleted.
 ADF_CAS_onSite = round (120 + (random 120));
 
 // Size of the CAS radius. Blue circular marker that shows the CAS AO. Default is 800 meters
-ADF_CAS_aoTriggerRad	= 800; 
+ADF_CAS_aoTriggerRad	= 800;
 
 // Side of the CAS aircraft/crew
 ADF_CAS_side = west;
 
 // ingame callsign of CAS aircraft. Used for hint messages to simulate CAS request radio transmissions.
-ADF_CAS_callSign = "HAWK"; 
+ADF_CAS_callSign = "HAWK";
 
 // ingame name of the pilot of the CAS aircraft. Used for hint messages to simulate CAS request radio transmissions.
 ADF_CAS_pilotName = "Lt. Jim (Blackjack) Decker";
@@ -67,10 +67,10 @@ ADF_CAS_pilotName = "Lt. Jim (Blackjack) Decker";
 ADF_CAS_station = "OSCAR";
 
 // ingame call sign of OpFor. E.g. TANGO, CSAT, etc. Used for hint messages to simulate CAS request radio transmissions.
-ADF_CAS_targetName	= "ELVIS"; 
+ADF_CAS_targetName	= "ELVIS";
 
-// Ingame description of target (keep it short). 
-ADF_CAS_targetDesc	= "victors, small arms"; 
+// Ingame description of target (keep it short).
+ADF_CAS_targetDesc	= "victors, small arms";
 
 // CAS requirements (interdict, destroy, area security, laser target, etc. Used for hint messages to simulate CAS request radio transmissions.
 ADF_CAS_result = "interdict";

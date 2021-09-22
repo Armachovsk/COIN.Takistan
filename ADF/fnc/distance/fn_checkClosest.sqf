@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -47,7 +47,7 @@ params [
 	["_units", [], [[]]],
 	["_position", "", ["", [], objNull, grpNull, locationNull]],
 	["_radius", 10^4, [0]]
-];	
+];
 private _result = _radius + 1;
 
 {
@@ -55,7 +55,7 @@ private _result = _radius + 1;
 
 	// Debug reporting
 	if ADF_debug then {[format ["ADF_fnc_checkClosest - distance %1 to %2 is %3 meters", _x, _position, _result]] call ADF_fnc_log};
-	
+
 	if (_result < _radius) then {_radius = _result};
 } forEach _units;
 

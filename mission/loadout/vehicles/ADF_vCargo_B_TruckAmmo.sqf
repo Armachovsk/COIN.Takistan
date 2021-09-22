@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_TruckAmmo.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -57,7 +57,7 @@ private _ADF_INF_primaryWeaponMag_MG = "130Rnd_338_Mag";
 if ADF_mod_ACE3 then {
 	_ADF_INF_primaryWeaponMag = "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim";
 	_ADF_INF_primaryWeaponMag_LMG=  "ACE_200Rnd_65x39_cased_Box_Tracer_Dim";
-};	
+};
 
 private _ADF_INF_handWeapon_mag = "16Rnd_9x21_Mag";
 private _ADF_INF_tubeMag_Lite = "NLAW_F";
@@ -79,7 +79,7 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 
 			// Primary weapon - RHS
 			_ADF_INF_primaryWeapon = "rhs_weap_hk416d145";
-			_ADF_INF_primaryWeapon_lite = "rhs_weap_hk416d10_LMT";			
+			_ADF_INF_primaryWeapon_lite = "rhs_weap_hk416d10_LMT";
 			_ADF_INF_primaryWeapon_GL = "rhs_weap_hk416d145_m320";
 			_ADF_INF_primaryWeapon_LMG = "rhs_weap_m249_pip_S";
 			_ADF_INF_handWeapon = "rhsusf_weap_m1911a1";
@@ -101,13 +101,13 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 			_ADF_INF_tubeMag_AT = "rhs_fgm148_magazine_AT";
 			_ADF_INF_tubeMag_AA = "rhs_fim92_mag";
 			_ADF_INF_40mike = "rhs_mag_M441_HE";
-			_ADF_INF_handgrenade = "rhs_mag_m67";			
+			_ADF_INF_handgrenade = "rhs_mag_m67";
 
 		};
 		if ADF_mod_CUP_U exitWith {
 			// Primary weapon - CUP
 			_ADF_INF_primaryWeapon = "CUP_arifle_HK416_Black";
-			_ADF_INF_primaryWeapon_lite = "CUP_arifle_HK416_CQB_Black";			
+			_ADF_INF_primaryWeapon_lite = "CUP_arifle_HK416_CQB_Black";
 			_ADF_INF_primaryWeapon_GL = "CUP_arifle_HK416_CQB_M203_Black";
 			_ADF_INF_primaryWeapon_LMG = "CUP_lmg_minimi";
 			_ADF_INF_handWeapon = "CUP_hgun_Colt1911";
@@ -130,12 +130,12 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 			_ADF_INF_tubeMag_AT = "Chemlight_green";
 			_ADF_INF_tubeMag_AA = "Chemlight_green";
 			_ADF_INF_40mike = "1Rnd_HE_Grenade_shell";
-			_ADF_INF_handgrenade = "CUP_HandGrenade_M67";			
-	
+			_ADF_INF_handgrenade = "CUP_HandGrenade_M67";
+
 			if ADF_mod_CFP exitWith {_nvg = "CFP_ANPVS15_Black";};
-			if ADF_mod_CUP_U exitWith {_nvg = "CUP_NVG_PVS15_black";};			
+			if ADF_mod_CUP_U exitWith {_nvg = "CUP_NVG_PVS15_black";};
 		};
-	};		
+	};
 };
 
 
@@ -176,15 +176,15 @@ _v addMagazineCargoGlobal ["APERSBoundingMine_Range_Mag", 15];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_Clacker", 10];
 	_v addItemCargoGlobal ["ACE_DefusalKit", 5];
-	_v addItemCargoGlobal ["ACE_M26_Clacker", 5]; 
+	_v addItemCargoGlobal ["ACE_M26_Clacker", 5];
 	_v addItemCargoGlobal ["ACE_wirecutter", 3];
-};	
+};
 
 // Weapon mountings
 // Weapon mountings
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal [_ADF_INF_primaryWeaponAttLight, 10];
-	_v addItemCargoGlobal ["acc_flashlight", 10];	
+	_v addItemCargoGlobal ["acc_flashlight", 10];
 	_v addItemCargoGlobal ["ACE_optic_Hamr_2D", 5];
 	_v addItemCargoGlobal ["ACE_optic_Hamr_PIP", 5];
 	_v addItemCargoGlobal ["ACE_optic_Arco_2D", 5];
@@ -193,8 +193,8 @@ if ADF_mod_ACE3 then {
 	// Sniper/Marksman
 	_v addItemCargoGlobal ["ACE_optic_SOS_2D", 2];
 	_v addItemCargoGlobal ["ACE_optic_SOS_PIP", 2];
-	_v addItemCargoGlobal ["ACE_optic_LRPS_2D", 2];	
-	_v addItemCargoGlobal ["ACE_optic_LRPS_PIP", 2];	
+	_v addItemCargoGlobal ["ACE_optic_LRPS_2D", 2];
+	_v addItemCargoGlobal ["ACE_optic_LRPS_PIP", 2];
 } else {
 	_v addItemCargoGlobal [_ADF_INF_primaryWeaponAttLight, 10];
 	_v addItemCargoGlobal ["acc_flashlight", 10];
@@ -204,11 +204,11 @@ if ADF_mod_ACE3 then {
 
 };
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_H", 5];  
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_B", 5];  	
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_L", 5];	 
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_01", 5];  
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_02", 5];	 	
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_H", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_B", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_L", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_01", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_02", 5];
 };
 // GL Ammo
 _v addMagazineCargoGlobal ["3Rnd_HE_Grenade_shell", 25];
@@ -220,9 +220,9 @@ if ADF_mod_ACE3 then {
 };
 
 // Grenades
-_v addMagazineCargoGlobal [_ADF_INF_handgrenade, 50]; 	 
-_v addMagazineCargoGlobal ["SmokeShell", 50]; 	 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 25]; 	 
+_v addMagazineCargoGlobal [_ADF_INF_handgrenade, 50];
+_v addMagazineCargoGlobal ["SmokeShell", 50];
+_v addMagazineCargoGlobal ["SmokeShellGreen", 25];
 _v addMagazineCargoGlobal ["SmokeShellRed", 25];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 25];
@@ -230,7 +230,7 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_Green", 15];
 	_v addItemCargoGlobal ["ACE_HandFlare_Yellow", 15];
 	_v addItemCargoGlobal ["ACE_M84", 15];
-}; 
+};
 
 // ACRE / TFAR and cTAB
 if ADF_mod_ACRE then {
@@ -249,7 +249,7 @@ if ADF_mod_CTAB then {
 	_v addItemCargoGlobal ["ItemcTabHCam", 25];
 };
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", 50];
 	_v addItemCargoGlobal ["ace_mapTools", 10];
@@ -277,7 +277,7 @@ _v addItemCargoGlobal ["G_Tatical_Clear", 5];
 _v addItemCargoGlobal ["G_Shades_Black" , 5];
 _v addItemCargoGlobal [_nvg, 10];
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Vector", 5];		
+	_v addItemCargoGlobal ["ACE_Vector", 5];
 };
 
 // Gear kit (not working from crates/veh)

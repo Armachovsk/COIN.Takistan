@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -12,8 +12,8 @@ Module version: 1.11
 
 File: ADF_mod_createFootPatrol.sqf
 **********************************************************************************
-This module creates a group (2, 4 or 8 pax) that patrols a given position. The 
-module creates waypoints in a given radius. There are options you can define 
+This module creates a group (2, 4 or 8 pax) that patrols a given position. The
+module creates waypoints in a given radius. There are options you can define
 such as waypoint behavior/speed/etc. and search nearest building.
 You can execute two (optional) functions. One for the group and one for each unit
 of the group.
@@ -37,17 +37,17 @@ diag_log "ADF rpt: Init - executing: ADF_mod_createFootPatrol.sqf";
 */
 
 "myMarker",         // Spawn location. This is the location on the map where the patrol units will be created. The location can be a marker, trigger, object, etc:
-                    // - "myMarker" use the name of the marker to span an airborne aircraft on the marker location. Markers are always a string ("")
-                    // - myTrigger use the name of the trigger to spawn an airborne aircraft at the center of the trigger location. 
-                    // - myObject use the name of an editor placed object to spawn the aircraft (airborne)
+	// - "myMarker" use the name of the marker to span an airborne aircraft on the marker location. Markers are always a string ("")
+	// - myTrigger use the name of the trigger to spawn an airborne aircraft at the center of the trigger location.
+	// - myObject use the name of an editor placed object to spawn the aircraft (airborne)
 
 east,               // Side of the units. Can be east, west or independent
 
 8,                  // Size of the group, number of AI units in the group. Can be 1-8. Default: 4
 
 true,               // In case of a squad (8) units, should it be a weapons squad or rifle squad. Default: false
-                    // - true for weapons squad
-                    // - false for rifle squad
+	// - true for weapons squad
+	// - false for rifle squad
 
 500,                // Number that represents the patrol Radius in meters from the patrol start position. Default: 250
 
@@ -66,17 +66,17 @@ true,               // In case of a squad (8) units, should it be a weapons squa
 5,                  // Waypoint completion radius. (default: 5). More info: https://community.bistudio.com/wiki/setWaypointCompletionRadius
 
 false,              // Search nearby building? At the end of a waypoint, the leader of the patrol group can search the nearest building:
-                    // - true. Search nearest building
-                    // - false. Do not search the nearest building (default)
+	// - true. Search nearest building
+	// - false. Do not search the nearest building (default)
 
 "",                 // String that represents a (custom) function (or code) that will be executed for EACH UNIT of the patrol group.
-                    // E.g.: "my_fnc_redressInfantry"
-                    // default: ""
-                    
+	// E.g.: "my_fnc_redressInfantry"
+	// default: ""
+
 ""                  // String that represents a (custom) function (or code) that will be executed on the group as a whole.
-                    // E.g.: "my_fnc_setGroupID"  -or-  "ADF_fnc_groupSetSkill."
-                    // default: ""
-                    
+	// E.g.: "my_fnc_setGroupID"  -or-  "ADF_fnc_groupSetSkill."
+	// default: ""
+
 
 ///// DO NOT EDIT BELOW
 ] call ADF_fnc_createFootPatrol;

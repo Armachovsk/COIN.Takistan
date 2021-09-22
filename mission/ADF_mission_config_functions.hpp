@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,7 +23,7 @@ class CfgFunctions {
 
 	// ADF Framework Functions
 	class ADF {
-	
+
 		class ai {
 			file = "ADF\fnc\ai";
 			class heliApproach{};
@@ -36,7 +36,7 @@ class CfgFunctions {
 			class waypointCombat{};
 			class weaponFlashlight{};
 		};
-		
+
 		class ambient {
 			file = "ADF\fnc\ambient";
 			class ambientAirTraffic{};
@@ -58,11 +58,11 @@ class CfgFunctions {
 			class simpleStats{};
 			class statsReporting{};
 		};
-		
+
 		class comm {
 			file = "ADF\FNC\comm";
 			class commDetect{};
-		};		
+		};
 
 		class defend {
 			file = "ADF\fnc\defend";
@@ -80,7 +80,7 @@ class CfgFunctions {
 			class deleteCrewedVehicles{};
 			class deleteEntities{};
 		};
-		
+
 		class distance {
 			file = "ADF\fnc\distance";
 			class calcTravelTime{};
@@ -94,13 +94,13 @@ class CfgFunctions {
 			class carBombDetonate{};
 			class iedDetonate{};
 		};
-		
+
 		class event {
 			file = "ADF\fnc\event";
 			class onPlayerKilled{};
 			class onPlayerRespawn{};
-		};		
-		
+		};
+
 		class group {
 			file = "ADF\fnc\group";
 			class countGroups{};
@@ -142,7 +142,7 @@ class CfgFunctions {
 			class objectMarkerArray{};
 			class reMarker{};
 		};
-		
+
 		class patrol {
 			file = "ADF\fnc\patrol";
 			class airPatrol{};
@@ -160,10 +160,10 @@ class CfgFunctions {
 			class spectator{};
 			class teleport{};
 			class teleportTrigger{};
-			class teleportToLeader{};		
-			class undercover{};		
+			class teleportToLeader{};
+			class undercover{};
 		};
-		
+
 		class position {
 			file = "ADF\fnc\position";
 			class allLocations{};
@@ -181,18 +181,18 @@ class CfgFunctions {
 			class randomPos_IED{};
 			class randomPosInArea{};
 			class randomPosMax{};
-			class roadDir{};			
+			class roadDir{};
 			class roadPos{};
 			class roadSidePos{};
 		};
-		
+
 		class sensor {
 			file = "ADF\fnc\sensor";
 			class createTrigger{};
 			class detectSensor{};
 			class sensor{};
 		};
-		
+
 		class spawn {
 			file = "ADF\fnc\spawn";
 			class createAirPatrol{};
@@ -207,18 +207,18 @@ class CfgFunctions {
 			class createRooftopTurrets{};
 			class createSAD{};
 			class createSeaPatrol{};
-			class createVehiclePatrol{};			
-			class objectsGrabber{};			
+			class createVehiclePatrol{};
+			class objectsGrabber{};
 			class SOD{};
 		};
-		
+
 		class support {
 			file = "ADF\fnc\support";
 			class airSupport{};
 			class cas{};
 			class paraDrop{};
 			class rrr{};
-		};	
+		};
 	};
 
 	//Tonic's View Distance script config
@@ -232,7 +232,7 @@ class CfgFunctions {
 				postInit = 1;
 				headerType = -1;
 			};
-				
+
 			class onSliderChanged {};
 			class onTerrainChanged {};
 			class updateViewDistance {};

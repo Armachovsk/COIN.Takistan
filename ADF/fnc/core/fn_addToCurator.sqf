@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -39,7 +39,7 @@ Bool (succesflag)
 // Reporting
 if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc_addToCurator"};
 
-// init	
+// init
 params [
 	["_addThis", grpNull, [grpNull, objNull, []]]
 ];
@@ -56,7 +56,7 @@ call {
 		{_x addCuratorEditableObjects [[_addThis], _addCrew]} count allCurators
 	};
 	if (_addThis isEqualType []) exitWith {
-		{[_x] call ADF_fnc_addToCurator} count _addThis;		
+		{[_x] call ADF_fnc_addToCurator} count _addThis;
 	};
 };
 

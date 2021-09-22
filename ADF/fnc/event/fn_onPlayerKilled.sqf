@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -36,9 +36,9 @@ params ["_unit", "_killer", "_instigator", "_useEffects"];
 
 // If the player died in a vehicle then remove the body from the vehicle
 if  !(isNull objectParent player) then {
-    unassignVehicle _unit;
-    _unit action ["eject", vehicle _unit];
-    _unit setPosATL [(getPosATL vehicle _unit # 0) + 5, (getPosATL vehicle _unit # 1) + 2, 0];
+	unassignVehicle _unit;
+	_unit action ["eject", vehicle _unit];
+	_unit setPosATL [(getPosATL vehicle _unit # 0) + 5, (getPosATL vehicle _unit # 1) + 2, 0];
 };
 
 
@@ -60,7 +60,7 @@ if (ADF_Tickets && (((side player == west) && (([west] call BIS_fnc_respawnTicke
 		[false] call ACE_Common_fnc_disableUserInput;
 		ace_hearing_disableVolumeUpdate = true;
 	};
-	"chromAberration" ppEffectEnable false;	
+	"chromAberration" ppEffectEnable false;
 	["Initialize", [player]] call BIS_fnc_EGSpectator; // force into spectator - ADF 2.16
 };
 
@@ -69,4 +69,3 @@ if (ADF_sameGearRespawn && {!ADF_mod_ACE3}) then {[player, "SAVE"] call ADF_fnc_
 
 // call custom mission onPlayerKilled:
 [_unit, _killer, _instigator, _useEffects] call ADF_mission_onPlayerKilled;
-

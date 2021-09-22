@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -34,12 +34,12 @@ EXAMPLES USAGE IN EDEN:
 this setPos (getPos (["myMarker", 500] call ADF_fnc_roadPos;));
 
 DEFAULT/MINIMUM OPTIONS
-_pos = ["myMarker"] call ADF_fnc_roadPos;	
+_pos = ["myMarker"] call ADF_fnc_roadPos;
 
 RETURNS:
 Array:          0.  position X
-                1.  position y
-                2.  position Z
+	1.  position y
+	2.  position Z
 *********************************************************************************/
 
 // Reporting
@@ -69,7 +69,7 @@ if ADF_debug then {
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "mil_triangle";
 	_marker setMarkerColor "ColorRed";
-	_marker setMarkerText "rdPos";		
+	_marker setMarkerText "rdPos";
 };
 
 // return the position

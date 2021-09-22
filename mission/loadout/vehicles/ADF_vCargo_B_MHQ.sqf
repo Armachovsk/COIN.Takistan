@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_MHQ.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Primary weapon
@@ -41,8 +41,8 @@ _v addWeaponCargoGlobal ["arifle_MXM_F", 1]; // Marksman
 if ADF_mod_ACE3 then {
 	_v addMagazineCargoGlobal ["ACE_30Rnd_65x39_caseless_mag_Tracer_Dim", 50];
 	_v addMagazineCargoGlobal ["ACE_10Rnd_338_300gr_HPBT_Mag", 10];
-	_v addMagazineCargoGlobal ["ACE_10Rnd_338_API526_Mag", 10];	
-	_v addMagazineCargoGlobal ["130Rnd_338_Mag", 10];	
+	_v addMagazineCargoGlobal ["ACE_10Rnd_338_API526_Mag", 10];
+	_v addMagazineCargoGlobal ["130Rnd_338_Mag", 10];
 	_v addMagazineCargoGlobal ["ACE_10Rnd_762x54_Tracer_mag", 10];
 	_v addMagazineCargoGlobal ["ACE_20Rnd_762x51_Mag_Tracer_Dim", 10];
 	_v addMagazineCargoGlobal ["ACE_10Rnd_762x51_Mk316_Mod_0_Mag", 10];
@@ -51,9 +51,9 @@ if ADF_mod_ACE3 then {
 	_v addMagazineCargoGlobal ["ACE_20Rnd_762x51_Mk319_Mod_0_Mag", 10];
 } else {
 	_v addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 50];
-	_v addMagazineCargoGlobal ["130Rnd_338_Mag", 10];	
-	_v addMagazineCargoGlobal ["7Rnd_408_Mag", 10]; 
-	_v addMagazineCargoGlobal ["20Rnd_762x51_Mag", 15]; 
+	_v addMagazineCargoGlobal ["130Rnd_338_Mag", 10];
+	_v addMagazineCargoGlobal ["7Rnd_408_Mag", 10];
+	_v addMagazineCargoGlobal ["20Rnd_762x51_Mag", 15];
 	_v addMagazineCargoGlobal ["10Rnd_338_Mag", 10];
 };
 
@@ -71,14 +71,14 @@ if (!ADF_mod_ACE3) then {_v addMagazineCargoGlobal ["NLAW_F", 10]};
 // GL Ammo
 _v addMagazineCargoGlobal ["1Rnd_HE_Grenade_shell", 10];
 _v addMagazineCargoGlobal ["3Rnd_HE_Grenade_shell", 10];
-_v addMagazineCargoGlobal ["1Rnd_Smoke_Grenade_shell", 10];	
+_v addMagazineCargoGlobal ["1Rnd_Smoke_Grenade_shell", 10];
 
 // Demo/Explosives
 _v addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 5];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_Cellphone", 1];
 	_v addItemCargoGlobal ["ACE_Clacker", 2];
-	_v addItemCargoGlobal ["ACE_M26_Clacker", 2]; 
+	_v addItemCargoGlobal ["ACE_M26_Clacker", 2];
 	_v addItemCargoGlobal ["ACE_DefusalKit", 2];
 	_v addItemCargoGlobal ["ACE_wirecutter", 2];
 };
@@ -88,7 +88,7 @@ if ADF_mod_ACE3 then {_v addItemCargoGlobal ["ACE_SpareBarrel", 2]};
 // Weapon mountings
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["acc_pointer_IR", 1];
-	_v addItemCargoGlobal ["acc_flashlight", 1];	
+	_v addItemCargoGlobal ["acc_flashlight", 1];
 	_v addItemCargoGlobal ["ACE_optic_Hamr_2D", 1];
 	_v addItemCargoGlobal ["ACE_optic_Hamr_PIP", 1];
 	_v addItemCargoGlobal ["ACE_optic_Arco_2D", 1];
@@ -97,8 +97,8 @@ if ADF_mod_ACE3 then {
 	// Sniper/Marksman
 	_v addItemCargoGlobal ["ACE_optic_SOS_2D", 1];
 	_v addItemCargoGlobal ["ACE_optic_SOS_PIP", 1];
-	_v addItemCargoGlobal ["ACE_optic_LRPS_2D", 1];	
-	_v addItemCargoGlobal ["ACE_optic_LRPS_PIP", 1];	
+	_v addItemCargoGlobal ["ACE_optic_LRPS_2D", 1];
+	_v addItemCargoGlobal ["ACE_optic_LRPS_PIP", 1];
 } else {
 	_v addItemCargoGlobal ["acc_pointer_IR", 1];
 	_v addItemCargoGlobal ["optic_ACO", 1];
@@ -107,18 +107,18 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["acc_flashlight", 1];
 };
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_H", 5];  
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_B", 5];  	
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_L", 5];	 
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_01", 5];  
-	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_02", 5];	 	
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_H", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_B", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_L", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_01", 5];
+	_v addItemCargoGlobal ["ACE_muzzle_mzls_smg_02", 5];
 };
 
 // Grenades
-_v addMagazineCargoGlobal ["HandGrenade", 15]; 	 
-_v addMagazineCargoGlobal ["SmokeShell", 5]; 	 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 3]; 	 
-_v addMagazineCargoGlobal ["SmokeShellRed", 3]; 
+_v addMagazineCargoGlobal ["HandGrenade", 15];
+_v addMagazineCargoGlobal ["SmokeShell", 5];
+_v addMagazineCargoGlobal ["SmokeShellGreen", 3];
+_v addMagazineCargoGlobal ["SmokeShellRed", 3];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 10];
 	_v addItemCargoGlobal ["ACE_HandFlare_Red", 3];
@@ -126,16 +126,16 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_Yellow", 3];
 	_v addItemCargoGlobal ["ACE_M84", 5];
 	_v addItemCargoGlobal ["ACE_HuntIR_M203", 3];
-	_v addItemCargoGlobal ["ACE_HuntIR_monitor", 1];	
+	_v addItemCargoGlobal ["ACE_HuntIR_monitor", 1];
 };
 
 // Optical/Bino's/Goggles
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Vector", 3];		
-	_v addItemCargoGlobal ["ACE_Kestrel4500", 1];		
-	_v addItemCargoGlobal ["ace_mx2a", 1];		
-	_v addItemCargoGlobal ["ace_yardage450", 1];		
-} else {		
+	_v addItemCargoGlobal ["ACE_Vector", 3];
+	_v addItemCargoGlobal ["ACE_Kestrel4500", 1];
+	_v addItemCargoGlobal ["ace_mx2a", 1];
+	_v addItemCargoGlobal ["ace_yardage450", 1];
+} else {
 	_v addWeaponCargoGlobal ["Binocular", 3];
 };
 
@@ -156,14 +156,14 @@ if ADF_mod_CTAB then {
 	_v addItemCargoGlobal ["ItemcTabHCam", 5];
 };
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", 15];
 	_v addItemCargoGlobal ["ace_mapTools", 10];
 	_v addItemCargoGlobal ["ACE_CableTie", 15];
 	_v addItemCargoGlobal ["ACE_UAVBattery", 3];
 	_v addItemCargoGlobal ["ACE_TacticalLadder_Pack", 1];
-}; 
+};
 
 // Medical Items
 if ADF_mod_ACE3 then {
@@ -185,14 +185,14 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_plasmaIV_250", 15];
 	_v addItemCargoGlobal ["ACE_salineIV", 5];
 	_v addItemCargoGlobal ["ACE_salineIV_500", 10];
-	_v addItemCargoGlobal ["ACE_salineIV_250", 15];	
-	_v addItemCargoGlobal ["ACE_bodyBag", 15];	
+	_v addItemCargoGlobal ["ACE_salineIV_250", 15];
+	_v addItemCargoGlobal ["ACE_bodyBag", 15];
 } else {
 	_v addItemCargoGlobal ["FirstAidKit", 50];
 	_v addItemCargoGlobal ["Medikit", 2];
 };
 
-// Gear kit 
+// Gear kit
 _v addBackpackCargoGlobal ["B_Carryall_Base", 3];
 _v addBackpackCargoGlobal ["B_AssaultPack_blk", 5];
 

@@ -7,8 +7,8 @@ v 1.04
 Sets variables for TKA/Milita vehicles based on active mods
 
 Requires:
-- RHS USAF/AFRF/GREF + Project Opfor and/or 3CB Factions mods. 
-  -or-
+- RHS USAF/AFRF/GREF + Project Opfor and/or 3CB Factions mods.
+	-or-
 - CUP Weapons/Vehicles + Community Factions Project
 *********************************************************************/
 private _army_tank_heavy = [];
@@ -62,7 +62,7 @@ if ADF_mod_PROPFOR then {
 	_flag_Afghan append ["lop_flag_Afghan_f"];
 	_flag_Iraq append ["lop_flag_Iraq_f"];
 	_flag_Pesh append ["lop_flag_pesh_f"];
-	_flag_SLA append ["lop_Flag_sla_F"];	
+	_flag_SLA append ["lop_Flag_sla_F"];
 };
 
 if ADF_mod_3CB_FACT then {
@@ -93,7 +93,7 @@ if ADF_mod_3CB_FACT then {
 	_flag_Afghan append ["Flag_AFG_13"];
 	_flag_Iraq append ["Flag_TKC"];
 	_flag_Pesh append ["Flag_ANA"];
-	_flag_SLA append ["Flag_TKA"];	
+	_flag_SLA append ["Flag_TKA"];
 };
 
 if ADF_mod_CFP then { // Community Factions Project (requires CUP W/V/U)
@@ -124,10 +124,9 @@ if ADF_mod_CFP then { // Community Factions Project (requires CUP W/V/U)
 	_flag_Afghan append ["Afghanistan_Flag"];
 	_flag_Iraq append ["Iraq_Flag"];
 	_flag_Pesh append ["FreeSyrianArmyFSA_Flag"];
-	_flag_SLA append ["FlagCarrierNorth"];	
+	_flag_SLA append ["FlagCarrierNorth"];
 };
 
 {_army_allArmor append _x} forEach [_army_tank_heavy, _army_tank_light, _army_apc_heavy];
 {_army_allAPC append _x} forEach [_army_apc_heavy, _army_apc_light];
 {_army_allCars append _x} forEach [_army_truck, _army_car, _civ_car];
-

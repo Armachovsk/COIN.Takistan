@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -18,8 +18,8 @@ More information: https://community.bistudio.com/wiki/Description.ext#CfgUnitIns
 *********************************************************************************/
 
 class CfgUnitInsignia {
-	
-	// CLAN insignia	
+
+	// CLAN insignia
 	class FIRSTRECON {
 		displayName = "1ST RECON BN BCO"; // Name displayed in Arsenal
 		author = "ADF / Whiztler";
@@ -38,5 +38,5 @@ class CfgUnitInsignia {
 		author = "ADF / Whiztler";
 		texture = "mission\images\patch_tka1inf.paa";
 		textureVehicles	= ""; // Does nothing currently, reserved for future use
-	};			
+	};
 };

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_CarART.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Primary weapon
@@ -44,8 +44,8 @@ if ADF_mod_ACE3 then {
 // Demo/Explosives
 _v addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 1];
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Clacker", 1];	
-};	
+	_v addItemCargoGlobal ["ACE_Clacker", 1];
+};
 
 // Vehicle Ammunition
 _v addMagazineCargoGlobal ["8Rnd_82mm_Mo_shells", 5];
@@ -60,10 +60,10 @@ _v addItemCargoGlobal ["optic_ACO", 3];
 _v addItemCargoGlobal ["acc_flashlight", 2];
 
 // Grenades
-_v addMagazineCargoGlobal ["HandGrenade", 5]; 	 
-_v addMagazineCargoGlobal ["SmokeShell", 3]; 	 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 2]; 	 
-_v addMagazineCargoGlobal ["SmokeShellRed", 2]; 
+_v addMagazineCargoGlobal ["HandGrenade", 5];
+_v addMagazineCargoGlobal ["SmokeShell", 3];
+_v addMagazineCargoGlobal ["SmokeShellGreen", 2];
+_v addMagazineCargoGlobal ["SmokeShellRed", 2];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 5];
 	_v addItemCargoGlobal ["ACE_HandFlare_Red", 1];
@@ -87,7 +87,7 @@ if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_v addItemCargoGlobal ["ItemRadio", 5]
 	_v addItemCargoGlobal ["ItemcTabHCam", 3];
 };*/
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", 5];
 	_v addItemCargoGlobal ["ace_mapTools", 1];

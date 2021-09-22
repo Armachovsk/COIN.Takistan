@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,7 +23,7 @@ Tactical Mission Commander
 #include "init_sup_airDrop.sqf"
 
 if hasInterface then {
-	
+
 	_assignCommand = {
 		COIN_commandAssigned = true;
 		publicVariable "COIN_commandAssigned";
@@ -35,7 +35,7 @@ if hasInterface then {
 		COIN_leadership call COIN_fnc_assignKnight;
 		COIN_leadership call COIN_fnc_assignTomcat;
 		COIN_leadership call COIN_fnc_assignClipper;
-	};	
+	};
 
 	// If the CO is not connected/a player then assign to a SQL or FTL
 	call {
@@ -59,5 +59,5 @@ if isServer then {
 		waitUntil {sleep 0.5; !isNil "COIN_leadership"};
 		COIN_leadershipID = owner COIN_leadership;
 		diag_log format ["« C O I N »   Support command assigned to: %1 (ID: %2).", COIN_leadership, COIN_leadershipID];
-	};	
+	};
 };

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -39,8 +39,8 @@ REQUIRED PARAMETERS:
 OPTIONAL PARAMETERS:
 2: Integer:      Radius from center position in meters
 3: String/Array: Type of location to search for:
-                 - "string" - single type, e.g. "NameLocal"
-                 - array - array of types e.g. ["NameCity", "Airport", "NameMarine"]
+	- "string" - single type, e.g. "NameLocal"
+	- array - array of types e.g. ["NameCity", "Airport", "NameMarine"]
 
 EXAMPLES USAGE IN SCRIPT:
 ["myMarker", 1000, "NameCity"] call ADF_fnc_allLocations;
@@ -58,12 +58,12 @@ Array of locations (see above)
 
 // init
 params [
-	 ["_centerPosition", [0, 0, 0], ["", objNull, grpNull, locationNull, []]],
-	 ["_radius", 500, [0]],
-	 ["_types", true, [true, []]],
-	 ["_allLocations", [], [[]]],
-	 ["_militaryLocation", false, [true]],
-	 ["_AirportLocation", false, [true]]
+	["_centerPosition", [0, 0, 0], ["", objNull, grpNull, locationNull, []]],
+	["_radius", 500, [0]],
+	["_types", true, [true, []]],
+	["_allLocations", [], [[]]],
+	["_militaryLocation", false, [true]],
+	["_AirportLocation", false, [true]]
 ];
 private _locationTypes = if (_types isEqualType true && {_types}) then {
 	["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Airport", "NameMarine"]
@@ -83,17 +83,17 @@ if (_radius > 50000) then {_radius = 50000};
 	private _type = _x;
 	{
 		if (toUpperANSI (text _x) in ["MILITARY", "AIRBASE"]) then {_militaryLocation = true;};
-		if (toUpperANSI (text _x) in ["AIRPORT", "AIRBASE"]) then {_AirportLocation = true;};	
+		if (toUpperANSI (text _x) in ["AIRPORT", "AIRBASE"]) then {_AirportLocation = true;};
 		_allLocations pushBack [
 			_i,
-			text _x,			
+			text _x,
 			type _x,
 			locationPosition _x,
 			size _x,
 			_militaryLocation,
 			_AirportLocation
 		];
-	} forEach nearestLocations [_position, [_type], _radius];	
+	} forEach nearestLocations [_position, [_type], _radius];
 } forEach _locationTypes;
 
 _allLocations

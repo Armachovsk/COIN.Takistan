@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,8 +21,8 @@ Call from script on the server
 
 REQUIRED PARAMETERS:
 0. Position:    Center position of the search radius. Marker, object, trigger or
-                position array [x,y,z]
-                
+	position array [x,y,z]
+
 OPTIONAL PARAMETERS:
 1. Number:      Radius in meters. Default: 500
 
@@ -37,8 +37,8 @@ _pos = ["myMarker"] call ADF_fnc_randomPos;
 
 RETURNS:
 Array:          0.  position X
-                1.  position y
-                2.  position Z
+	1.  position y
+	2.  position Z
 *********************************************************************************/
 
 // Reporting

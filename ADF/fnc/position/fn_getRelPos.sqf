@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -37,8 +37,8 @@ _rePos = [_unit, 10] call ADF_fnc_getRelPos;
 
 RETURNS:
 Array:          0.  position X
-                1.  position y
-                2.  position Z
+	1.  position y
+	2.  position Z
 *********************************************************************************/
 
 // Reporting

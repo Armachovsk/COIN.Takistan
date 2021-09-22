@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -60,7 +60,7 @@ if (isNil "ADF_groupsInit") exitWith {
 	ADF_groupsWest	= [];
 	ADF_groupsEast	= [];
 	ADF_groupsIndep	= [];
-	
+
 	{
 		switch (side _x) do {
 			case west		:	{ADF_groupsWest pushBackUnique _x};
@@ -70,7 +70,7 @@ if (isNil "ADF_groupsInit") exitWith {
 			default				{};
 		};
 	} forEach allGroups;
-	
+
 	// Loop through all groups every 5 seconds to check for empty groups
 	[] spawn {
 		waitUntil {
@@ -88,7 +88,7 @@ if (isNil "ADF_groupsInit") exitWith {
 			false
 		};
 	};
-	
+
 	[format ["ADF_fnc_logGroup - Groups logged. # Groups West: %1", count ADF_groupsWest]] call ADF_fnc_log;
 	[format ["ADF_fnc_logGroup - Groups logged. # Groups East: %1", count ADF_groupsEast]] call ADF_fnc_log;
 	[format ["ADF_fnc_logGroup - Groups logged. # Groups Independent: %1", count ADF_groupsIndep]] call ADF_fnc_log;
@@ -99,7 +99,7 @@ switch (side _group) do {
 	case east		: 	{ADF_groupsEast pushBackUnique _group};
 	case independent	: 	{ADF_groupsIndep pushBackUnique _group};
 	case civilian		: 	{};
-	default				{};	
+	default				{};
 };
 
 if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_logGroup - Group logged: %1 (%2)",_group, side _group]] call ADF_fnc_log};

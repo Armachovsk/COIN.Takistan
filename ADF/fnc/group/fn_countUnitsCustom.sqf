@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,7 +23,7 @@ REQUIRED PARAMETERS:
 0. String       Existing array. E.g. "AO_Kavala"
 
 OPTIONAL PARAMETERS:
-1. Side         west, east, independent    
+1. Side         west, east, independent
 
 EXAMPLES USAGE IN SCRIPT:
 ["AO_Kavala", west] call ADF_fnc_countUnitsCustom;

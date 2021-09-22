@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -26,16 +26,16 @@ class Header {
 	// https://community.bistudio.com/wiki/Multiplayer_Game_Types for other
 	// game types.
 	gameType = Coop;
-	
+
 	// minPlayers. Leave as 1.
 	minPlayers = 1;
-	
+
 	// MaxPlayers: Change to the exact amount of available player slots
 	// including the total number of headless client slots.
 	maxPlayers = 45;
-	
+
 	// playerCountMultipleOf: COOP setting is 1. Set to 0 for other game types.
-	playerCountMultipleOf = 1; 
+	playerCountMultipleOf = 1;
 
 };
 
@@ -45,7 +45,7 @@ __EXEC (ADF_rootPath = __FILE__ select [0, count __FILE__ - 15])
 // Mission Respawn & JIP Settings
 //###########################################################################
 
-// Respawn: 
+// Respawn:
 // 0 - No respawn
 // 1 - Spectator
 // 2 - Instant respawn. Respawn at KIA location
@@ -53,7 +53,7 @@ __EXEC (ADF_rootPath = __FILE__ select [0, count __FILE__ - 15])
 // 4 - Respawn in your group
 // 5 - Respawn into an AI unit on your side
 // Info: https://community.bistudio.com/wiki/Arma_3_Respawn#Respawn_Types
-respawn	= 3; 
+respawn	= 3;
 
 // respawnDelay: Respawn delay time in seconds..
 respawnDelay = 30;
@@ -68,7 +68,7 @@ RespawnDialog = 0;
 // 	1 - Respawn on start. Run respawn script on start
 // 0 - Dont respawn on start. Do run respawn script on start.
 // -1 - Dont respawn on start. Do not run respawn script on start.
-respawnOnStart = -1; 
+respawnOnStart = -1;
 
 // joinUnassigned: Auto assign players to an empty slot on mission start.
 // 0 - forces joining players into the first empty slot
@@ -92,7 +92,7 @@ respawnTemplatesCiv[] = {"counter"};
 // Mission loading screen information and params
 //###########################################################################
 
-// author: Name of the mission maker 
+// author: Name of the mission maker
 author = "Whiztler";
 
 // briefingName: Mission name displayed in the mission selection menu.
@@ -120,7 +120,7 @@ onLoadIntroTime = false;
 // while the intro loads.
 onLoadMissionTime = false;
 
-// loadScreen: You can define an image to be shown while the mission is loaded. 
+// loadScreen: You can define an image to be shown while the mission is loaded.
 loadScreen = "mission\images\loadScreen.jpg";
 overviewPicture = "mission\images\loadScreen.paa";
 
@@ -246,4 +246,3 @@ wreckRemovalMinTime	= 10;
 // wreckRemovalMaxTime: Maximum time in seconds a wreck can remain on the
 // ground if total number of wrecks is equal or under wreckLimit.
 wreckRemovalMaxTime	= 3500;
-

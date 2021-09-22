@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -12,7 +12,7 @@ Module version: 1.04
 
 File: ADF_mod_ACT.sqf
 **********************************************************************************
-This module creates civilian man and civilian crew vehicles around the players. 
+This module creates civilian man and civilian crew vehicles around the players.
 Man have waypoints leading to houses and enter houses to look around.
 Cars have waypoints close to the players location en then drive off to a far
 waypoint.
@@ -53,4 +53,3 @@ ACT_debug = false;
 
 ///// DO NOT EDIT BELOW
 execVM "ADF\fnc\ambient\ADF_fnc_ACT.sqf";
-

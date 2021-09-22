@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -65,7 +65,7 @@ private _microDAGR = "Chemlight_green"; // in case of no ACE3 or cTAB
 // Default ACE3 kit
 private _ACE3_kit = ["ACE_EarPlugs", "ace_mapTools", "ACE_CableTie", "ACE_IR_Strobe_Item", "ACE_morphine", "ACE_HandFlare_White", "ACE_HandFlare_White", "ACE_M84", "ACE_M84"];
 private _ACE3_medikit = ["ACE_fieldDressing", "ACE_elasticBandage", "ACE_quikclot", "ACE_fieldDressing", "ACE_elasticBandage", "ACE_quikclot", "ACE_fieldDressing", "ACE_elasticBandage", "ACE_quikclot"];
-								
+
 // Strip the unit
 [_unit, true] call ADF_fnc_stripUnit;
 
@@ -87,7 +87,7 @@ if (toUpper worldName == "CHERNARUS_SUMMER" || toUpper worldName == "WOODLAND_AC
 	_backpack_large = ["B_Kitbag_rgr"];
 	_backpack = ["B_TacticalPack_blk"];
 	_backpack_heavy = ["B_Carryall_oli"];
-	_backpack_medium = ["B_FieldPack_oli"];	
+	_backpack_medium = ["B_FieldPack_oli"];
 };
 
 // MODDED CONTAINERS
@@ -98,7 +98,7 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 				_uniform = "rhs_uniform_g3_m81";
 				_headGear append ["rhsusf_mich_helmet_marpatwd", "rhsusf_mich_helmet_marpatwd_norotos_arc", "rhsusf_mich_helmet_marpatwd_norotos_arc_headset"];
 			} else {
-				_uniform = "rhs_uniform_g3_mc";					
+				_uniform = "rhs_uniform_g3_mc";
 				_headGear append ["rhsusf_mich_bare_norotos_arc_semi_headset", "rhsusf_mich_bare_norotos_arc_semi", "rhsusf_mich_bare_norotos_arc_alt_tan_headset"];
 			};
 			_vest append ["rhsusf_iotv_ocp_Rifleman", "rhsusf_iotv_ocp_Teamleader", "rhsusf_iotv_ocp_Squadleader", "rhsusf_mbav_rifleman", "rhsusf_spcs_ocp_rifleman"];
@@ -110,15 +110,15 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 				_backpack append ["UK3CB_ANA_B_B_ASS", "UK3CB_TKA_B_B_ASS"];
 				_backpack_medium append ["UK3CB_UN_B_B_RIF"];
 				_backpack_large append ["UK3CB_TKA_B_B_RIF", "UK3CB_TKA_O_B_ENG_Tan", "UK3CB_TKA_O_B_RIF_Tan"];
-				_backpack_heavy append [""];				
+				_backpack_heavy append [""];
 			};
 			if ADF_mod_PROPFOR then {
 				_vest append ["LOP_V_CarrierLite_TAN", "LOP_V_CarrierRig_TAN", "LOP_V_CarrierRig_WDL", "LOP_V_CarrierLite_WDL"];
-			};			
+			};
 
 			// Primary weapon - RHS
 			_primaryWeapon = "rhs_weap_hk416d145";
-			_primaryWeapon_lite = "rhs_weap_hk416d10_LMT";			
+			_primaryWeapon_lite = "rhs_weap_hk416d10_LMT";
 			_primaryWeapon_GL = "rhs_weap_hk416d145_m320";
 			_primaryWeapon_LMG = "rhs_weap_m249_pip_S";
 			_handWeapon = "rhsusf_weap_m1911a1";
@@ -141,19 +141,19 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 			_tubeMag_AT = "rhs_fgm148_magazine_AT";
 			_tubeMag_AA = "rhs_fim92_mag";
 			_40mike = "rhs_mag_M441_HE";
-			_handgrenade = "rhs_mag_m67";			
+			_handgrenade = "rhs_mag_m67";
 
 		};
 		if ADF_mod_CUP_U exitWith {
 			_faceWear append [
-				"CUP_FR_NeckScarf4", "CUP_FR_NeckScarf2", "CUP_FR_NeckScarf", "CUP_TK_NeckScarf", 
+				"CUP_FR_NeckScarf4", "CUP_FR_NeckScarf2", "CUP_FR_NeckScarf", "CUP_TK_NeckScarf",
 				"CUP_G_PMC_RadioHeadset_Glasses_Dark", "CUP_G_PMC_RadioHeadset_Glasses", "CUP_G_PMC_RadioHeadset",
 				"G_Tactical_Clear", "G_Tactical_Clear", "G_Tactical_Clear"
 			];
-		
+
 			// Primary weapon - CUP
 			_primaryWeapon = "CUP_arifle_HK416_Black";
-			_primaryWeapon_lite = "CUP_arifle_HK416_CQB_Black";			
+			_primaryWeapon_lite = "CUP_arifle_HK416_CQB_Black";
 			_primaryWeapon_GL = "CUP_arifle_HK416_CQB_M203_Black";
 			_primaryWeapon_LMG = "CUP_lmg_minimi";
 			_handWeapon = "CUP_hgun_Colt1911";
@@ -177,18 +177,18 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 			_tubeMag_AA = "Chemlight_green";
 			_40mike = "1Rnd_HE_Grenade_shell";
 			_handgrenade = "CUP_HandGrenade_M67";
-			
+
 			_vest append ["CUP_V_B_Interceptor_Grenadier_Coyote", "CUP_V_B_Interceptor_Rifleman_Coyote", "CUP_V_B_Interceptor_Grenadier_M81", "CUP_V_B_Interceptor_Rifleman_M81", "CUP_V_B_Interceptor_Grenadier_Olive", "CUP_V_B_Interceptor_Rifleman_Olive"];
 			_backpack append ["CUP_B_Kombat_Olive", "CUP_B_USMC_AssaultPack"];
 			_backpack_medium append ["CUP_B_Motherlode_MTP"];
 			_backpack_large append ["CUP_B_USPack_Coyote"];
-			
+
 			if ADF_mod_CFP exitWith {
-				_nvg = "CFP_ANPVS15_Black";	
+				_nvg = "CFP_ANPVS15_Black";
 				_vest append ["CFP_ITV_Rifleman_Brown", "CFP_ITV_Rifleman", "CFP_FAPC_Breacher_M81", "CFP_FAPC_MG_M81", "CFP_FAPC_Operator_M81", "CFP_CarrierRig_Breacher_M81", "CFP_CarrierRig_Gunner_M81", "CFP_CarrierRig_Operator_M81", "CFP_LBT6094_breacher_M81", "CFP_RAV_MG_M81", "CFP_RAV_operator_M81"];
 				_backpack append ["CFP_AssaultPack_PolygonDesert", "CFP_AssaultPack_PolygonWoodland"];
 				_backpack_medium append ["CFP_Kitbag_Brown", "CFP_Kitbag_M81", "CFP_Kitbag_MCam_Grn", "CFP_Kitbag_Tropentarn"];
-				_backpack_large append ["CFP_Carryall_Multicam", "SP_Carryall_Tan"];				
+				_backpack_large append ["CFP_Carryall_Multicam", "SP_Carryall_Tan"];
 				if (toUpper worldName == "CHERNARUS_SUMMER" || toUpper worldName == "WOODLAND_ACR") then {
 					_uniform = "SP_0000_Standard_TacticalUniform_ATacsFG_SS";
 				} else {
@@ -196,23 +196,23 @@ if (ADF_modded || {ADF_mod_RHS}) then {
 				};
 			};
 			if ADF_mod_CUP_U then {
-				_nvg = "CUP_NVG_PVS15_black";			
+				_nvg = "CUP_NVG_PVS15_black";
 				if (toUpper worldName == "CHERNARUS_SUMMER" || toUpper worldName == "WOODLAND_ACR") then {
-					_uniform =  "CUP_U_O_SLA_MixedCamo";			
+					_uniform =  "CUP_U_O_SLA_MixedCamo";
 				} else {
 					_uniform = "CUP_U_O_SLA_Desert";
 				};
-			};			
+			};
 		};
-	};		
+	};
 } else {
 	_uniform = "U_B_SpecopsUniform_sgg";
-	
+
 	// ACE overrides
 	if ADF_mod_ACE3 then {
 		_primaryWeaponMag = "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim";
 		_primaryWeaponMag_LMG = "ACE_200Rnd_65x39_cased_Box_Tracer_Dim";
-	};	
+	};
 };
 
 // Add kit
@@ -247,16 +247,16 @@ ADF_loadout_platoon = {
 		"_primaryWeaponAttScope_LMG",
 		"_primaryWeaponAttLight_LMG"
 	];
-	
+
 	_unit selectWeapon (primaryWeapon _unit);
 	if (isMultiplayer && {ADF_mod_ACE3}) then {_unit setSpeaker "ACE_NoVoice";};
 	if ADF_mod_ACE3 then {[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;};
 	if (ADF_uniformInsignia) then {
 		[_unit, ""] call BIS_fnc_setUnitInsignia;
 		[_unit, "CLANPATCH"] call BIS_fnc_setUnitInsignia;
-	};	
-	
-	// Misc 
+	};
+
+	// Misc
 	for "_i" from 1 to 2 do {
 		_unit addItem "SmokeShell";
 		_unit addItem "Chemlight_green";
@@ -265,12 +265,12 @@ ADF_loadout_platoon = {
 			_unit addItem _handgrenade;
 		};
 	};
-	
+
 	// Attachments
 	if (ADF_modded || {ADF_mod_RHS}) then {
 		if (_role == "ar" || {_role == "mg"}) then {
 			_unit addPrimaryWeaponItem _primaryWeaponAttScope_LMG;
-			_unit addPrimaryWeaponItem _primaryWeaponAttLight_LMG;		
+			_unit addPrimaryWeaponItem _primaryWeaponAttLight_LMG;
 		} else {
 			_unit addPrimaryWeaponItem _primaryWeaponAttScope;
 			_unit addPrimaryWeaponItem _primaryWeaponAttLight;
@@ -278,8 +278,8 @@ ADF_loadout_platoon = {
 	} else {
 		_unit addItem "acc_flashlight";
 		_unit addPrimaryWeaponItem "acc_pointer_IR";
-	};			
-	
+	};
+
 	// Add ACE3 default loadout items
 	if ADF_mod_ACE3 then {
 		for "_i" from 0 to (count _ACE3_kit) do {_unit addItem (_ACE3_kit select _i)};
@@ -287,16 +287,16 @@ ADF_loadout_platoon = {
 	};
 
 	// cTab
-	if ADF_mod_CTAB then {_unit addItemToUniform "ItemcTabHCam"};	
+	if ADF_mod_CTAB then {_unit addItemToUniform "ItemcTabHCam"};
 
 	// Personal Radios all units
 	if ADF_mod_ACRE then {_unit addItem "ACRE_PRC343"}; // ACRE
 	if ADF_mod_TFAR then {_unit linkItem _TFAR_PersonalRadio; _unit addItem "tf_microdagr";}; // TFAR
 	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit linkItem "ItemRadio"}; // Vanilla
-	
+
 	// mircoDAGR
 	if (_role == "pc" || _role == "tto" || _role == "sql" || _role == "wtl" || _role == "ftl") then {_unit addItem _microDAGR;};
-	
+
 	// Set local Texture
 	if (ADF_modded) then {
 		ADF_gearLoaded = true;
@@ -304,7 +304,7 @@ ADF_loadout_platoon = {
 		private _t = if (toUpper worldName == "CHERNARUS_SUMMER" || toUpper worldName == "WOODLAND_ACR") then {"\a3\characters_f\BLUFOR\Data\clothing_wdl_co.paa"} else {"\a3\characters_f\BLUFOR\Data\clothing_sage_co.paa"};
 		uniformContainer _unit setVariable ["texture", _t, true];
 		player setObjectTextureGlobal [0, _t];
-		ADF_gearLoaded = true;	
+		ADF_gearLoaded = true;
 	};
 };
 
@@ -317,17 +317,17 @@ if (_role == "pc") exitWith {
 	_unit addGoggles (selectRandom _faceWear);
 	_unit addWeapon "Laserdesignator_01_khk_F";
 	_unit addItem "Laserbatteries";
-	
+
 	// Mod Items
 	if ADF_mod_ACRE then {_unit addBackpack (selectRandom _backpack); _unit addItem "ACRE_PRC148"; _unit addItemToBackpack "ACRE_PRC117F";};
-	if ADF_mod_TFAR then {_unit addBackpack _TFAR_LRRadio} else {_unit addBackpack (selectRandom _backpack)};	
+	if ADF_mod_TFAR then {_unit addBackpack _TFAR_LRRadio} else {_unit addBackpack (selectRandom _backpack)};
 	if ADF_mod_ACE3 then {_unit addItem "ace_dagr";};
 	if ADF_mod_CTAB then {_unit addItem "ItemcTab";};
 
 	// Weapons
 	for "_i" from 1 to 5 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -335,22 +335,22 @@ if (_role == "pc") exitWith {
 if (_role == "rto") exitWith {
 	_unit linkItem "ItemGPS";
 	_unit addGoggles (selectRandom _faceWear);
-	
-	// Bino's	
+
+	// Bino's
 	if (ADF_modded || {ADF_mod_RHS}) then {
 		if ADF_mod_RHS exitWith {_unit addWeapon "rhsusf_bino_lrf_Vector21";};
 		_unit addWeapon "CUP_Vector21Nite"; // CUP
 	} else {
 		if ADF_mod_ACE3 then { _unit addWeapon "ACE_Vector";} else {_unit addWeapon "Rangefinder";};
-	};		
-	
+	};
+
 	// Mod items
 	if ADF_mod_ACRE then {_unit addBackpack (selectRandom _backpack); _unit addItem "ACRE_PRC148"; _unit addItemToBackpack "ACRE_PRC117F";};
 	if ADF_mod_TFAR then {_unit addBackpack _TFAR_LRRadio};
 	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack);};
 	if ADF_mod_ACE3 then {_unit addItem "ace_dagr";};
-	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};	
-	
+	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
+
 	// Weapons
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
@@ -362,26 +362,26 @@ if (_role == "rto") exitWith {
 if (_role == "sql") exitWith {
 	_unit linkItem "ItemGPS";
 	_unit addGoggles (selectRandom _faceWear);
-	
-	// Bino's	
+
+	// Bino's
 	if (ADF_modded || {ADF_mod_RHS}) then {
 		if ADF_mod_RHS exitWith {_unit addWeapon "rhsusf_bino_lrf_Vector21";};
 		_unit addWeapon "CUP_Vector21Nite"; // CUP
 	} else {
 		if ADF_mod_ACE3 then { _unit addWeapon "ACE_Vector";} else {_unit addWeapon "Rangefinder";};
-	};	
-	
+	};
+
 	// Mod items
 	if ADF_mod_ACRE then {_unit addBackpack (selectRandom _backpack_large); _unit addItemToBackpack "ACRE_PRC148";};
 	if ADF_mod_TFAR then {_unit addBackpack _TFAR_LRRadio};
-	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack_large);};	
+	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack_large);};
 	if ADF_mod_ACE3 then {_unit addItem "ACE_HuntIR_M203"; _unit addItem "ACE_HuntIR_monitor"; _unit addItem "ace_dagr";};
 	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
-	
+
 	// Weapons
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag; _unit addItemToVest _40mike;};
 	_unit addWeapon _primaryWeapon_GL;
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -389,26 +389,26 @@ if (_role == "sql") exitWith {
 if (_role == "ftl") exitWith {
 	_unit linkItem "ItemGPS";
 	_unit addGoggles (selectRandom _faceWear);
-	
-	// Bino's	
+
+	// Bino's
 	if (ADF_modded || {ADF_mod_RHS}) then {
 		if ADF_mod_RHS exitWith {_unit addWeapon "rhsusf_bino_lrf_Vector21";};
 		_unit addWeapon "CUP_Vector21Nite"; // CUP
 	} else {
 		if ADF_mod_ACE3 then { _unit addWeapon "ACE_Vector";} else {_unit addWeapon "Rangefinder";};
-	};		
-	
+	};
+
 	// Mod items
 	if ADF_mod_ACRE then {_unit addBackpack (selectRandom _backpack_large); _unit addItemToBackpack "ACRE_PRC148";};
 	if ADF_mod_TFAR then {_unit addBackpack _TFAR_LRRadio};
-	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack_large);};	
+	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack_large);};
 	if ADF_mod_ACE3 then {_unit addItem "ACE_HuntIR_M203"; _unit addItem "ACE_HuntIR_monitor"; _unit; _unit addItem "ace_dagr";};
 	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
-	
+
 	// Weapons
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag; _unit addItemToVest _40mike;};
 	_unit addWeapon _primaryWeapon_GL;
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -416,29 +416,29 @@ if (_role == "ftl") exitWith {
 if (_role == "wtl") exitWith {
 	_unit linkItem "ItemGPS";
 	_unit addGoggles (selectRandom _faceWear);
-	
-	// Bino's	
+
+	// Bino's
 	if (ADF_modded || {ADF_mod_RHS}) then {
 		if ADF_mod_RHS exitWith {_unit addWeapon "rhsusf_bino_lrf_Vector21";};
 		_unit addWeapon "CUP_Vector21Nite"; // CUP
 	} else {
 		if ADF_mod_ACE3 then { _unit addWeapon "ACE_Vector";} else {_unit addWeapon "Rangefinder";};
-	};			
-	
+	};
+
 	// Mod items
 	if ADF_mod_ACRE then {_unit addBackpack (selectRandom _backpack_large); _unit addItemToBackpack "ACRE_PRC148";};
 	if ADF_mod_TFAR then {_unit addBackpack _TFAR_LRRadio};
-	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack_large);};		
+	if (!ADF_mod_ACRE && !ADF_mod_TFAR) then {_unit addBackpack (selectRandom _backpack_large);};
 	if ADF_mod_ACE3 then {_unit addItem "ACE_HuntIR_M203"; _unit addItem "ACE_HuntIR_monitor"; _unit addItem "ace_dagr";};
 	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
-	
+
 	// Weapons
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag;};
 	for "_i" from 1 to 3 do {_unit addItemToVest _40mike;};
 	_unit addWeapon _primaryWeapon_GL;
 	_unit addMagazine _tubeMag_AA;
 	_unit addWeapon _tube_AA;
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -447,50 +447,50 @@ if (_role == "cls") exitWith {
 	_unit linkItem "ItemGPS";
 	_unit addBackpack (selectRandom _backpack_heavy);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	// Weapons
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon;
 	for "_i" from 1 to 4 do {_unit addItemToVest "SmokeShell"; _unit addItemToVest "Chemlight_green";};
-	
+
 	// ACE3 Medical
 	if ADF_mod_ACE3 then { // ACE3 Advanced Medical
-		for "_i" from 1 to 10 do {			
+		for "_i" from 1 to 10 do {
 			_unit addItemToBackpack "ACE_fieldDressing";
 			_unit addItemToBackpack "ACE_elasticBandage";
 			_unit addItemToBackpack "ACE_quikclot";
-			_unit addItemToBackpack "ACE_atropine";				
-		};		
-		for "_i" from 1 to 7 do {			
+			_unit addItemToBackpack "ACE_atropine";
+		};
+		for "_i" from 1 to 7 do {
 			_unit addItemToBackpack "ACE_morphine";
-			_unit addItemToBackpack "ACE_epinephrine";				
-			_unit addItemToBackpack "ACE_packingBandage";			
+			_unit addItemToBackpack "ACE_epinephrine";
+			_unit addItemToBackpack "ACE_packingBandage";
 		};
-		for "_i" from 1 to 4 do {			
-			_unit addItemToBackpack "ACE_salineIV_500";					
-			_unit addItemToBackpack "ACE_tourniquet";				
+		for "_i" from 1 to 4 do {
+			_unit addItemToBackpack "ACE_salineIV_500";
+			_unit addItemToBackpack "ACE_tourniquet";
 		};
-		for "_i" from 1 to 2 do {			
-			_unit addItemToBackpack "ACE_bloodIV";				
+		for "_i" from 1 to 2 do {
+			_unit addItemToBackpack "ACE_bloodIV";
 			_unit addItemToBackpack "ACE_plasmaIV";
 			_unit addItemToBackpack "ACE_personalAidKit";
 		};
 		_unit addItemToBackpack "ACE_surgicalKit";
 	} else { // Vanilla
-		for "_i" from 1 to 10 do {			
+		for "_i" from 1 to 10 do {
 			_unit addItemToBackpack "FirstAidKit";
 		};
 		_unit addItemToBackpack "Medikit";
 	};
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
-// Fire Team: Automatic Rifleman (LMG) 
+// Fire Team: Automatic Rifleman (LMG)
 if (_role == "ar") exitWith {
 	_unit addBackpack (selectRandom _backpack_large);
 	_unit addGoggles "G_Combat";
-	
+
 	for "_i" from 1 to 3 do {_unit addMagazine _primaryWeaponMag_LMG;};
 	_unit addWeapon _primaryWeapon_LMG;
 
@@ -501,11 +501,11 @@ if (_role == "ar") exitWith {
 if (_role == "aar") exitWith {
 	_unit addBackpack (selectRandom _backpack_large);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 11 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon;
 	for "_i" from 1 to 3 do {_unit addItemToBackpack _primaryWeaponMag_LMG;};
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -513,7 +513,7 @@ if (_role == "aar") exitWith {
 if (_role == "r") exitWith {
 	_unit addBackpack (selectRandom _backpack);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 13 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon;
 
@@ -525,12 +525,12 @@ if (_role == "r") exitWith {
 if (_role == "rat") exitWith {
 	_unit addBackpack (selectRandom _backpack_medium);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon;
 	_unit addMagazine _tubeMag_Lite;
 	_unit addWeapon _tube_Lite;
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -538,11 +538,11 @@ if (_role == "rat") exitWith {
 if (_role == "mg") exitWith {
 	_unit addBackpack (selectRandom _backpack_large);
 	_unit addGoggles "G_Combat";
-	
+
 	for "_i" from 1 to 4 do {_unit addMagazine _primaryWeaponMag_MG;};
 	_unit addWeapon _primaryWeapon_MG;
-	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};	
-	
+	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -550,11 +550,11 @@ if (_role == "mg") exitWith {
 if (_role == "amg") exitWith {
 	_unit addBackpack (selectRandom _backpack_heavy);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 8 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
 	for "_i" from 1 to 4 do {_unit addItemToBackpack _primaryWeaponMag_MG;};
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -562,14 +562,14 @@ if (_role == "amg") exitWith {
 if (_role == "ms") exitWith {
 	_unit addBackpack (selectRandom _backpack_large);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 5 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
 	_unit addMagazine _tubeMag_AT;
 	_unit addItemToBackpack _tubeMag_AT;
 	_unit addWeapon _tube_AT;
-	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};	
-	
+	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -577,11 +577,11 @@ if (_role == "ms") exitWith {
 if (_role == "ams") exitWith {
 	_unit addBackpack (selectRandom _backpack_heavy);
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 5 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
 	for "_i" from 1 to 2 do {_unit addItemToBackpack _tubeMag_AT;};
-	
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -594,11 +594,11 @@ if (_role == "hmg") exitWith {
 		_unit addBackpack "B_HMG_01_weapon_F";
 	};
 	_unit addGoggles "G_Combat";
-	
+
 	for "_i" from 1 to 5 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
-	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};	
-	
+	if ADF_mod_CTAB then {_unit addItem "ItemAndroid";};
+
 	_plt_set call ADF_loadout_platoon;
 };
 
@@ -609,11 +609,11 @@ if (_role == "ahmg") exitWith {
 		_unit addBackpack  "RHS_M2_Tripod_Bag"
 	} else {
 		_unit addBackpack "B_HMG_01_support_F";
-	};	
+	};
 	_unit addGoggles (selectRandom _faceWear);
-	
+
 	for "_i" from 1 to 5 do {_unit addMagazine _primaryWeaponMag;};
 	_unit addWeapon _primaryWeapon_lite;
-	
+
 	_plt_set call ADF_loadout_platoon;
 };

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -37,30 +37,30 @@ ADF_roster_uName 	= "";
 ADF_roster_Intro	= "";
 ADF_roster_line 	= "";
 
-waitUntil {ADF_gearLoaded}; 
+waitUntil {ADF_gearLoaded};
 
 //// Load and apply preset
 
 if ADF_debug then {diag_log format ["ADF Debug: ADF_init_comm - %1 preset Settings for %2 - Group: %3 - Callsign: %4", _preset, name player, group player, groupID (group player)]};
 private _set = {
 	if ADF_debug then {diag_log format ["ADF Debug: ADF_init_comm - Preset done for %1 (%2), Group: %3, Callsign: %4, SW: %5 - LR: %6",name player, player, group player, groupID (group player), ADF_TFAR_SW_freq, ADF_TFAR_LR_freq]};
-	ADF_set_callSigns = true;	
+	ADF_set_callSigns = true;
 };
 
 switch _preset do {
-    case "WOLFPACK":	{
-		
+	case "WOLFPACK":	{
+
 		switch (groupID (group player)) do {
 			case "gCO_41M"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["WOLF-1"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 100};
 			case "gCO_41R"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["WOLF-2"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 200};
 			case "gCO_41Y"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["WOLF-3"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 300};
 			case "gGM"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["INSTRUCTOR"]}; ADF_TFAR_LR_freq = 35; ADF_TFAR_SW_freq = 350};
 		};
-		player call _set;		
+		player call _set;
 	};
-    
+
 	case "2SIERRA":	{
-		
+
 		switch (groupID (group player)) do {
 			case "2 PLATOON"	;
 			case "gCO_1": {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2 PLT"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 100};
@@ -71,14 +71,14 @@ switch _preset do {
 			case "2-3 SQUAD";
 			case "gCO_13": {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-3 SQUAD"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 130};
 			case "SUPPORT";
-			case "gCO_2": {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-4 SUPPORT"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 140};		
+			case "gCO_2": {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-4 SUPPORT"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 140};
 		};
 		player call _set;
-		
+
 	};
-	
+
 	case "1STRECON":	{
-		
+
 		switch (groupID (group player)) do {
 			case "gCO_CMD"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["CO CMD"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 100};
 			case "gCO_A_SQD"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["ALPHA SQ"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 110};
@@ -88,15 +88,15 @@ switch _preset do {
 			case "gCO_HAWK"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["HAWK"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 130};
 		};
 		player call _set;
-		
-	};	
-    
-	case "DEFAULT";	
-    default 			{
-		
+
+	};
+
+	case "DEFAULT";
+	default 			{
+
 		switch (groupID (group player)) do {
 			case "gCC"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["CO CMD"]}; ADF_TFAR_LR_freq = 30; ADF_TFAR_SW_freq = 55;};
-			
+
 			case "gCO_1"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["1 PLT"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 100;};
 			case "gCO_11"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["1-1 SQUAD"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 110;};
 			case "gCO_11A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["1-1 ALPHA"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 111;};
@@ -108,7 +108,7 @@ switch _preset do {
 			case "gCO_13A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["1-3 ALPHA"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 131;};
 			case "gCO_13B"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["1-3 BRAVO"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 132;};
 			case "gCO_13C"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["1-3 CHARLIE"]}; ADF_TFAR_LR_freq = 40; ADF_TFAR_SW_freq = 133;};
-			
+
 			case "gCO_2"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2 BAT"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 200;};
 			case "gCO_21A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-1 ALPHA"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 210;};
 			case "gCO_21B"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-1 BRAVO"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 211;};
@@ -117,7 +117,7 @@ switch _preset do {
 			case "gCO_22b"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-2 BRAVO"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 221;};
 			case "gCO_23A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-3 ALPHA"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 230;};
 			case "gCO_23b"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["2-3 BRAVO"]}; ADF_TFAR_LR_freq = 50; ADF_TFAR_SW_freq = 231;};
-			
+
 			case "gCO_3"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["3 WING"]}; ADF_TFAR_LR_freq = 60; ADF_TFAR_SW_freq = 300;};
 			case "gCO_31A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["3-1 ALPHA"]}; ADF_TFAR_LR_freq = 60; ADF_TFAR_SW_freq = 310;};
 			case "gCO_31B"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["3-1 BRAVO"]}; ADF_TFAR_LR_freq = 60; ADF_TFAR_SW_freq = 311;};
@@ -126,7 +126,7 @@ switch _preset do {
 			case "gCO_32C"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["3-2 CHARLIE"]}; ADF_TFAR_LR_freq = 60; ADF_TFAR_SW_freq = 322;};
 			case "gCO_33A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["3-3 ALPHA"]}; ADF_TFAR_LR_freq = 60; ADF_TFAR_SW_freq = 330;};
 			case "gCO_33A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["3-3 BRAVO"]}; ADF_TFAR_LR_freq = 60; ADF_TFAR_SW_freq = 331;};
-			
+
 			case "gCO_4"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["4 SQDR"]}; ADF_TFAR_LR_freq = 70; ADF_TFAR_SW_freq = 400;};
 			case "gCO_41M"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["4-1 MIKE"]}; ADF_TFAR_LR_freq = 70; ADF_TFAR_SW_freq = 410;};
 			case "gCO_41R"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["4-1 ROMEO"]}; ADF_TFAR_LR_freq = 70; ADF_TFAR_SW_freq = 411;};
@@ -135,10 +135,10 @@ switch _preset do {
 			case "gCO_42A"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["4-2 TANGO"]}; ADF_TFAR_LR_freq = 70; ADF_TFAR_SW_freq = 420;};
 			case "gCO_42B"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["4-2 VICTOR"]}; ADF_TFAR_LR_freq = 70; ADF_TFAR_SW_freq = 421;};
 			case "gCO_43F"	: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["4-3 FOXTROT"]}; ADF_TFAR_LR_freq = 80; ADF_TFAR_SW_freq = 430;};
-			
+
 			case "gGM"		: {if (player == leader (group player)) then {(group player) setGroupIdGlobal ["HADES"]}; ADF_TFAR_LR_freq = 35; ADF_TFAR_SW_freq = 350;};
 		};
-		player call _set;		
+		player call _set;
 	};
 };
 
@@ -155,25 +155,25 @@ if ADF_mod_TFAR then {
 	tf_give_personal_radio_to_regular_soldier = false; // Commander radio for all players
 	tf_no_auto_long_range_radio = true; // LR radio for leaders
 	TF_speakerDistance = 20; // The propagation distance of sound from radio speakers.
-	
-	 // 0 - 1 The volume (gain level) of direct speech ? does not affect the propagation distance.
+
+	// 0 - 1 The volume (gain level) of direct speech ? does not affect the propagation distance.
 	player setVariable ["tf_voiceVolume", 1.0, true];
-	 // 0 -1 Global volume for radio and speech.
+	// 0 -1 Global volume for radio and speech.
 	player setVariable ["tf_globalVolume", 1.0];
-	 // 1-2 A multiplier for increasing, or lowering the distance from transmitter to receiver
+	// 1-2 A multiplier for increasing, or lowering the distance from transmitter to receiver
 	player setVariable ["tf_receivingDistanceMultiplicator", 1];
 	// 0-1 A multiplier for increasing or lowering the range of transmission.
-	player setVariable ["tf_sendingDistanceMultiplicator", 1.0]; 	
-	
+	player setVariable ["tf_sendingDistanceMultiplicator", 1.0];
+
 	// Sets the maximum range (meters) of transmission for a vehicle-mounted radio.
-	{ 
+	{
 		if ((side _x == ADF_playerSide) && ((_x isKindOf "Tank") || (_x isKindOf "car"))) then {
-		_x setVariable ["tf_range", 30000, true] 
+		_x setVariable ["tf_range", 30000, true]
 		};
 	} forEach vehicles;
-	
+
 	if (side player != ADF_playerSide) exitWith {};
-	
+
 	// Check preset preferences
 	if ADF_TFAR_preset then {
 		tf_same_sw_frequencies_for_side = false;
@@ -195,18 +195,18 @@ if ADF_mod_TFAR then {
 
 ///// ACRE2 pre-init
 
-if ADF_mod_ACRE then { 
+if ADF_mod_ACRE then {
 	private _ADF_ACRE_init = [] call acre_api_fnc_isInitialized;
 	waitUntil {_ADF_ACRE_init};
 	[_ADF_ACRE_fullDuplex] call acre_api_fnc_setFullDuplex;
 	[_ADF_ACRE_interference] call acre_api_fnc_setInterference;
 	[_ADF_ACRE_AIcanHear] call acre_api_fnc_setRevealToAI;
-	
+
 	if hasInterface then {
 		{_x call acre_api_fnc_babelAddLanguageType} forEach f_radios_settings_acre2_languages;
 		if (!alive player) exitWith {[true] call acre_api_fnc_setSpectator;};
-	};	
-	
+	};
+
 	if ADF_debug then {["ADF_init_comm - ACRE settings initialized", false] call ADF_fnc_log};
 };
 
@@ -215,7 +215,7 @@ if (ADF_mod_ACE3 && (ADF_microDAGR == "ACE_microDAGR")) then { //  140B06
 	// insert Blueforce tracking init
 	ace_map_BFT_Enabled = true;
 	ace_map_BFT_markers = [];
-	[ace_map_fnc_blueForceTrackingUpdate, 1, []] call CBA_fnc_addPerFrameHandler;	
+	[ace_map_fnc_blueForceTrackingUpdate, 1, []] call CBA_fnc_addPerFrameHandler;
 	if ADF_debug then {["ADF_init_comm - ACE3 BluForce Tracking initialized", false] call ADF_fnc_log};
 };
 
@@ -226,23 +226,23 @@ if hasInterface then {waitUntil {ADF_set_callSigns}};
 // Set the frequencies for TFAR
 if (ADF_mod_TFAR && ADF_TFAR_preset && hasInterface) then {
 	// finish init, 15 secs in case of debug
-	waitUntil {time > 15 && ADF_missionInit}; 
-	
+	waitUntil {time > 15 && ADF_missionInit};
+
 	_ADF_TFAR_SW_radio = call TFAR_fnc_haveSWRadio;
 	_ADF_TFAR_LR_radio = call TFAR_fnc_haveLRRadio;
-	
+
 	// Apply SW & LR frequencies
 	if (_ADF_TFAR_SW_radio) then {[(call TFAR_fnc_activeSwRadio), 1, str ADF_TFAR_SW_freq] call TFAR_fnc_SetChannelFrequency};
 	if (_ADF_TFAR_LR_radio) then {[(call TFAR_fnc_activeLrRadio), 1, str ADF_TFAR_LR_freq] call TFAR_fnc_SetChannelFrequency};
 	if ADF_debug then {["ADF_init_comm - TFAR radios configured", false] call ADF_fnc_log};
-	
+
 	// Announce to player
 	if (!_ADF_TFAR_LR_radio && _ADF_TFAR_SW_radio) then {systemChat format ["%1: %2, TFAR radio tuned in. SW: %3", ADF_clanTAG, name vehicle player, ADF_TFAR_SW_freq]};
 	if (_ADF_TFAR_LR_radio && !_ADF_TFAR_SW_radio) then {systemChat format ["%1: %2,  TFAR radio tuned in. LR: %3", ADF_clanTAG, name vehicle player, ADF_TFAR_LR_freq]};
 	if (_ADF_TFAR_LR_radio && _ADF_TFAR_LR_radio) then {systemChat format ["%1: %2,  TFAR radio's tuned in. SW: %3 | LR: %4", ADF_clanTAG, profileName, ADF_TFAR_SW_freq, ADF_TFAR_LR_freq]};
 	if (!_ADF_TFAR_LR_radio && !_ADF_TFAR_SW_radio) then {systemChat format ["%1: %2,  You do not carry a TFAR radio. No frequencies configured.", ADF_clanTAG, name vehicle player, ADF_TFAR_LR_freq]};
 	ADF_set_radios = true;
-	
+
 	// Apply the commDetetct event handler
 	["commDetect", "OnSpeak", {[_this # 0] call ADF_fnc_commDetect}, player] call TFAR_fnc_addEventHandler;
 };
@@ -280,7 +280,7 @@ player createDiarySubject ["Deployment Roster",ADF_clanName + " Roster"];
 				ADF_roster_userGroup = format ["<br/><font size='16' color='#D7DBD5'>%1</font><br/>", _roster_groupName];
 			}
 		};
-		
+
 		if (name _x == name player) then {
 			ADF_roster_uName = "<font color='#EFCA35'>" + name _x + "<font color='#9DA698'>";
 		} else {

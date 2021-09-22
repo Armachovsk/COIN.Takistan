@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,25 +21,25 @@ Place an object (flag pole, vehicle, etc.) and copy the following into the init
 field of the placed object:
 
 this addAction ["<t align='left' color='#E4F2AA'>Teleport</t>",
-{[_this # 1, AAAA, BBBB, CCCC] spawn ADF_fnc_teleport;}, 
+{[_this # 1, AAAA, BBBB, CCCC] spawn ADF_fnc_teleport;},
 [], 6, true, true, "", "true" , 8]; this allowDamage false;
 
 REQUIRED PARAMETERS:
-Position:      Teleport position. Marker, object, trigger, team leader 
-               or position array [x,y,z]
-				
+Position:      Teleport position. Marker, object, trigger, team leader
+	or position array [x,y,z]
+
 OPTIONAL PARAMETERS:
 String:        The name of the teleport location. Default: "the RV location"
 Number:        Delay in seconds (0 is no delay). Default: 30
-				
+
 EXAMPLE TELEPORT TO TEAM LEADER
-this addAction ["<t align='left' color='#E4F2AA'>Teleport</t>", 
-{[_this # 1, leader player, "your team leader", 10] spawn ADF_fnc_teleport;}, 
+this addAction ["<t align='left' color='#E4F2AA'>Teleport</t>",
+{[_this # 1, leader player, "your team leader", 10] spawn ADF_fnc_teleport;},
 [], 6, true, true, "", "true" , 8]; this allowDamage false;
 
 EXAMPLE TELEPORT TO A MARKER POSITION
-this addAction ["<t align='left' color='#E4F2AA'>Teleport</t>", 
-{[_this # 1, "myTeleportMarker", "the RV location", 10] spawn ADF_fnc_teleport;}, 
+this addAction ["<t align='left' color='#E4F2AA'>Teleport</t>",
+{[_this # 1, "myTeleportMarker", "the RV location", 10] spawn ADF_fnc_teleport;},
 [], 6, true, true, "", "true" , 8]; this allowDamage false;
 
 RETURNS
@@ -59,7 +59,7 @@ params [
 	["_pause", 30, [0]],
 	["_direction", 0, [0]],
 	["_inVehicle", false, [true]],
-	["_toGroup", false, [true]]	
+	["_toGroup", false, [true]]
 ];
 
 private _leader = leader (group _unit);
@@ -71,10 +71,10 @@ switch (typeName _position) do {
 	case "STRING": {
 		if (_position in allMapMarkers) then {_direction = markerDir _position};
 		_destination = _unit;
-	};		
-	
+	};
+
 	case "OBJECT": {
-		_direction = getDir _position; 
+		_direction = getDir _position;
 		if (_position isKindOf "Man") then {
 			if (!isNull objectParent _leader) then {_inVehicle = true};
 			_toGroup = true;
@@ -83,28 +83,28 @@ switch (typeName _position) do {
 				if ((({_position emptyPositions _x} forEach ["Commander", "Driver", "Gunner", "Cargo"]) + 1) > 0) then {_inVehicle = true};
 			};
 		};
-	};		
-	
+	};
+
 	case "GROUP": {
 		_direction = getDirVisual _leader;
 		if (!isNull objectParent _leader) then {_inVehicle = true};
 		_toGroup = true;
 	};
-	
+
 	case "ARRAY";
 	default {_direction = random 360};
 };
 
-// Check the position location	
+// Check the position location
 _position = [_position] call ADF_fnc_checkPosition;
 
 // Debug
 if ADF_debug then {[format ["ADF_fnc_teleport - Unit: %1 | Teleport Position: %2 (%3) | Name: %4 | Delay: %5 secs | Distance: %6 meters",_unit, mapGridPosition _position, _destination, _positionName, _pause, _distance]] call ADF_fnc_log};
 
-// Exit if player is the group leader for group teleport	
+// Exit if player is the group leader for group teleport
 if (_toGroup && {_unit == _leader}) exitWith {hintSilent parseText format ["<img size= '6' shadow='false' image='" + ADF_clanLogo + localize "STR_ADF_telePort_isLeader", name _unit];};
 
-// Exit if the teleport location is < 250 meters away	
+// Exit if the teleport location is < 250 meters away
 if (_distance < 250) exitWith {hintSilent parseText format ["<img size= '6' shadow='false' image='" + ADF_clanLogo + localize "STR_ADF_telePort_tooClose", name _unit, _distance, mapGridPosition _position];};
 
 // Check if the target is alive/mobile
@@ -120,20 +120,20 @@ private _f = {
 };
 
 private _t = {
-	params ["_unit", "_position", "_leader"];		
+	params ["_unit", "_position", "_leader"];
 	hintSilent parseText format ["<img size= '6' shadow='false' image='" + ADF_clanLogo + localize "STR_ADF_telePort_toVehicle", name _unit, name _leader];
 	titleText ["", "BLACK IN", 2];
 	if ADF_mod_ACE3 then {[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;};
-	uiSleep 8; hintSilent "";	
+	uiSleep 8; hintSilent "";
 };
 
-if (_inVehicle) exitWith {	
+if (_inVehicle) exitWith {
 	scopeName "ADF_TeleportVeh";
 	if (((vehicle _leader) emptyPositions "commander") > 0) then {
 		[] call _f;
 		sleep 1;
 		_unit assignAsCommander (vehicle _leader);
-		_unit moveInCommander (vehicle _leader);			
+		_unit moveInCommander (vehicle _leader);
 		[_unit, "commander", _leader] call _t;
 		breakOut "ADF_TeleportVeh";
 	};
@@ -168,7 +168,7 @@ if (_inVehicle) exitWith {
 waitUntil {
 	_pause = _pause - 1;
 	hintSilent parseText format ["<img size= '6' shadow='false' image='" + ADF_clanLogo + localize "STR_ADF_telePort_timerHint",name _unit, _positionName, _pause];
-	sleep 1;		
+	sleep 1;
 	(!alive _unit || _pause < 1);
 };
 
@@ -178,4 +178,4 @@ _unit setPosATL _position;
 hintSilent parseText format ["<img size= '6' shadow='false' image='" + ADF_clanLogo + localize "STR_ADF_telePort_teleported",name _unit, _positionName];
 titleText ["", "BLACK IN", 2];
 if ADF_mod_ACE3 then {[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;};
-uiSleep 8; hintSilent "";	
+uiSleep 8; hintSilent "";

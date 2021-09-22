@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -38,10 +38,10 @@ waitUntil {
 if (isNil "_newUnit" || time > _timeOut) exitWith {diag_log format ["« C O I N »   onPlayerRespawn.sqf - Unit %1 does not exist or did not initialize. Terminating ADF_mission_playerRespawn.", _newUnit];};
 
 if (
-	(_oldUnit getVariable ["COIN_isLeadership", false]) || 
-	{(_newUnit getVariable ["COIN_isLeadership", false]) || 
-	{(COIN_leadership == _oldUnit) || 
-	{(COIN_leadership == _newUnit) || 
+	(_oldUnit getVariable ["COIN_isLeadership", false]) ||
+	{(_newUnit getVariable ["COIN_isLeadership", false]) ||
+	{(COIN_leadership == _oldUnit) ||
+	{(COIN_leadership == _newUnit) ||
 	{(COIN_leadership == player)}}}}
 ) then {
 	diag_log "« C O I N »   onPlayerRespawn.sqf - Player is COIN_leadership";
@@ -57,5 +57,5 @@ if (
 };
 
 setUnitLoadout COIN_loadout;
-	
+
 diag_log format ["« C O I N »   onPlayerRespawn.sqf - Player (%1) has respawned.", _newUnit];

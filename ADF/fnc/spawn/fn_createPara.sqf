@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -29,11 +29,11 @@ You can pass 2 functions to the script:
 
 Function1 will run (call) on individual units once the infantry group has been
 created (e.g. a loadout script). Params passed to the function:
-_this select 0: unit 
+_this select 0: unit
 
 Function2 will run (spawn) on the group itself. Can be used to give the group
 directives once they have landed (e.g. assault waypoints). Params passed to the
-function: 
+function:
 _this select 0: group.
 
 After dropping off the para group, the aircraft returns to the spawn position
@@ -44,29 +44,29 @@ Execute (spawn) from the server or HC.
 
 REQUIRED PARAMETERS:
 0. Position:    Spawn position. Marker, Object or Trigger. This is the position
-                where both the aircraft and the para group are created
-                E.g.. getMarkerPos "Spawn" -or- "SpawnPos" -or- MyObject
-                Array of markers/objects/grousps is also possible:
-                e.g. ["markerPos1", "markerPos2", myObject10]	
+	where both the aircraft and the para group are created
+	E.g.. getMarkerPos "Spawn" -or- "SpawnPos" -or- MyObject
+	Array of markers/objects/grousps is also possible:
+	e.g. ["markerPos1", "markerPos2", myObject10]
 1. Position:    Para drop position. Marker, Object or Trigger. The para drop
-                starts approx 350m from the drop position.
-                Array of markers/objects/grousps is also possible
+	starts approx 350m from the drop position.
+	Array of markers/objects/grousps is also possible
 
 OPTIONAL PARAMETERS:
 2. Side/String: Side of the aircraft and the para group. Can be west, east or
-                independent.  Or "Classname" of the aircraft as a string.
-			   Default: east
+	independent.  Or "Classname" of the aircraft as a string.
+			Default: east
 3. Integer:     Para group size (one group on matter the size):
-                - 1: Fire team - 4 pax
-                - 2: Squad - 8 pax (default) 
-                - 3: Squad plus one fire team, - 12 pax
-                - 4: Two squads - 16 pax
+	- 1: Fire team - 4 pax
+	- 2: Squad - 8 pax (default)
+	- 3: Squad plus one fire team, - 12 pax
+	- 4: Two squads - 16 pax
 4. String:      Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 5. String:      Code to execute on the crew on a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. The group is passed
+	(_this select 0) to the code/fnc.
 
 EEXAMPLES USAGE IN SCRIPT:
 ["paraSpawnMarker", "paraDropMarker", east, 2, "My_fnc_loadoutEast", "My_fnc_paraAssault"] spawn ADF_fnc_createPara;
@@ -111,7 +111,7 @@ params [
 ];
 
 private _direction = switch true do {
-	case (_positionSpawn isEqualType ""): {markerDir _positionSpawn;};	
+	case (_positionSpawn isEqualType ""): {markerDir _positionSpawn;};
 	case (_positionSpawn isEqualType objNull): {getDir _positionSpawn;};
 	case (_positionSpawn isEqualType grpNull): {getDirVisual leader _positionSpawn;};
 	case (_positionSpawn isEqualType []);
@@ -138,7 +138,7 @@ if (_side isEqualType "") then {
 		case 0: {east};
 		case 1: {west};
 		case 2: {independent};
-		default {east};	
+		default {east};
 	};
 	switch _side do {
 		case west: {
@@ -156,7 +156,7 @@ if (_side isEqualType "") then {
 			_acm_groupSide = "Indep";
 			_acm_groupType = "HAF";
 		};
-	};	
+	};
 } else {
 	switch _side do {
 		case west: {
@@ -285,15 +285,15 @@ if isServer then {
 				params [_unit, _vehicle];
 				private _timeOut = 1;
 				waitUntil {
-					if ((_vehicle getCargoIndex _unit) > -1) exitWith {true};			
+					if ((_vehicle getCargoIndex _unit) > -1) exitWith {true};
 					if (_timeOut > 30) then {[_unit] call ADF_fnc_delete;};
 					_unit moveInCargo _vehicle;
 					_timeOut = _timeOut + 1;
 					sleep 0.2;
 					!alive _unit
-				};	
+				};
 			};
-		};		
+		};
 	} forEach _paraUnits;
 };
 
@@ -318,7 +318,7 @@ waitUntil {
 	sleep 3;
 	(speed _vehicle) > 100 || time > _timeOut || !alive _vehicle
 };
-if (time > _timeOut || !alive _vehicle) exitWith {	
+if (time > _timeOut || !alive _vehicle) exitWith {
 	[format ["ADF_fnc_createPara - Terminate for helicopter: %1 - group: %2 - Stuck at spawn position (30 seconds timer) or no longer alive (%3)", _vehicle, _paraGroup, alive _vehicle]] call ADF_fnc_log;
 	[_vehicle] call ADF_fnc_delete;
 	[_paraGroup] call ADF_fnc_delete;
@@ -333,7 +333,7 @@ if (_exit) exitWith {};
 // Double check if the assigned para units actually boarded the aircraft. If not then add them to the manual para group.
 if (count (assignedCargo _vehicle) < (count _paraUnits)) then {
 	private _tempUnits = _paraUnits - (assignedCargo _vehicle);
-	_manualParaGroup = createGroup _side;	
+	_manualParaGroup = createGroup _side;
 	_tempUnits joinSilent _manualParaGroup;
 	_manualParaUnits = units _manualParaGroup;
 	[format ["ADF_fnc_createPara - Not all units were moved into the aircraft. Para Group total: %1 (%2). Left behind: %3 (%4).", count units _paraGroup, count _paraUnits, count units _manualParaGroup, count _manualParaUnits]] call ADF_fnc_log;
@@ -347,28 +347,28 @@ if (count (assignedCargo _vehicle) < (count _paraUnits)) then {
 				"_manualParaGroup",
 				"_vehicle"
 			];
-			
+
 			[format ["ADF_fnc_createPara - Manual/left behinf units wait till the main para group jumps and then will join them: %1 {%2} ", count _manualParaUnits, _manualParaUnits]] call ADF_fnc_log;
 			// Wait until the para group is jumping out of the air craft
 			waitUntil {
-				sleep 0.5; 
+				sleep 0.5;
 				_paraGroup getVariable ["ADF_para_jump", false]
 			};
-			
+
 			sleep 0.3;
-			
+
 			// Manual jump for the left over forces
 			{
 				[_x, _vehicle] spawn ADF_fnc_paraDrop;
 				sleep 0.65
 			} forEach _manualParaUnits;
-			
+
 			sleep 30;
-			
+
 			// Leftover forces re-join the para group for further tasking
 			_manualParaUnits joinSilent _paraGroup;
 			sleep 0.1;
-			[_manualParaGroup] call ADF_fnc_delete;		
+			[_manualParaGroup] call ADF_fnc_delete;
 		};
 	};
 };
@@ -376,13 +376,13 @@ if (count (assignedCargo _vehicle) < (count _paraUnits)) then {
 // Check distance to drop off location and spawn the para drop function
 [_paraUnits, _vehicle, _positionDrop, _paraGroup] spawn {
 	params ["_paraUnits", "_vehicle", "_positionDrop", "_paraGroup"];
-	
+
 	waitUntil {
 		sleep 0.5;
 		(([_vehicle, _positionDrop] call ADF_fnc_checkDistance) < (((count _paraUnits) * 25) + 25)) || !alive _vehicle
 	};
-	if (!alive _vehicle || !alive (leader _paraGroup)) exitWith {};	
-	
+	if (!alive _vehicle || !alive (leader _paraGroup)) exitWith {};
+
 	//_paraUnits allowGetIn false;
 	_paraGroup setVariable ["ADF_para_jump", true];
 	{[_x] spawn ADF_fnc_paraDrop; sleep 0.6} forEach _paraUnits;
@@ -398,7 +398,7 @@ if (_code_1 != "") then {
 if (_code_2 != "") then {
 	[_paraGroup] spawn (call compile format ["%1", _code_2]);
 	if (count _manualParaUnits > 0) then {[_manualParaGroup] spawn (call compile format ["%1", _code_2]);};
-	if ADF_debug then {[format ["ADF_fnc_createPara - spawn %1 for group: %2",_code_2, _paraGroup]] call ADF_fnc_log};	
+	if ADF_debug then {[format ["ADF_fnc_createPara - spawn %1 for group: %2",_code_2, _paraGroup]] call ADF_fnc_log};
 };
 
 {_x allowDamage true} forEach units _paraGroup; // hack ADF 2.22

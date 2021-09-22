@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -33,7 +33,7 @@ offers a lot of options for customization:
   groups SOD should spawn.
 
 Once players move out of the zone activation area, the infantry units will be
-cached. Killed units will not re-spawn/un-cache. 
+cached. Killed units will not re-spawn/un-cache.
 Upon reactivation, the units resume their pre-existing patrol/garrison duties.
 Note: airborne players cannot activate a SOD zone.
 
@@ -45,66 +45,66 @@ Code 2: Code/Function is called for the group as a whole when the group spawns f
 Code 3: Code/Function is executed (spawn) on each zone re-activation except the
         first time activation.
 Code 4: Code/Function is spawned on the first time activation (first run).
-        Code is run prior to the creation of the group(s). 
+        Code is run prior to the creation of the group(s).
 
 INSTRUCTIONS:
 Execute (spawn) from the server or headless client.
 
 REQUIRED PARAMETERS:
 0: Position:      position. Scan/Sensor position. Marker or Object.
-                  Does not have to be the same as the spawn position. See this as
-                  the center of the trigger area.			  
+	Does not have to be the same as the spawn position. See this as
+	the center of the trigger area.
 
 OPTIONAL PARAMETERS:
 1: Position:      position. Spawn position. Marker, Object or [x, y, z] array.
-                  "" empty string: same position as scan position (default)
+	"" empty string: same position as scan position (default)
 2. Side:          west, east or independent. Default: east
 3. Bool/Group:    Use on pre-placed group of units or create new group(s):
-                  group - use on existing group (execute from group)
-                  false - create new group (default)
+	group - use on existing group (execute from group)
+	false - create new group (default)
 4. Integer/Array: Group size In case of create new group):
-                  2     - Team
-                  4     - Fire Team (default)
-                  8     - Squad
-			      array - [# patrol, # defend]
+	2     - Team
+	4     - Fire Team (default)
+	8     - Squad
+			array - [# patrol, # defend]
 5. Integer/Array: Group count. How many groups to spawn/create:
-                  1     - Number of groups to spawn. Min 1 (default), maximum 50.
-			      array - [# patrol groups, # defend groups]
-6. Integer/Array: Radius in meters. If a ellipse/rect marker is used then the 
-                  marker = radius. Default: 500 meters.
-			      array - [radius patrol groups, radius defend groups]
+	1     - Number of groups to spawn. Min 1 (default), maximum 50.
+			array - [# patrol groups, # defend groups]
+6. Integer/Array: Radius in meters. If a ellipse/rect marker is used then the
+	marker = radius. Default: 500 meters.
+			array - [radius patrol groups, radius defend groups]
 7. Integer/Bool:  Activation. How far out do units spawn / cache in meters:
-                  integers - Number in meters. In case of auto then 1.75 x radius.
-                  true - Auto (default)
+	integers - Number in meters. In case of auto then 1.75 x radius.
+	true - Auto (default)
 8. String:        Patrol, garrison/defend, both?.
-                  "patrol" - group(s) will patrol the given radius (default)
-                  "defend" - group(s) garrison buildings within the given radius
-				  "all"    - Patrol and defend. Use array options to define group size
-				             group count and radius for each patrol / defend group.
+	"patrol" - group(s) will patrol the given radius (default)
+	"defend" - group(s) garrison buildings within the given radius
+				"all"    - Patrol and defend. Use array options to define group size
+					group count and radius for each patrol / defend group.
 9. String:        Code 1. Code to execute on each unit of the group (e.g. a function).
-                  Default = "". Code is CALLED. Each unit of the group is passed
-                  (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 10. String:       Code 2. Code to execute on the group (e.g. a function). Default = "".
-                  Code is CALLED. The group is passed (_this select 0) to the code/fnc.
+	Code is CALLED. The group is passed (_this select 0) to the code/fnc.
 11. String:       Code 3. Code to execute on each activation. Code is executed (spawn)
-                  on the client that executes the SOD function (hc or server).
-                  Default = "". Passed information:
-                  _this select 0 - spawn position
-                  _this select 1 - sensor position
-                  _this select 2 - array of SOD groups
-                  _this select 3 - sensor name/variable/Marker name
-                  _this select 4 - spawn position name/variable/Marker name
+	on the client that executes the SOD function (hc or server).
+	Default = "". Passed information:
+	_this select 0 - spawn position
+	_this select 1 - sensor position
+	_this select 2 - array of SOD groups
+	_this select 3 - sensor name/variable/Marker name
+	_this select 4 - spawn position name/variable/Marker name
 12. String:       Code 4. Code to execute on first-run activation. Code is spawned
-                  on the client that executes the SOD function (hc or server).
-                  Default = "". Passed information: 
-                  _this select 0 - spawn position
-                  _this select 1 - sensor position
-                  _this select 2 - sensor name/variable/Marker name
-                  _this select 3 - spawn position name/variable/Marker name
-                  _this select 4 - Size of the sensor area
+	on the client that executes the SOD function (hc or server).
+	Default = "". Passed information:
+	_this select 0 - spawn position
+	_this select 1 - sensor position
+	_this select 2 - sensor name/variable/Marker name
+	_this select 3 - spawn position name/variable/Marker name
+	_this select 4 - Size of the sensor area
 13. Bool:		  Function debugging/testing:
-                  false - switch off (default)
-                  true - switch on debugging
+	false - switch off (default)
+	true - switch on debugging
 
 EXAMPLES USAGE IN SCRIPT (CREATE GROUP):
 ["myMarker", "spawnPosition", west, false, 4, 1, 250, true, "patrol", "MyUnitFunction", "MyGroupFunction", "runEachTime", "runFirstTime"] spawn ADF_fnc_SOD;
@@ -207,7 +207,7 @@ if _SOD_test then {
 		_positionMarker setMarkerShape "ELLIPSE";
 		_positionMarker setMarkerColor "ColorRed";
 		_positionMarker setMarkerSize [_radiusPatrol, _radiusPatrol];
-		_positionMarker setMarkerAlpha 0.5;	
+		_positionMarker setMarkerAlpha 0.5;
 	} else {
 		_sensorPos setMarkerColor "ColorRed";
 	};
@@ -222,15 +222,15 @@ if _SOD_test then {
 // Un-chache chached groups upon SOD zone activation
 private _SOD_unCache = {
 	params ["_SOD_groups"];
-	
+
 	{
 		_units = units _x;
 		{
-			_x allowDamage true;	
+			_x allowDamage true;
 			_x enableSimulationGlobal true;
-			_x hideObjectGlobal false;			
-			_x enableAI "FSM";				
-		} forEach _units;		
+			_x hideObjectGlobal false;
+			_x enableAI "FSM";
+		} forEach _units;
 	} forEach _SOD_groups;
 	if isServer then {_SOD_groups call ADF_fnc_addToCurator} else {_SOD_groups remoteExecCall ["ADF_fnc_addToCurator", 2]};
 };
@@ -240,7 +240,7 @@ private _SOD_execCode = {
 	// init
 	params [
 		"_code_3",
-		["_run_code_3", false, [true]],		
+		["_run_code_3", false, [true]],
 		"_code_4",
 		["_run_code_4", false, [true]],
 		"_spawnPosition",
@@ -251,19 +251,19 @@ private _SOD_execCode = {
 		"_spawnPosName",
 		"_sensorSize"
 	];
-	
+
 	// Code 3 - on each zone re-activation
 	if (_run_code_3 && {_code_3 != ""}) then {
 		[_spawnPosition, _sensorPosition, _SOD_groups, _sensorPosName, _spawnPosName]  spawn (call compile format ["%1", _code_3]);
 		// Debug reporting
-		if (_SOD_test || {ADF_debug}) then {[format ["ADF_fnc_SOD - spawned code 3 (%1)", _code_3]] call ADF_fnc_log};	
+		if (_SOD_test || {ADF_debug}) then {[format ["ADF_fnc_SOD - spawned code 3 (%1)", _code_3]] call ADF_fnc_log};
 	};
 
 	// Code 4 - on first time zone activation (first run)
 	if (_run_code_4 && {_code_4 != ""}) then {
 		[_spawnPosition, _sensorPosition, _sensorPosName, _spawnPosName, _sensorSize] spawn (call compile format ["%1", _code_4]);
 		// Debug reporting
-		if (_SOD_test || {ADF_debug}) then {[format ["ADF_fnc_SOD - spawned code 4 (%1)", _code_4]] call ADF_fnc_log};		
+		if (_SOD_test || {ADF_debug}) then {[format ["ADF_fnc_SOD - spawned code 4 (%1)", _code_4]] call ADF_fnc_log};
 	};
 };
 
@@ -278,12 +278,12 @@ if !_createGroup then {
 	{
 		_x allowDamage false;
 		_x enableSimulationGlobal false;
-		_x hideObjectGlobal true;			
-		_x disableAI "FSM";	
+		_x hideObjectGlobal true;
+		_x disableAI "FSM";
 	} forEach units _group;
-	
+
 	// Add the group to Zeus
-	[_group] call _addToZeus;	
+	[_group] call _addToZeus;
 };
 
 // Start the SOD zone monitor loop. This will create a loop that will check every 2-4 seconds if a player has entered
@@ -292,19 +292,19 @@ if !_createGroup then {
 // (minus dead units) will be cached. If all SOD zone enemy units have been killed then the monitor loop will exit.
 
 while {_SOD_execute} do {
-	private _playersClose = false;	
+	private _playersClose = false;
 
 	// Check the distance of each player to the SOD radius
-	{if ((_sensorPosition distance _x) < _activation) exitWith {_playersClose = true}} forEach allPlayers select {((getPosATL _x) select 2) < 5};	
-	
+	{if ((_sensorPosition distance _x) < _activation) exitWith {_playersClose = true}} forEach allPlayers select {((getPosATL _x) select 2) < 5};
+
 	// CHeck if we need to spawn SOD zone, cache the SOD zone or do nothing
-	if !_SOD_active then {	
+	if !_SOD_active then {
 		if _playersClose then {
 			// A player is within the activation radius so let's create/activate the infantry group(s). EIther patrol or garrison/defend or both (all)
 			if _SOD_firstRun then {
 				// First time activation
 				switch _activity do {
-				
+
 					///// PATROL
 					case "patrol": {
 						if (_code_4 != "") then {["", false, _code_4, true, _spawnPosition, _sensorPosition, _SOD_groups, _SOD_test, _sensorPosName, _spawnPosName, _largestRadius] call _SOD_execCode};
@@ -315,40 +315,40 @@ while {_SOD_execute} do {
 							case (_radiusPatrol > 499 && _radiusPatrol < 1500): {4};
 							case (_radiusPatrol > 1500): {3};
 							default {4};
-						};					
+						};
 						// Create new group or run on existing/pre-placed group
 						if (_createGroup) then {
 							// First run, let's create the infantry foot mobile group(s) and assign orders
 							for "_i" from 1 to _groupCountPatrol do {
 								private _weaponSquad = if (random 100 < 75) then {false} else {true};
-								private _patrolSearch = if (random 100 < 60) then {false} else {true};	
+								private _patrolSearch = if (random 100 < 60) then {false} else {true};
 								_group = [_spawnPosition, _side, _groupSizePatrol, _weaponSquad, _radiusPatrol, _waypoints, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 5, _patrolSearch, _code_1, _code_2] call ADF_fnc_createFootPatrol;
-								_SOD_groups  pushBack _group;								
+								_SOD_groups  pushBack _group;
 							};
-							[_SOD_groups] call _addToZeus;	
+							[_SOD_groups] call _addToZeus;
 						// Execute the patrol function on an exisiting group
 						} else {
 							// First uncache the cached existing group
 							[[_group]] call _SOD_unCache;
-							private _patrolSearch = if (random 100 < 60) then {false} else {true};	
+							private _patrolSearch = if (random 100 < 60) then {false} else {true};
 							[_group, _spawnPosition, _radiusPatrol, _waypoints, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 5, _patrolSearch] call ADF_fnc_footPatrol;
 							_SOD_groups pushBack _group;
 						};
 					};
-					
+
 					///// DEFEND
 					case "defend": {
-						if (_code_4 != "") then {["", false, _code_4, true, _spawnPosition, _sensorPosition, _SOD_groups, _SOD_test, _sensorPosName, _spawnPosName, _largestRadius] call _SOD_execCode};				
+						if (_code_4 != "") then {["", false, _code_4, true, _spawnPosition, _sensorPosition, _SOD_groups, _SOD_test, _sensorPosName, _spawnPosName, _largestRadius] call _SOD_execCode};
 						//Create new group or run on existing/pre-placed group
-						if (_createGroup) then {				
+						if (_createGroup) then {
 							// First run, let's create the infantry foot mobile group(s) and assign orders
-							for "_i" from 1 to _groupCountDefend do {	
+							for "_i" from 1 to _groupCountDefend do {
 								private _patrolSearch = if (random 100 < 60) then {false} else {true};
 								private _weaponSquad = if (random 100 < 75) then {false} else {true};
 								_group = [_spawnPosition, _side, _groupSizeDefend, _weaponSquad, _radiusDefend, _patrolSearch, _code_1, _code_2, 4, selectRandom [false, true]] call ADF_fnc_createGarrison;
 								_SOD_groups  pushBack _group;
 							};
-							[_SOD_groups] call _addToZeus;	
+							[_SOD_groups] call _addToZeus;
 						// Execute the defend function on an exisiting group
 						} else {
 							// First uncache the cached existing group
@@ -358,7 +358,7 @@ while {_SOD_execute} do {
 							_SOD_groups pushBack _group;
 						};
 					};
-					
+
 					///// ALL (PATROL & DEFEND)
 					case "all";
 					default {
@@ -370,23 +370,23 @@ while {_SOD_execute} do {
 							case (_radiusPatrol > 499 && _radiusPatrol < 1500): {4};
 							case (_radiusPatrol > 1500): {3};
 							default {4};
-						};					
+						};
 						// Create new group or run on existing/pre-placed group
 						if (_createGroup) then {
 							// First run, let's create the infantry foot mobile group(s) and assign orders
 							for "_i" from 1 to _groupCountPatrol do {
 								private _weaponSquad = if (random 100 < 75) then {false} else {true};
-								private _patrolSearch = if (random 100 < 60) then {false} else {true};	
+								private _patrolSearch = if (random 100 < 60) then {false} else {true};
 								_group = [_spawnPosition, _side, _groupSizePatrol, _weaponSquad, _radiusPatrol, _waypoints, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 5, _patrolSearch, _code_1, _code_2] call ADF_fnc_createFootPatrol;
 								_SOD_groups  pushBack _group;
 								};
-							for "_i" from 1 to _groupCountDefend do {	
+							for "_i" from 1 to _groupCountDefend do {
 								private _patrolSearch = if (random 100 < 60) then {false} else {true};
 								private _weaponSquad = if (random 100 < 75) then {false} else {true};
 								_group = [_spawnPosition, _side, _groupSizeDefend, _weaponSquad, _radiusDefend, _patrolSearch, _code_1, _code_2, 4, selectRandom [true, false]] call ADF_fnc_createGarrison;
 								_SOD_groups pushBack _group;
 							};
-							[_SOD_groups] call _addToZeus;	
+							[_SOD_groups] call _addToZeus;
 						// The "all" selection does not work on existing groups. Throw an error
 						} else {
 							["ADF_fnc_SOD - running the 'ALL' option on existing group(s) is invalid! Exiting", true] call ADF_fnc_log;
@@ -395,57 +395,57 @@ while {_SOD_execute} do {
 					};
 				};
 				{_x deleteGroupWhenEmpty false; _x setVariable ["zbe_cacheDisabled", true];} forEach _SOD_groups;
-				_SOD_firstRun = false;				
+				_SOD_firstRun = false;
 			} else {
 				// Re-activation. Let's un-cache the groups and assign orders
 				[_SOD_groups] call _SOD_unCache;
-				// Run custom code 3 (on each run)				
-				if (_code_3 != "") then {[_code_3, true, "", false, _spawnPosition, _sensorPosition, _SOD_groups, _SOD_test, _sensorPosName, _spawnPosName] call _SOD_execCode};			
-			};			
-			
-			_SOD_active = true;			
-		
+				// Run custom code 3 (on each run)
+				if (_code_3 != "") then {[_code_3, true, "", false, _spawnPosition, _sensorPosition, _SOD_groups, _SOD_test, _sensorPosName, _spawnPosName] call _SOD_execCode};
+			};
+
+			_SOD_active = true;
+
 			// SOD zone is active. Start loop to scan the zone for players. If there are no players in the activated zone then the loop will exit.
 			waitUntil {
 				private _noPlayersInZone = true;
-				sleep (3 + random 2);		
+				sleep (3 + random 2);
 				{if ((_sensorPosition distance _x) < (_activation * 1.10)) exitWith {_noPlayersInZone = false}} forEach allPlayers select {((getPosATL _x) select 2) < 5};
 				_noPlayersInZone
-			};				
-			
+			};
+
 			_SOD_active = false;
-	
+
 			// Delete empty groups - 1.14
 			{
 				if (units _x isEqualTo []) then {
 					_SOD_groups deleteAt _forEachIndex;
 					[_x] call ADF_fnc_delete;
-				}		
+				}
 			} forEach _SOD_groups;
-			
+
 			// Exit if no units left alive
 			if (_SOD_groups isEqualTo []) exitWith {_SOD_execute = false;};
-			
+
 			// Cache the remaining group(s)
 			{
 				_units = units _x;
 				{
 					_x allowDamage false;
 					_x enableSimulationGlobal false;
-					_x hideObjectGlobal true;			
-					_x disableAI "FSM";				
+					_x hideObjectGlobal true;
+					_x disableAI "FSM";
 				} forEach _units;
 				{_x removeCuratorEditableObjects [_units, false]} count allCurators; // Only works on server
 			} forEach _SOD_groups;
-		};	
-	};		
-		
+		};
+	};
+
 	// Check if any opfor units were alive since last zone activation. If not exit the loop
 	if !_SOD_firstRun then {
 		if (_SOD_groups isEqualTo []) exitWith {
 			_SOD_execute = false;
 		};
 	};
-	
-	sleep (2 + random 2); 	
+
+	sleep (2 + random 2);
 };

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -36,12 +36,12 @@ number 50:
 
 You can pass 2 functions / snippets of code:
 Code 1: Code/Function is called upon activation. So when the 'Search for intel'
-        menu/action becomes available for the player when the player is within 2
-        meters of the searchable object (body/vehicle/etc). See below for params        
+	menu/action becomes available for the player when the player is within 2
+	meters of the searchable object (body/vehicle/etc). See below for params
 Code 2: Code/Function is called after the search message has been displayed. The
-        code is called for valid intel and a no-intel search result. A variable
-        (bool) is passed that holds if intel was found (true) or not (false).
-        See below for further params.
+	code is called for valid intel and a no-intel search result. A variable
+	(bool) is passed that holds if intel was found (true) or not (false).
+	See below for further params.
 
 INSTRUCTIONS:
 Execute (call) from the server or headless client. It needs to be executed from
@@ -51,29 +51,29 @@ To save performance you can add the action the moment an AI dies, e.g.
 _unit addEventHandler ["killed", {[_this # 0] call ADF_fnc_searchIntel}];
 
 REQUIRED PARAMETERS:
-0: Object:  Man / Vehicle / Aircraft / Box / Building / etc.		  
+0: Object:  Man / Vehicle / Aircraft / Box / Building / etc.
 
 OPTIONAL PARAMETERS:
 1: Array:   Array of intel messages. Format:
-            [[50, "Intel found msg 1"], [51, "Intel found msg 2"]]
+	[[50, "Intel found msg 1"], [51, "Intel found msg 2"]]
 2. Bool:    Add the custom (1) intel messages to the default messages?
-            -true - Merge with the default messages (default).
-            -false - Do not merge. Only use the custom messages.
+	-true - Merge with the default messages (default).
+	-false - Do not merge. Only use the custom messages.
 3. Integer: What is the chance (percentage) of finding intel (number 1 - 100)?
-            Default: 15
+	Default: 15
 4. String:  Code 1. Code/funcgion to execute on activation but before the search.
-            Default = "".
-            Params passed to the function:
-            _this select 0 - object: object (that will be searched)
-            _this select 1 - player: player that will do the searching
-            _this select 2 - bool: true for intel to be found. False for no intel
+	Default = "".
+	Params passed to the function:
+	_this select 0 - object: object (that will be searched)
+	_this select 1 - player: player that will do the searching
+	_this select 2 - bool: true for intel to be found. False for no intel
 5. String:  Code 2.Code/funcgion to execute after the search.
-            Default = "".
-            Params passed to the function:
-            _this select 0 - object: object (that will be searched)
-            _this select 1 - player: player that will do the searching
-            _this select 2 - bool: true for intel to be found. False for no intel
-            _this select 3 - integer: message ID (number). -1 for 'No intel found'		  
+	Default = "".
+	Params passed to the function:
+	_this select 0 - object: object (that will be searched)
+	_this select 1 - player: player that will do the searching
+	_this select 2 - bool: true for intel to be found. False for no intel
+	_this select 3 - integer: message ID (number). -1 for 'No intel found'
 
 EXAMPLES USAGE IN SCRIPT:
 [_unit, [[50, "Intel found msg 1"], [51, "Intel found msg 2"]], false, 25, "my_intel_function"] call ADF_fnc_searchIntel;
@@ -92,18 +92,18 @@ Success flag (bool)
 
 // Init
 params [
-	["_object", objNull, [objNull, grpNull]], 
-	["_intel", [], [[]]],	
-	["_addIntel", true, [false]],	
-	["_intelChance", 15, [0]],	
-	["_code_1", "", [""]], 
-	["_code_2", "", [""]], 
-	["_isMan", false, [true]], 
-	["_isLandVehicle", false, [true]], 
-	["_isAircraft", false, [true]], 
-	["_isGroup", false, [true]], 
-	["_group", grpNull, [grpNull]], 
-	["_leader", false, [true]], 
+	["_object", objNull, [objNull, grpNull]],
+	["_intel", [], [[]]],
+	["_addIntel", true, [false]],
+	["_intelChance", 15, [0]],
+	["_code_1", "", [""]],
+	["_code_2", "", [""]],
+	["_isMan", false, [true]],
+	["_isLandVehicle", false, [true]],
+	["_isAircraft", false, [true]],
+	["_isGroup", false, [true]],
+	["_group", grpNull, [grpNull]],
+	["_leader", false, [true]],
 	["_ace_handCuffed", false, [true]],
 	["_actionDescription", "", [""]],
 	["_intelFound", false, [true]]
@@ -136,7 +136,7 @@ call {
 	if (_object isKindOf "APC") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search APC for intel</t>";};
 	if (_object isKindOf "Tank") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search tank for intel</t>";};
 	if (_object isKindOf "Ship") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search boat for intel</t>";};
-	if (_object isKindOf "Helicopter") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search helicopter for intel</t>";};	
+	if (_object isKindOf "Helicopter") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search helicopter for intel</t>";};
 	if (_object isKindOf "Bag_Base") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search backpack for intel</t>";};
 	if (_object isKindOf "Furniture_base_F") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search item for intel</t>";};
 	if (_object isKindOf "Building") exitWith {_actionDescription = "<t align='left' color='#FFFFFF'>Search structure for intel</t>";};
@@ -154,19 +154,19 @@ _object addAction [
 		params ["_object", "_caller", "_id", "_arguments"];
 		_arguments params ["_intel", "_code_1", "_code_2", "_addIntel", "_intelFound"];
 		private _message = "";
-		private _messageID = -1;		
-		
+		private _messageID = -1;
+
 		// Execute custom passed code-1/function before we do anything else
 		if (_code_1 != "") then {
 			// Each unit in the group
 			[_object, _caller, _intelFound] call (call compile format ["%1", _code_1]);
 			// Debug reporting
 			if ADF_debug then {[format ["ADF_fnc_searchIntel - call %1 for %2, %3 (intel found: %4)", _code_1, _object, _caller, _intelFound]] call ADF_fnc_log};
-		};		
-		
+		};
+
 		// Make sure that the search intel function can only run once per object.
 		_object removeAction _id;
-		
+
 		// Default search messages - NO INTEL FOUND
 		_noIntelFoundMessages = [
 			"You found a wallet. It contains some foreign currency, a few receipts, and a photo of a man, a woman and their two children.",
@@ -222,9 +222,9 @@ _object addAction [
 			"You found an old flashlight, no batteries inside. There's also a billfold with a stack in it. Though it seems the outer bill is a $20 bill, the rest are just newspapers strips. Poofter. You keep the twenty.",
 			"You found a water bottle with a yellow-ish liquid inside. Def not going to smell that. There's also a wallet with a lot of foreign currency inside. From different countries it seems",
 			"You found a small bag with seeds, they look like cannabis seeds. There must be more than a thousand here. Don't they sell them for $80 per 10 at home?",
-			"You found a snickers bar. The wrapping looks a bit old. You check the best before date. 11-DEC-2017. Yuk. You also find some coins, paper clips and a few pieces of gum without their wrapper"		
+			"You found a snickers bar. The wrapping looks a bit old. You check the best before date. 11-DEC-2017. Yuk. You also find some coins, paper clips and a few pieces of gum without their wrapper"
 		];
-		
+
 		// Default search messages - INTEL FOUND
 		_intelFoundMessages = [
 			[1, "You found a USB-stick. You hand it over to you CO who calls it in over the radio. Command wants the data urgently."],
@@ -248,7 +248,7 @@ _object addAction [
 			[19, "You found a few bags of heroin. It looks pure. Must be worth a small fortune. You call over your CO, who radios Command for instructions."],
 			[20, "You found a small notebook which has GPS positions, a ledger and a long list of names and numbers. You can't make heads or tails of it. Better pass it on to your CO."]
 		];
-		
+
 		_foundNothingMessages = [
 			"Found nothing of interest.",
 			"Dust, sand, nothing worth looking into.",
@@ -258,44 +258,44 @@ _object addAction [
 			"Nothing here.",
 			"This one seems clean as a whistle."
 		];
-		
+
 		// Select a message.
-		if _intelFound then {			
+		if _intelFound then {
 
 			// Add custom intel messages to the default messages?
 			if (_addIntel && {!(_intel isEqualTo [])}) then {
 				_intelFoundMessages append _intel;
 			};
-			
+
 			// Replace default intel messages with custom intel messages?
 			if (!_addIntel && {!(_intel isEqualTo [])}) then {
 				_intelFoundMessages = _intel;
 			};
-			
+
 			// Select an intel found message
 			private _intelFoundMessage = selectRandom _intelFoundMessages;
 			_messageID = _intelFoundMessage # 0;
-			_message = _intelFoundMessage # 1;			
+			_message = _intelFoundMessage # 1;
 		} else {
 			if (random 100 < 60) then {
 				_message = selectRandom _noIntelFoundMessages;
 			} else {
 				_message = selectRandom _foundNothingMessages;
-			};			
+			};
 		};
 
 		// Display the message to the player that performed the search
 		["<t size='.7' color='#FFFFFF'>Searching...</t>", 0, 0, 6, 5] remoteExec ["BIS_fnc_dynamicText", _caller];
 		sleep 7;
 		["<t size='.7' color='#FFFFFF'>" + _message + "</t>", 0, 0, 10, 2] remoteExec ["BIS_fnc_dynamicText", _caller];
-		
+
 		// Execute custom passed code-2/function once the seach intel function is complete.
 		if (_code_2 != "") then {
 			// Group
 			[_object, _caller, _intelFound, _messageID] call (call compile format ["%1", _code_2]);
 			// Debug reporting
-			if ADF_debug then {[format ["ADF_fnc_searchIntel - call %1 for %2, %3 (intel found: %4)", _code_1, _object, _caller, _intelFound, _messageID]] call ADF_fnc_log};			
-		};		
+			if ADF_debug then {[format ["ADF_fnc_searchIntel - call %1 for %2, %3 (intel found: %4)", _code_1, _object, _caller, _intelFound, _messageID]] call ADF_fnc_log};
+		};
 	},
 	_arguments, 5, true, true, "", "speed _target < 1 && isPlayer _this", 2.5
 ];

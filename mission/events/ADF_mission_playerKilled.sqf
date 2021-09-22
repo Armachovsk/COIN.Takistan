@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -12,13 +12,13 @@ Script version: 1.02
 
 File: ADF_mission_playerKilled
 **********************************************************************************
-Add here any scripts you wish to be executed when a player dies. 
+Add here any scripts you wish to be executed when a player dies.
 
 You cannot suspend the script. Using SLEEP, WAITUNTIL or WHILE/DO will break the
 script.  Create a new thread ([] spawn {insert sleepy code here};) for code that
 requires pausing.
 
-PARAMETERS PASSED:              
+PARAMETERS PASSED:
 _unit          the player
 _killer        unit that killed the player
 _instigator    Object/Person who pulled the trigger

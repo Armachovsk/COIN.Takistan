@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_AirHeli.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Magazines primary weapon
@@ -39,12 +39,12 @@ _v addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 1];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_Clacker", 2];
 	_v addItemCargoGlobal ["ACE_wirecutter", 1];
-};	
+};
 
 // Grenades
-_v addMagazineCargoGlobal ["HandGrenade", 5]; 	 
-_v addMagazineCargoGlobal ["SmokeShell", 5]; 	 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 5]; 	 
+_v addMagazineCargoGlobal ["HandGrenade", 5];
+_v addMagazineCargoGlobal ["SmokeShell", 5];
+_v addMagazineCargoGlobal ["SmokeShellGreen", 5];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 3];
 	_v addItemCargoGlobal ["ACE_HandFlare_Red", 1];
@@ -68,7 +68,7 @@ if ADF_mod_CTAB then {
 	_v addItemCargoGlobal ["ItemcTabHCam", 3];
 };
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", 5];
 	_v addItemCargoGlobal ["ace_mapTools", 1];
@@ -84,7 +84,7 @@ if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["Medikit", 1];
 };
 
-// Gear kit 
+// Gear kit
 _v addItemCargoGlobal ["B_Parachute", 25];
 
 // Misc items

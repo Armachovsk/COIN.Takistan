@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -31,9 +31,9 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. position:    Para drop position. Marker, object, trigger or position
-                array [x,y,z].
+	array [x,y,z].
 2. Number:      Para drop altitu.
-                Default: 0 (position altitude will be used)
+	Default: 0 (position altitude will be used)
 
 EXAMPLES USAGE IN SCRIPT:
 [_unit] call ADF_fnc_paraDrop;
@@ -80,7 +80,7 @@ if !(assignedVehicle _unit == objNull) then {
 	// Order the unit in cargo to jump out of the aircraft
 	unassignVehicle _unit;
 	_unit action ["EJECT", vehicle _unit];
-	
+
 	// Position the unit 2.5 meters below the aircraft to avoid collision
 	_unit setPosASL [_position # 0, _position # 1, (_position # 2) - 2.5];
 } else {
@@ -89,7 +89,7 @@ if !(assignedVehicle _unit == objNull) then {
 	private _setAlt = (_position # 2) - 2.5;
 	if (_setAlt < 125) then {_setAlt = 175};
 	if (_dropPosAlt > 125) then {_setAlt = _dropPosAlt};
-	
+
 	_unit setPosASL [_position # 0, _position # 1, _setAlt];
 };
 
@@ -104,7 +104,7 @@ if (_unit == leader _group) then {
 	_smoke attachTo [_chute, [0.8, 0, 0]];
 };
 
-sleep 3;	
+sleep 3;
 _unit allowDamage true;
 
 // When to unit is close to the ground switch off damage allowance in case he hits an object close to the ground.

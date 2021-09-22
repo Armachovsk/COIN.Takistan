@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,11 +21,10 @@ requires pausing.
 PARAMETERS
 _unit      Object - Object the event handler is assigned to
 _corpse    Object - Object the event handler was assigned to, aka the corpse/unit
-                    player was previously controlling
+	player was previously controlling
 
 RETURNS:
 an alive player
 *********************************************************************************/
 
 params ["_unit", "_corpse"];
-

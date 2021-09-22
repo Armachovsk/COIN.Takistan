@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -39,30 +39,30 @@ diag_log "ADF rpt: Init - executing: ADF_mod_createAO.sqf";
 			750 - 1000 meters		: 48 x inf, 5 x vehicle, 2 x apc, 2 x armor
 			> 1000 meters			: 48 x inf, 5 x vehicle, 2 x apc, 2 x armor, 1 helicopter
 	Step 3.	Fill out below parameters
-	Note: Don't worry about the many comments as the ARMA engine ignores comments.	
+	Note: Don't worry about the many comments as the ARMA engine ignores comments.
 */
 
 "myAOmarker",   // The AO marker (string).
-                
+
 east,           // Side of the AO units. east, west or independent
 
 false,          // Make the AO marker transparent (invisible to players). Default: true
-                // - true: make transparent
-                // - false: leave as is
-                
+	// - true: make transparent
+	// - false: leave as is
+
 true,           // Make infantry patrol units search nearby buildings? Default: false
-                // - true: search buildings
-                // - false: do not search buildings
-                
+	// - true: search buildings
+	// - false: do not search buildings
+
 true,           // Create random IED's in the AO?  Default: false.
-                // - TRUE: place random IED's
-                // - FALSE: Do not place random IED's
-                
+	// - TRUE: place random IED's
+	// - FALSE: Do not place random IED's
+
 "",             // Code or function that is executed on EACH UNIT of a group after spawn. Default: ""
-                // code is CALLED. each unit is passed (_this select 0) to the code/fnc.
-                
+	// code is CALLED. each unit is passed (_this select 0) to the code/fnc.
+
 ""              // Code or function that is executed on THE ENTIRE GROUP after spawn. Default: ""
-                // code is CALLED. each unit is passed (_this select 0) to the code/fnc.
+	// code is CALLED. each unit is passed (_this select 0) to the code/fnc.
 
 ///// DO NOT EDIT BELOW
 ] spawn ADF_fnc_createAO;

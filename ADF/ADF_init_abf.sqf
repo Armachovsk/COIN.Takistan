@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -43,11 +43,11 @@ _ABF_check = {
 _ABF_set = {
 	params [
 		"_altitude",
-		"_level"		
+		"_level"
 	];
-	
+
 	player setFatigue _altitude * _level;
-	if ((getFatigue player) > 1) then {player setFatigue 1};	
+	if ((getFatigue player) > 1) then {player setFatigue 1};
 	true
 };
 
@@ -61,10 +61,10 @@ waitUntil {
 			if (_current # 0 > 3000)  exitWith {[_current # 1, _level_3] call _ABF_set};
 			if (_current # 0 > 2000)  exitWith {[_current # 1, _level_2] call _ABF_set};
 			if (_current # 0 > 1500)  exitWith {[_current # 1, _level_1] call _ABF_set};
-			player setFatigue (_current # 1);	
+			player setFatigue (_current # 1);
 		};
 	};
-	
+
 	sleep _pause;
 	(!alive player)
 };

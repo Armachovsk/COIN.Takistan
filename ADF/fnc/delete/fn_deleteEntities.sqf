@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -26,19 +26,19 @@ Execute (call) from the server
 REQUIRED PARAMETERS:
 0. Position:    Center position. Marker, object, trigger or position array [x,y,z]
 1. Number:      radius in meters (number). The larger the range the more expensive the
-                function is. Try keep < 50. Maximum is 1500.
+	function is. Try keep < 50. Maximum is 1500.
 2. Array:       Types of entities to delete. E.g.
-                - ["ALL"] // All objects/entities
-                - ["MAN"] 
-                - ["MAN","CAR","APC","TANK","StaticWeapon"]                  
+	- ["ALL"] // All objects/entities
+	- ["MAN"]
+	- ["MAN","CAR","APC","TANK","StaticWeapon"]
 
 OPTIONAL PARAMETERS:
 3. Side         Side of objects/units/vehicles to delete (west, east, civilian,
-                independent). Use civilian in case of static objects.
-                Default: civilian
+	independent). Use civilian in case of static objects.
+	Default: civilian
 4. Bool:        How to delete the entity. In case of destroy setDamage is set to 1:
-                - true - delete the entity (default)
-                - false - destroy the entity              
+	- true - delete the entity (default)
+	- false - destroy the entity
 
 EXAMPLES USAGE IN SCRIPT:
 ["myMarker", 25, ["ALL"], west, false] call ADF_fnc_deleteEntities;
@@ -72,7 +72,7 @@ if (_radius > 1500) then {_radius = 1500;};
 _position = [_position] call ADF_fnc_checkPosition;
 
 // Delete the objects
-if (_side == civilian) then {	
+if (_side == civilian) then {
 	{
 		if (_delete) then {
 			[_x] call ADF_fnc_delete;
@@ -88,7 +88,7 @@ if (_side == civilian) then {
 			} else {
 				_x setDamage 1
 			};
-		};	
+		};
 	} forEach (_position nearEntities [_type, _radius]);
 };
 

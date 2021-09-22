@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -28,14 +28,14 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Position:    Patrol position. Marker, object, trigger or position array [x,y,z]
-                Default: "" (Spawn position will be used)
+	Default: "" (Spawn position will be used)
 2. Side:        west, east or independent. Default: east
 3. Number       Type of vessel:
-                - 1 - speedboat mini-gun (default)
-                - 2 - assault boat (RHIB)
+	- 1 - speedboat mini-gun (default)
+	- 2 - assault boat (RHIB)
 4. Bool:        Gunner(s):
-                - True - driver + gunner(s)/crew (default)
-                - false - driver only
+	- True - driver + gunner(s)/crew (default)
+	- false - driver only
 5. Integer:     Patrol Radius in meters from the spawn position. Default: 1000
 6. Integer:     Number of patrol waypoints. Default: 4
 7. String:      Waypoint type. Info: https://community.bistudio.com/wiki/Waypoint_types (default = "MOVE")
@@ -45,13 +45,13 @@ OPTIONAL PARAMETERS:
 11. String:     Waypoint formation. Info: https://community.bistudio.com/wiki/waypointFormation (default = "COLUMN")
 12. Integer:    Completion radius. Info: https://community.bistudio.com/wiki/setWaypointCompletionRadius (default = 25)
 13. String:     Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 14. String:     Code to execute on the crew aa a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. The group is passed
+	(_this select 0) to the code/fnc.
 15. Array:	   Waypoint time out. Default: "[0,0,0]"
-                Info: https://community.bistudio.com/wiki/setWaypointTimeout				
+	Info: https://community.bistudio.com/wiki/setWaypointTimeout
 
 EXAMPLES USAGE IN SCRIPT:
 [_spawnPos, PatrolPos, west, 1, false, 300, 5, "MOVE", "SAFE", "RED", "LIMITED", "FILE", 5, "", ""] call ADF_fnc_createSeaPatrol;
@@ -72,20 +72,20 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 // Init
 private _diag_time = diag_tickTime;
 params [
-	["_positionSpawn", "", ["", [], objNull, grpNull]], 
-	["_positionPatrol", "", ["", [], objNull, grpNull]], 
-	["_side", east, [west]], 
-	["_vehicleType", 1, [0]], 
-	["_vehicleGunner", true, [true]], 
-	["_radius", 1000, [0]], 
-	["_waypoints", 4, [0]], 
-	["_wp_type", "MOVE", [""]], 
-	["_wp_behaviour", "SAFE", [""]], 
-	["_wp_combatMode", "YELLOW", [""]], 
-	["_wp_speed", "LIMITED", [""]], 
-	["_wp_formation", "COLUMN", [""]], 
-	["_wp_complRadius", 25, [0]], 
-	["_code_1", "", [""]], 
+	["_positionSpawn", "", ["", [], objNull, grpNull]],
+	["_positionPatrol", "", ["", [], objNull, grpNull]],
+	["_side", east, [west]],
+	["_vehicleType", 1, [0]],
+	["_vehicleGunner", true, [true]],
+	["_radius", 1000, [0]],
+	["_waypoints", 4, [0]],
+	["_wp_type", "MOVE", [""]],
+	["_wp_behaviour", "SAFE", [""]],
+	["_wp_combatMode", "YELLOW", [""]],
+	["_wp_speed", "LIMITED", [""]],
+	["_wp_formation", "COLUMN", [""]],
+	["_wp_complRadius", 25, [0]],
+	["_code_1", "", [""]],
 	["_code_2", "", [""]],
 	["_wp_timeOut", [0,0,0], [[]], [3]],
 	["_vehicleClass", "", [""]],
@@ -137,7 +137,7 @@ if (_vehicleGunner) then {
 	private "_i";
 	for "_i" from 1 to 3 do {
 		private _unit = _group createUnit [_crewClass, _positionSpawn, [], 0, "CAN_COLLIDE"]; _unit moveInCargo _vehicle;
-	};	
+	};
 };
 
 // Execute custom passed code/function
@@ -152,7 +152,7 @@ if (_code_2 != "") then {
 	// Crew
 	[_group] call (call compile format ["%1", _code_2]);
 	// Debug reporting
-	if ADF_debug then {[format ["ADF_fnc_createSeaPatrol - call %1 for the vessel crew: %2",_code_2,_group]] call ADF_fnc_log};	
+	if ADF_debug then {[format ["ADF_fnc_createSeaPatrol - call %1 for the vessel crew: %2",_code_2,_group]] call ADF_fnc_log};
 };
 
 // Create the sea patrol
@@ -164,7 +164,7 @@ if isServer then {
 	[_vehicle] call ADF_fnc_addToCurator;
 } else {
 	[_vehicle] remoteExecCall ["ADF_fnc_addToCurator", 2];
-};	
+};
 
 // Debug Diag reporting
 if ADF_debug then {[format ["ADF_fnc_createSeaPatrol - Diag time to execute function: %1", diag_tickTime - _diag_time]] call ADF_fnc_log};

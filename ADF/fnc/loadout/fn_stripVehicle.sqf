@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,7 +23,7 @@ REQUIRED PARAMETERS:
 0. Object:      vehicle, aircraft, etc.
 
 OPTIONAL PARAMETERS:
-N/A      
+N/A
 
 EXAMPLES USAGE IN SCRIPT:
 [myCar] call ADF_fnc_stripVehicle;
@@ -54,7 +54,7 @@ ADF_vStrip = false;
 if (_vehicle isEqualType "") then {_vehicle = call compile _vehicle;};
 
 clearWeaponCargoGlobal _vehicle;
-clearBackpackCargoGlobal _vehicle;	
+clearBackpackCargoGlobal _vehicle;
 clearMagazineCargoGlobal _vehicle;
 clearItemCargoGlobal _vehicle;
 

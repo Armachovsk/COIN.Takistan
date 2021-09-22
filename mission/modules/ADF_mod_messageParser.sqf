@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,10 +21,10 @@ Note that ALL LOGOS must be placed in the 'mission\images' folder!!
 
 Usage (client side only)
 
-[   
-    "A1",       // sender ID
-    "Cmd"       // Receiver ID
-    "Message"   // Message (use <br> for new line.)
+[
+	"A1",       // sender ID
+	"Cmd"       // Receiver ID
+	"Message"   // Message (use <br> for new line.)
 ] call ADF_fnc_MessageParser;
 
 e.g.: ["A1", "Cmd", "We are at OP BRAVO. Awaiting orders. Over."] call ADF_fnc_MessageParser; sleep 10;
@@ -43,7 +43,7 @@ ADF_messageParserColor = "#6C7169";
 // Do you want the messages (hints) to be logged in a logbook?
 ADF_messageParserLog      = true;
 
-// If you want the messages to be logged, the what is the name of the logbook? 
+// If you want the messages to be logged, the what is the name of the logbook?
 // The logbook will be created by the script.
 ADF_messageParserLogName  = "Comm Log";
 
@@ -53,51 +53,51 @@ ADF_messageParserConfig   = [
 // Make sure the player command unit/squad is the FIRST entry
 
 /******** 1.  Your Squad/Unit ********/
-    "A1",                   // ID to identify in your scripts
-    "ALPHA-1",              // Full call sign/name of your unit
-    "logo_TwoSierra.paa",   // If you want the use a logo, enter the logo filename here. Use "" for no logo. 
+	"A1",                   // ID to identify in your scripts
+	"ALPHA-1",              // Full call sign/name of your unit
+	"logo_TwoSierra.paa",   // If you want the use a logo, enter the logo filename here. Use "" for no logo.
 
 /******** 2.  HQ/Command ********/
-    "Cmd",                  // ID to identify in your scripts
-    "MOTHER",               // Full call sign/name of your unit
-    "logo_ACO.paa",         // If you want the use a logo, enter the logo filename here.  Use "" for no logo. 
+	"Cmd",                  // ID to identify in your scripts
+	"MOTHER",               // Full call sign/name of your unit
+	"logo_ACO.paa",         // If you want the use a logo, enter the logo filename here.  Use "" for no logo.
 
 /******** 3.  Other Call sign ********/
-    "ID",                   // ID to identify in your scripts
-    "CALLSIGN",             // Full call sign/name of your unit
-    "CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
+	"ID",                   // ID to identify in your scripts
+	"CALLSIGN",             // Full call sign/name of your unit
+	"CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
 
 /******** 4.  Other Call sign ********/
-    "ID",                   // ID to identify in your scripts
-    "CALLSIGN",             // Full call sign/name of your unit
-    "CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
+	"ID",                   // ID to identify in your scripts
+	"CALLSIGN",             // Full call sign/name of your unit
+	"CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
 
 /******** 5.  Other Call sign ********/
-    "ID",                   // ID to identify in your scripts
-    "CALLSIGN",             // Full call sign/name of your unit
-    "CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
+	"ID",                   // ID to identify in your scripts
+	"CALLSIGN",             // Full call sign/name of your unit
+	"CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
 
 /******** 6.  Other Call sign ********/
-    "ID",                   // ID to identify in your scripts
-    "CALLSIGN",             // Full call sign/name of your unit
-    "CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
-    
+	"ID",                   // ID to identify in your scripts
+	"CALLSIGN",             // Full call sign/name of your unit
+	"CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo.
+
 /******** 7.  Other Call sign ********/
-    "ID",                   // ID to identify in your scripts
-    "CALLSIGN",             // Full call sign/name of your unit
-    "CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo..
+	"ID",                   // ID to identify in your scripts
+	"CALLSIGN",             // Full call sign/name of your unit
+	"CallsignLogo.paa",     // If you want the use a logo, enter the logo filename here. Use "" for no logo..
 
 /******** 8.  Other Call sign ********/
-    "ID",                   // ID to identify in your scripts
-    "CALLSIGN",             // Full call sign/name of your unit
-    "CallsignLogo.paa"      // If you want the use a logo, enter the logo filename here. Use "" for no logo.
+	"ID",                   // ID to identify in your scripts
+	"CALLSIGN",             // Full call sign/name of your unit
+	"CallsignLogo.paa"      // If you want the use a logo, enter the logo filename here. Use "" for no logo.
 ];
 
 ///// DO NOT EDIT BELOW
 
 if (ADF_messageParserLog) then {
-    player createDiarySubject [ADF_messageParserLogName, ADF_messageParserLogName];
-    private _o = ADF_messageParserConfig select 1;
-    private _m = format ["<br/><br/><font color='#6c7169'>The %1 is a logbook of all operational radio comms between %2 and other involved parties<br/>The messages are logged once displayed on screen. All messages are time-stamped and saved in order of appearance.</font><br/><br/>", ADF_messageParserLogName, _o];
-    player createDiaryRecord [ADF_messageParserLogName, [ADF_messageParserLogName, _m]];
+	player createDiarySubject [ADF_messageParserLogName, ADF_messageParserLogName];
+	private _o = ADF_messageParserConfig select 1;
+	private _m = format ["<br/><br/><font color='#6c7169'>The %1 is a logbook of all operational radio comms between %2 and other involved parties<br/>The messages are logged once displayed on screen. All messages are time-stamped and saved in order of appearance.</font><br/><br/>", ADF_messageParserLogName, _o];
+	player createDiaryRecord [ADF_messageParserLogName, [ADF_messageParserLogName, _m]];
 };

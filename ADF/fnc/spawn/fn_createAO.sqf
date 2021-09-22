@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -41,20 +41,20 @@ REQUIRED PARAMETERS:
 OPTIONAL PARAMETERS:
 1. Side:        west, east or independent. Default: east
 2. Bool:        make AO maker transparent (invisible to players).
-                - true: make transparent  (default)
-                - false: leave as is
+	- true: make transparent  (default)
+	- false: leave as is
 3. Bool:        Infantry units search nearby buildings?
-                - true: search buildings
-                - false: do not search buildings (default)
+	- true: search buildings
+	- false: do not search buildings (default)
 4. Bool:        Random IED's in the AO?
-                - true: place random IED's
-                - false: Do not place random IED's (default)
+	- true: place random IED's
+	- false: Do not place random IED's (default)
 5. String:      Code to execute on each unit of the crew (e.g. a function).
-                Default = "". Code is CALLED. Each unit of the group is passed
-                (_this select 0) to the code/fnc.
+	Default = "". Code is CALLED. Each unit of the group is passed
+	(_this select 0) to the code/fnc.
 6. String:      Code to execute on the crew aa a group (e.g. a function).
-                Default = "". Code is CALLED. The group is passed
-                (_this select 0) to the code/fnc.         
+	Default = "". Code is CALLED. The group is passed
+	(_this select 0) to the code/fnc.
 
 EXAMPLES USAGE IN SCRIPT:
 [_AO1marker, independent, false, true, true, "", "myFunction"] spawn ADF_fnc_createAO;
@@ -113,7 +113,7 @@ call {
 	// < 100 m
 	_enemy_Infantry = 1; _enemy_LightVehicle = 1; _enemy_APC = 0; _enemy_armor = 0; _enemy_helicopter = 0; _enemy_ied = 1;
 };
-	
+
 // FOOT: Garrison & patrol
 if (_enemy_Infantry > 1) then {
 	for "_i" from 1 to _enemy_Infantry do {
@@ -133,8 +133,8 @@ if (_enemy_Infantry > 1) then {
 if (_enemy_LightVehicle > 1) then {
 	for "_i" from 1 to _enemy_LightVehicle do {
 		private _type = selectRandom [1, 2, 3];
-		
-		// Get a random spawn position on a road with the AO		
+
+		// Get a random spawn position on a road with the AO
 		for "_i" from 1 to 4 do {
 			private _searchPosition = [_position, _radius, random 360] call ADF_fnc_randomPos;
 			_rd = [_searchPosition, _roadRadius] call ADF_fnc_roadPos;
@@ -143,8 +143,8 @@ if (_enemy_LightVehicle > 1) then {
 			_roadRadius = _roadRadius + (_radius / 10);
 			if (_i == 3) then {_roadRadius = _roadRadius + (_radius / 7)};
 			if (_i == 4) then {_position = [_position, _radius, (random 180) + (random 180)] call ADF_fnc_randomPosMax;};
-		};	
-		
+		};
+
 		// Create a crewed veicle and send it on patrol
 		[_position, _position, _side, _type, _radius, 4, "MOVE", "SAFE", "RED", "LIMITED", 25, _code_1, _code_2] call ADF_fnc_createVehiclePatrol;
 		sleep 1;
@@ -159,8 +159,8 @@ if (_enemy_LightVehicle > 1) then {
 // ROAD: APC's
 if (_enemy_APC > 1) then {
 	for "_i" from 1 to _enemy_APC do {
-	
-			// Get a random spawn position on a road with the AO		
+
+			// Get a random spawn position on a road with the AO
 			for "_i" from 1 to 4 do {
 				private _searchPosition = [_position, _radius, random 360] call ADF_fnc_randomPos;
 				_rd = [_searchPosition, _roadRadius] call ADF_fnc_roadPos;
@@ -169,8 +169,8 @@ if (_enemy_APC > 1) then {
 				_roadRadius = _roadRadius + (_radius / 10);
 				if (_i == 3) then {_roadRadius = _roadRadius + (_radius / 7)};
 				if (_i == 4) then {_position = [_position, _radius, (random 180) + (random 180)] call ADF_fnc_randomPosMax;};
-			};	
-	
+			};
+
 		// Create a crewed vehicle and send it on patrol
 		[_position, _position, _side, 4, _radius, 4, "MOVE", "SAFE", "RED", "LIMITED", 25, _code_1, _code_2] call ADF_fnc_createVehiclePatrol;
 		sleep 1;
@@ -184,8 +184,8 @@ if (_enemy_APC > 1) then {
 // ROAD: Armored/MBT
 if (_enemy_armor > 1) then {
 	for "_i" from 1 to _enemy_armor do {
-	
-		// Get a random spawn position on a road with the AO		
+
+		// Get a random spawn position on a road with the AO
 		for "_i" from 1 to 4 do {
 			private _searchPosition = [_position, _radius, random 360] call ADF_fnc_randomPos;
 			_rd = [_searchPosition, _roadRadius] call ADF_fnc_roadPos;
@@ -194,9 +194,9 @@ if (_enemy_armor > 1) then {
 			_roadRadius = _roadRadius + (_radius / 10);
 			if (_i == 3) then {_roadRadius = _roadRadius + (_radius / 7)};
 			if (_i == 4) then {_position = [_position, _radius, (random 180) + (random 180)] call ADF_fnc_randomPosMax;};
-		};	
-		
-		// Create a crewed vehicle and send it on patrol	
+		};
+
+		// Create a crewed vehicle and send it on patrol
 		[_position, _position, _side, 5, _radius, 4, "MOVE", "SAFE", "RED", "LIMITED", 25, _code_1, _code_2] call ADF_fnc_createVehiclePatrol;
 		sleep 1;
 	};

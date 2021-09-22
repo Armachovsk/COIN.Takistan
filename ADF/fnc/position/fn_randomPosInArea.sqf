@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,7 +14,7 @@ File: fn_randomPosInArea.sqf
 Diag: 0.0392 ms
 **********************************************************************************
 ABOUT
-Searches for a position in a predefined area (e.g. marker, trigger). The function 
+Searches for a position in a predefined area (e.g. marker, trigger). The function
 is precise with circular triggers/markers. With uneven shapes, units/objects might
 spawn outside of the given radius.
 
@@ -28,18 +28,18 @@ OPTIONAL PARAMETERS:
 n/a
 
 EXAMPLES USAGE IN SCRIPT:
-_pos = ["myMarker"] call ADF_fnc_randomPosInArea;   
+_pos = ["myMarker"] call ADF_fnc_randomPosInArea;
 
 EXAMPLES USAGE IN EDEN:
-myPos = [myTrigger] call ADF_fnc_randomPosInArea;    
+myPos = [myTrigger] call ADF_fnc_randomPosInArea;
 
 DEFAULT/MINIMUM OPTIONS
-_pos = ["myMarker"] call ADF_fnc_randomPosInArea;   
+_pos = ["myMarker"] call ADF_fnc_randomPosInArea;
 
 RETURNS:
 Array:          0.  position X
-                1.  position y
-                2.  position Z
+	1.  position y
+	2.  position Z
 *********************************************************************************/
 
 // Reporting
@@ -71,6 +71,6 @@ if ADF_debug then {
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "hd_dot";
 	_marker setMarkerColor "ColorYellow";
-};	
+};
 
 _result

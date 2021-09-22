@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -22,13 +22,13 @@ REQUIRED PARAMETERS:
 0. Array:      See below example
 
 OPTIONAL PARAMETERS:
-N/A   
+N/A
 
 EXAMPLES USAGE IN SCRIPT:
 [
-    ["19 MAY 2019", "<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>"],
-    ["Your fantastic tagline here", "<t align = 'center' shadow = '1' size = '1.0'>%1</t><br/>"],
-    ["Another tagline here", "<t align = 'center' shadow = '1' size = '1.0'>%1</t><br/>"]
+	["19 MAY 2019", "<t align = 'center' shadow = '1' size = '0.7'>%1</t><br/>"],
+	["Your fantastic tagline here", "<t align = 'center' shadow = '1' size = '1.0'>%1</t><br/>"],
+	["Another tagline here", "<t align = 'center' shadow = '1' size = '1.0'>%1</t><br/>"]
 ] spawn ADF_fnc_typeWriter;
 
 EXAMPLES USAGE IN EDEN:

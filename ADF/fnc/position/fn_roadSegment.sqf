@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -34,7 +34,7 @@ EXAMPLES USAGE IN EDEN:
 this setPos (getPos (["myMarker", 500] call ADF_fnc_roadSegment;));
 
 DEFAULT/MINIMUM OPTIONS
-_pos = ["myMarker"] call ADF_fnc_roadSegment;	
+_pos = ["myMarker"] call ADF_fnc_roadSegment;
 
 RETURNS:
 road segment
@@ -47,7 +47,7 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 params [
 	["_position", "", ["", [], objNull, grpNull]],
 	["_radius", 150, [0]],
-	["_result", [], [[]]]	
+	["_result", [], [[]]]
 ];
 
 // Check the location position
@@ -60,7 +60,7 @@ private _allRoads = _position nearRoads _radius;
 if (count _allRoads > 0) then {
 	_result = getPos (_allRoads # 0);
 	// Create debug markers if debug is enabled
-	if ADF_debug then {	
+	if ADF_debug then {
 		[format ["ADF_fnc_roadSegment - Array: %1", _result]] call ADF_fnc_log;
 		for "_i" from 0 to (count _allRoads) do {
 			private _marker = createMarker [format ["m_%1%2", _allRoads # _i, random 999], getPos (_allRoads # _i)];

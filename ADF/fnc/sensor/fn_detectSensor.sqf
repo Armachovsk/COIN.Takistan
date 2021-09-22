@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -35,14 +35,14 @@ OPTIONAL PARAMETERS:
 1. Side:        east, west, independent, civilian. Default: east
 2. Number:      Radius to activate/make aware enemy units. Default: 500
 3. String:      OpFor skill set:
-                "untrained" - unskilled, slow to react 
-                "recruit"   - semi skilled
-                "novice"    - Skilled, trained. Vanilla+ setting (Default)
-                "veteran"   - Very skilled, Well trained 
-                "expert"    - Special forces skill set
+	"untrained" - unskilled, slow to react
+	"recruit"   - semi skilled
+	"novice"    - Skilled, trained. Vanilla+ setting (Default)
+	"veteran"   - Very skilled, Well trained
+	"expert"    - Special forces skill set
 4. Bool:        Set skill?
-                True (default)
-                false
+	True (default)
+	false
 
 EXAMPLES USAGE IN SCRIPT:
 ["myMarker", east, 500, "expert", true] call ADF_fnc_detectSensor;
@@ -80,7 +80,7 @@ private _allNear = _position nearEntities ["Man", _radius];
 // "Activate" the units
 {
 	if !(side _x == _side) exitWith {false};
-	_x setBehaviour "COMBAT"; 
+	_x setBehaviour "COMBAT";
 	_x setCombatMode "RED";
 	if _setSkill then {[_x, _skill] call ADF_fnc_unitSetSkill};
 } forEach _allNear;

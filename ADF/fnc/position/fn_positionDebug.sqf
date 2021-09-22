@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -25,8 +25,8 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Bool:			Patrol Waypoint debug or (road) position debug?
-                   - true for patrol waypoint (default)
-                   - false for general position.
+	- true for patrol waypoint (default)
+	- false for general position.
 2. Group:		Group in case of patrol waypoint. Default: GrpNull
 3. String:		Type of waypoint. Default: "foot"
 4. Number:		Index. Default: 0
@@ -38,7 +38,7 @@ EXAMPLES USAGE IN EDEN:
 N/A
 
 DEFAULT/MINIMUM OPTIONS
-[_pos] call ADF_fnc_positionDebug;	
+[_pos] call ADF_fnc_positionDebug;
 
 RETURNS:
 Marker
@@ -50,16 +50,16 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 // Init
 params [
 	["_position", [], [[], true]],
-	["_patrolWaypoint", true, [false]],	
+	["_patrolWaypoint", true, [false]],
 	["_group", grpNull, [grpNull]],
 	["_mode", "foot", [""]],
 	["_index", 0, [0]],
 	["_varName", "DM", [""]],
 	["_colour", "", [""]],
 	["_label", "", [""]]
-];	
+];
 
-if (_position isEqualType true) exitWith {if ADF_debug then {["ADF_fnc_positionDebug - passed true/false as position. Exiting."] call ADF_fnc_log;}; false}; 
+if (_position isEqualType true) exitWith {if ADF_debug then {["ADF_fnc_positionDebug - passed true/false as position. Exiting."] call ADF_fnc_log;}; false};
 
 // patrol waypoint marker
 if (_patrolWaypoint) then {
@@ -69,7 +69,7 @@ if (_patrolWaypoint) then {
 		case "road":	{_varName = "VP"; _colour = "colorIndependent"};
 		case "air":	{_varName = "AP"; _colour = "ColorPink"};
 		case "sea":	{_varName = "SP"; _colour = "ColorBlue"};
-	};	
+	};
 	// Create marker text
 	_label = format ["%1-%2-%3",_group, _varName, _index];
 
@@ -77,10 +77,10 @@ if (_patrolWaypoint) then {
 } else {
 	// Create marker text
 	_label = format ["POS_",_index];
-	_colour = "ColorWhite"	
+	_colour = "ColorWhite"
 };
 
-// Create the debug marker 
+// Create the debug marker
 private _marker = createMarker [format ["m%1%2%3", _varName, round (_position # 0), round (_position # 1)], _position];
 _marker setMarkerSize [.7, .7];
 _marker setMarkerShape "ICON";

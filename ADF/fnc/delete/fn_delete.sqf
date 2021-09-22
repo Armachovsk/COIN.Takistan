@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -51,19 +51,19 @@ params [
 switch (typeName _deleteMe) do {
 
 	case "STRING" :		{
-	
+
 		if (_deleteMe in allMapMarkers) then {
 			deleteMarker _deleteMe;
 			true
 		} else {
 			[format ["ADF_fnc_delete - ERROR! Passed %1 (string) is not a valid marker.", _deleteMe],true] call ADF_fnc_log;
 			false
-		};		
+		};
 	};
-	
+
 	case "OBJECT" :		{
 		if (vehicle _deleteMe != _deleteMe) then {
-			unassignVehicle _deleteMe;			
+			unassignVehicle _deleteMe;
 		} else {
 			if ({_x != _deleteMe} count (crew _deleteMe) > 0) then {
 				(group _deleteMe) call ADF_fnc_delete;
@@ -72,30 +72,30 @@ switch (typeName _deleteMe) do {
 		deleteVehicle _deleteMe;
 		true
 	};
-	
+
 	case "GROUP" :		{
 		if (count (units _deleteMe) > 0 ) exitWith {
 			(units _deleteMe) call ADF_fnc_delete;
 			_deleteMe call ADF_fnc_delete;
 			true
-		};		
+		};
 		{deleteWaypoint _x} forEach (wayPoints _deleteMe);
 		deleteGroup _deleteMe;
 		true
 	};
-	
+
 	case "LOCATION" :	{
 		deleteLocation _deleteMe;
 		true
 	};
-	
+
 	case "ARRAY" :		{
 		{_x call ADF_fnc_delete} forEach _deleteMe;
 		true
 	};
-	
-	case "SCALAR"; 
-	case "BOOL"; 
-	case "CODE"; 	
+
+	case "SCALAR";
+	case "BOOL";
+	case "CODE";
 	default {false};
 };

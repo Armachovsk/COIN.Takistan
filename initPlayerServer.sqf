@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -25,11 +25,11 @@ if isMultiplayer then {diag_log format ["ADF rpt: Init - executing: initPlayerSe
 };
 
 // Add player to curator object list
-{_x addCuratorEditableObjects [[_player], true]} forEach allCurators;  
+{_x addCuratorEditableObjects [[_player], true]} forEach allCurators;
 
 // Apply loadout Textures to JIP clients if needed
 if (ADF_modded || {!_jipped}) exitWith {};
-if (ADF_clanName == "Two Sierra") then {	
+if (ADF_clanName == "Two Sierra") then {
 	[_player] spawn {
 		params ["_player"];
 		sleep 20; // wait till unit has geared up

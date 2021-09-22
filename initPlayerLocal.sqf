@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -41,7 +41,7 @@ player setVariable ["BIS_enableRandomization", false];
 [player, ""] call BIS_fnc_setUnitInsignia;
 
 // HC init
-if !hasInterface then {private _handle = execVM "ADF\ADF_init_HC.sqf"; waitUntil {scriptDone _handle}}; 
+if !hasInterface then {private _handle = execVM "ADF\ADF_init_HC.sqf"; waitUntil {scriptDone _handle}};
 
 // Mission intro
 if (!ADF_debug && {!ADF_missionInit && {hasInterface}}) then {
@@ -50,17 +50,17 @@ if (!ADF_debug && {!ADF_missionInit && {hasInterface}}) then {
 		params ["_initDuration", "_initImage", "_text", ["_initBlackout", 0, [0]]];
 		if (_initDuration > 25) then {
 			_initBlackout = _initDuration - 20;
-			_initDuration = _initDuration - _initBlackout;					
-			private _effectOne = ["_layer"] call BIS_fnc_rscLayer; 
+			_initDuration = _initDuration - _initBlackout;
+			private _effectOne = ["_layer"] call BIS_fnc_rscLayer;
 			_effectOne cutText ["", "BLACK", 2];
 			waitUntil {time > (_initBlackout + (_initBlackout/10))};
-			private _effectTwo = ["_layer"] call BIS_fnc_rscLayer; 
+			private _effectTwo = ["_layer"] call BIS_fnc_rscLayer;
 			_effectTwo cutText ["", "BLACK IN", (_initDuration + (_initBlackout/10))];
 			waitUntil {time > _initDuration};
 		} else {
-			private _effectOne = ["_layer"] call BIS_fnc_rscLayer; 
+			private _effectOne = ["_layer"] call BIS_fnc_rscLayer;
 			_effectOne cutText ["", "BLACK IN", (_initDuration + 10)];
-			waitUntil {time > (_initDuration - 10)};		
+			waitUntil {time > (_initDuration - 10)};
 		};
 		["<img size= '9' shadow='false' image='" + _initImage + "'/><br/><br/><t size='.7' color='#FFFFFF'>" + _text + "</t>", 0, 0, 3, 12] spawn BIS_fnc_dynamicText;
 	};
@@ -71,13 +71,13 @@ if (!ADF_isHC) then {
 	if _ADF_mhq_enable then {[_ADF_mhq_enable, _ADF_mhq_respawn_time, _ADF_mhq_respawn_nr, _ADF_mhq_respawn_class, _ADF_mhq_deploy_time, _ADF_mhq_packup_time, _ADF_wTixNr] execVM "ADF\ADF_init_mhq.sqf"};
 	if _ADF_altitude then {execVM "ADF\ADF_init_abf.sqf"};
 	if (ADF_mod_ACE3 && {ADF_sameGearRespawn}) then {ACE_Respawn_SavePreDeathGear = true};
-	if ADF_debug then {execVM "ADF\ADF_init_debug.sqf";};	
-	
+	if ADF_debug then {execVM "ADF\ADF_init_debug.sqf";};
+
 	// Client EH's
 	ADF_mission_onPlayerKilled = compile preprocessFileLineNumbers "mission\events\ADF_mission_playerKilled.sqf";
 	ADF_mission_onPlayerRespawn = compile preprocessFileLineNumbers "mission\events\ADF_mission_playerRespawn.sqf";
 	ADF_EH_clientKilled = player addEventHandler ["killed", {_this call ADF_fnc_onPlayerKilled}];
-	ADF_EH_clientRespawn = player addEventHandler ["respawn", {_this call ADF_fnc_onPlayerRespawn}];	
+	ADF_EH_clientRespawn = player addEventHandler ["respawn", {_this call ADF_fnc_onPlayerRespawn}];
 
 	[_ADF_preset, _ADF_ACRE_fullDuplex, _ADF_ACRE_interference, _ADF_ACRE_AIcanHear, _ADF_TFAR_microDAGR] execVM "ADF\ADF_init_comm.sqf";
 	[_ADF_mission_init_time] execVM "ADF\ADF_init_post.sqf";

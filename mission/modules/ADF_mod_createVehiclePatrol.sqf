@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -29,26 +29,26 @@ diag_log "ADF rpt: Init - executing: ADF_mod_createVehiclePatrol.sqf";
 /*
 	Step 1:	Copy from (COPY FROM HERE) into your script for each air patrol you want to create.
 	Step 2:	Determine a location where the aircraft will spawn. This can be a marker, an editor placed object, trigger, etc.
-			The script searches for waypoints on roads. So make sure there's at least a road nearby the spawn location.		
+			The script searches for waypoints on roads. So make sure there's at least a road nearby the spawn location.
 	Step 3.	Fill out below parameters
     Note: Don't worry about the many comments as the ARMA engine ignores comments.
 */
 
 "myMarker",         // Spawn location. This is the location on the map where the crewed vehicle will be created. The location can be a marker, trigger, object, etc:
-                    
+
 "PatrolMarker",     // Patrol start location. Can be the same as the spawn location. If you want a different location than the spawn location than use:
-                    // - "PatrolMarker" use the name of the marker where the vehicle will move to after it has spawned. Markers are always a string ("")
-                    // - myTrigger use the name of the trigger where the vehicl3 will move to after it has spawned. (center). 
-                    // - myObject use the name of an editor placed object where the vehicle will move to after it has spawned.
-                    
+	// - "PatrolMarker" use the name of the marker where the vehicle will move to after it has spawned. Markers are always a string ("")
+	// - myTrigger use the name of the trigger where the vehicl3 will move to after it has spawned. (center).
+	// - myObject use the name of an editor placed object where the vehicle will move to after it has spawned.
+
 east,               // Side of the vehicle and its crew. Can be east, west or independent
 
 2,                  // Number that represents the type of vehicle. Options are
-                    // 1: Random Transport truck (default)
-                    // 2: Random Unarmed MRAP/Car
-                    // 3: Random Armed MRAP/Car
-                    // 4: Random APC
-                    // 5: Random Armored
+	// 1: Random Transport truck (default)
+	// 2: Random Unarmed MRAP/Car
+	// 3: Random Armed MRAP/Car
+	// 4: Random APC
+	// 5: Random Armored
 
 1500,               // Number that represents the patrol Radius in meters from the patrol start position.  (default: 750)
 
@@ -67,12 +67,12 @@ east,               // Side of the vehicle and its crew. Can be east, west or in
 50,                 // Waypoint completion radius. (default: 15). More info: https://community.bistudio.com/wiki/setWaypointCompletionRadius
 
 "",                 // String that represents a (custom) function (or code) that will be executed for EACH UNIT of the crew.
-                    // E.g.: "my_fnc_redressTheCrew"  -or-  "ADF_fnc_objectBoatCrew"
-                    // default: ""
-                    
+	// E.g.: "my_fnc_redressTheCrew"  -or-  "ADF_fnc_objectBoatCrew"
+	// default: ""
+
 ""                  // String that represents a (custom) function (or code) that will be executed on the crew as a group.
-                    // E.g.: "my_fnc_setGroupID"  -or-  "ADF_fnc_groupSetSkill."
-                    // default: ""
+	// E.g.: "my_fnc_setGroupID"  -or-  "ADF_fnc_groupSetSkill."
+	// default: ""
 
 ///// DO NOT EDIT BELOW
 ] call ADF_fnc_createVehiclePatrol;

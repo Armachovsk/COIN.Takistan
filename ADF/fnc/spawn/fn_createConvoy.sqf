@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -37,12 +37,12 @@ REQUIRED PARAMETERS:
 OPTIONAL PARAMETERS:
 2: Side:        west, east or independent. Default: east
 3: Integer:     Type of convoy (lead vehicle is combat vehicle):
-                - 1 - Random Transport truck (default)
-                - 2 - Random MRAP
-                - 3 - Random APC / Armored
+	- 1 - Random Transport truck (default)
+	- 2 - Random MRAP
+	- 3 - Random APC / Armored
 4: Integer:     Number of vehicles including the lead vehicle. Max: 10. Default: 5
 6: Integer:     Spawn delay timer in seconds. Default: 0. Maximum 1 hour (3600)
-7. String:      Name of this convoy in case you wish to create multiple convoys. 
+7. String:      Name of this convoy in case you wish to create multiple convoys.
 
 EXAMPLES USAGE IN SCRIPT:
 ["spawn_Marker", "destination_Marker", east, 1, 6, 300, "my_CSAT_convoy"] spawn ADF_fnc_createConvoy;
@@ -62,12 +62,12 @@ if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF rpt: fnc - executing: ADF_fnc
 
 // Init
 params [
-	["_posSpawn", "", ["", [], objNull, grpNull]], 
-	["_posTerminate", "", ["", [], objNull, grpNull]], 
-	["_side", east, [west]], 
-	["_convoyType", 1, [0]], 
-	["_numberOfVehicles", 5, [0]], 
-	["_delay", 0, [0]], 
+	["_posSpawn", "", ["", [], objNull, grpNull]],
+	["_posTerminate", "", ["", [], objNull, grpNull]],
+	["_side", east, [west]],
+	["_convoyType", 1, [0]],
+	["_numberOfVehicles", 5, [0]],
+	["_delay", 0, [0]],
 	["_chk", "convoy1", [""]],
 	["_allConvoyVehicleClasses", [], [[]]],
 	["_allLeaderVehicleClasses", "", [""]],
@@ -83,7 +83,7 @@ if (_delay > 3600) then {_delay = 3600};
 
 // Check if we should run the convoy script
 if !(isNil (format ["%1_exec", _chk])) exitWith {[format ["ADF_fnc_createConvoy - convoy (%1) already executed!", _chk]] call ADF_fnc_log; false};
-missionNamespace setVariable [(format ["%1_exec", _chk]), true]; 
+missionNamespace setVariable [(format ["%1_exec", _chk]), true];
 
 // Sleep timer
 sleep _delay;
@@ -91,7 +91,7 @@ sleep _delay;
 // Determine vehicle based on side and type
 if (_side == west) then {
 	_flag = "\A3\Data_F\Flags\Flag_nato_CO.paa";
-	switch _convoyType do {		
+	switch _convoyType do {
 		case 1: {
 			_allConvoyVehicleClasses = ["B_Truck_01_transport_F", "B_Truck_01_covered_F", "B_Truck_01_mover_F", "B_Truck_01_box_F", "B_Truck_01_Repair_F", "B_Truck_01_ammo_F", "B_Truck_01_fuel_F", "B_Truck_01_medical_F"];
 			_allLeaderVehicleClasses = selectRandom ["B_APC_Wheeled_01_cannon_F", "B_MRAP_01_gmg_F", "B_MRAP_01_hmg_F"];
@@ -109,7 +109,7 @@ if (_side == west) then {
 };
 if (_side == east) then {
 	_flag = "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
-	switch _convoyType do {		
+	switch _convoyType do {
 		case 1: {
 			_allConvoyVehicleClasses = ["O_Truck_02_covered_F", "O_Truck_02_transport_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F", "O_Truck_03_repair_F", "O_Truck_03_ammo_F", "O_Truck_03_fuel_F", "O_Truck_03_medical_F", "O_Truck_03_device_F", "O_Truck_02_box_F", "O_Truck_02_Ammo_F", "O_Truck_02_fuel_F", "O_Truck_02_covered_F"];
 			_allLeaderVehicleClasses = selectRandom ["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F", "O_APC_Wheeled_02_rcws_F"];
@@ -151,7 +151,7 @@ private _direction = if (_posSpawn isEqualType "") then {markerDir _posSpawn} el
 private _positionTerminate = [_posTerminate] call ADF_fnc_checkPosition;
 private _positionSpawn = [_posSpawn] call ADF_fnc_checkPosition;
 
-// Create the group and create group directives 
+// Create the group and create group directives
 private _group = createGroup _side;
 _group setCombatMode "GREEN";
 _group setFormation "COLUMN";
@@ -162,16 +162,16 @@ private _waypoint = _group addWaypoint [_positionTerminate, 0];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointBehaviour "SAFE";
 _waypoint setWaypointCompletionRadius 20;
-_waypoint setWaypointFormation "COLUMN";	
-	
+_waypoint setWaypointFormation "COLUMN";
+
 // Create the convoy lead vehicle and add it to the convoy array
 private _vehicleLeader = [_posSpawn, _direction, _allLeaderVehicleClasses, _group, "", "", true, false] call ADF_fnc_createCrewedVehicle;
 _convoyVehicles pushBack (_vehicleLeader # 0);
 (commander (_vehicleLeader # 0)) setRank "MAJOR";
-[driver (_vehicleLeader # 0)] call ADF_fnc_heliPilotAI; 
+[driver (_vehicleLeader # 0)] call ADF_fnc_heliPilotAI;
 (_vehicleLeader # 0) limitSpeed 50;
-(_vehicleLeader # 0) setConvoySeparation 50; 
-(_vehicleLeader # 0) forceFlagTexture _flag; 
+(_vehicleLeader # 0) setConvoySeparation 50;
+(_vehicleLeader # 0) forceFlagTexture _flag;
 
 // Wait till the leader vehicle is moving and then create the other convoy vehicles
 private _time = time;
@@ -186,7 +186,7 @@ if _exit exitWith {[_convoyVehicles] call ADF_fnc_delete;};
 for "_i" from 1 to _numberOfVehicles do {
 	private _time = time;
 	private _vehicle = [_posSpawn, _direction, selectRandom _allConvoyVehicleClasses, _group, "", "", true, false] call ADF_fnc_createCrewedVehicle;
-	[driver (_vehicle # 0)] call ADF_fnc_heliPilotAI; 
+	[driver (_vehicle # 0)] call ADF_fnc_heliPilotAI;
 	_convoyVehicles pushBack (_vehicle # 0);
 	if (_i == _numberOfVehicles) exitWith {(_vehicle # 0) forceFlagTexture _flag;};
 

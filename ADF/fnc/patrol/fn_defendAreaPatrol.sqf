@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -61,12 +61,12 @@ if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_defendAreaPatrol - Group un
 		// Debug reporting
 		if ADF_debug then {[format ["ADF_fnc_defendAreaPatrol - Unit: %1 -- ADF_garrSet: %2", _x, _x getVariable ["ADF_garrSet",true]]] call ADF_fnc_log};
 	}
-} forEach units _group;	
+} forEach units _group;
 
 // Debug reporting
 if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_defendAreaPatrol - # garrisoned units: %1 -- # patrol units: %2 -- Patrol units: %3",_index, count _array, _array]] call ADF_fnc_log};
 
-// Create a new group for not-garrisoned units 
+// Create a new group for not-garrisoned units
 private _patrolGroup = createGroup (side _group);
 {[_x] joinSilent _patrolGroup} forEach _array;
 

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -41,13 +41,13 @@ if ADF_isHC exitWith {}; // HC exits script
 if (side player == east) exitWith {diag_log "ADF rpt: MHQ - ERROR! The MHQ can only be used by BluFor (WEST)"}; // Blufor only!
 
 // Check if we should run the script at all. Let's see if there is an MHQ vehicle
-if (isNil "MHQ") then { 
+if (isNil "MHQ") then {
 	if !(isNil "MHQ_1") exitWith {MHQ = MHQ_1};
 	if ((isNil "MHQ_1") && !(isNil "MHQ_2")) exitWith {MHQ = MHQ_2};
 	if !hasInterface exitWith {};
 	waitUntil {sleep 1; ADF_missionInit}; // wait for the mission to initialize
 	Sleep 2;
-	hintSilent parseText "<t color='#FE2E2E'>ERROR!</t><br/><br/><t color='#A1A4AD'>The Mobile HQ (MHQ) is disabled.<br/>No vehicle was defined as MHQ</t><br/><br/><t color='#A1A4AD'>Make sure you place a vehicle in the editor and name it MHQ.</t><br/><br/>";	
+	hintSilent parseText "<t color='#FE2E2E'>ERROR!</t><br/><br/><t color='#A1A4AD'>The Mobile HQ (MHQ) is disabled.<br/>No vehicle was defined as MHQ</t><br/><br/><t color='#A1A4AD'>Make sure you place a vehicle in the editor and name it MHQ.</t><br/><br/>";
 };
 if (isNil "MHQ") exitWith {};
 
@@ -79,7 +79,7 @@ ADF_MHQ_FOB_deployAction = MHQ addAction ["<t align='left' color='#c0d6b2'>Deplo
 
 // MHQ info message
 if hasInterface then {
-	private _rd = getNumber (missionConfigFile >> "respawnDelay");  
+	private _rd = getNumber (missionConfigFile >> "respawnDelay");
 	if (_rd >= 60) then {
 		_rt = _rd / 60;
 	} else {
@@ -100,23 +100,23 @@ if hasInterface then {
 call compile preprocessFileLineNumbers "ADF\fnc\support\ADF_fnc_mhq.sqf";
 
 // from here on end run on the server only
-if !isServer exitWith {}; 
+if !isServer exitWith {};
 
 // Setup initial west respawn markers
 if (!isNil "respawn_west") then {
 	// respawn_west marker exist, move it to the MHQ spawn location
 	"respawn_west" setMarkerPos ADF_MHQ_orgPos;
 } else {
-	// respawn_west marker does not exit. Create a (new) player respawn marker at the location of the MHQ 
+	// respawn_west marker does not exit. Create a (new) player respawn marker at the location of the MHQ
 	private _m = createMarker ["respawn_west", ADF_MHQ_orgPos];
-	_m setMarkerShape "ICON"; 
+	_m setMarkerShape "ICON";
 	_m setMarkerType "Empty";
 };
 
 // Create the 'HQ flag' marker
 private _m = createMarker ["mMHQ", ADF_MHQ_orgPos];
-_m setMarkerShape "ICON"; 
-_m setMarkerSize [.8, .8]; 
+_m setMarkerShape "ICON";
+_m setMarkerSize [.8, .8];
 _m setMarkerType "b_hq";
 
 // Execute the functions

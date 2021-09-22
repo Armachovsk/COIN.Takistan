@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,8 +14,8 @@ File: fn_positionArraySort.sqf
 **********************************************************************************
 ABOUT
 Sorts an array of positions (z-axe, altitude), either ascending or descending. The
-function is used by the ADF_fnc_buildingPositions function to find the highest 
-located garrison positions within a building. In combination with the 
+function is used by the ADF_fnc_buildingPositions function to find the highest
+located garrison positions within a building. In combination with the
 ADF_fnc_outsidePos function you can determine if the position is on a rooftop.
 
 INSTRUCTIONS:
@@ -26,17 +26,17 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1: Variable:    Sort function:
-                ADF_fnc_altitudeDescending for descending (default)
-                ADF_fnc_altitudeAcending for ascending
+	ADF_fnc_altitudeDescending for descending (default)
+	ADF_fnc_altitudeAcending for ascending
 
 EXAMPLES USAGE IN SCRIPT:
-_arr = [allUnits, ADF_fnc_altitudeDescending] call ADF_fnc_positionArraySort;   
+_arr = [allUnits, ADF_fnc_altitudeDescending] call ADF_fnc_positionArraySort;
 
 EXAMPLES USAGE IN EDEN:
 N/A
 
 DEFAULT/MINIMUM OPTIONS
-_a = [_builingPos] call ADF_fnc_positionArraySort;  
+_a = [_builingPos] call ADF_fnc_positionArraySort;
 
 RETURNS:
 Array

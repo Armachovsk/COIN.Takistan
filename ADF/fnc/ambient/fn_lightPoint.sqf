@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -34,7 +34,7 @@ OPTIONAL PARAMETERS:
 				Default: 0
 4. Number:      y-axe offset in meters from the center position of the object.
 				Default: 0
-				
+
 EXAMPLES USAGE IN SCRIPT:
 [_tower, 0.5, 1] call ADF_fnc_lightPoint;
 

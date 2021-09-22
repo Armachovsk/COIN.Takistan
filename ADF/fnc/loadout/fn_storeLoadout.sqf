@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,9 +23,9 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. String:      Options:
-                - "save" Store the loadout (default)
-                - "load" Load a saved loadout
-        
+	- "save" Store the loadout (default)
+	- "load" Load a saved loadout
+
 EXAMPLES USAGE IN SCRIPT:
 [player, "load"] call ADF_fnc_storeLoadout;
 
@@ -58,19 +58,19 @@ if (_mode == "SAVE") exitWith {
 	ADF_StoreLoadout_uniform = uniform _unit;
 	ADF_StoreLoadout_vest = vest _unit;
 	ADF_StoreLoadout_backpack = backpack _unit;
-	ADF_StoreLoadout_headgear = headgear _unit;	
-	ADF_StoreLoadout_goggles = goggles _unit;	
+	ADF_StoreLoadout_headgear = headgear _unit;
+	ADF_StoreLoadout_goggles = goggles _unit;
 	// Weapons (also binos, gps etc)
-	ADF_StoreLoadout_weapons = weapons _unit;	
+	ADF_StoreLoadout_weapons = weapons _unit;
 	ADF_StoreLoadout_magazines = magazines _unit;
 	// Weapon attachments etc
 	ADF_StoreLoadout_primaryWeaponItems = primaryWeaponItems _unit;
-	ADF_StoreLoadout_secondaryWeaponItems = secondaryWeaponItems _unit;	
+	ADF_StoreLoadout_secondaryWeaponItems = secondaryWeaponItems _unit;
 	ADF_StoreLoadout_sideWeaponItems = handgunItems _unit;
 	// items
 	ADF_StoreLoadout_items = items _unit;
 	ADF_StoreLoadout_assignedItems = assignedItems _unit;
-	
+
 	true
 };
 
@@ -93,13 +93,13 @@ if (_mode == "LOAD") exitWith {
 	// Items
 	{_unit addItem _x} forEach ADF_StoreLoadout_items;
 	{_unit assignItem _x} forEach ADF_StoreLoadout_assignedItems;
-	
+
 	true
 };
 
 if (!(_mode == "LOAD") && !(_mode == "SAVE")) exitWith {
 	// Debug reporting
 	if (ADF_extRpt || {ADF_debug}) then {diag_log "ADF Debug: ADF_fnc_storeLoadout - ERROR, incorrect parameter passed. Should be either 'LOAD' or 'SAVE'. Exiting."};
-	
+
 	false
 };

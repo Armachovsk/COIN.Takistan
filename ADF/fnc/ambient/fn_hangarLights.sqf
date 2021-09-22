@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -63,16 +63,16 @@ for "_i" from 1 to 3 do {
 		case 2: {_anchorPoint = 5};
 		case 3: {_anchorPoint = -5};
 	};
-	
+
 	// Create physical light object and attach it to the hangar
 	private _lamp = "Land_floodLight_F" createVehicleLocal [0,0,0];
 	_lamp setPos (getPosASL _object);
 	_lamp attachTo [_object, [0, _anchorPoint, 4.4]];
 	_lamp setVectorDirAndUp [[-1,0,0],[0,1,0]];
 	private _position = getPosASL _lamp;
-	
+
 	// Create simulated light source and attach it to the light object
-	private _s = "#lightpoint" createVehicleLocal [0,0,0];	
+	private _s = "#lightpoint" createVehicleLocal [0,0,0];
 	_s setPos _position;
 	_s setLightBrightness 0.9;
 	_s setLightAmbient [1.0, 1.0, 0.5];

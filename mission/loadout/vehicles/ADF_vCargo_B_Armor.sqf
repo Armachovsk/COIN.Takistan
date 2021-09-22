@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -19,7 +19,7 @@ Paste below line in the INITIALIZATION box of the vehicle:
 null = [this] execVM "mission\loadout\vehicles\ADF_cCargo_B_Armor.sqf";
 
 You can comment out (//) lines of ammo you do not want to include
-in the vehicle Cargo. 
+in the vehicle Cargo.
 *********************************************************************************/
 
 // Init
@@ -28,7 +28,7 @@ params ["_v"];
 
 waitUntil {time > 0 && !isNil "ADF_preInit"};
 
-// Settings 
+// Settings
 _v call ADF_fnc_stripVehicle;
 
 // Magazines primary weapon
@@ -47,16 +47,16 @@ if ADF_mod_ACE3 then {
 };
 
 // Grenades
-_v addMagazineCargoGlobal ["HandGrenade", 3]; 	 
-_v addMagazineCargoGlobal ["SmokeShell", 2]; 	 
-_v addMagazineCargoGlobal ["SmokeShellGreen", 1]; 	 
+_v addMagazineCargoGlobal ["HandGrenade", 3];
+_v addMagazineCargoGlobal ["SmokeShell", 2];
+_v addMagazineCargoGlobal ["SmokeShellGreen", 1];
 _v addMagazineCargoGlobal ["SmokeShellRed", 1];
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_HandFlare_White", 2];
 	_v addItemCargoGlobal ["ACE_HandFlare_Red", 1];
 	_v addItemCargoGlobal ["ACE_HandFlare_Green", 1];
 	_v addItemCargoGlobal ["ACE_HandFlare_Yellow", 1];
-}; 
+};
 
 // ACRE / TFAR and cTAB
 if ADF_mod_ACRE then {
@@ -74,7 +74,7 @@ if ADF_mod_CTAB then {
 	_v addItemCargoGlobal ["ItemcTabHCam", 3];
 };
 
-// ACE3 Specific	
+// ACE3 Specific
 if ADF_mod_ACE3 then {
 	_v addItemCargoGlobal ["ACE_EarPlugs", 5];
 	_v addItemCargoGlobal ["ace_mapTools", 1];
@@ -83,7 +83,7 @@ if ADF_mod_ACE3 then {
 
 // Medical Items
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_fieldDressing", 5];	
+	_v addItemCargoGlobal ["ACE_fieldDressing", 5];
 	_v addItemCargoGlobal ["ACE_morphine", 2];
 } else {
 	_v addItemCargoGlobal ["FirstAidKit", 5];
@@ -93,8 +93,8 @@ if ADF_mod_ACE3 then {
 // Optical/Bino's/Goggles
 _v addItemCargoGlobal ["NVGoggles", 3];
 if ADF_mod_ACE3 then {
-	_v addItemCargoGlobal ["ACE_Vector", 1];		
-};	
+	_v addItemCargoGlobal ["ACE_Vector", 1];
+};
 
 // Misc items
 _v addItemCargoGlobal ["ToolKit", 2];

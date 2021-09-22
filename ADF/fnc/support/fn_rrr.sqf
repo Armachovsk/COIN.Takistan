@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,7 +21,7 @@ Create a trigger, make it the size of the service area. Trigger configuration:
 
 Name:           Any name you want
 Activation by:  side of the players or whichever side you want to activate the
-                Reload/Rearm/Repair function.
+	Reload/Rearm/Repair function.
 Repeatable:     Yes
 
 For Helicopters:
@@ -62,7 +62,7 @@ params [
 ];
 private _position = getPosWorld _vehicle;
 private _vehicleType = typeOf _vehicle;
-private _isPlane = _vehicle isKindOf "Plane"; 
+private _isPlane = _vehicle isKindOf "Plane";
 private _vehicleName = getText(configFile >> "CfgVehicles" >> _vehicleType >> "displayName");
 private _hasTurret = if ((count ([typeOf _vehicle, false] call BIS_fnc_allTurrets) > 0) || (count (getPylonMagazines _vehicle)) > 0) then {true} else {false};
 private _fuelLoad	= fuel _vehicle;
@@ -105,10 +105,10 @@ sleep 5;
 
 if (_hasTurret) then {
 	private _rearm_pause = ADF_FARP_reloadTime / 3;
-	private _allVehicleMagazines = getArray (configFile >> "CfgVehicles" >> _vehicleType >> "magazines");	
+	private _allVehicleMagazines = getArray (configFile >> "CfgVehicles" >> _vehicleType >> "magazines");
 
 	if !(_allVehicleMagazines isEqualTo {}) then {
-		_vehicle vehicleChat "Removing magazine stock."; 
+		_vehicle vehicleChat "Removing magazine stock.";
 		private _magazineStock = [];
 		{
 			if (!(_x in _magazineStock)) then {
@@ -116,9 +116,9 @@ if (_hasTurret) then {
 				_magazineStock pushBack _x;
 			};
 		} forEach _allVehicleMagazines;
-		
+
 		{
-			_vehicle vehicleChat format ["Reloading %1", _x]; 
+			_vehicle vehicleChat format ["Reloading %1", _x];
 			sleep _rearm_pause;
 			if (!alive _vehicle) exitWith {};
 			_vehicle addMagazine _x;
@@ -130,12 +130,12 @@ if (_hasTurret) then {
 
 	if (_numberOfTurrets > 0) then {
 		for "_i" from 0 to (_numberOfTurrets - 1) do {
-			scopeName "ADF_Reload";			
+			scopeName "ADF_Reload";
 			private _weapon = (configFile >> "CfgVehicles" >> _vehicleType >> "Turrets") select _i;
 			private _weaponMagazines = getArray (_weapon >> "magazines");
-			
+
 			private _magazineStock = [];
-			_vehicle vehicleChat "Removing turret ammo stock."; 
+			_vehicle vehicleChat "Removing turret ammo stock.";
 			{
 				if (!(_x in _magazineStock)) then {
 					_vehicle removeMagazines _x;
@@ -143,16 +143,16 @@ if (_hasTurret) then {
 				};
 			} forEach _weaponMagazines;
 			sleep 3;
-			
-			{				
-				_vehicle vehicleChat format ["Reloading %1", _x]; 
+
+			{
+				_vehicle vehicleChat format ["Reloading %1", _x];
 				sleep _rearm_pause;
 				if (!alive _vehicle) then {breakOut "ADF_Reload"};
 				_vehicle addMagazine _x;
 				sleep _rearm_pause;
 				if (!alive _vehicle) then {breakOut "ADF_Reload"};
 			} forEach _weaponMagazines;
-			
+
 			// check if the main platform has other turrets
 			private _secondaryTurret = count (_weapon >> "Turrets");
 
@@ -160,7 +160,7 @@ if (_hasTurret) then {
 				for "_i" from 0 to (_secondaryTurret - 1) do {
 					private _secondaryWeapon = (_weapon >> "Turrets") select _i;
 					private _weaponMagazines = getArray (_secondaryWeapon >> "magazines");
-				
+
 					private _magazineStock = [];
 					{
 						if (!(_x in _magazineStock)) then {
@@ -168,9 +168,9 @@ if (_hasTurret) then {
 							_magazineStock pushBack _x;
 						};
 					} forEach _weaponMagazines;
-					
+
 					{
-						_vehicle vehicleChat format ["Reloading %1", _x]; 
+						_vehicle vehicleChat format ["Reloading %1", _x];
 						sleep _rearm_pause;
 						if (!alive _vehicle) then {breakOut "ADF_Reload"};
 						_vehicle addMagazine _x;
@@ -185,10 +185,10 @@ if (_hasTurret) then {
 	if (!alive _vehicle) exitWith {};
 	_vehicle setVehicleAmmo 1; // Reload all turrets
 	sleep 2;
-	if (ADF_mod_ACE3 && {_vehicle isKindOf "Car"}) then {[_vehicle, 2, "ACE_Wheel"] call ace_repair_fnc_addSpareParts;}; 
+	if (ADF_mod_ACE3 && {_vehicle isKindOf "Car"}) then {[_vehicle, 2, "ACE_Wheel"] call ace_repair_fnc_addSpareParts;};
 	_vehicle vehicleChat format ["%1 is fully rearmed", _vehicleName];
 } else {
-	if (ADF_mod_ACE3 && {_vehicle isKindOf "Car"}) then {[_vehicle, 2, "ACE_Wheel"] call ace_repair_fnc_addSpareParts;}; 
+	if (ADF_mod_ACE3 && {_vehicle isKindOf "Car"}) then {[_vehicle, 2, "ACE_Wheel"] call ace_repair_fnc_addSpareParts;};
 	sleep 2;
 	_vehicle vehicleChat "No rearming services needed.";
 };
@@ -202,7 +202,7 @@ private _HitPointLevels = [];
 private _HPD_levelDamaged = 0;
 private _HPD_Total = 0;
 if !(_totalHitPoints isEqualTo []) then {
-	private _HitPointLevels = _totalHitPoints # 2;	
+	private _HitPointLevels = _totalHitPoints # 2;
 	{if (_x > 0) then {_HPD_levelDamaged = _HPD_levelDamaged + 1}} count _HitPointLevels;
 	{_HPD_Total = _HPD_Total + _x} count _HitPointLevels;
 };
@@ -247,7 +247,7 @@ if (_HPD_levelDamaged > 0) then {
 			case "cargo_light_3";
 			case "cargo_light_4": {"cargo lights"};
 			case "hitvrotor": {"tail rotor"};
-			case "hitglass1"; 
+			case "hitglass1";
 			case "hitglass2";
 			case "hitrglass";
 			case "hitglass3";
@@ -256,16 +256,16 @@ if (_HPD_levelDamaged > 0) then {
 			case "hitglass6";
 			case "hitglass7";
 			case "hitglass8": {"door and window"};
-			case "cage_left_1_point"; 
+			case "cage_left_1_point";
 			case "cage_left_2_point";
 			case "cage_left_3_point";
-			case "cage_right_1_point"; 
+			case "cage_right_1_point";
 			case "cage_right_2_point";
 			case "cage_right_3_point";
 			case "cage_back_point";
 			case "cage_front_point";
-			case "hit_main_turret_point": {if (_hasTurret) then {"turret bodywork"} else {"structural damage"}};		
-			case "hit_main_gun_point": {if (_hasTurret) then {"turret gun"} else {"structural damage"}};	
+			case "hit_main_turret_point": {if (_hasTurret) then {"turret bodywork"} else {"structural damage"}};
+			case "hit_main_gun_point": {if (_hasTurret) then {"turret gun"} else {"structural damage"}};
 			case "hitlbwheel": {"left back wheel"};
 			case "hitlmwheel": {"left middle wheel"};
 			case "hitrbwheel": {"right back wheel"};
@@ -274,14 +274,14 @@ if (_HPD_levelDamaged > 0) then {
 			case "hit_com_turret_point";
 			case "hit_main_turret_point";
 			case "hit_com_gun_point";
-			case "hitturret": {if (_hasTurret) then {"turret structure"} else {"structural damage"}};	
-			case "hitgun": {if (_hasTurret) then {"machine gun systems"} else {"structural damage"}};	
+			case "hitturret": {if (_hasTurret) then {"turret structure"} else {"structural damage"}};
+			case "hitgun": {if (_hasTurret) then {"machine gun systems"} else {"structural damage"}};
 			case "light_l_flare";
 			case "light_r_flare": {"flare/smoke systems"};
-			case "#gear_1_light_1_hit"; 
-			case "#gear_1_light_2_hit"; 
-			case "#gear_f_lights"; 
-			case "#light_l"; 
+			case "#gear_1_light_1_hit";
+			case "#gear_1_light_2_hit";
+			case "#gear_f_lights";
+			case "#light_l";
 			case "#light_r": {"lights"};
 			case "#hit_trackl_point": {"left track"};
 			case "#hit_trackr_point": {"right track"};
@@ -322,8 +322,8 @@ if (_HPD_levelDamaged > 0) then {
 			_vehicle setHitIndex [_i, _h / 2];
 			sleep ((_repairSleep / 2) - 0.5);
 			_vehicle setHitIndex [_i, 0];
-			sleep 0.5;				
-		}; 
+			sleep 0.5;
+		};
 		if (!alive _vehicle) exitWith {};
 	};
 	_vehicle vehicleChat format ["%1 is fully repaired", _vehicleName];
@@ -345,13 +345,13 @@ if (_fuelLoad < 0.96) then {
 		params ["_vehicle"];
 		waitUntil {
 			sleep 10;
-			_vehicle vehicleChat "Refueling";			
+			_vehicle vehicleChat "Refueling";
 			((fuel _vehicle) > .95) || !alive _vehicle
 		};
 	};
-	while {_fuelLoad < 1 && alive _vehicle} do {		
+	while {_fuelLoad < 1 && alive _vehicle} do {
 		_vehicle setFuel (_fuelLoad + 0.01);
-		_fuelLoad = fuel _vehicle;		
+		_fuelLoad = fuel _vehicle;
 		if (_fuelLoad < 0.95) then {sleep (ADF_FARP_refuelTime / 60);};
 	};
 	sleep 2;
@@ -360,7 +360,7 @@ if (_fuelLoad < 0.96) then {
 	_vehicle vehicleChat "No refuel services needed.";
 	_vehicle setFuel 1;
 	if (!alive _vehicle) exitWith {};
-	
+
 };
 sleep 8;
 if (!alive _vehicle) exitWith {};

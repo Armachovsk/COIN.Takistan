@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -28,7 +28,7 @@ REQUIRED PARAMETERS:
 OPTIONAL PARAMETERS:
 2. Number:      Radius in meters. Default: 250. Maximum is 5000
 3. type:        ["man", "car", "apc", "tank", "all"]. Default: "man"
-                either string for a single type or an array for multiple types
+	either string for a single type or an array for multiple types
 
 EXAMPLES USAGE IN SCRIPT:
 _enemyCount = ["myMarker", independent, 250, "MAN"] call ADF_fnc_countRadius;

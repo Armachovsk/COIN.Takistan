@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -14,7 +14,7 @@ File: fn_getTurrets.sqf
 Diag: 0.017 ms
 **********************************************************************************
 ABOUT
-Creates and populates an array of empty unlocked static weapons and vehicles with 
+Creates and populates an array of empty unlocked static weapons and vehicles with
 empty turrets. If you have vehicles on the map you DO NOT want to be populated by
 AI's, then 'LOCK' the vehicle (not player lock!).
 The function is exclusively used by ADF_fnc_DefendArea.

@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -21,25 +21,25 @@ Execute (call) fro the server or HC
 REQUIRED PARAMETERS:
 0. Group:       Group (vessel crew)
 1. position:    Center patrol start position. Marker, object, trigger or position
-                array [x,y,z]
+	array [x,y,z]
 
 OPTIONAL PARAMETERS:
 2. Number:      Waypoint radius in meters. Default: 1000. Maximum: 7500
 3. Number:      Number of total waypoints to patrol. Default: 5. Maximum: 10
 4. String:      Waypoint type. Default: "MOVE"
-                Info: https:community.bistudio.com/wiki/Waypoint_types
+	Info: https:community.bistudio.com/wiki/Waypoint_types
 5. String:      Waypoint behaviour. Default: "SAFE"
-                Info: https:community.bistudio.com/wiki/setWaypointBehaviour                
+	Info: https:community.bistudio.com/wiki/setWaypointBehaviour
 6. String:      Waypoint combat mode. Default: "WHITE"
-                Info: https:community.bistudio.com/wiki/setWaypointCombatMode
+	Info: https:community.bistudio.com/wiki/setWaypointCombatMode
 7. String:      Waypoint speed. Default: "LIMITED"
-                Info: https:community.bistudio.com/wiki/waypointSpeed
+	Info: https:community.bistudio.com/wiki/waypointSpeed
 8. String:      Waypoint formation. Default: "DIAMOND"
-                Info: https:community.bistudio.com/wiki/waypointFormation
+	Info: https:community.bistudio.com/wiki/waypointFormation
 9. Number:      Waypoint completion radius in meters. Default: 15
-                Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
+	Info: https:community.bistudio.com/wiki/setWaypointCompletionRadius
 10. Array:	   Waypoint time out. Default: "[0,0,0]"
-                Info: https://community.bistudio.com/wiki/setWaypointTimeout
+	Info: https://community.bistudio.com/wiki/setWaypointTimeout
 
 EXAMPLES USAGE IN SCRIPT:
 [_grp, _Pos, 1000, 4, "MOVE", "COMBAT"] call ADF_fnc_seaPatrol;
@@ -71,7 +71,7 @@ params [
 	["_wp_formation", "DIAMOND", [""]],
 	["_wp_complRadius", 15,[0]],
 	["_wp_timeOut", [0,0,0], [[]], [3]],
-	["_index", -1, [0]]	
+	["_index", -1, [0]]
 ];
 
 // Check valid vars

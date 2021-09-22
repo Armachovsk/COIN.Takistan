@@ -1,14 +1,14 @@
 #include "defines.h"
 /*
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
-	Called when the slider is changed for any field and 
+	Called when the slider is changed for any field and
 	updates the view distance for it.
 */
 
 params [
-	["_mode", -1, [0]], 
+	["_mode", -1, [0]],
 	["_value", -1, [0]]
 ];
 

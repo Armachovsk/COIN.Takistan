@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -23,7 +23,7 @@ INSTRUCTIONS:
 Call from script on the server.
 
 REQUIRED PARAMETERS:
-0. String:      Name of the marker to be re-applied. 
+0. String:      Name of the marker to be re-applied.
 
 OPTIONAL PARAMETERS:
 n/a
@@ -68,11 +68,11 @@ private _colour = getMarkerColor _oldMarker;
 private _shape = markerShape _oldMarker;
 private _dir = markerDir _oldMarker;
 private _size = getMarkerSize _oldMarker;
-private _text = markerText _oldMarker;	
+private _text = markerText _oldMarker;
 private _alpha = markerAlpha _oldMarker;
 private _brush = markerBrush _oldMarker;
 
-// Hack due to bug in ARMA3 
+// Hack due to bug in ARMA3
 if !(_type in _validTypes) then {_type = "";};
 if !(_shape in ["ICON", "RECTANGLE", "ELLIPSE", "POLYLINE", "EMPTY"]) then {
 	_shape = "ICON";

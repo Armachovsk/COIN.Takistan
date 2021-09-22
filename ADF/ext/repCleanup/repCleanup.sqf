@@ -125,21 +125,21 @@ GVAR(removeFromCleanup) = {
 
 while{GVAR(isRunning)} do {
 
-    sleep 2;
+	sleep 2;
 
-    {
-    	private _object = _x;
+	{
+		private _object = _x;
 		{
-	    	_timeToDelete = _x select 0;
-	    	_classesToDelete = _x select 1;
-	    	if(_timeToDelete>0) then {
-		    	{
+			_timeToDelete = _x select 0;
+			_classesToDelete = _x select 1;
+			if(_timeToDelete>0) then {
+				{
 					if( (typeof _object == _x) || {(_object isKindOf _x)} ) then {
 						[_object, _timeToDelete, true, false] call GVAR(addToCleanup);
 					};
 				} forEach _classesToDelete;
 			};
-	    } forEach GVAR(deleteClassesConfig);
+		} forEach GVAR(deleteClassesConfig);
 	} forEach allMissionObjects "";
 
 

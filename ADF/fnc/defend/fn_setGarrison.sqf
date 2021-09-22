@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -53,7 +53,7 @@ params [
 	["_building", objNull, [objNull]]
 ];
 
-// Move the unit inside the predefined building position. Give the unit 60 secs to reach its position.	
+// Move the unit inside the predefined building position. Give the unit 60 secs to reach its position.
 private _stance = "UP";
 
 if ((_unit distance _position) < 50) then {
@@ -69,11 +69,11 @@ _unit allowDamage false;
 _unit setPosATL [_position # 0, _position # 1, ( _position # 2) + .15];
 _unit allowDamage true;
 
-// Attempt to make the unit face outside 
+// Attempt to make the unit face outside
 private _direction = (_unit getRelDir _building) - 180;
 private _watchPosition = _unit getRelPos [1000, _direction];
 _unit doWatch _watchPosition;
-_unit setDir _direction;	
+_unit setDir _direction;
 
 // Store the units direction
 _unit setVariable ["ADF_garrSetDir", _direction];

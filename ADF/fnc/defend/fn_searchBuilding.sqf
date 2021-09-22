@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -76,27 +76,27 @@ if ADF_debug then {[format ["ADF_fnc_searchBuilding - Group: %1 -- Building: %2 
 for "_i" from 0 to _allBuildingPositionsCount do {
 	// Set the timer
 	private _searchTime = time + _maxTime;
-	
+
 	// Ownership change and debug reporting
 	if !(local _group) exitWith {if (ADF_debug || ADF_extRpt) then {[format ["ADF_fnc_searchBuilding - Group %1 -- Ownership changed. Current owner ID: %2 [EXITING]", _group, (groupOwner _group)]] call ADF_fnc_log}};
 	if ADF_debug then {[format ["ADF_fnc_searchBuilding - Time: %1 (max time: %2)", time, _searchTime]] call ADF_fnc_log};
-	
+
 	// All positions searched. Continue with patrol
 	if (_i == _allBuildingPositionsCount) exitWith {
 		if ADF_debug then {[format ["ADF_fnc_searchBuilding - Group: %1 -- Last position reached. Position: %2", _group, _i]] call ADF_fnc_log};
 		_group lockwp false;
-	};	
-	
+	};
+
 	// Order the group leader to search the building positions
 	_leader commandMove (_building buildingPos _i);
 	if ADF_debug then {[format ["ADF_fnc_searchBuilding - SEARCHING Position: %1", _i]] call ADF_fnc_log};
-	
+
 	// Stop searching when the timer runs out
 	if (time > _searchTime) exitWith {
 		if ADF_debug then {[format ["ADF_fnc_searchBuilding - Group: %1 -- Search timer (%2 seconds) ran out: %3 seconds. Time: %4", _group, _maxTime, time - _searchTime, time]] call ADF_fnc_log};
 		_group lockwp false;
 	};
-	
+
 	waitUntil {sleep 1; unitready _leader || !(local _group) || !alive _leader};
 	if ADF_debug then {[format ["ADF_fnc_searchBuilding - Finished Searching Position: %1 -- Time: %2", _i, time]] call ADF_fnc_log};
 };

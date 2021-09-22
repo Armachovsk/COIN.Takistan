@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -34,14 +34,14 @@ if (isNil "ADF_fnc_createFARP") then {call compile preprocessFileLineNumbers "AD
 			Give the marker a unique name. E.g. vehicleFARP1
 			The marker is th center position of the FARP. The marker orientation (azimuth) will determine the FARP orientation (direction).
 	Step 3.	Fill out below parameters
-	Note: Don't worry about the many comments as the ARMA engine ignores comments.	
+	Note: Don't worry about the many comments as the ARMA engine ignores comments.
 */
 
 "vehicleFARP1", // Change "vehicleFARP1" with the name of the marker where you want the FARP created. Make sure to wrap the name in "".
 "car"           // Which kind of FARP:
-                // - "car" for a vehicle FARP (all road vehicles, incl tracked vehicles)
-                // - "heli" for helicopters. Cannot be used by jet/prop aircraft.
-                // - "jet" for jet/prop aircraft. Cannot be used by helicopters.
-                
+	// - "car" for a vehicle FARP (all road vehicles, incl tracked vehicles)
+	// - "heli" for helicopters. Cannot be used by jet/prop aircraft.
+	// - "jet" for jet/prop aircraft. Cannot be used by helicopters.
+
 ///// DO NOT EDIT BELOW
 ] call ADF_fnc_createFARP;

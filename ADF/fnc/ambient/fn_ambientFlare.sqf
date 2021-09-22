@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -13,7 +13,7 @@ Script version: 1.05
 File: fn_ambientFlare.sqf
 **********************************************************************************
 ABOUT:
-Fires x number of flares within a given radius at a specified location. 
+Fires x number of flares within a given radius at a specified location.
 
 INSTRUCTIONS
 Execute (spawn) from the server or HC
@@ -23,12 +23,12 @@ REQUIRED PARAMETERS:
 
 OPTIONAL PARAMETERS:
 1. Number       Radius in meters from center position. Will spawn a flare at a
-                random location within the specified radius. Default: 150
+	random location within the specified radius. Default: 150
 2. String       Color of the flare:
-                "white" (default)
-                "green"
-                "red"
-                "yellow"
+	"white" (default)
+	"green"
+	"red"
+	"yellow"
 3. Number       Number of flares to create. Default: 3. Maximum: 10
 
 EXAMPLES USAGE IN SCRIPT:
@@ -63,7 +63,7 @@ if ((_colour != "white") && {(_colour != "green")} && {(_colour != "red")} && {(
 // Check the location position
 _position = [_position] call ADF_fnc_checkPosition;
 
-private _flareClass = switch (toUpperANSI _colour) do {	
+private _flareClass = switch (toUpperANSI _colour) do {
 	case "WHITE": {"F_40mm_White"};
 	case "GREEN": {"F_40mm_Green"};
 	case "RED": {"F_40mm_red"};
@@ -72,7 +72,7 @@ private _flareClass = switch (toUpperANSI _colour) do {
 };
 
 for "_i" from 1 to _flaresNumber do {
-	_position set [2, 165 + (random 45)];	
+	_position set [2, 165 + (random 45)];
 	private _flare = createVehicle [_flareClass, _position, [], _radius, "CAN_COLLIDE"];
 	playSound3D [format ["a3\missions_f_beta\data\sounds\Showcase_Night\%1",(selectRandom ["flaregun_1.wss","flaregun_2.wss","flaregun_3.wss","flaregun_4.wss"])], _flare];
 	_flare setVelocity [0,0,-0.175];

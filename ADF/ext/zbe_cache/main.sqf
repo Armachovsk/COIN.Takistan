@@ -28,7 +28,7 @@ zbe_mapside = zbe_mapsize / 2;
 zbe_centerPOS = [zbe_mapside, zbe_mapside, 0];
 
 // 5 min delayed start so that AO's can properly initialize before caching process starts
-waitUntil {sleep 1; time > 300}; 
+waitUntil {sleep 1; time > 300};
 
 // Check if  the HC connected late. if that's the case than terminate caching.
 //if (ADF_HC_connected) exitWith {["zbe_cache - even though caching was enabled, an HC connected after mission start, resulting in the caching script to terminate.", true] call ADF_fnc_log;};
@@ -53,7 +53,7 @@ waitUntil {sleep 1; time > 300};
 	zbe_cached_cars = [];
 	zbe_cached_air 	= [];
 	zbe_cached_boat	= [];
-	
+
 	while {true} do {
 		_assetscar = zbe_centerPOS nearEntities ["LandVehicle", zbe_mapside];
 		{
@@ -62,7 +62,7 @@ waitUntil {sleep 1; time > 300};
 				[_x, zbe_vehicleCacheDistCar] execFSM "ADF\ext\zbe_cache\zbe_vehicleCaching.fsm";
 			};
 		} forEach _assetscar;
-		
+
 		_assetsair = zbe_centerPOS nearEntities ["Air", zbe_mapside];
 		{
 			if !(_x in zbe_cached_air) then {
@@ -70,7 +70,7 @@ waitUntil {sleep 1; time > 300};
 				[_x, zbe_vehicleCacheDistAir] execFSM "ADF\ext\zbe_cache\zbe_vehicleCaching.fsm";
 			};
 		} forEach _assetsair;
-		
+
 		_assetsboat = zbe_centerPOS nearEntities ["Ship", zbe_mapside];
 		{
 			if !(_x in zbe_cached_boat) then {
@@ -84,26 +84,26 @@ waitUntil {sleep 1; time > 300};
 				zbe_cached_cars = zbe_cached_cars - [_x];
 			};
 		} forEach zbe_cached_cars;
-		
+
 		{
 			if !(_x in _assetsair) then {
 				zbe_cached_air = zbe_cached_air - [_x];
 			};
 		} forEach zbe_cached_air;
-		
+
 		{
 			if !(_x in _assetsboat) then {
 				zbe_cached_boat = zbe_cached_boat - [_x];
 			};
 		} forEach zbe_cached_boat;
-		
+
 		zbe_allVehicles = (_assetscar + _assetsair + _assetsboat);
 		sleep 15;
 	};
 };
 
 if (zbe_debug && _ADF_Caching_debugInfo) then {
-	[] spawn {	
+	[] spawn {
 		while {true} do {
 			uiSleep 15;
 			zbe_cachedUnits = (count allUnits - ({simulationEnabled _x} count allUnits));

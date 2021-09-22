@@ -1,8 +1,8 @@
 /*********************************************************************************
- _____ ____  _____ 
+ _____ ____  _____
 |  _  |    \|   __|
 |     |  |  |   __|
-|__|__|____/|__|   
+|__|__|____/|__|
 ARMA Mission Development Framework
 ADF version: 2.26 / Jul 2020
 
@@ -29,7 +29,7 @@ EXAMPLES USAGE IN EDEN:
 vehicleDirection = [position this] call ADF_fnc_roadDir;
 
 DEFAULT/MINIMUM OPTIONS
-_dir = [_pos] call ADF_fnc_roadDir;	
+_dir = [_pos] call ADF_fnc_roadDir;
 
 RETURNS:
 integer (0-360 degrees)
@@ -50,14 +50,14 @@ private _dummy = _direction;
 // Debug reporting
 if ADF_debug then {[format ["ADF_fnc_roadDir - position: %1 - road: %2", _position, _allRoads]] call ADF_fnc_log};
 
-if (count _allRoads > 0) then {	
+if (count _allRoads > 0) then {
 	private _road = _allRoads # 0;
 	private _connectedRoads = roadsConnectedTo _road;
 	private _connection = _connectedRoads # 0;
-	_direction = [_road, _connection] call BIS_fnc_dirTo;	
+	_direction = [_road, _connection] call BIS_fnc_dirTo;
 
 	// Debug reporting
-	if ADF_debug then {diag_log format ["ADF Debug: ADF_fnc_roadDir - road direction", _direction]};	
+	if ADF_debug then {diag_log format ["ADF Debug: ADF_fnc_roadDir - road direction", _direction]};
 };
 
 if (ADF_debug && {_dummy == _direction}) then {["ADF_fnc_roadDir - ERROR! No valid direction. No Road position."] call ADF_fnc_log};
